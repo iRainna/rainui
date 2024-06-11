@@ -1,0 +1,219 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4182840 */
+  src: url('iconfont.woff2?t=1691564722625') format('woff2'),
+       url('iconfont.woff?t=1691564722625') format('woff'),
+       url('iconfont.ttf?t=1691564722625') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-fail:before {
+  content: "\e64a";
+}
+
+.icon-success:before {
+  content: "\e65c";
+}
+
+.icon-right:before {
+  content: "\e7eb";
+}
+
+.icon-left:before {
+  content: "\e7ec";
+}
+
+.icon-up:before {
+  content: "\e7ed";
+}
+
+.icon-down:before {
+  content: "\e7ee";
+}
+
+.icon-loading:before {
+  content: "\e73c";
+}
+
+.icon-image:before {
+  content: "\e7de";
+}
+
+.icon-check-circle:before {
+  content: "\e77d";
+}
+
+.icon-close-circle:before {
+  content: "\e77e";
+}
+
+.icon-frown:before {
+  content: "\e784";
+}
+
+.icon-info-circle:before {
+  content: "\e787";
+}
+
+.icon-meh:before {
+  content: "\e78c";
+}
+
+.icon-play-circle:before {
+  content: "\e790";
+}
+
+.icon-question-circle:before {
+  content: "\e791";
+}
+
+.icon-smile:before {
+  content: "\e793";
+}
+
+.icon-timeout:before {
+  content: "\e794";
+}
+
+.icon-earth:before {
+  content: "\e795";
+}
+
+.icon-warning-circle:before {
+  content: "\e797";
+}
+
+.icon-message:before {
+  content: "\e79a";
+}
+
+.icon-poweroff:before {
+  content: "\e79b";
+}
+
+.icon-logout:before {
+  content: "\e79c";
+}
+
+.icon-setting:before {
+  content: "\e79e";
+}
+
+.icon-location:before {
+  content: "\e7a0";
+}
+
+.icon-edit-square:before {
+  content: "\e7a1";
+}
+
+.icon-appstore:before {
+  content: "\e7a2";
+}
+
+.icon-close-square:before {
+  content: "\e7a3";
+}
+
+.icon-down-square:before {
+  content: "\e7a4";
+}
+
+.icon-left-square:before {
+  content: "\e7a5";
+}
+
+.icon-codelibrary:before {
+  content: "\e7a6";
+}
+
+.icon-detail:before {
+  content: "\e7a7";
+}
+
+.icon-minus-square:before {
+  content: "\e7a8";
+}
+
+.icon-plus-square:before {
+  content: "\e7a9";
+}
+
+.icon-interation:before {
+  content: "\e7aa";
+}
+
+.icon-check-square:before {
+  content: "\e7ab";
+}
+
+.icon-adduser:before {
+  content: "\e7ae";
+}
+
+.icon-deleteteam:before {
+  content: "\e7af";
+}
+
+.icon-deleteuser:before {
+  content: "\e7b0";
+}
+
+.icon-addteam:before {
+  content: "\e7b1";
+}
+
+.icon-user:before {
+  content: "\e7b2";
+}
+
+.icon-team:before {
+  content: "\e7b3";
+}
+
+.icon-left-circle:before {
+  content: "\e77f";
+}
+
+.icon-down-circle:before {
+  content: "\e780";
+}
+
+.icon-minus-circle:before {
+  content: "\e781";
+}
+
+.icon-plus-circle:before {
+  content: "\e782";
+}
+
+.icon-right-circle:before {
+  content: "\e783";
+}
+
+.icon-up-circle:before {
+  content: "\e785";
+}
+
+.icon-sync:before {
+  content: "\e786";
+}
+
+.icon-reload:before {
+  content: "\e788";
+}
+
+.icon-piechart:before {
+  content: "\e78e";
+}
+
+.icon-eye:before {
+  content: "\e78f";
+}
+
