@@ -9,5 +9,8 @@ export const themeObject = ref({
 export const getTheme = (index = "default") => themeObject.value[index];
 
 export const addTheme = (name, object) => {
-  themeObject.value[name] = object;
+  themeObject.value[name] = {
+    ...themeObject.value.default,
+    ...object,
+  };
 };

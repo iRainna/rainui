@@ -1,7 +1,7 @@
 {
   "id": "r-theme",
   "displayName": "r-theme",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "r-theme",
   "keywords": [
     "r-theme"
@@ -28,7 +28,7 @@
       "data": "插件不采集任何数据",
       "permissions": "无"
     },
-    "npmurl": ""
+    "npmurl": "https://gitee.com/uv86e/rainui.git"
   },
   "uni_modules": {
     "dependencies": [],
