@@ -4,8 +4,10 @@
 
 ## API
 
-| 名称        | 说明           | 类型     | 默认值                                                                 |
-| ----------- | -------------- | -------- | ---------------------------------------------------------------------- |
-| themeObject | 保存样式的数组 | Object   | index.js 内查看                                                        |
-| getTheme    | 获取主题       | Function | (index = "default") => themeObject[index]                              |
-| addTheme    | 增加主题       | String   | (name, object) =>{<br />themeObject.value[name] = object;<br /><br />} |
+| 名称             | 说明                           | 类型     | 默认值                                             |
+| ---------------- | ------------------------------ | -------- | -------------------------------------------------- |
+| themeObject      | 保存样式的数组                 | Object   | index.js 内查看                                    |
+| getTheme         | 获取主题                       | Function | (name= "default") => themeObject.value[name]       |
+| addTheme         | 增加主题                       | Function | (name, object) =>void  详细可在index.js内查看      |
+| updateThemeField | 修改指定主题内指定属性的属性值 | Function | (label, value, name)=>void  详细可在index.js内查看 |
+
