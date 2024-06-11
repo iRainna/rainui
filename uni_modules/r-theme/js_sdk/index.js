@@ -1,22 +1,20 @@
-import {
-	ref
-} from "vue";
+import { ref, computed } from "vue";
+import { data } from "./theme/default/index.js";
 
-export const themeObject = ref({
-	default: {
-		"r-overlay-background": "rgba(0, 0, 0, 0.7)",
-		"r-overlay-z-index": 1,
-
-		"r-text-color": '#323233',
-	},
+export const themeObject = ref({});
+export const themeObjectComp = computed(() => {
+  return {
+    default: data.value,
+    ...themeObject.value,
+  };
 });
 
-export const getTheme = (name = "default") => themeObject.value[name];
+export const getTheme = (name = "default") => themeObjectComp.value[name];
 
 export const addTheme = (name, object) => {
-	themeObject.value[name] = object;
+  themeObject.value[name] = object;
 };
 
 export const updateThemeField = (label, value, name) => {
-	themeObject.value[name][label] = value
-}
+  themeObject.value[name][label] = value;
+};
