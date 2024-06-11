@@ -37,7 +37,7 @@ export default {
   //前缀类名
   prefix: {
     type: String,
-    default: "iconfont",
+    default: "van-icon",
   },
   //指定按下去的样式类。
   hoverClass: {

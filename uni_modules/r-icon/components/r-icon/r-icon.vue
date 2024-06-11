@@ -1,13 +1,3 @@
-<!--
- * @Author: iRainna caihonglin@joomon.com
- * @Date: 2024-06-11 15:13:38
- * @LastEditors: iRainna caihonglin@joomon.com
- * @LastEditTime: 2024-06-11 15:27:46
- * @FilePath: \rainui\uni_modules\r-icon\components\r-icon\r-icon.vue
- * @Description: 
- * 
- * Copyright (c) 2024 by iRainna, All Rights Reserved. 
--->
 <template>
   <view
     class="icon"
@@ -15,6 +5,7 @@
       [customClass]: true,
       [prefix]: true,
       [name]: true,
+      ['van-icon-' + name]: true,
     }"
     @click="clickHandler"
     v-if="name"
@@ -54,7 +45,7 @@ const clickHandler = (e) => {
 </script>
 
 <style lang="scss" scoped>
-// @import "./vant-icons/encode-woff2.scss";
+@import "./vant-icons/encode-woff2.scss";
 @import "../../../r-animation/components/r-animation/animate.css";
 @import "./iconfont/iconfont.css";
 
