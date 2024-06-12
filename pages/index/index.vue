@@ -23,6 +23,24 @@
     <r-rate v-model:value="rateValue" readonly />
     <r-rate v-model:value="rateValue" readonly allow-half />
     <r-rate v-model:value="rateValue" />
+
+    <r-loading type="circular" v-if="flag"></r-loading>
+    <r-loading type="spinner" v-if="flag"></r-loading>
+    <r-loading type="circular" v-if="flag">
+      <template #icon>
+        <Icon
+          name="icon-left-circle"
+          hoverClass="animate__fadeIn"
+          @click="changeShow"
+        />
+      </template>
+    </r-loading>
+    <r-loading type="circular" v-if="flag" color="red">加载中。。。</r-loading>
+    <r-loading type="spinner" v-if="flag" color="red" vertical
+      >加载中。。。</r-loading
+    >
+    <r-loading type="circular" v-if="flag" size="24rpx"></r-loading>
+    <r-loading type="spinner" v-if="flag" size="24rpx"></r-loading>
   </view>
 </template>
 
@@ -32,6 +50,7 @@ export default {
     return {
       title: "Hello",
       rateValue: 1.8,
+      flag: true,
     };
   },
   onLoad() {},

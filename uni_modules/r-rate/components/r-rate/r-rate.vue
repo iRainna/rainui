@@ -233,14 +233,6 @@ watch(
         left: 0;
       }
     }
-
-    // &--full {
-    //   color: var(--r-rate-icon-full-color);
-    // }
-
-    &--disabled {
-      color: var(--r-rate-icon-disabled-color);
-    }
   }
 
   &--disabled {

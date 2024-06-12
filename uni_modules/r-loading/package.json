@@ -1,17 +1,17 @@
 {
-  "id": "r-theme",
-  "displayName": "r-theme",
-  "version": "1.0.7",
-  "description": "r-theme 是一个为 r-overlay、r-icon等组件提供定制样式的 jssdk。",
+  "id": "r-loading",
+  "displayName": "r-loading",
+  "version": "1.0.0",
+  "description": "r-loading是一个加载图标，用于表示加载中的过渡状态。",
   "keywords": [
-    "r-theme"
+    "r-loading"
 ],
   "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
   "dcloudext": {
-    "type": "sdk-js",
+    "type": "component-vue",
     "sale": {
       "regular": {
         "price": "0.00"
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": [],
+    "dependencies": ["r-icon","r-theme"],
     "encrypt": [],
     "platforms": {
       "cloud": {
