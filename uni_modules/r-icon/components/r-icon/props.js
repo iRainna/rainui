@@ -1,13 +1,3 @@
-/**
- * @Author: iRainna caihonglin@joomon.com
- * @Date: 2024-06-11 15:13:38
- * @LastEditors: iRainna caihonglin@joomon.com
- * @LastEditTime: 2024-06-11 15:29:19
- * @FilePath: \rainui\uni_modules\r-icon\components\r-icon\props.js
- * @Description: 
- * @
- * @Copyright (c) 2024 by iRainna, All Rights Reserved. 
- */
 export default {
   //icon名称
   name: {
