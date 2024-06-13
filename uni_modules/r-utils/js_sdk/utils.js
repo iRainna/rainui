@@ -29,3 +29,12 @@ export const SplitUnitNum = (str) => {
     unit,
   };
 };
+
+// 获取系统信息的同步接口。
+export const getSystemInfo = () => {
+  try {
+    return uni.getSystemInfoSync();
+  } catch (error) {
+    return {};
+  }
+};
