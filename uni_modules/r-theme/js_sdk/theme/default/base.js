@@ -3,7 +3,7 @@ import { computed, ref } from "vue";
 const data = ref({
   /* // Color Palette */
   "r-black": "#000",
-  " r-white": "#fff",
+  "r-white": "#fff",
   "r-gray-1": "#f7f8fa",
   "r-gray-2": "#f2f3f5",
   "r-gray-3": "#ebedf0",
@@ -80,10 +80,10 @@ const quoteData = computed(() => {
     "r-background": data.value["r-gray-1"],
     "r-background-2": data.value["r-white"],
 
-    " r-border-color": data.value["r-gray-3"],
+    "r-border-color": data.value["r-gray-3"],
   };
-  
-  return value
+
+  return value;
 });
 
 const baseData = computed(() => {

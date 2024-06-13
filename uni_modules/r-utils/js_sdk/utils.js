@@ -16,3 +16,16 @@ export const GetRect = (selector, _this, all) => {
       .exec();
   });
 };
+
+//分割数字值和单位
+export const SplitUnitNum = (str) => {
+  const num = (str + "").match(/\d+/g).join("");
+  const unit =
+    (str + "").split(num)[(str + "").split(num).length - 1] != num
+      ? (str + "").split(num)[(str + "").split(num).length - 1]
+      : "";
+  return {
+    num,
+    unit,
+  };
+};
