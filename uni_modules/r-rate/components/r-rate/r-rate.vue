@@ -11,13 +11,16 @@
       v-for="(item, index) in list"
       :key="index"
       :class="{ 'r-rate__item': true }"
-      :style="
-        gutter && index + 1 !== count
-          ? {
-              paddingRight: isNumeric(gutter) ? gutter + 'rpx' : gutter,
-            }
-          : {}
-      "
+      :style="{
+        paddingRight:
+          gutter && index + 1 !== count
+            ? isNumeric(gutter)
+              ? gutter + 'rpx'
+              : gutter
+            : 0,
+        width: size,
+        height: size,
+      }"
       @click="(e) => onClickItem(e, index)"
     >
       <r-icon
