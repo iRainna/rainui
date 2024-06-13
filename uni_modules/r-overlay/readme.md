@@ -2,6 +2,22 @@
 
 `r-overlay` 是一个基于 `r-animation` 的一个 vue3 的遮罩层组件，一般用于弹窗场景。
 
+## 示例
+
+```vue
+<r-overlay
+  :show="show"
+  :duration="1000"
+  :delay="0"
+  entryClass="animate__fadeIn"
+  @open="open"
+  @close="close"
+  exitClass="animate__fadeOut"
+  @click="show = false"
+>
+</r-overlay>
+```
+
 ## API
 
 ### Props

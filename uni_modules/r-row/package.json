@@ -1,10 +1,10 @@
 {
-  "id": "r-animation",
-  "displayName": "r-animation",
-  "version": "1.0.2",
-  "description": "r-animation是基于animate.css的过度动画组件，方便简洁的使用animate.css动画",
+  "id": "r-row",
+  "displayName": "r-row",
+  "version": "1.0.0",
+  "description": "Layout布局组件配合r-col使用",
   "keywords": [
-    "r-animation"
+    "Layout"
 ],
   "repository": "",
   "engines": {
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": [],
+    "dependencies": ["r-utils"],
     "encrypt": [],
     "platforms": {
       "cloud": {
@@ -74,8 +74,8 @@
           "京东": "y"
         },
         "快应用": {
-          "华为": "u",
-          "联盟": "u"
+          "华为": "y",
+          "联盟": "y"
         }
       }
     }

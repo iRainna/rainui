@@ -2,6 +2,30 @@
 
 `r-animation` 是一个基于 `animate.css` 的一个过度动画组件，方便简洁的使用`animate.css`动画。
 
+## 示例
+
+  
+
+```vue
+<r-animation
+    :show="show"
+    :duration="3000"
+    :delay="0"
+    entryClass="animate__fadeIn"
+    @open="open"
+    @close="close"
+    @opened="opened"
+    @closed="closed"
+    exitClass="animate__fadeOut">
+
+    <image class="logo" src="/static/logo.png"></image>
+
+</r-animation>
+<button @click="show=!show">show</button>
+```
+
+
+
 ## API
 
 ### Props
@@ -33,4 +57,3 @@
 | opened | 打开动画结束时的回调 | -        |
 | close  | 关闭的回调           | -        |
 | closed | 关闭动画结束时的回调 | -        |
-

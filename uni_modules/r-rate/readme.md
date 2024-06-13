@@ -2,6 +2,25 @@
 
 `r-rate` 是一个借鉴了 `van-rate` 的一个的`uniapp` `vue3`评分组件，用于对事物进行评级操作。
 
+## 示例
+
+ 
+
+```vue
+<r-rate v-model:value="rateValue" />
+<r-rate v-model:value="rateValue" icon="like" void-icon="like-o" />
+<r-rate v-model:value="rateValue" size="50rpx" color="#ffd21e" void-icon="star" void-color="#eee" />
+<r-rate v-model:value="rateValue" allow-half />
+<r-rate v-model:value="rateValue" :count="6" />
+<r-rate v-model:value="rateValue" clearable />
+<r-rate v-model:value="rateValue" disabled />
+<r-rate v-model:value="rateValue" readonly />
+<r-rate v-model:value="rateValue" readonly allow-half />
+<r-rate v-model:value="rateValue" />
+```
+
+
+
 ## API
 
 ### Props

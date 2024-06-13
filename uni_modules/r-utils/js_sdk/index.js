@@ -5,3 +5,5 @@ export { dayjs } from "../../iRainna-dayjs/js_sdk/dayjs.min.js";
 export * from "./utils.js";
 
 export * from "./basic.js";
+
+export * from "./constant.js";

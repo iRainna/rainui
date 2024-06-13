@@ -2,6 +2,20 @@
 
 `r-icon` 是一个使用 `iconfont` 的一个的字体图标组件，内置`vantui`图标库可直接使用，引用`iconfont`一些图标（可替换为自己的图标库，下载自己的图标文件后，将 iconfont 文件夹内容替换即可），方便简洁的使用`iconfont`图标。
 
+## 示例
+
+ 
+
+```vue
+//使用van-icon
+<r-icon name="star" prefix="van-icon" hoverClass="animate__bounce"></r-icon>
+<r-icon name="star-o" prefix="van-icon"></r-icon>
+//使用iconfont图标
+<r-icon name="iconfont-success" prefix="iconfont"></r-icon>
+```
+
+
+
 ## API
 
 ### Props

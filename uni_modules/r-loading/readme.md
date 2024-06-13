@@ -2,6 +2,22 @@
 
 `r-loading` 是一个加载图标，用于表示加载中的过渡状态。
 
+## 示例
+
+```vue
+<r-loading type="circular"></r-loading>
+<r-loading type="spinner"></r-loading>
+<r-loading type="circular">
+    <template #icon>
+        <Icon name="icon-left-circle" hoverClass="animate__fadeIn" @click="changeShow" />
+    </template>
+</r-loading>
+<r-loading type="circular" color="red">加载中。。。</r-loading>
+<r-loading type="spinner" color="red" vertical>加载中。。。</r-loading>
+<r-loading type="circular" size="24rpx"></r-loading>
+<r-loading type="spinner" size="24rpx"></r-loading>
+```
+
 ## API
 
 ### Props
