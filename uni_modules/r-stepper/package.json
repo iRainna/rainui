@@ -1,17 +1,17 @@
 {
-  "id": "r-utils",
-  "displayName": "r-utils",
-  "version": "1.0.2",
-  "description": "r-utils 封装了lodash、dayjs以及其他常用的方法。",
+  "id": "r-stepper",
+  "displayName": "r-stepper",
+  "version": "1.0.0",
+  "description": "`r-stepper` 是`uniapp vue3`的步进器，由增加按钮、减少按钮和输入框组成，用于在一定范围内输入、调整数字。",
   "keywords": [
-    "r-utils"
+    "stepper"
 ],
-  "repository": "",
+  "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
   "dcloudext": {
-    "type": "sdk-js",
+    "type": "component-vue",
     "sale": {
       "regular": {
         "price": "0.00"
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["iRainna-dayjs","iRainna-lodash"],
+    "dependencies": ["r-utils","r-theme"],
     "encrypt": [],
     "platforms": {
       "cloud": {
