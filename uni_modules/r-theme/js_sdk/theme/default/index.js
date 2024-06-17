@@ -5,6 +5,8 @@ import { rateData } from "./rate.js";
 import { loadingData } from "./loading.js";
 import { popupData } from "./popup.js";
 import { stepperData } from "./stepper.js";
+import { badgeData } from "./badge.js";
+import { buttonData } from "./button.js";
 
 const data = computed(() => {
   return {
@@ -14,6 +16,8 @@ const data = computed(() => {
     ...loadingData.value,
     ...popupData.value,
     ...stepperData.value,
+    ...badgeData.value,
+    ...buttonData.value,
   };
 });
 
