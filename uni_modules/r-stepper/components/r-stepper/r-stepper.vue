@@ -3,7 +3,7 @@
     :class="`r-stepper ${
       props.theme == 'round' ? 'r-stepper--' + props.theme : ''
     }`"
-    :style="cssVarStyle"
+    :style="getThemeCssVar(themeName)"
   >
     <button
       v-show="showMinus"
@@ -69,18 +69,10 @@ import {
   addNumber,
   LONG_PRESS_START_TIME,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
-import { getTheme } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 
 const props = defineProps({ ...StepperProps });
-const cssVarStyle = computed(() => {
-  const data = getTheme(props.themeName);
-  let keys = Object.keys(data);
-  let cssVar = {};
-  keys.forEach((t) => {
-    cssVar[`--${t}`] = data[t];
-  });
-  return cssVar;
-});
+
 const LONG_PRESS_INTERVAL = 200;
 const emit = defineEmits([
   "update:value",

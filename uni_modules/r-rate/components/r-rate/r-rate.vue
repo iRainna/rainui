@@ -5,6 +5,7 @@
       'r-rate--disabled': disabled,
       'r-rate--readonly': readonly,
     }"
+    :style="getThemeCssVar"
   >
     <!-- renderStar -->
     <view
@@ -35,10 +36,6 @@
           disabled ? disabledColor : item.status === 'full' ? color : voidColor
         "
         :prefix="iconPrefix"
-        :customStyle="{
-          color: getTheme(themeName)['r-rate-icon-void-color'],
-          fontSize: getTheme(themeName)['r-rate-icon-size'],
-        }"
       />
 
       <r-icon
@@ -58,14 +55,6 @@
           disabled ? disabledColor : item.status === 'void' ? voidColor : color
         "
         :prefix="iconPrefix"
-        :customStyle="{
-          color: disabled
-            ? getTheme(themeName)['r-rate-icon-disabled-color']
-            : item.status !== 'void'
-            ? getTheme(themeName)['r-rate-icon-full-color']
-            : getTheme(themeName)['r-rate-icon-void-color'],
-          fontSize: getTheme(themeName)['r-rate-icon-size'],
-        }"
       />
     </view>
   </view>
@@ -83,7 +72,7 @@ import {
 } from "vue";
 
 import { GetRect, _, isNumeric } from "@/uni_modules/r-utils/js_sdk/index.js";
-import { getTheme } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 const { forEach } = _;
 const emit = defineEmits(["change", "update:value"]);
 const props = defineProps(RateProps);
@@ -219,11 +208,17 @@ watch(
 
   &__item {
     position: relative;
+
+    &:not(:last-child) {
+      padding-right: var(--r-rate-icon-gutter);
+    }
   }
 
   &__icon {
     display: block;
     width: 1em;
+    color: var(--r-rate-icon-void-color);
+    font-size: var(--r-rate-icon-size);
 
     &--half {
       position: absolute;
@@ -235,6 +230,14 @@ watch(
         position: absolute;
         left: 0;
       }
+    }
+
+    &--full {
+      color: var(--r-rate-icon-full-color);
+    }
+
+    &--disabled {
+      color: var(--r-rate-icon-disabled-color);
     }
   }
 

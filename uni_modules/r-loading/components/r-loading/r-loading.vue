@@ -5,9 +5,7 @@
       [`r-loading--${type}`]: true,
       'r-loading--vertical': vertical,
     }"
-    :style="{
-      color: getTheme(themeName)['r-loading-spinner-color'],
-    }"
+    :style="getThemeCssVar(themeName)"
   >
     <view
       v-if="type == 'spinner' && !$slots.icon"
@@ -72,11 +70,6 @@
       :style="{
         fontSize: textSize,
         color: textColor != '#c9c9c9' ? textColor : color,
-
-        marginLeft: vertical ? 0 : getTheme(themeName)['r-padding-xs'],
-        color: getTheme(themeName)['r-loading-text-color'],
-        fontSize: getTheme(themeName)['r-loading-text-font-size'],
-        marginTop: vertical ? getTheme(themeName)['r-padding-xs'] : 0,
       }"
     >
       <slot></slot>
@@ -86,18 +79,20 @@
 <script setup>
 import { defineProps } from "vue";
 import LoadingProps from "./props.js";
-import { getTheme } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 
 const props = defineProps({
   ...LoadingProps,
 });
 </script>
+
 <style lang="scss" scoped>
 @use "sass:math";
 
 .r-loading {
   display: inline-block;
   position: relative;
+  color: var(--r-loading-spinner-color);
   font-size: 0;
   vertical-align: middle;
 
@@ -108,12 +103,13 @@ const props = defineProps({
     flex-direction: row;
     align-items: center;
     justify-content: center;
-
+    width: var(--r-loading-spinner-size);
     // compatible for 1.x, users may set width or height in root element
     max-width: 100%;
-
+    height: var(--r-loading-spinner-size);
     max-height: 100%;
     vertical-align: middle;
+    animation: r-rotate var(--r-loading-spinner-duration) linear infinite;
 
     &--spinner {
       animation-timing-function: steps(12);
@@ -154,7 +150,9 @@ const props = defineProps({
 
   &__text {
     display: inline-block;
-
+    margin-left: var(--r-padding-xs);
+    color: var(--r-loading-text-color);
+    font-size: var(--r-loading-text-font-size);
     vertical-align: middle;
   }
 
@@ -162,6 +160,10 @@ const props = defineProps({
     display: inline-flex;
     flex-direction: column;
     align-items: center;
+
+    .r-loading__text {
+      margin: var(--r-padding-xs) 0 0;
+    }
   }
 }
 

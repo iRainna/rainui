@@ -10,11 +10,16 @@ export const themeObjectComp = computed(() => {
 });
 
 export const getTheme = (name = "default") => themeObjectComp.value[name];
+export const getThemeCssVar = (name = "default") => {
+	let value = themeObjectComp.value[name]
+	let keys = Object.keys(value);
+	let cssVar = {};
+	keys.forEach((t) => {
+	  cssVar[`--${t}`] = value[t];
+	});
+	return cssVar;
+};
 
 export const addTheme = (name, object) => {
   themeObject.value[name] = object;
-};
-
-export const updateThemeField = (label, value, name) => {
-  themeObject.value[name][label] = value;
 };

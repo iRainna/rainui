@@ -12,6 +12,7 @@
     :color="overlay ? '' : 'transparent'"
     :customClass="overlayClass"
     :customStyle="{
+      ...getThemeCssVar(themeName),
       ...overlayStyle,
     }"
     :duration="duration"
@@ -28,6 +29,7 @@
       :style="{
         ...getPosition,
         boxSizing: 'border-box',
+        ...getThemeCssVar(themeName),
       }"
       style="display: flex; flex-direction: row; width: 100%; height: 100%"
     >
@@ -54,20 +56,18 @@
             ...getContentPosition,
             width: getWidth,
             height: getHeight,
-            background: getTheme(themeName)['r-popup-background'],
+            background: 'var(--r-popup-background)',
             boxSizing: 'border-box',
-            paddingLeft: getTheme(themeName)['r-padding-xs'],
-            paddingRight: getTheme(themeName)['r-padding-xs'],
+            paddingLeft: 'var(--r-padding-xs)',
+            paddingRight: 'var(--r-padding-xs)',
             paddingBottom:
               safeAreaInsetBottom && position == 'bottom'
-                ? `calc(${safeBottom}px + ${
-                    getTheme(themeName)['r-padding-xs']
-                  })`
-                : `${getTheme(themeName)['r-padding-xs']}`,
+                ? `calc(${safeBottom}px + var(--r-padding-xs))`
+                : `var(--r-padding-xs)`,
             paddingTop:
               safeAreaInsetTop && position == 'top'
-                ? `calc(${safeTop}px + ${getTheme(themeName)['r-padding-xs']})`
-                : `${getTheme(themeName)['r-padding-xs']}`,
+                ? `calc(${safeTop}px + var(--r-padding-xs))`
+                : `var(--r-padding-xs)`,
             ...customStyle,
           }"
           :class="customClass"
@@ -81,12 +81,12 @@
             }"
             :style="{ ...getIconPosition }"
           >
-            <r-icon
+            <Icon
               @click="clickCloseIcon"
               :name="closeIcon"
               :prefix="iconPrefix"
               hoverClass="animate__fadeIn"
-            ></r-icon>
+            ></Icon>
           </view>
           <slot />
         </view>
@@ -97,7 +97,7 @@
 <script setup>
 import PopupProps from "./props.js";
 import { getSystemInfo } from "@/uni_modules/r-utils/js_sdk/index.js";
-import { getTheme } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 import { computed, defineProps, defineEmits, ref } from "vue";
 const props = defineProps({ ...PopupProps });
 const emit = defineEmits([
@@ -178,41 +178,23 @@ const getRadius = computed(() => {
     overflow: "hidden",
   };
   if (props.position == "center") {
-    cssVars["border-radius"] = getTheme(props.themeName)[
-      "r-popup-round-radius"
-    ];
+    cssVars["border-radius"] = "var(--r-popup-round-radius)";
   }
   if (props.position == "left") {
-    cssVars["border-top-right-radius"] = getTheme(props.themeName)[
-      "r-popup-round-radius"
-    ];
-    cssVars["border-bottom-right-radius"] = getTheme(props.themeName)[
-      "r-popup-round-radius"
-    ];
+    cssVars["border-top-right-radius"] = "var(--r-popup-round-radius)";
+    cssVars["border-bottom-right-radius"] = "var(--r-popup-round-radius)";
   }
   if (props.position == "right") {
-    cssVars["border-top-left-radius"] = getTheme(props.themeName)[
-      "r-popup-round-radius"
-    ];
-    cssVars["border-bottom-left-radius"] = getTheme(props.themeName)[
-      "r-popup-round-radius"
-    ];
+    cssVars["border-top-left-radius"] = "var(--r-popup-round-radius)";
+    cssVars["border-bottom-left-radius"] = "var(--r-popup-round-radius)";
   }
   if (props.position == "top") {
-    cssVars["border-bottom-left-radius"] = getTheme(props.themeName)[
-      "r-popup-round-radius"
-    ];
-    cssVars["border-bottom-right-radius"] = getTheme(props.themeName)[
-      "r-popup-round-radius"
-    ];
+    cssVars["border-bottom-left-radius"] = "var(--r-popup-round-radius)";
+    cssVars["border-bottom-right-radius"] = "var(--r-popup-round-radius)";
   }
   if (props.position == "bottom") {
-    cssVars["border-top-left-radius"] = getTheme(props.themeName)[
-      "r-popup-round-radius"
-    ];
-    cssVars["border-top-right-radius"] = getTheme(props.themeName)[
-      "r-popup-round-radius"
-    ];
+    cssVars["border-top-left-radius"] = "var(--r-popup-round-radius)";
+    cssVars["border-top-right-radius"] = "var(--r-popup-round-radius)";
   }
   return cssVars;
 });
@@ -328,7 +310,6 @@ const safeTop = ref(0);
 const safeBottom = ref(0);
 if (props.safeAreaInsetTop || props.safeAreaInsetBottom) {
   const data = getSystemInfo();
-  console.log("data", data);
   safeTop.value = data?.statusBarHeight;
   safeBottom.value = data?.safeAreaInsets?.bottom;
 }

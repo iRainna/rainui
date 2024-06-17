@@ -1,6 +1,6 @@
 <template>
   <view
-    class="icon"
+    class="r-icon"
     :class="{
       [customClass]: true,
       [prefix]: true,
@@ -10,12 +10,12 @@
     @click="clickHandler"
     v-if="name"
     :style="{
+      ...getThemeCssVar(themeName),
       ...customStyle,
       fontSize: size || customStyle.fontSize || '48rpx',
-      color: color || customStyle.color || getTheme(themeName)['r-text-color'],
+      color: color || customStyle.color || 'var(--r-text-color)',
       width: size || customStyle.fontSize || '48rpx',
       height: size || customStyle.fontSize || '48rpx',
-
       '--animate-duration': `${duration}ms`,
       '--animate-delay': `${delay}ms`,
     }"
@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import { getTheme } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 import IconProps from "./props.js";
 import { defineProps, defineEmits } from "vue";
 const props = defineProps({
@@ -49,7 +49,7 @@ const clickHandler = (e) => {
 @import "../../../r-animation/components/r-animation/animate.css";
 @import "./iconfont/iconfont.css";
 
-.icon {
+.r-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
