@@ -8,7 +8,15 @@
     </view>
 		 <r-cell title="单元格" value="内容" label="描述信息" /> -->
 
-    <r-switch v-model:value="checked" @change="changeSwitch" />
+    <r-image
+      src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"
+      mode="heightFix"
+      radius="20rpx"
+      draggable
+    >
+    </r-image>
+
+    <!-- <r-switch v-model:value="checked" @change="changeSwitch" />
     <r-switch v-model:value="checked" disabled />
     <r-switch v-model:value="checked" loading />
     <r-switch v-model:value="checked" size="22px" />
@@ -19,14 +27,12 @@
     />
     <r-switch v-model:value="checked">
       <template #node>
-        <!-- <view class="icon-wrapper"> -->
         <r-icon
           prefix="iconfont"
           :name="checked ? 'icon-smile' : 'icon-frown'"
         />
-        <!-- </view> -->
       </template>
-    </r-switch>
+    </r-switch> -->
 
     <!-- <r-icon name="star" prefix="r-icon" hoverClass="animate__bounce"></r-icon> -->
     <!-- <image class="logo" src="/static/logo.png"></image>
