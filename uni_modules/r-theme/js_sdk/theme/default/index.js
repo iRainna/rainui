@@ -7,6 +7,9 @@ import { popupData } from "./popup.js";
 import { stepperData } from "./stepper.js";
 import { badgeData } from "./badge.js";
 import { buttonData } from "./button.js";
+import { cellData } from "./cell.js";
+import { cellGroupData } from "./cell-group.js";
+import { switchData } from "./switch.js";
 
 const data = computed(() => {
   return {
@@ -18,6 +21,9 @@ const data = computed(() => {
     ...stepperData.value,
     ...badgeData.value,
     ...buttonData.value,
+    ...cellData.value,
+    ...cellGroupData.value,
+    ...switchData.value,
   };
 });
 

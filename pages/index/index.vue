@@ -1,129 +1,33 @@
 <template>
   <view class="content">
-    <r-button type="primary">主要按钮</r-button>
-    <r-button type="success">成功按钮</r-button>
-    <r-button type="default">默认按钮</r-button>
-    <r-button type="danger">危险按钮</r-button>
-    <r-button type="warning">警告按钮</r-button>
-
-    <r-button plain type="primary">朴素按钮</r-button>
-    <r-button plain type="success">朴素按钮</r-button>
-
-    <r-button plain hairline type="primary">细边框按钮</r-button>
-    <r-button plain hairline type="success">细边框按钮</r-button>
-
-    <r-button disabled type="primary">禁用状态</r-button>
-    <r-button disabled type="success">禁用状态</r-button>
-
-    <r-button loading type="primary" />
-    <r-button loading type="primary" loading-type="spinner" />
-    <r-button loading type="success" loading-text="加载中..." />
-
-    <r-button square type="primary">方形按钮</r-button>
-    <r-button round type="success">圆形按钮</r-button>
-
-    <r-button icon="plus" type="primary" />
-    <r-button icon="plus" type="primary">按钮</r-button>
-
-    <r-button type="primary" size="large">大号按钮</r-button>
-    <r-button type="primary" size="normal">普通按钮</r-button>
-    <r-button type="primary" size="small">小型按钮</r-button>
-    <r-button type="primary" size="mini">迷你按钮</r-button>
-
-    <r-button type="primary" block>块级元素</r-button>
-
-    <r-button color="#7232dd">单色按钮</r-button>
-    <r-button color="#7232dd" plain>单色按钮</r-button>
-    <r-button color="linear-gradient(to right, #ff6034, #ee0a24)">
-      渐变色按钮
-    </r-button>
-
-    <view class="list" v-if="false">
-      <!-- 基础用法 -->
-      <r-badge :content="5" :offset="[0, 0]">
-        <div class="child" />
-      </r-badge>
-      <r-badge :content="10">
-        <div class="child" />
-      </r-badge>
-      <r-badge content="Hot">
-        <div class="child" />
-      </r-badge>
-      <r-badge dot>
-        <div class="child" />
-      </r-badge>
-      <!-- 最大值 -->
-      <r-badge :content="20" max="9">
-        <div class="child" />
-      </r-badge>
-      <r-badge :content="50" max="20">
-        <div class="child" />
-      </r-badge>
-      <r-badge :content="200" max="99">
-        <div class="child" />
-      </r-badge>
-      <!-- 自定义颜色 -->
-      <r-badge :content="5" color="#1989fa">
-        <div class="child" />
-      </r-badge>
-      <r-badge :content="10" color="#1989fa">
-        <div class="child" />
-      </r-badge>
-      <r-badge dot color="#1989fa">
-        <div class="child" />
-      </r-badge>
-      <!-- 自定义徽标内容 -->
-      <r-badge>
-        <div class="child" />
-        <template #content>
-          <r-icon
-            name="icon-success"
-            color="#fff"
-            prefix="iconfont"
-            size="32rpx"
-            class="r-badge-icon"
-          />
-        </template>
-      </r-badge>
-      <r-badge>
-        <div class="child" />
-        <template #content>
-          <r-icon
-            name="icon-fail"
-            color="#fff"
-            prefix="iconfont"
-            size="32rpx"
-            class="r-badge-icon"
-          />
-        </template>
-      </r-badge>
-      <r-badge>
-        <div class="child" />
-        <template #content>
-          <r-icon
-            name="icon-smile"
-            color="#fff"
-            prefix="iconfont"
-            size="32rpx"
-            class="r-badge-icon"
-          />
-        </template>
-      </r-badge>
-
-      <!-- 自定义徽标位置 -->
-      <r-badge :content="10" position="top-left">
-        <div class="child" />
-      </r-badge>
-      <r-badge :content="10" position="bottom-left">
-        <div class="child" />
-      </r-badge>
-      <r-badge :content="10" position="bottom-right">
-        <div class="child" />
-      </r-badge>
-      <!-- 独立展示 -->
-      <r-badge :content="20" />
-      <r-badge :content="200" max="99" />
+    <!-- <view style="display: flex; flex-direction: column;width: 100%;margin: 0 auto;height: 80vh;background-color: darkgray;">
+      <r-cell-group>
+        <r-cell title="单元格" value="内容" />
+        <r-cell title="单元格" value="内容" label="描述信息" />
+      </r-cell-group>
     </view>
+		 <r-cell title="单元格" value="内容" label="描述信息" /> -->
+
+    <r-switch v-model:value="checked" @change="changeSwitch" />
+    <r-switch v-model:value="checked" disabled />
+    <r-switch v-model:value="checked" loading />
+    <r-switch v-model:value="checked" size="22px" />
+    <r-switch
+      v-model:value="checked"
+      active-color="#ee0a24"
+      inactive-color="#dcdee0"
+    />
+    <r-switch v-model:value="checked">
+      <template #node>
+        <!-- <view class="icon-wrapper"> -->
+        <r-icon
+          prefix="iconfont"
+          :name="checked ? 'icon-smile' : 'icon-frown'"
+        />
+        <!-- </view> -->
+      </template>
+    </r-switch>
+
     <!-- <r-icon name="star" prefix="r-icon" hoverClass="animate__bounce"></r-icon> -->
     <!-- <image class="logo" src="/static/logo.png"></image>
     <view class="text-area">
@@ -212,10 +116,15 @@ export default {
       rateValue: 1.8,
       stepperValue: 1,
       flag: true,
+      checked: false,
     };
   },
   onLoad() {},
-  methods: {},
+  methods: {
+    changeSwitch(e) {
+      console.log("e", e);
+    },
+  },
 };
 </script>
 
