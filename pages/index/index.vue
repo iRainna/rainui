@@ -8,13 +8,86 @@
     </view>
 		 <r-cell title="单元格" value="内容" label="描述信息" /> -->
 
-    <r-image
+    <r-radio-group v-model:value="radioData">
+      <r-radio name="1">单选框 1</r-radio>
+      <r-radio name="2">单选框 2</r-radio>
+    </r-radio-group>
+
+    <r-radio-group v-model:value="radioData" direction="horizontal">
+      <r-radio name="1">单选框 1</r-radio>
+      <r-radio name="2">单选框 2</r-radio>
+    </r-radio-group>
+
+    <r-radio-group v-model:value="radioData" disabled>
+      <r-radio name="1">单选框 1</r-radio>
+      <r-radio name="2">单选框 2</r-radio>
+    </r-radio-group>
+
+    <r-radio-group v-model:value="radioData" shape="square">
+      <r-radio name="1">单选框 1</r-radio>
+      <r-radio name="2">单选框 2</r-radio>
+    </r-radio-group>
+
+    <r-radio-group v-model:value="radioData" shape="dot">
+      <r-radio name="1">Radio 1</r-radio>
+      <r-radio name="2">Radio 2</r-radio>
+    </r-radio-group>
+
+    <r-radio-group v-model:value="radioData">
+      <r-radio name="1" checked-color="#ee0a24">单选框 1</r-radio>
+      <r-radio name="2" checked-color="#ee0a24">单选框 2</r-radio>
+    </r-radio-group>
+
+    <r-radio-group v-model:value="radioData">
+      <r-radio name="1" icon-size="24px">单选框 1</r-radio>
+      <r-radio name="2" icon-size="24px">单选框 2</r-radio>
+    </r-radio-group>
+
+    <r-radio-group v-model:value="radioData">
+      <r-radio name="1" label-position="left">单选框 1</r-radio>
+      <r-radio name="2" label-position="left">单选框 2</r-radio>
+    </r-radio-group>
+
+    <r-radio-group v-model:value="radioData">
+      <r-radio name="1" label-disabled>单选框 1</r-radio>
+      <r-radio name="2" label-disabled>单选框 2</r-radio>
+    </r-radio-group>
+
+    <r-radio-group v-model:value="radioData">
+      <r-radio name="1">
+        单选框 1
+        <template #icon="props">
+          <image
+            style="height: 20px; width: 20px"
+            :src="
+              props.checked
+                ? 'https://fastly.jsdelivr.net/npm/@vant/assets/user-active.png'
+                : 'https://fastly.jsdelivr.net/npm/@vant/assets/user-inactive.png'
+            "
+          />
+        </template>
+      </r-radio>
+      <r-radio name="2">
+        单选框 2
+        <template #icon="props">
+          <img
+            style="height: 20px; width: 20px"
+            :src="
+              props.checked
+                ? 'https://fastly.jsdelivr.net/npm/@vant/assets/user-active.png'
+                : 'https://fastly.jsdelivr.net/npm/@vant/assets/user-inactive.png'
+            "
+          />
+        </template>
+      </r-radio>
+    </r-radio-group>
+    <!-- <r-image
       src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"
       mode="heightFix"
       radius="20rpx"
       draggable
     >
-    </r-image>
+    </r-image> -->
 
     <!-- <r-switch v-model:value="checked" @change="changeSwitch" />
     <r-switch v-model:value="checked" disabled />
@@ -121,6 +194,7 @@ export default {
       title: "Hello",
       rateValue: 1.8,
       stepperValue: 1,
+      radioData: "",
       flag: true,
       checked: false,
     };
