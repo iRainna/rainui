@@ -12,6 +12,8 @@ import { cellGroupData } from "./cell-group.js";
 import { switchData } from "./switch.js";
 import { imageData } from "./image.js";
 import { radioData } from "./radio.js";
+import { checkboxData } from "./checkbox.js";
+
 const data = computed(() => {
   return {
     ...baseData.value,
@@ -27,6 +29,7 @@ const data = computed(() => {
     ...switchData.value,
     ...imageData.value,
     ...radioData.value,
+    ...checkboxData.value,
   };
 });
 

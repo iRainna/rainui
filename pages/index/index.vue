@@ -7,7 +7,6 @@
       </r-cell-group>
     </view>
 		 <r-cell title="单元格" value="内容" label="描述信息" /> -->
-
     <r-radio-group v-model:value="radioData">
       <r-radio name="1">单选框 1</r-radio>
       <r-radio name="2">单选框 2</r-radio>
@@ -70,7 +69,7 @@
       <r-radio name="2">
         单选框 2
         <template #icon="props">
-          <img
+          <image
             style="height: 20px; width: 20px"
             :src="
               props.checked
@@ -81,6 +80,52 @@
         </template>
       </r-radio>
     </r-radio-group>
+
+    复选
+
+    <r-checkbox v-model:value="checked">复选框</r-checkbox>
+    <r-checkbox v-model:value="checked" disabled>复选框</r-checkbox>
+    <r-checkbox-group v-model:value="checkList" shape="square">
+      <r-checkbox name="a">复选框 a</r-checkbox>
+      <r-checkbox name="b">复选框 b</r-checkbox>
+    </r-checkbox-group>
+    <r-checkbox-group
+      v-model:value="checkList"
+      direction="horizontal"
+      shape="round"
+    >
+      <r-checkbox name="check1">复选框</r-checkbox>
+      <r-checkbox name="check2">复选2</r-checkbox>
+    </r-checkbox-group>
+    <r-checkbox v-model:value="checked" checked-color="#ee0a24"
+      >复选框</r-checkbox
+    >
+    <r-checkbox v-model:value="checked" icon-size="24px">复选框</r-checkbox>
+
+    <r-checkbox v-model:value="checked">
+      自定义图标
+      <template #icon="props">
+        <image
+          style="height: 20px; width: 20px"
+          :src="
+            props.checked
+              ? 'https://fastly.jsdelivr.net/npm/@vant/assets/user-active.png'
+              : 'https://fastly.jsdelivr.net/npm/@vant/assets/user-inactive.png'
+          "
+        />
+      </template>
+    </r-checkbox>
+
+    <r-checkbox v-model:value="checked" label-position="left"
+      >复选框</r-checkbox
+    >
+    <r-checkbox v-model:value="checked" label-disabled>复选框</r-checkbox>
+
+    <r-checkbox-group v-model:value="checkList" direction="vertical">
+      <r-checkbox name="a">复选框 a</r-checkbox>
+      <r-checkbox name="b">复选框 b</r-checkbox>
+    </r-checkbox-group>
+
     <!-- <r-image
       src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"
       mode="heightFix"
@@ -197,6 +242,7 @@ export default {
       radioData: "",
       flag: true,
       checked: false,
+      checkList: [],
     };
   },
   onLoad() {},

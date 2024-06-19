@@ -1,12 +1,12 @@
 {
   "id": "r-radio",
   "displayName": "r-radio",
-  "version": "1.0.0",
-  "description": "r-radio",
+  "version": "1.0.1",
+  "description": "r-radio单选框，在一组备选项中进行单选。",
   "keywords": [
     "r-radio"
 ],
-  "repository": "",
+  "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": [],
+    "dependencies": ["r-utils","r-theme","r-icon"],
     "encrypt": [],
     "platforms": {
       "cloud": {

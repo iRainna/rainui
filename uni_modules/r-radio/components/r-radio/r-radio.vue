@@ -7,7 +7,7 @@
       ['r-radio--' + getProps('direction')]: true,
     }"
     @click="onClick"
-    :style="getThemeCssVar(themeName)"
+    :style="getThemeCssVar(getProps('themeName'))"
   >
     <!-- renderLabel -->
     <text
@@ -18,7 +18,7 @@
       }"
       v-if="getProps('labelPosition') === 'left' && $slots.default"
     >
-      <slot />
+      <slot :checked="checked" :disabled="getProps('disabled')" />
     </text>
 
     <!-- renderIcon -->
@@ -59,11 +59,7 @@
           //   color: 'transparent',
           //   fontSize: '0.8em',
           //   lineHeight: '1.25',
-          color: checked
-            ? 'var(--r-white)'
-            : getProps('disabled')
-            ? 'var(--r-radio-disabled-icon-color)'
-            : 'transparent',
+          color: getIconColor,
           // var(--r-radio-disabled-background)
           backgroundColor: checked
             ? 'var(--r-radio-checked-icon-color)'
@@ -103,7 +99,7 @@
       }"
       v-if="getProps('labelPosition') !== 'left' && $slots.default"
     >
-      <slot />
+      <slot :checked="checked" :disabled="getProps('disabled')" />
     </text>
   </view>
 </template>
@@ -169,6 +165,15 @@ const iconStyle = computed(() => {
     return {
       "--r-text-color": "transparent",
     };
+  }
+});
+const getIconColor = computed(() => {
+  if (checked.value && getProps("disabled")) {
+    return "var(--r-radio-disabled-icon-color)";
+  } else if (checked.value) {
+    return "var(--r-white)";
+  } else {
+    return "transparent";
   }
 });
 

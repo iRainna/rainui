@@ -1,7 +1,7 @@
 {
   "id": "r-checkbox",
   "displayName": "r-checkbox",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "r-checkbox",
   "keywords": [
     "r-checkbox"
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": [],
+    "dependencies": ["r-icon","r-theme","r-utils"],
     "encrypt": [],
     "platforms": {
       "cloud": {
