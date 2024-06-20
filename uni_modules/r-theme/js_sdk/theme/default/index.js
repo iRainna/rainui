@@ -13,6 +13,7 @@ import { switchData } from "./switch.js";
 import { imageData } from "./image.js";
 import { radioData } from "./radio.js";
 import { checkboxData } from "./checkbox.js";
+import { tabsData } from "./tabs.js";
 
 const data = computed(() => {
   return {
@@ -30,6 +31,7 @@ const data = computed(() => {
     ...imageData.value,
     ...radioData.value,
     ...checkboxData.value,
+    ...tabsData.value,
   };
 });
 
