@@ -6,7 +6,7 @@
   "keywords": [
     "r-tab"
 ],
-  "repository": "",
+  "repository":"https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },

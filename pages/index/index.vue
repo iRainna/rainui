@@ -7,7 +7,20 @@
       </r-cell-group>
     </view>
 		 <r-cell title="单元格" value="内容" label="描述信息" /> -->
-    <view style="width: 700rpx; margin: 0 auto">
+
+    <r-collapse v-model:value="activeNames">
+      <r-collapse-item title="标题1" name="1">
+        技术无非就是那些开发它的人的共同灵魂。
+      </r-collapse-item>
+      <r-collapse-item title="标题2" name="2">
+        技术无非就是那些开发它的人的共同灵魂。
+      </r-collapse-item>
+      <r-collapse-item title="标题3" name="3">
+        在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。
+      </r-collapse-item>
+    </r-collapse>
+
+    <!-- <view style="width: 700rpx; margin: 0 auto">
       <r-tabs v-model:active="tabActive">
         <r-tab title="标签 1" name="tab1"> </r-tab>
         <r-tab title="标签 21111" name="tab2">内容 2<br />22222</r-tab>
@@ -20,7 +33,7 @@
         <r-tab title="标签 9" name="tab9">内容 9</r-tab>
         <r-tab title="标签 0" name="tab0">内容 0</r-tab>
       </r-tabs>
-    </view>
+    </view> -->
     <!-- <r-image
       src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"
       mode="heightFix"
@@ -133,6 +146,7 @@ export default {
     return {
       tabActive: "tab1",
       title: "Hello",
+      activeNames: [],
       rateValue: 1.8,
       stepperValue: 1,
       radioData: "",

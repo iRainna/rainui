@@ -1,12 +1,12 @@
 {
-  "id": "r-cell",
-  "displayName": "r-cell",
+  "id": "r-collapse",
+  "displayName": "r-collapse",
   "version": "1.0.1",
-  "description": "r-cell单元格组件，为列表中的单个展示项。",
+  "description": "r-collapse",
   "keywords": [
-    "van-cell"
+    "r-collapse"
 ],
-  "repository": "https://gitee.com/uv86e/rainui.git",
+  "repository":"https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-theme","r-icon"],
+    "dependencies": ["r-utils","r-theme"],
     "encrypt": [],
     "platforms": {
       "cloud": {

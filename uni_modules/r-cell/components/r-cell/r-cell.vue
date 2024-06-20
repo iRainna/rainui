@@ -56,7 +56,8 @@
       }`"
       size="var(--r-cell-icon-size)"
       color="var(--r-cell-right-icon-color)"
-      customClass="r-cell__right-icon"
+      :customClass="`r-cell__right-icon`"
+      :customStyle="rightIconCustomStyle"
     ></r-icon>
     <!-- extra 自定义单元格最右侧的额外内容-->
     <slot name="extra" />

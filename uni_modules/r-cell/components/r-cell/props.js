@@ -89,6 +89,11 @@ export default {
     type: String,
     default: "",
   },
+  //右侧icon自定义样式
+  rightIconCustomStyle: {
+    type: Object,
+    default: () => ({}),
+  },
   //主题名称
   themeName: {
     type: String,

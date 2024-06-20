@@ -14,6 +14,7 @@ import { imageData } from "./image.js";
 import { radioData } from "./radio.js";
 import { checkboxData } from "./checkbox.js";
 import { tabsData } from "./tabs.js";
+import { collapseItemData } from "./collapse-item.js";
 
 const data = computed(() => {
   return {
@@ -32,6 +33,7 @@ const data = computed(() => {
     ...radioData.value,
     ...checkboxData.value,
     ...tabsData.value,
+    ...collapseItemData.value,
   };
 });
 

@@ -29,27 +29,28 @@
 
 ### Cell Props
 
-| 名称           | 说明                                           | 类型    | 默认值            | 可选值                                      |
-| -------------- | ---------------------------------------------- | ------- | ----------------- | ------------------------------------------- |
-| title          | 左侧标题                                       | String  | -                 | -                                           |
-| value          | 右侧内容                                       | String  | -                 | -                                           |
-| label          | 标题下方的描述信息                             | String  | -                 | -                                           |
-| size           | 单元格大小                                     | String  | -                 | large \| normal                             |
-| icon           | 左侧图标名称,等同于 r-icon 组件的 name 属性    | String  | -                 |                                             |
-| iconPrefix     | 图标类名前缀，等同于 r-icon 组件的 prefix 属性 | String  | van-icon          | iconfont                                    |
-| border         | 是否显示内边框                                 | Boolean | true              | false                                       |
-| clickable      | 是否开启点击反馈                               | Boolean | false             | true                                        |
-| hoverClass     | 反馈的动画类                                   | String  | animate\_\_fadeIn | 更多可使用[animate](https://animate.style/) |
-| isLink         | 是否展示右侧箭头并开启点击反馈                 | Boolean | false             | true                                        |
-| required       | 是否显示表单必填星号                           | Boolean | false             | true                                        |
-| center         | 是否使内容垂直居中                             | Boolean | false             | true                                        |
-| arrowDirection | 箭头方向                                       | String  | right             | left \| up \| down \| right                 |
-| titleStyle     | 左侧标题额外样式                               | Object  | {}                |                                             |
-| titleClass     | 左侧标题额外类名                               | String  | -                 |                                             |
-| valueClass     | 右侧内容额外类名                               | String  | -                 |                                             |
-| labelClass     | 描述信息额外类名                               | String  | -                 |                                             |
-| customClass    | 自定义类                                       | String  | -                 |                                             |
-| themeName      | r-theme 的主题名称                             | String  | default           |                                             |
+| 名称                 | 说明                                           | 类型    | 默认值            | 可选值                                      |
+| -------------------- | ---------------------------------------------- | ------- | ----------------- | ------------------------------------------- |
+| title                | 左侧标题                                       | String  | -                 | -                                           |
+| value                | 右侧内容                                       | String  | -                 | -                                           |
+| label                | 标题下方的描述信息                             | String  | -                 | -                                           |
+| size                 | 单元格大小                                     | String  | -                 | large \| normal                             |
+| icon                 | 左侧图标名称,等同于 r-icon 组件的 name 属性    | String  | -                 |                                             |
+| iconPrefix           | 图标类名前缀，等同于 r-icon 组件的 prefix 属性 | String  | van-icon          | iconfont                                    |
+| border               | 是否显示内边框                                 | Boolean | true              | false                                       |
+| clickable            | 是否开启点击反馈                               | Boolean | false             | true                                        |
+| hoverClass           | 反馈的动画类                                   | String  | animate\_\_fadeIn | 更多可使用[animate](https://animate.style/) |
+| isLink               | 是否展示右侧箭头并开启点击反馈                 | Boolean | false             | true                                        |
+| required             | 是否显示表单必填星号                           | Boolean | false             | true                                        |
+| center               | 是否使内容垂直居中                             | Boolean | false             | true                                        |
+| arrowDirection       | 箭头方向                                       | String  | right             | left \| up \| down \| right                 |
+| titleStyle           | 左侧标题额外样式                               | Object  | {}                |                                             |
+| titleClass           | 左侧标题额外类名                               | String  | -                 |                                             |
+| valueClass           | 右侧内容额外类名                               | String  | -                 |                                             |
+| labelClass           | 描述信息额外类名                               | String  | -                 |                                             |
+| customClass          | 自定义类                                       | String  | -                 |                                             |
+| themeName            | r-theme 的主题名称                             | String  | default           |                                             |
+| rightIconCustomStyle | 右侧 icon 自定义样式                           | Object  | {}                |                                             |
 
 ### CellGroup Slots
 
