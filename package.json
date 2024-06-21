@@ -1,0 +1,24 @@
+{
+  "name": "testdd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "uni-app":{
+	  "scripts":{
+		  "mp-dingtalk":{
+			  "title":"钉钉小程序",
+			  "env":{
+				  "UNI_PLATFORM":"mp-alipay"
+			  },
+			  "define":{
+				  "MP-DINGTALK":true
+			  }
+		  }
+	  }
+  }
+}

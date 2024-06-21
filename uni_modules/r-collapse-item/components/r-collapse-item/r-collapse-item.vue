@@ -60,7 +60,7 @@
   </view>
 </template>
 <script setup>
-import RCell from "@/uni_modules/r-cell/components/r-cell/r-cell.vue";
+	import RCell from "@/uni_modules/r-cell/components/r-cell/r-cell.vue"
 import {
   _,
   COLLAPSE_KEY,

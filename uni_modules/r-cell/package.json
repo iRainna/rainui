@@ -1,7 +1,7 @@
 {
   "id": "r-cell",
   "displayName": "r-cell",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "r-cell单元格组件，为列表中的单个展示项。",
   "keywords": [
     "van-cell"
