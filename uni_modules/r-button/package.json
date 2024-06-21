@@ -1,12 +1,12 @@
 {
   "id": "r-button",
   "displayName": "r-button",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "r-button按钮组件，按钮用于触发一个操作，如提交表单。",
   "keywords": [
     "van-button"
 ],
-  "repository": "",
+  "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-loading","r-icon","r-theme"],
+    "dependencies": ["r-loading","r-icon","r-theme","r-utils"],
     "encrypt": [],
     "platforms": {
       "cloud": {

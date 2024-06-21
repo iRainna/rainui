@@ -3,7 +3,7 @@
     :class="{
       'r-cascader': true,
     }"
-    :style="getThemeCssVar(themeName)"
+    :style="getComponentThemeStyle"
   >
     <!-- renderHeader() -->
     <view
@@ -114,12 +114,48 @@
   </view>
 </template>
 <script setup>
-import { extend } from "@/uni_modules/r-utils/js_sdk/index.js";
+import {
+  extend,
+  CONFIG_PROVIDER_KEY,
+} from "@/uni_modules/r-utils/js_sdk/index.js";
 
-import { defineEmits, watch, nextTick, ref, defineProps } from "vue";
+import {
+  defineEmits,
+  computed,
+  watch,
+  nextTick,
+  inject,
+  ref,
+  defineProps,
+} from "vue";
+
 import CascaderProps from "./props.js";
-import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+import {
+  getThemeCssVar,
+  getComponentThemeCssVar,
+} from "@/uni_modules/r-theme/js_sdk/index.js";
 const props = defineProps(CascaderProps);
+
+const componentsName = "r-cascader";
+const themeInject = inject(CONFIG_PROVIDER_KEY, {});
+
+const getComponentThemeStyle = computed(() => {
+  let themeName = props.themeName;
+
+  if (themeInject?.themeName) {
+    //传递过来的有就用传递了
+    themeName = themeInject?.themeName;
+  }
+  if (props.themeName != "default") {
+    //单独设置了组件的 就用单独设置的
+    themeName = props.themeName;
+  }
+
+  return {
+    ...getComponentThemeCssVar(themeName, "r-base"),
+    ...getComponentThemeCssVar(themeName, componentsName),
+  };
+});
 const emit = defineEmits([
   "close",
   "clickTab",

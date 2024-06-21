@@ -41,32 +41,29 @@
 </r-button>
 ```
 
-
-
 ## API
 
 ### Props
 
-| 名称         | 说明                                                         | 类型    | 默认值    | 可选值                                   |
-| ------------ | ------------------------------------------------------------ | ------- | --------- | ---------------------------------------- |
-| type         | 类型                                                         | String  | default   | primary \| success \| warning \| danger  |
-| size         | 尺寸                                                         | String  | normal    | large \| small \| mini                   |
-| text         | 按钮文字                                                     | String  | -         | -                                        |
-| color        | 按钮颜色，支持传入 `linear-gradient` 渐变色                  | String  | -         | -                                        |
-| icon         | 左侧图标名称或图片链接，等同于 r-icon 组件的name属性         | String  | -         | -                                        |
-| iconPrefix   | 图标类名前缀，等同于 r-icon 组件的 prefix 属性               | String  | -         | -                                        |
-| iconPosition | 图标展示位置                                                 | String  | top-right | top-left \| bottom-left  \| bottom-right |
-| block        | 是否为块级元素                                               | Boolean | false     | true                                     |
-| plain        | 是否为朴素按钮                                               | Boolean | false     | true                                     |
-| square       | 是否为方形按钮                                               | Boolean | false     | true                                     |
-| round        | 是否为圆形按钮                                               | Boolean | false     | true                                     |
-| disabled     | 是否禁用按钮                                                 | Boolean | false     | true                                     |
-| loading      | 是否显示为加载状态                                           | Boolean | false     | true                                     |
-| loadingText  | 加载状态提示文字                                             | String  | -         |                                          |
-| loadingSize  | 加载图标大小，默认单位为 rpx                                 | String  | 40rpx     |                                          |
-| themeName    | r-theme的主题名称                                            | String  | default   |                                          |
-| 其他         | 支持uniapp的button的属性，详情可以看 https://uniapp.dcloud.net.cn/component/button.html |         |           |                                          |
-|              |                                                              |         |           |                                          |
+| 名称         | 说明                                                                                                | 类型    | 默认值      | 可选值                                    |
+| ------------ | --------------------------------------------------------------------------------------------------- | ------- | ----------- | ----------------------------------------- |
+| type         | 类型                                                                                                | String  | `default`   | `primary` ` success` `warning` ` danger`  |
+| size         | 尺寸                                                                                                | String  | `normal`    | `large` ` small` ` mini`                  |
+| text         | 按钮文字                                                                                            | String  | -           | -                                         |
+| color        | 按钮颜色，支持传入 `linear-gradient` 渐变色                                                         | String  | -           | -                                         |
+| icon         | 左侧图标名称或图片链接，等同于 [r-icon](https://ext.dcloud.net.cn/plugin?id=18668) 组件的 name 属性 | String  | -           | -                                         |
+| iconPrefix   | 图标类名前缀，等同于 [r-icon](https://ext.dcloud.net.cn/plugin?id=18668) 组件的 prefix 属性         | String  | -           | -                                         |
+| iconPosition | 图标展示位置                                                                                        | String  | `top-right` | `top-left` ` bottom-left` ` bottom-right` |
+| block        | 是否为块级元素                                                                                      | Boolean | false       | true                                      |
+| plain        | 是否为朴素按钮                                                                                      | Boolean | false       | true                                      |
+| square       | 是否为方形按钮                                                                                      | Boolean | false       | true                                      |
+| round        | 是否为圆形按钮                                                                                      | Boolean | false       | true                                      |
+| disabled     | 是否禁用按钮                                                                                        | Boolean | false       | true                                      |
+| loading      | 是否显示为加载状态                                                                                  | Boolean | false       | true                                      |
+| loadingText  | 加载状态提示文字                                                                                    | String  | -           |                                           |
+| loadingSize  | 加载图标大小，默认单位为 rpx                                                                        | String  | 40rpx       |                                           |
+| themeName    | [r-theme](https://ext.dcloud.net.cn/plugin?id=18661)的主题名称                                      | String  | default     |                                           |
+| 其他         | 支持`uniapp`的[button](https://uniapp.dcloud.net.cn/component/button.html)的属性                    |         |             |                                           |
 
 ### Slots
 
@@ -78,8 +75,7 @@
 
 ### Events
 
-| 名称  | 说明                                                         | 回调参数 |
-| ----- | ------------------------------------------------------------ | -------- |
-| click | 点击按钮，且按钮状态不为加载或禁用时触发                     | e        |
-| 其他  | 支持uniapp的button的事件，详情可以看 https://uniapp.dcloud.net.cn/component/button.html |          |
-
+| 名称  | 说明                                                                             | 回调参数 |
+| ----- | -------------------------------------------------------------------------------- | -------- |
+| click | 点击按钮，且按钮状态不为加载或禁用时触发                                         | e        |
+| 其他  | 支持`uniapp`的[button](https://uniapp.dcloud.net.cn/component/button.html)的事件 |          |

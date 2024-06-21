@@ -201,7 +201,7 @@ const navStyle = computed(() => ({
   width: Math.max(getNavWidth.value, state.tabsRect?.width) + "px",
 }));
 
-const getTabName = (tab, index) => tab.name ?? index;
+const getTabName = (tab, index) => tab.name || index;
 
 const init = () => {
   setCurrentIndexByName(props.active, true);

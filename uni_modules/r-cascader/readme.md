@@ -60,18 +60,18 @@ const onFinish = ({ selectedOptions }) => {
 
 ### Props
 
-| 名称        | 说明                                         | 类型           | 默认值                                                                         | 可选值 |
-| ----------- | -------------------------------------------- | -------------- | ------------------------------------------------------------------------------ | ------ |
-| value       | 选中项的值                                   | String, Number | -                                                                              | -      |
-| title       | 顶部标题                                     | String         |                                                                                |        |
-| options     | 可选项数据源                                 | Array          | []                                                                             |        |
-| placeholder | 未选中时的提示文案                           | String         | 请选择                                                                         |        |
-| activeColor | 选中状态的高亮颜色                           | String         | #1989fa                                                                        |        |
-| closeable   | 是否显示关闭图标                             | Boolean        | true                                                                           |        |
-| showHeader  | 是否展示标题栏                               | Boolean        | true                                                                           |        |
-| closeIcon   | 关闭图标名称，等同于 r-icon 组件的 name 属性 | String         | cross                                                                          |        |
-| fieldNames  | 自定义 options 结构中的字段                  | Object         | {<br /> text: "text",<br /> value: "value",<br /> children: "children",<br />} |        |
-| themeName   | r-theme 主题名称                             | String         | default                                                                        |        |
+| 名称        | 说明                                                         | 类型           | 默认值                                                       | 可选值 |
+| ----------- | ------------------------------------------------------------ | -------------- | ------------------------------------------------------------ | ------ |
+| value       | 选中项的值                                                   | String, Number | -                                                            | -      |
+| title       | 顶部标题                                                     | String         |                                                              |        |
+| options     | 可选项数据源                                                 | Array          | []                                                           |        |
+| placeholder | 未选中时的提示文案                                           | String         | 请选择                                                       |        |
+| activeColor | 选中状态的高亮颜色                                           | String         | #1989fa                                                      |        |
+| closeable   | 是否显示关闭图标                                             | Boolean        | true                                                         |        |
+| showHeader  | 是否展示标题栏                                               | Boolean        | true                                                         |        |
+| closeIcon   | 关闭图标名称，等同于 [r-icon](https://ext.dcloud.net.cn/plugin?id=18668) 组件的 name 属性 | String         | cross                                                        |        |
+| fieldNames  | 自定义 options 结构中的字段                                  | Object         | {<br /> text: "text",<br /> value: "value",<br /> children: "children",<br />} |        |
+| themeName   | [r-theme](https://ext.dcloud.net.cn/plugin?id=18661) 主题名称 | String         | default                                                      |        |
 
 ### props options 数据结构
 

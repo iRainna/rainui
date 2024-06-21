@@ -1,8 +1,61 @@
 <template>
   <view class="content">
-    <r-badge :content="20" />
+    <!-- <r-badge :content="20" /> -->
     <r-config-provider :theme="theme">
-      <r-badge :content="20" />
+      <!-- <view style="width: 92vw; margin: 0 auto">
+        <r-collapse v-model:value="activeNames">
+          <r-collapse-item title="标题1" name="1">
+            技术无非就是那些开发它的人的共同灵魂。
+          </r-collapse-item>
+        </r-collapse>
+      </view>
+
+       -->
+      //宽度跟随外层盒子
+      <r-cell-group>
+        <r-cell title="单元格" value="内容" />
+        <r-cell title="单元格" value="内容" label="描述信息" />
+      </r-cell-group>
+      //单独使用在小程序上要加个宽度
+      <r-cell title="单元格" is-link />
+      <r-cell title="单元格" value="内容" />
+      <!-- <view @click="cShow = !cShow">打开 {{ fieldValue }}</view> -->
+      <!-- <view style="width: 100%">
+        <r-button type="primary">主要按钮</r-button>
+        <r-button type="success">成功按钮</r-button>
+        <r-button type="default">默认按钮</r-button>
+        <r-button type="danger">危险按钮</r-button>
+        <r-button type="warning">警告按钮</r-button>
+
+        <r-button plain type="primary">朴素按钮</r-button>
+        <r-button plain type="success">朴素按钮</r-button>
+
+        <r-button disabled type="primary">禁用状态</r-button>
+        <r-button disabled type="success">禁用状态</r-button>
+
+        <r-button loading type="primary" />
+        <r-button loading type="primary" loading-type="spinner" />
+        <r-button loading type="success" loading-text="加载中..." />
+
+        <r-button square type="primary">方形按钮</r-button>
+        <r-button round type="success">圆形按钮</r-button>
+
+        <r-button icon="plus" type="primary" />
+        <r-button icon="plus" type="primary">按钮</r-button>
+
+        <r-button type="primary" size="large">大号按钮</r-button>
+        <r-button type="primary" size="normal">普通按钮</r-button>
+        <r-button type="primary" size="small">小型按钮</r-button>
+        <r-button type="primary" size="mini">迷你按钮</r-button>
+
+        <r-button type="primary" block>块级元素</r-button>
+
+        <r-button color="#7232dd">单色按钮</r-button>
+        <r-button color="#7232dd" plain>单色按钮</r-button>
+        <r-button color="linear-gradient(to right, #ff6034, #ee0a24)">
+          渐变色按钮
+        </r-button>
+      </view> -->
     </r-config-provider>
     <!-- <view style="display: flex; flex-direction: column;width: 100%;margin: 0 auto;height: 80vh;background-color: darkgray;">
       <r-cell-group>
@@ -129,12 +182,12 @@
       </r-row>
     </view> -->
     <!-- <r-stepper v-model:value="stepperValue" ></r-stepper> -->
-    <view @click="cShow = !cShow">打开 {{ fieldValue }}</view>
+
     <!-- <r-popup v-model:show="cShow" round position="bottom">
       <view style="height: 100px; background-color: #fff">11111</view>
     </r-popup> -->
 
-    <!-- <r-popup v-model:show="cShow" round position="bottom">
+    <r-popup v-model:show="cShow" round position="bottom">
       <r-cascader
         v-if="cShow"
         v-model:value="cascaderValue"
@@ -143,7 +196,7 @@
         @close="cShow = false"
         @finish="onFinish"
       />
-    </r-popup> -->
+    </r-popup>
 
     <!-- <view @click="cShow = !cShow">打开</view> -->
     <!-- <r-overlay v-model:show="cShow" round position="bottom">
@@ -167,7 +220,12 @@ export default {
             {
               text: "杭州市",
               value: "330100",
-              children: [{ text: "经开区", value: "331110" }],
+              children: [
+                {
+                  text: "经开区",
+                  value: "331110",
+                },
+              ],
             },
           ],
         },
@@ -178,7 +236,12 @@ export default {
             {
               text: "南京市",
               value: "320100",
-              children: [{ text: "经开区", value: "320110" }],
+              children: [
+                {
+                  text: "经开区",
+                  value: "320110",
+                },
+              ],
             },
           ],
         },

@@ -47,7 +47,7 @@ export const moduleData = computed(() => ({
   "r-badge": badgeData.value,
   "r-button": buttonData.value,
   "r-cell": cellData.value,
-  "r-cellGroup": cellGroupData.value,
+  "r-cell-group": cellGroupData.value,
   "r-switch": switchData.value,
   "r-image": imageData.value,
   "r-radio": radioData.value,
