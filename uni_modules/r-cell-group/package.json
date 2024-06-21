@@ -1,7 +1,7 @@
 {
   "id": "r-cell-group",
   "displayName": "r-cell-group",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "r-cell单元格组件，为列表中的单个展示项。",
   "keywords": [
     "van-cell-group"
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-theme"],
+    "dependencies": ["r-theme","r-utils"],
     "encrypt": [],
     "platforms": {
       "cloud": {

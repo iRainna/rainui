@@ -40,19 +40,19 @@
 | shrink         | 是否开启左侧收缩布局                                           | Boolean        | false                        |        |
 | swipeThreshold | 滚动阈值，标签数量超过阈值且总宽度超过标签栏宽度时开始横向滚动 | Number         | 5                            |        |
 | beforeChange   | 切换标签前的回调函数，返回 false 可阻止切换，支持返回 Promise  | Function       |                              |        |
-| themeName      | r-theme 的主题                                                 | String         | default                      |        |
+| themeName      | [r-theme](https://ext.dcloud.net.cn/plugin?id=18661) 的主题    | String         | default                      |        |
 
 ### Tab Props
 
-| 名称          | 说明                               | 类型             | 默认值  | 可选值 |
-| ------------- | ---------------------------------- | ---------------- | ------- | ------ |
-| title         | 标题                               | String           | -       | -      |
-| dot           | 是否在标题右上角显示小红点         | Boolean          | false   | true   |
-| disabled      | 是否禁用标签                       | Boolean          | false   | true   |
-| badge         | 图标右上角徽标的内容               | String           |         |        |
-| name          | 标签名称，作为匹配的标识符         | String \| Number |         |        |
-| showZeroBadge | 当 badge 为数字 0 时，是否展示徽标 | Boolean          | true    |        |
-| themeName     | r-theme 的主题名称                 | String           | default |        |
+| 名称          | 说明                                                            | 类型             | 默认值  | 可选值 |
+| ------------- | --------------------------------------------------------------- | ---------------- | ------- | ------ |
+| title         | 标题                                                            | String           | -       | -      |
+| dot           | 是否在标题右上角显示小红点                                      | Boolean          | false   | true   |
+| disabled      | 是否禁用标签                                                    | Boolean          | false   | true   |
+| badge         | 图标右上角徽标的内容                                            | String           |         |        |
+| name          | 标签名称，作为匹配的标识符                                      | String \| Number |         |        |
+| showZeroBadge | 当 badge 为数字 0 时，是否展示徽标                              | Boolean          | true    |        |
+| themeName     | [r-theme](https://ext.dcloud.net.cn/plugin?id=18661) 的主题名称 | String           | default |        |
 
 ### Tabs Slots
 
