@@ -64,6 +64,7 @@
   </view>
 </template>
 <script setup>
+import RIcon from "@/uni_modules/r-icon/components/r-icon/r-icon.vue";
 import CellProps from "./props.js";
 import { defineProps, defineEmits } from "vue";
 import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";

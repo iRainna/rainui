@@ -54,7 +54,7 @@ const toggleAll = (options = {}) => {
     if (item.disabled && skipDisabled) {
       return item.expanded.value;
     }
-    return expanded ?? !item.expanded.value;
+    return expanded || !item.expanded.value;
   });
 
   const names = expandedChildren.map((item) => item.itemName.value);

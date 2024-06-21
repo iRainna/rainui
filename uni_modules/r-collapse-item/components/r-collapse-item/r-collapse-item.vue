@@ -60,6 +60,7 @@
   </view>
 </template>
 <script setup>
+import RCell from "@/uni_modules/r-cell/components/r-cell/r-cell.vue";
 import {
   _,
   COLLAPSE_KEY,
@@ -111,7 +112,7 @@ const contentStyle = computed(() => {
   return css;
 });
 
-const name = computed(() => props.name ?? index.value);
+const name = computed(() => props.name || index.value);
 const expanded = computed(() => parent.isExpanded(name.value));
 
 const getRightIconCustomStyle = computed(() => {
