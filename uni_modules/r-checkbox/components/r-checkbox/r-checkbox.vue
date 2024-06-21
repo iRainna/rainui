@@ -7,7 +7,7 @@
       ['r-checkbox--' + getProps('direction')]: true,
     }"
     @click="onClick"
-    :style="getThemeCssVar(getProps('themeName'))"
+    :style="getComponentThemeStyle"
   >
     <!-- renderLabel -->
     <text
@@ -18,7 +18,7 @@
       }"
       v-if="getProps('labelPosition') === 'left' && $slots.default"
     >
-      <slot :checked="checked" :disabled="getProps('disabled')" />
+      <slot />
     </text>
 
     <!-- renderIcon -->
@@ -99,15 +99,21 @@
       }"
       v-if="getProps('labelPosition') !== 'left' && $slots.default"
     >
-      <slot :checked="checked" :disabled="getProps('disabled')" />
+      <slot />
     </text>
   </view>
 </template>
 <script setup>
 import CheckboxProps from "./props.js";
 import { defineProps, ref, defineEmits, computed, inject } from "vue";
-import { CHECKBOX_GROUP_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
-import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+import {
+  CHECKBOX_GROUP_KEY,
+  CONFIG_PROVIDER_KEY,
+} from "@/uni_modules/r-utils/js_sdk/index.js";
+import {
+  getThemeCssVar,
+  getComponentThemeCssVar,
+} from "@/uni_modules/r-theme/js_sdk/index.js";
 
 const parentData = inject(CHECKBOX_GROUP_KEY, {});
 
@@ -124,16 +130,42 @@ const getProps = (name) => {
     defaultPropsValue[key] = CheckboxProps[key].default;
   }
 
-  let allProps = { ...parentProps.value, ...props };
-  let allKeys = Object.keys(allProps);
-  for (let key of allKeys) {
-    allProps[key] =
-      allProps[key] == defaultPropsValue[key]
-        ? parentProps.value[key]
-        : props[key];
+  let allProps = {};
+  for (let key of keys) {
+    let value = null;
+    if (parentProps.value[key] && props[key] == defaultPropsValue[key]) {
+      value = parentProps.value[key];
+    }
+    value = props[key];
+    allProps[key] = value;
   }
   return allProps[name];
 };
+
+const componentsName = "r-checkbox";
+const themeInject = inject(CONFIG_PROVIDER_KEY, {});
+
+const getComponentThemeStyle = computed(() => {
+  let themeName = getProps("themeName");
+
+  if (themeInject?.themeName) {
+    //传递过来的有就用传递了
+    themeName = themeInject?.themeName;
+  }
+  if (getProps("themeName") != "default") {
+    //单独设置了组件的 就用单独设置的
+    themeName = getProps("themeName");
+  }
+
+console.log('a',{
+    ...getComponentThemeCssVar(themeName, "r-base"),
+    ...getComponentThemeCssVar(themeName, componentsName),
+  })
+  return {
+    ...getComponentThemeCssVar(themeName, "r-base"),
+    ...getComponentThemeCssVar(themeName, componentsName),
+  };
+});
 
 const checked = computed(() => {
   try {

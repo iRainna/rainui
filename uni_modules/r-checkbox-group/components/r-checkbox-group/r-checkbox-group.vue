@@ -4,7 +4,7 @@
       'r-checkbox-group': true,
       [`r-checkbox-group--${direction}`]: true,
     }"
-    :style="getThemeCssVar(themeName)"
+    
   >
     <slot v-if="$slots.default"></slot>
   </view>
@@ -14,7 +14,7 @@
 import CheckboxGroupProps from "./props.js";
 import { defineProps, defineEmits, provide } from "vue";
 import { CHECKBOX_GROUP_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
-import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+// import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 const props = defineProps({ ...CheckboxGroupProps });
 const emit = defineEmits(["update:value"]);
 
