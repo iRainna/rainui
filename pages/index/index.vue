@@ -8,7 +8,7 @@
     </view>
 		 <r-cell title="单元格" value="内容" label="描述信息" /> -->
 
-    <r-collapse v-model:value="activeNames">
+    <!-- <r-collapse v-model:value="activeNames">
       <r-collapse-item title="标题1" name="1">
         技术无非就是那些开发它的人的共同灵魂。
       </r-collapse-item>
@@ -18,7 +18,7 @@
       <r-collapse-item title="标题3" name="3">
         在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。
       </r-collapse-item>
-    </r-collapse>
+    </r-collapse> -->
 
     <!-- <view style="width: 700rpx; margin: 0 auto">
       <r-tabs v-model:active="tabActive">
@@ -89,7 +89,7 @@
     <r-loading type="spinner" v-if="flag"></r-loading>
     <r-loading type="circular" v-if="flag">
       <template #icon>
-        <Icon name="icon-left-circle" hoverClass="animate__fadeIn" />
+        <r-icon name="icon-left-circle" hoverClass="animate__fadeIn" />
       </template>
     </r-loading>
     <r-loading type="circular" v-if="flag" color="red">加载中。。。</r-loading>
@@ -125,10 +125,21 @@
       </r-row>
     </view> -->
     <!-- <r-stepper v-model:value="stepperValue" ></r-stepper> -->
-    <!-- <view @click="cShow = !cShow">打开</view>
-    <r-popup v-model:show="cShow" round position="bottom">
+    <view @click="cShow = !cShow">打开 {{ fieldValue }}</view>
+    <!-- <r-popup v-model:show="cShow" round position="bottom">
       <view style="height: 100px; background-color: #fff">11111</view>
     </r-popup> -->
+
+    <r-popup v-model:show="cShow" round position="bottom">
+      <r-cascader
+        v-if="cShow"
+        v-model:value="cascaderValue"
+        title="请选择所在地区"
+        :options="options"
+        @close="cShow = false"
+        @finish="onFinish"
+      />
+    </r-popup>
 
     <!-- <view @click="cShow = !cShow">打开</view> -->
     <!-- <r-overlay v-model:show="cShow" round position="bottom">
@@ -136,14 +147,37 @@
     </r-overlay> -->
   </view>
 </template>
-<script setup>
-import { ref } from "vue";
-const cShow = ref(false);
-</script>
+
 <script>
 export default {
   data() {
     return {
+      cShow: false,
+      cascaderValue: "",
+      options: [
+        {
+          text: "浙江省",
+          value: "330000",
+          children: [
+            {
+              text: "杭州市",
+              value: "330100",
+              children: [{ text: "经开区", value: "331110" }],
+            },
+          ],
+        },
+        {
+          text: "江苏省",
+          value: "320000",
+          children: [
+            {
+              text: "南京市",
+              value: "320100",
+              children: [{ text: "经开区", value: "320110" }],
+            },
+          ],
+        },
+      ],
       tabActive: "tab1",
       title: "Hello",
       activeNames: [],
@@ -153,10 +187,16 @@ export default {
       flag: true,
       checked: false,
       checkList: [],
+      fieldValue: "",
     };
   },
   onLoad() {},
   methods: {
+    // 全部选项选择完毕后，会触发 finish 事件
+    onFinish({ selectedOptions }) {
+      this.cShow = false;
+      this.fieldValue = selectedOptions.map((option) => option.text).join("/");
+    },
     changeSwitch(e) {
       console.log("e", e);
     },

@@ -15,6 +15,7 @@ import { radioData } from "./radio.js";
 import { checkboxData } from "./checkbox.js";
 import { tabsData } from "./tabs.js";
 import { collapseItemData } from "./collapse-item.js";
+import { cascaderData } from "./cascader.js";
 
 const data = computed(() => {
   return {
@@ -34,6 +35,7 @@ const data = computed(() => {
     ...checkboxData.value,
     ...tabsData.value,
     ...collapseItemData.value,
+    ...cascaderData.value,
   };
 });
 

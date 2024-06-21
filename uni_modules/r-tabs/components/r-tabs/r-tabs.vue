@@ -8,7 +8,7 @@
       ...getThemeCssVar(themeName),
       position: 'relative',
     }"
-    :scroll-y="scrollspy || sticky"
+    :scroll-y="sticky"
   >
     <!-- renderHeader -->
     <!-- -->

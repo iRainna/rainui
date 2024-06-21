@@ -81,12 +81,12 @@
             }"
             :style="{ ...getIconPosition }"
           >
-            <Icon
+            <r-icon
               @click="clickCloseIcon"
               :name="closeIcon"
               :prefix="iconPrefix"
               hoverClass="animate__fadeIn"
-            ></Icon>
+            ></r-icon>
           </view>
           <slot />
         </view>
