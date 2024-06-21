@@ -17,26 +17,42 @@ import { tabsData } from "./tabs.js";
 import { collapseItemData } from "./collapse-item.js";
 import { cascaderData } from "./cascader.js";
 
-const data = computed(() => {
-  return {
-    ...baseData.value,
-    ...overlayData.value,
-    ...rateData.value,
-    ...loadingData.value,
-    ...popupData.value,
-    ...stepperData.value,
-    ...badgeData.value,
-    ...buttonData.value,
-    ...cellData.value,
-    ...cellGroupData.value,
-    ...switchData.value,
-    ...imageData.value,
-    ...radioData.value,
-    ...checkboxData.value,
-    ...tabsData.value,
-    ...collapseItemData.value,
-    ...cascaderData.value,
-  };
-});
+export const data = computed(() => ({
+  ...baseData.value,
+  ...overlayData.value,
+  ...rateData.value,
+  ...loadingData.value,
+  ...popupData.value,
+  ...stepperData.value,
+  ...badgeData.value,
+  ...buttonData.value,
+  ...cellData.value,
+  ...cellGroupData.value,
+  ...switchData.value,
+  ...imageData.value,
+  ...radioData.value,
+  ...checkboxData.value,
+  ...tabsData.value,
+  ...collapseItemData.value,
+  ...cascaderData.value,
+}));
 
-export { data };
+export const moduleData = computed(() => ({
+  "r-base": baseData.value,
+  "r-overlay": overlayData.value,
+  "r-rate": rateData.value,
+  "r-loading": loadingData.value,
+  "r-popup": popupData.value,
+  "r-stepper": stepperData.value,
+  "r-badge": badgeData.value,
+  "r-button": buttonData.value,
+  "r-cell": cellData.value,
+  "r-cellGroup": cellGroupData.value,
+  "r-switch": switchData.value,
+  "r-image": imageData.value,
+  "r-radio": radioData.value,
+  "r-checkbox": checkboxData.value,
+  "r-tabs": tabsData.value,
+  "r-collapse-item": collapseItemData.value,
+  "r-cascader": cascaderData.value,
+}));

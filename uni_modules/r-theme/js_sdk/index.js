@@ -1,23 +1,50 @@
 import { ref, computed } from "vue";
-import { data } from "./theme/default/index.js";
+import { data, moduleData } from "./theme/default/index.js";
 
 export const themeObject = ref({});
-export const themeObjectComp = computed(() => {
-  return {
-    default: data.value,
-    ...themeObject.value,
-  };
-});
+export const themeObjectComp = computed(() => ({
+  default: data.value,
+  ...themeObject.value,
+}));
+export const themeModuleObject = ref({});
+export const themeModuleObjectComp = computed(() => ({
+  default: moduleData.value,
+  ...themeModuleObject.value,
+}));
 
-export const getTheme = (name = "default") => themeObjectComp.value[name];
 export const getThemeCssVar = (name = "default") => {
-	let value = themeObjectComp.value[name]
-	let keys = Object.keys(value);
-	let cssVar = {};
-	keys.forEach((t) => {
-	  cssVar[`--${t}`] = value[t];
-	});
-	return cssVar;
+  let value = themeObjectComp.value[name];
+
+  let cssVar = {};
+  if (value) {
+    let keys = Object.keys(value);
+
+    keys.forEach((t) => {
+      cssVar[`--${t}`] = value[t];
+    });
+  }
+
+  return cssVar;
+};
+
+export const getComponentThemeCssVar = (
+  themeName = "default",
+  compoentName
+) => {
+  let value = themeModuleObjectComp.value[themeName]
+    ? themeModuleObjectComp.value[themeName][compoentName]
+    : {};
+
+  let cssVar = {};
+  if (value) {
+    let keys = Object.keys(value);
+
+    keys.forEach((t) => {
+      cssVar[`--${t}`] = value[t];
+    });
+  }
+
+  return cssVar;
 };
 
 export const addTheme = (name, object) => {

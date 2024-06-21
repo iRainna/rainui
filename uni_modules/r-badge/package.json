@@ -1,7 +1,7 @@
 {
   "id": "r-badge",
   "displayName": "r-badge",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "r-badge徽标组件，可在右上角展示徽标数字或小红点。",
   "keywords": [
     "r-badge"

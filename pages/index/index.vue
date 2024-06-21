@@ -1,5 +1,9 @@
 <template>
   <view class="content">
+    <r-badge :content="20" />
+    <r-config-provider :theme="theme">
+      <r-badge :content="20" />
+    </r-config-provider>
     <!-- <view style="display: flex; flex-direction: column;width: 100%;margin: 0 auto;height: 80vh;background-color: darkgray;">
       <r-cell-group>
         <r-cell title="单元格" value="内容" />
@@ -130,7 +134,7 @@
       <view style="height: 100px; background-color: #fff">11111</view>
     </r-popup> -->
 
-    <r-popup v-model:show="cShow" round position="bottom">
+    <!-- <r-popup v-model:show="cShow" round position="bottom">
       <r-cascader
         v-if="cShow"
         v-model:value="cascaderValue"
@@ -139,7 +143,7 @@
         @close="cShow = false"
         @finish="onFinish"
       />
-    </r-popup>
+    </r-popup> -->
 
     <!-- <view @click="cShow = !cShow">打开</view> -->
     <!-- <r-overlay v-model:show="cShow" round position="bottom">
@@ -149,6 +153,7 @@
 </template>
 
 <script>
+import { addTheme } from "@/uni_modules/r-theme/js_sdk/index.js";
 export default {
   data() {
     return {
@@ -188,7 +193,15 @@ export default {
       checked: false,
       checkList: [],
       fieldValue: "",
+      theme: "dark",
     };
+  },
+  mounted() {
+    addTheme("dark", {
+      "r-background": "var(--r-red)",
+      "r-background-2": "var(--r-green)",
+      "r-badge-color": "black",
+    });
   },
   onLoad() {},
   methods: {
