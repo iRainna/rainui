@@ -12,10 +12,13 @@
       </view>
 
        -->
-      <r-button @click="openToast(0)">打开</r-button>
-      <r-button @click="openToast(1)">打开失败</r-button>
-      <r-button @click="openToast(2)">打开成功</r-button>
-      <r-button @click="openToast(3)">打开加载</r-button>
+      <r-space>
+        <r-button @click="openToast(0)">打开</r-button>
+        <r-button @click="openToast(1)">打开失败</r-button>
+        <r-button @click="openToast(2)">打开成功</r-button>
+        <r-button @click="openToast(3)">打开加载</r-button>
+      </r-space>
+
       <r-toast ref="toastRef"></r-toast>
 
       <!-- <r-checkbox v-model:value="checked">复选框</r-checkbox>
