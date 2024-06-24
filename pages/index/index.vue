@@ -1,7 +1,7 @@
 <template>
   <view class="content">
     <!-- <r-badge :content="20" /> -->
-    
+
     <r-config-provider :theme="theme">
       <!-- <view style="width: 92vw; margin: 0 auto">
         <r-collapse v-model:value="activeNames">
@@ -12,8 +12,13 @@
       </view>
 
        -->
+      <r-button @click="openToast(0)">打开</r-button>
+      <r-button @click="openToast(1)">打开失败</r-button>
+      <r-button @click="openToast(2)">打开成功</r-button>
+      <r-button @click="openToast(3)">打开加载</r-button>
+      <r-toast ref="toastRef"></r-toast>
 
-      <r-checkbox v-model:value="checked">复选框</r-checkbox>
+      <!-- <r-checkbox v-model:value="checked">复选框</r-checkbox>
       <r-checkbox v-model:value="checked" disabled>复选框</r-checkbox>
       <r-checkbox-group v-model:value="checkList" shape="square">
         <r-checkbox name="a">复选框 a</r-checkbox>
@@ -54,7 +59,7 @@
       <r-checkbox-group v-model:value="checkList" direction="vertical">
         <r-checkbox name="a">复选框 a</r-checkbox>
         <r-checkbox name="b">复选框 b</r-checkbox>
-      </r-checkbox-group>
+      </r-checkbox-group> -->
       <!-- //宽度跟随外层盒子
       <r-cell-group>
         <r-cell title="单元格" value="内容" />
@@ -248,9 +253,33 @@
     </r-overlay> -->
   </view>
 </template>
+<script setup>
+import { ref } from "vue";
+import useToast from "@/uni_modules/r-toast/components/r-toast/useToast";
+const toastRef = ref(null);
 
-<script>
+const {
+  showToast,
+  showLoadingToast,
+  showSuccessToast,
+  showFailToast,
+  closeToast,
+} = useToast(toastRef);
+const openToast = (type) => {
+  if (type == 1) {
+    showFailToast("失败了");
+  } else if (type == 2) {
+    showSuccessToast("成功了");
+  } else if (type == 3) {
+    showLoadingToast("加载中");
+  } else {
+    showToast("打开了弹窗");
+  }
+};
+</script>
+<!-- <script>
 import { addTheme } from "@/uni_modules/r-theme/js_sdk/index.js";
+
 export default {
   data() {
     return {
@@ -322,7 +351,7 @@ export default {
     },
   },
 };
-</script>
+</script> -->
 
 <style>
 .content {

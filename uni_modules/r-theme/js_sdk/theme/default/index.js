@@ -16,6 +16,7 @@ import { checkboxData } from "./checkbox.js";
 import { tabsData } from "./tabs.js";
 import { collapseItemData } from "./collapse-item.js";
 import { cascaderData } from "./cascader.js";
+import { toastData } from "./toast.js";
 
 export const data = computed(() => ({
   ...baseData.value,
@@ -35,6 +36,7 @@ export const data = computed(() => ({
   ...tabsData.value,
   ...collapseItemData.value,
   ...cascaderData.value,
+  ...toastData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -55,4 +57,5 @@ export const moduleData = computed(() => ({
   "r-tabs": tabsData.value,
   "r-collapse-item": collapseItemData.value,
   "r-cascader": cascaderData.value,
+  "r-toast": toastData.value,
 }));
