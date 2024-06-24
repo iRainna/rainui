@@ -133,10 +133,13 @@ const getProps = (name) => {
   let allProps = {};
   for (let key of keys) {
     let value = null;
+
     if (parentProps.value[key] && props[key] == defaultPropsValue[key]) {
       value = parentProps.value[key];
+    } else {
+      value = props[key];
     }
-    value = props[key];
+
     allProps[key] = value;
   }
   return allProps[name];
@@ -157,10 +160,6 @@ const getComponentThemeStyle = computed(() => {
     themeName = getProps("themeName");
   }
 
-console.log('a',{
-    ...getComponentThemeCssVar(themeName, "r-base"),
-    ...getComponentThemeCssVar(themeName, componentsName),
-  })
   return {
     ...getComponentThemeCssVar(themeName, "r-base"),
     ...getComponentThemeCssVar(themeName, componentsName),
