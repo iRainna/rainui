@@ -12,13 +12,53 @@
       </view>
 
        -->
-      <r-space>
-        <r-button @click="openToast(0)">打开</r-button>
-        <r-button @click="openToast(1)">打开失败</r-button>
-        <r-button @click="openToast(2)">打开成功</r-button>
-        <r-button @click="openToast(3)">打开加载</r-button>
-      </r-space>
-
+      <view style="margin-left: 10px">
+        <r-space direction="vertical">
+          <view>基础用法 </view>
+          <r-space>
+            <r-tag type="primary">标签</r-tag>
+            <r-tag type="success">标签</r-tag>
+            <r-tag type="danger">标签</r-tag>
+            <r-tag type="warning">标签</r-tag>
+          </r-space>
+          <view>空心样式 </view>
+          <r-space>
+            <r-tag plain type="primary">标签</r-tag>
+          </r-space>
+          <view>圆角样式 </view>
+          <r-space>
+            <r-tag round type="primary">标签</r-tag>
+          </r-space>
+          <view>标记样式 </view>
+          <r-space>
+            <r-tag mark type="primary">标签</r-tag>
+          </r-space>
+          <view>可关闭标签</view>
+          <r-space>
+            <r-tag
+              :show="show"
+              closeable
+              size="medium"
+              type="primary"
+              @close="show = false"
+            >
+              标签
+            </r-tag>
+          </r-space>
+          <view>标签大小</view>
+          <r-space>
+            <r-tag type="primary">标签</r-tag>
+            <r-tag type="primary" size="medium">标签</r-tag>
+            <r-tag type="primary" size="large">标签</r-tag>
+          </r-space>
+          <view>自定义颜色</view>
+          <r-space>
+            <r-tag color="#7232dd">标签</r-tag>
+            <r-tag color="#ffe1e1" text-color="#ad0000">标签</r-tag>
+            <r-tag color="#7232dd" plain>标签</r-tag>
+          </r-space>
+        </r-space>
+      </view>
       <r-toast ref="toastRef"></r-toast>
 
       <!-- <r-checkbox v-model:value="checked">复选框</r-checkbox>
@@ -260,7 +300,9 @@
 import { ref } from "vue";
 import useToast from "@/uni_modules/r-toast/components/r-toast/useToast";
 const toastRef = ref(null);
-
+const show = ref(true);
+const theme = ref("dark");
+const cShow = ref(false);
 const {
   showToast,
   showLoadingToast,

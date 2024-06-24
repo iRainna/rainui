@@ -20,7 +20,7 @@
       '--animate-delay': `${delay}ms`,
     }"
     style="
-      display: flex;
+      display: inline-flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;

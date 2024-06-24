@@ -17,6 +17,7 @@ import { tabsData } from "./tabs.js";
 import { collapseItemData } from "./collapse-item.js";
 import { cascaderData } from "./cascader.js";
 import { toastData } from "./toast.js";
+import { tagData } from "./tag.js";
 
 export const data = computed(() => ({
   ...baseData.value,
@@ -37,6 +38,7 @@ export const data = computed(() => ({
   ...collapseItemData.value,
   ...cascaderData.value,
   ...toastData.value,
+  ...tagData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -58,4 +60,5 @@ export const moduleData = computed(() => ({
   "r-collapse-item": collapseItemData.value,
   "r-cascader": cascaderData.value,
   "r-toast": toastData.value,
+  "r-tag": tagData.value,
 }));
