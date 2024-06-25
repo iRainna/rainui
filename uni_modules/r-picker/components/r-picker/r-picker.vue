@@ -172,36 +172,25 @@ const bindChange = (e) => {
     ...e.detail.value,
     ...new Array(maxDeep.value + 1 - e.detail.value.length).fill(0),
   ];
+  try {
+    let values = indexValue.value.map(
+      (t, index) => currentColumns.value[index][t][fields.value.value]
+    );
+    let options = indexValue.value.map(
+      (t, index) => currentColumns.value[index][t]
+    );
 
-  let values = indexValue.value.map((t, index) => {
-    try {
-      return currentColumns.value[index][t][fields.value.value];
-    } catch (error) {
-      console.log("error");
-      console.log("currentColumns.value[index]", currentColumns.value[index]);
-      console.log("[t]", t);
-      console.log(
-        "currentColumns.value[index][t]",
-        currentColumns.value[index][t]
-      );
-    }
-  });
-  let options = indexValue.value.map((t, index) => {
-    if (currentColumns.value.length > index)
-      return currentColumns.value[index][t];
-    else currentColumns.value[currentColumns.value.length - 1][t];
-  });
-
-  emit("update:value", values);
-  emit(
-    "change",
-    {
-      selectedValues: values,
-      selectedOptions: options,
-      selectedIndexes: indexValue.value,
-    }
-    // e.detail.value.map((t) => t || 0)
-  );
+    emit("update:value", values);
+    emit(
+      "change",
+      {
+        selectedValues: values,
+        selectedOptions: options,
+        selectedIndexes: indexValue.value,
+      }
+      // e.detail.value.map((t) => t || 0)
+    );
+  } catch (error) {}
 };
 const onCancel = () => emit("cancel");
 const onConfirm = () => emit("confirm");
