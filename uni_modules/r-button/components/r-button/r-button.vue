@@ -16,8 +16,9 @@
       'r-button--round': round,
       'r-button--square': square,
       'r-button--block': block,
+      [`${customClass}`]: true,
     }"
-    :style="{ ...getComponentThemeStyle, ...getStyle }"
+    :style="{ ...getComponentThemeStyle, ...customStyle, ...getStyle }"
     @click="clickHandler"
     :form-type="formType"
     :open-type="openType"

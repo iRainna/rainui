@@ -12,7 +12,13 @@
       </view>
 
        -->
-      <view style="margin-left: 10px">
+      <r-picker
+        title="标题"
+        :columns="columns"
+        v-model:value="pickerValues"
+        @change="changeData"
+      ></r-picker>
+      <!--      <view style="margin-left: 10px">
         <r-space direction="vertical">
           <view>基础用法 </view>
           <r-space>
@@ -58,7 +64,7 @@
             <r-tag color="#7232dd" plain>标签</r-tag>
           </r-space>
         </r-space>
-      </view>
+      </view> -->
       <r-toast ref="toastRef"></r-toast>
 
       <!-- <r-checkbox v-model:value="checked">复选框</r-checkbox>
@@ -310,6 +316,64 @@ const {
   showFailToast,
   closeToast,
 } = useToast(toastRef);
+const columns = ref([
+  {
+    text: "浙江",
+    value: "Zhejiang",
+    children: [
+      {
+        text: "杭州",
+        value: "Hangzhou",
+        children: [
+          { text: "西湖区", value: "Xihu" },
+          { text: "余杭区", value: "Yuhang" },
+        ],
+      },
+      {
+        text: "温州",
+        value: "Wenzhou",
+        children: [
+          { text: "鹿城区", value: "Lucheng" },
+          { text: "瓯海区", value: "Ouhai" },
+        ],
+      },
+      {
+        text: "温州2",
+        value: "Wenzhou2",
+        children: [
+          { text: "鹿城区2", value: "Lucheng2" },
+          { text: "瓯海区2", value: "Ouhai2" },
+        ],
+      },
+    ],
+  },
+  {
+    text: "福建",
+    value: "Fujian",
+    children: [
+      {
+        text: "福州",
+        value: "Fuzhou",
+        children: [
+          { text: "鼓楼区", value: "Gulou" },
+          { text: "台江区", value: "Taijiang" },
+        ],
+      },
+      {
+        text: "厦门",
+        value: "Xiamen",
+        children: [
+          { text: "思明区", value: "Siming" },
+          { text: "海沧区", value: "Haicang" },
+        ],
+      },
+    ],
+  },
+]);
+const pickerValues = ref(["Fujian", "Fuzhou", "Taijiang"]);
+const changeData = (e) => {
+  console.log("e", e);
+};
 const openToast = (type) => {
   if (type == 1) {
     showFailToast("失败了");

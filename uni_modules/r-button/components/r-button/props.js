@@ -88,6 +88,16 @@ export default {
     type: [Number, String],
     default: "40rpx",
   },
+  //自定义类
+  customClass: {
+    type: String,
+    default: "",
+  },
+  //自定义样式
+  customStyle: {
+    type: Object,
+    default: () => {},
+  },
   //主题名称
   themeName: {
     type: String,

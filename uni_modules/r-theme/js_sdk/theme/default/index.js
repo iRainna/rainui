@@ -18,6 +18,7 @@ import { collapseItemData } from "./collapse-item.js";
 import { cascaderData } from "./cascader.js";
 import { toastData } from "./toast.js";
 import { tagData } from "./tag.js";
+import { pickerData } from "./picker.js";
 
 export const data = computed(() => ({
   ...baseData.value,
@@ -39,6 +40,7 @@ export const data = computed(() => ({
   ...cascaderData.value,
   ...toastData.value,
   ...tagData.value,
+  ...pickerData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -61,4 +63,5 @@ export const moduleData = computed(() => ({
   "r-cascader": cascaderData.value,
   "r-toast": toastData.value,
   "r-tag": tagData.value,
+  "r-picker": pickerData.value,
 }));
