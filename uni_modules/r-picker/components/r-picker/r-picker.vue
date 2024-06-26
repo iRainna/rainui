@@ -6,6 +6,7 @@
       :class="{
         'r-picker__toolbar': true,
       }"
+      :style="getComponentThemeStyle"
     >
       <slot name="toolbar" v-if="$slots.toolbar"></slot>
       <template v-else>
@@ -38,7 +39,13 @@
         </r-button>
       </template>
     </view>
-    <view v-if="loading" class="r-picker__loading"
+    <view
+      v-if="loading"
+      class="r-picker__loading"
+      :style="{
+        width: pickerRect.width + 'px',
+        height: pickerRect.height + 'px',
+      }"
       ><r-loading color="var(--r-picker-loading-icon-color)"
     /></view>
 
@@ -111,9 +118,50 @@
 </template>
 <script setup>
 import pickerProps from "./props";
-import { defineProps, watch, defineEmits, computed, ref } from "vue";
+import {
+  defineProps,
+  watch,
+  defineEmits,
+  computed,
+  ref,
+  inject,
+  onMounted,
+  getCurrentInstance,
+} from "vue";
+
+import {
+  _,
+  CONFIG_PROVIDER_KEY,
+  GetRect,
+} from "@/uni_modules/r-utils/js_sdk/index.js";
+import {
+  getThemeCssVar,
+  getComponentThemeCssVar,
+} from "@/uni_modules/r-theme/js_sdk/index.js";
 const emit = defineEmits(["cancel", "confirm", "change", "update:value"]);
+const { proxy } = getCurrentInstance();
 const props = defineProps(pickerProps);
+
+const componentsName = "r-picker";
+const themeInject = inject(CONFIG_PROVIDER_KEY, {});
+
+const getComponentThemeStyle = computed(() => {
+  let themeName = props.themeName;
+
+  if (themeInject?.themeName) {
+    //传递过来的有就用传递了
+    themeName = themeInject?.themeName;
+  }
+  if (props.themeName != "default") {
+    //单独设置了组件的 就用单独设置的
+    themeName = props.themeName;
+  }
+
+  return {
+    ...getComponentThemeCssVar(themeName, "r-base"),
+    ...getComponentThemeCssVar(themeName, componentsName),
+  };
+});
 
 const getColumnsType = (columns, fields) => {
   const firstColumn = columns[0];
@@ -132,6 +180,7 @@ const fields = computed(() => ({
   ...props.columnsFieldNames,
 }));
 const indexValue = ref([]);
+const pickerRect = ref({});
 const indicatorStyle = computed(() => {
   return `height: ${props.optionHeight};line-height:${props.optionHeight}`;
 });
@@ -167,10 +216,11 @@ const currentColumns = computed(() => {
 });
 
 const bindChange = (e) => {
-  console.log("e.detail.value", e, e.detail.value, e.detail.value.length);
   indexValue.value = [
     ...e.detail.value,
-    ...new Array(maxDeep.value + 1 - e.detail.value.length).fill(0),
+    ...new Array(Math.max(maxDeep.value + 1 - e.detail.value.length, 0)).fill(
+      0
+    ),
   ];
   try {
     let values = indexValue.value.map(
@@ -181,19 +231,39 @@ const bindChange = (e) => {
     );
 
     emit("update:value", values);
-    emit(
-      "change",
-      {
-        selectedValues: values,
-        selectedOptions: options,
-        selectedIndexes: indexValue.value,
-      }
-      // e.detail.value.map((t) => t || 0)
-    );
+    emit("change", {
+      selectedValues: values,
+      selectedOptions: options,
+      selectedIndexes: indexValue.value,
+    });
   } catch (error) {}
 };
 const onCancel = () => emit("cancel");
-const onConfirm = () => emit("confirm");
+const onConfirm = () => {
+  if (indexValue.value.length !== currentColumns.value.length) {
+    indexValue.value = [
+      ...indexValue.value,
+      ...new Array(
+        Math.max(currentColumns.value.length - indexValue.value.length, 0)
+      ).fill(0),
+    ];
+  }
+  let values = indexValue.value.map(
+    (t, index) => currentColumns.value[index][t][fields.value.value]
+  );
+  let options = indexValue.value.map(
+    (t, index) => currentColumns.value[index][t]
+  );
+  emit("confirm", {
+    selectedValues: values,
+    selectedOptions: options,
+    selectedIndexes: indexValue.value,
+  });
+};
+const getPickerRect = async () => {
+  pickerRect.value = await GetRect(".r-picker", proxy);
+  console.log("pickerRect.value", pickerRect.value);
+};
 watch(
   () => props.value,
   (value) => {
@@ -201,7 +271,7 @@ watch(
     if (["multiple", "default"].includes(columnsType.value)) {
       indexValue.value = value.map((item, index) => {
         let i = 0;
-        for (let t of currentColumns[index]) {
+        for (let t of currentColumns.value[index]) {
           if (t[fields.value.value] === item) {
             return i;
           }
@@ -243,6 +313,10 @@ watch(
     immediate: true,
   }
 );
+
+onMounted(async () => {
+  getPickerRect();
+});
 </script>
 <style lang="scss" scoped>
 ::v-deep .r-haptics-feedback {
@@ -258,7 +332,11 @@ watch(
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
+.r-picker {
+  position: relative;
+  background: var(--r-picker-background);
+  user-select: none;
+}
 ::v-deep .r-picker {
   position: relative;
   background: var(--r-picker-background);
@@ -311,8 +389,10 @@ watch(
   &__loading {
     position: absolute;
     top: 0;
-    right: 0;
-    bottom: 0;
+    // width: 100%;
+    // height: 100%;
+    //right: 0;
+    //bottom: 0;
     left: 0;
     z-index: 4;
     display: flex;

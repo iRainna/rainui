@@ -43,11 +43,7 @@ export default {
     type: Boolean,
     default: false,
   },
-  //   是否为只读状态，只读状态下无法切换选项
-  readonly: {
-    type: Boolean,
-    default: false,
-  },
+
   //   是否显示顶部栏
   showToolbar: {
     type: Boolean,
@@ -63,9 +59,9 @@ export default {
     type: Number,
     default: 6,
   },
-  //   快速滑动时惯性滚动的时长，单位 ms
-  swipeDuration: {
-    type: Number,
-    default: 1000,
+  //主题名称
+  themeName: {
+    type: String,
+    default: "default",
   },
 };

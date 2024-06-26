@@ -1,17 +1,17 @@
 {
-  "id": "r-config-provider",
-  "displayName": "r-config-provider",
+  "id": "r-region",
+  "displayName": "r-region",
   "version": "1.0.0",
-  "description": "r-config-provider",
+  "description": "`r-region` 导出了一个省市区code的json，可以配合r-picker进行省市区三级联动选择",
   "keywords": [
-    "r-config-provider"
+    "r-region"
 ],
   "repository": "",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
   "dcloudext": {
-    "type": "component-vue",
+    "type": "sdk-js",
     "sale": {
       "regular": {
         "price": "0.00"
