@@ -5,38 +5,39 @@
     <r-config-provider>
       <view style="padding: 20rpx">
         <view style="padding: 20rpx 0">基础用法</view>
-        <r-pagination
-          v-model:value="currentPage"
-          :total-items="24"
-          :items-per-page="5"
-        />
-        <view style="padding: 20rpx 0">简单模式 </view>
-        <r-pagination
-          v-model:value="currentPage"
-          :page-count="12"
-          mode="simple"
-        />
-        <view style="padding: 20rpx 0">显示省略号 </view>
-        <r-pagination
-          v-model:value="currentPage"
-          :total-items="125"
-          :show-page-size="3"
-          force-ellipses
-        />
-        <view style="padding: 20rpx 0">自定义按钮 </view>
-        <r-pagination
-          v-model:value="currentPage"
-          :total-items="50"
-          :show-page-size="5"
+        <r-divider />
+
+        <view style="padding: 20rpx 0">展示文本 </view>
+        <r-divider>文本</r-divider>
+
+        <view style="padding: 20rpx 0">内容位置 </view>
+        <r-divider content-position="left">文本</r-divider>
+        <r-divider content-position="right">文本</r-divider>
+
+        <view style="padding: 20rpx 0">虚线 </view>
+        <r-divider dashed>文本</r-divider>
+
+        <view style="padding: 20rpx 0">自定义样式 </view>
+
+        <r-divider
+          :customStyle="{
+            color: '#1989fa',
+            borderColor: '#1989fa',
+            padding: '0 16px',
+          }"
         >
-          <template #prevText>
-            <r-icon name="arrow-left" color="inherit" />
-          </template>
-          <template #nextText>
-            <r-icon name="arrow" color="inherit" />
-          </template>
-          <template #page="{ item }">{{ item.text }}</template>
-        </r-pagination>
+          文本
+        </r-divider>
+
+        <view style="padding: 20rpx 0">垂直 </view>
+
+        <r-divider vertical />
+        文本
+        <r-divider vertical dashed />
+        文本
+        <r-divider vertical :hairline="false" />
+        文本
+        <r-divider vertical :customStyle="{ borderColor: '#1989fa' }" />
       </view>
     </r-config-provider>
   </view>

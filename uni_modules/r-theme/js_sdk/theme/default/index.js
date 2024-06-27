@@ -20,6 +20,7 @@ import { toastData } from "./toast.js";
 import { tagData } from "./tag.js";
 import { pickerData } from "./picker.js";
 import { paginationData } from "./pagination.js";
+import { dividerData } from "./divider.js";
 
 export const data = computed(() => ({
   ...baseData.value,
@@ -43,6 +44,7 @@ export const data = computed(() => ({
   ...tagData.value,
   ...pickerData.value,
   ...paginationData.value,
+  ...dividerData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -67,4 +69,5 @@ export const moduleData = computed(() => ({
   "r-tag": tagData.value,
   "r-picker": pickerData.value,
   "r-paginationData": paginationData.value,
+  "r-divider": dividerData.value,
 }));

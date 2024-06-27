@@ -1,17 +1,17 @@
 {
-  "id": "r-theme",
-  "displayName": "r-theme",
-  "version": "1.2.3",
-  "description": "r-theme 是一个为 r-overlay、r-icon等组件提供定制样式的 jssdk。",
+  "id": "r-divider",
+  "displayName": "r-divider",
+  "version": "1.0.1",
+  "description": "r-divider分割线组件,用于将内容分隔为多个区域",
   "keywords": [
-    "r-theme"
+    "r-divider"
 ],
   "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
   "dcloudext": {
-    "type": "sdk-js",
+    "type": "component-vue",
     "sale": {
       "regular": {
         "price": "0.00"
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": [],
+    "dependencies": ["r-utils","r-theme"],
     "encrypt": [],
     "platforms": {
       "cloud": {
