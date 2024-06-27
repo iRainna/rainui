@@ -65,7 +65,7 @@
           v-for="(item, index) in m"
           :key="index"
           :style="{
-            height: `calc(${optionHeight})`,
+            height: optionHeight,
             lineHeight: optionHeight,
           }"
           style="text-align: center"

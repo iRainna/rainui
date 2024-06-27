@@ -3,68 +3,49 @@
     <!-- <r-badge :content="20" /> -->
 
     <r-config-provider>
-      <view style="padding: 20rpx">使用单列</view>
-      <r-picker
-        title="使用单列"
-        :columns="columns3"
-        v-model:value="pickerValues3"
-        @change="changeData"
-        @confirm="confirm"
-      ></r-picker>
-      <view style="padding: 20rpx">加载状态</view>
-
-      <r-picker
-        title="使用单列"
-        :columns="columns2"
-        loading
-        v-model:value="pickerValues2"
-        @change="changeData"
-        @confirm="confirm"
-      ></r-picker>
-      <view style="padding: 20rpx">使用多列</view>
-      <r-picker
-        title="使用多列"
-        :columns="columns2"
-        v-model:value="pickerValues2"
-        @change="changeData"
-        @confirm="confirm"
-      ></r-picker>
-      <view style="padding: 20rpx">使用级联</view>
-      <r-picker
-        title="使用级联"
-        :columns="columns"
-        v-model:value="pickerValues"
-        :columnsFieldNames="{
-          text: 'label',
-          value: 'value',
-          children: 'children',
-        }"
-        @change="changeData"
-        @confirm="confirm"
-      ></r-picker>
-
-      <view style="padding: 20rpx">配合r-popup</view>
-      <r-cell title="配合r-popup使用" is-link @click="show = true" />
-    </r-config-provider>
-    <r-popup v-model:show="show" position="bottom">
-      <view style="width: 100%">
-        <r-picker
-          title="使用单列"
-          :columns="columns3"
-          v-model:value="pickerValues3"
-          @change="changeData"
-          @confirm="confirm"
-          @cancel="cancel"
-        ></r-picker>
+      <view style="padding: 20rpx">
+        <view style="padding: 20rpx 0">基础用法</view>
+        <r-pagination
+          v-model:value="currentPage"
+          :total-items="24"
+          :items-per-page="5"
+        />
+        <view style="padding: 20rpx 0">简单模式 </view>
+        <r-pagination
+          v-model:value="currentPage"
+          :page-count="12"
+          mode="simple"
+        />
+        <view style="padding: 20rpx 0">显示省略号 </view>
+        <r-pagination
+          v-model:value="currentPage"
+          :total-items="125"
+          :show-page-size="3"
+          force-ellipses
+        />
+        <view style="padding: 20rpx 0">自定义按钮 </view>
+        <r-pagination
+          v-model:value="currentPage"
+          :total-items="50"
+          :show-page-size="5"
+        >
+          <template #prevText>
+            <r-icon name="arrow-left" color="inherit" />
+          </template>
+          <template #nextText>
+            <r-icon name="arrow" color="inherit" />
+          </template>
+          <template #page="{ item }">{{ item.text }}</template>
+        </r-pagination>
       </view>
-    </r-popup>
+    </r-config-provider>
   </view>
 </template>
 <script setup>
 import { ref } from "vue";
 
 import { region } from "@/uni_modules/r-region/js_sdk/region.js";
-
+const currentPage = ref(1);
 const columns3 = ref([
   { text: "杭州", value: "Hangzhou" },
   { text: "宁波", value: "Ningbo" },

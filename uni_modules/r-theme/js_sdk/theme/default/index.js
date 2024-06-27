@@ -19,6 +19,7 @@ import { cascaderData } from "./cascader.js";
 import { toastData } from "./toast.js";
 import { tagData } from "./tag.js";
 import { pickerData } from "./picker.js";
+import { paginationData } from "./pagination.js";
 
 export const data = computed(() => ({
   ...baseData.value,
@@ -41,6 +42,7 @@ export const data = computed(() => ({
   ...toastData.value,
   ...tagData.value,
   ...pickerData.value,
+  ...paginationData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -64,4 +66,5 @@ export const moduleData = computed(() => ({
   "r-toast": toastData.value,
   "r-tag": tagData.value,
   "r-picker": pickerData.value,
+  "r-paginationData": paginationData.value,
 }));

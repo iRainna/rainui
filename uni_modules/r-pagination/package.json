@@ -1,17 +1,17 @@
 {
-  "id": "r-theme",
-  "displayName": "r-theme",
-  "version": "1.2.2",
-  "description": "r-theme 是一个为 r-overlay、r-icon等组件提供定制样式的 jssdk。",
+  "id": "r-pagination",
+  "displayName": "r-pagination",
+  "version": "1.0.1",
+  "description": "r-pagination分页组件,数据量过多时，采用分页的形式将数据分隔，每次只加载一个页面。",
   "keywords": [
-    "r-theme"
+    "r-pagination"
 ],
   "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
   "dcloudext": {
-    "type": "sdk-js",
+    "type": "component-vue",
     "sale": {
       "regular": {
         "price": "0.00"
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": [],
+    "dependencies": ["r-utils","r-theme"],
     "encrypt": [],
     "platforms": {
       "cloud": {
@@ -41,7 +41,7 @@
       },
       "client": {
         "Vue": {
-          "vue2": "u",
+          "vue2": "y",
           "vue3": "y"
         },
         "App": {
