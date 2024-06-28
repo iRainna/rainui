@@ -229,7 +229,6 @@ const bindChange = (e) => {
     let options = indexValue.value.map(
       (t, index) => currentColumns.value[index][t]
     );
-
     emit("update:value", values);
     emit("change", {
       selectedValues: values,
@@ -262,12 +261,10 @@ const onConfirm = () => {
 };
 const getPickerRect = async () => {
   pickerRect.value = await GetRect(".r-picker", proxy);
-  console.log("pickerRect.value", pickerRect.value);
 };
 watch(
   () => props.value,
   (value) => {
-    console.log("watch==>value", value);
     if (["multiple", "default"].includes(columnsType.value)) {
       indexValue.value = value.map((item, index) => {
         let i = 0;

@@ -4,79 +4,143 @@
 
     <r-config-provider>
       <view style="padding: 20rpx">
-        <view style="padding: 20rpx 0">基础用法</view>
-        <r-divider />
+        <view style="padding: 20rpx 0">基本使用</view>
+        <r-date-picker
+          v-model:value="currentDate"
+          title="基本使用"
+          @change="change"
+          @confirm="confirm"
+          @cancel="cancel"
+        />
+        <view style="padding: 20rpx 0">加载中</view>
+        <r-date-picker
+          v-model:value="currentDate"
+          title="使用年月"
+          loading
+          @change="change"
+          @confirm="confirm"
+          @cancel="cancel"
+        />
+        <view style="padding: 20rpx 0">使用年</view>
+        <r-date-picker
+          v-model:value="currentDate"
+          title="使用年"
+          columnsType="year"
+          @change="change"
+          @confirm="confirm"
+          @cancel="cancel"
+        />
 
-        <view style="padding: 20rpx 0">展示文本 </view>
-        <r-divider>文本</r-divider>
+        <view style="padding: 20rpx 0">使用年月</view>
+        <r-date-picker
+          v-model:value="currentDate"
+          title="使用年月"
+          columnsType="month"
+          @change="change"
+          @confirm="confirm"
+          @cancel="cancel"
+        />
 
-        <view style="padding: 20rpx 0">内容位置 </view>
-        <r-divider content-position="left">文本</r-divider>
-        <r-divider content-position="right">文本</r-divider>
+        <view style="padding: 20rpx 0">使用时间到秒</view>
+        <r-date-picker
+          v-model:value="currentDate"
+          title="使用时间到秒"
+          columnsType="second"
+          @change="change"
+          @confirm="confirm"
+          @cancel="cancel"
+        />
 
-        <view style="padding: 20rpx 0">虚线 </view>
-        <r-divider dashed>文本</r-divider>
+        <view style="padding: 20rpx 0">格式化</view>
+        <r-date-picker
+          v-model:value="currentDate"
+          title="格式化"
+          :formatter="formatter"
+          @change="change"
+          @confirm="confirm"
+          @cancel="cancel"
+        />
+        <view style="padding: 20rpx 0">使用过滤</view>
+        <r-date-picker
+          v-model:value="currentDate"
+          title="使用过滤"
+          :filter="filter"
+          @change="change"
+          @confirm="confirm"
+          @cancel="cancel"
+        />
 
-        <view style="padding: 20rpx 0">自定义样式 </view>
-
-        <r-divider
-          :customStyle="{
-            color: '#1989fa',
-            borderColor: '#1989fa',
-            padding: '0 16px',
-          }"
-        >
-          文本
-        </r-divider>
-
-        <view style="padding: 20rpx 0">垂直 </view>
-
-        <r-divider vertical />
-        文本
-        <r-divider vertical dashed />
-        文本
-        <r-divider vertical :hairline="false" />
-        文本
-        <r-divider vertical :customStyle="{ borderColor: '#1989fa' }" />
+        <view style="padding: 20rpx 0">配合r-popup</view>
+        <r-cell title="配合r-popup使用" is-link @click="show = true" />
       </view>
     </r-config-provider>
+
+    <r-popup v-model:show="show" position="bottom">
+      <view style="width: 100%">
+        <r-date-picker
+          v-model:value="currentDate"
+          title="配合r-popup"
+          :formatter="formatter"
+          @change="change"
+          @confirm="confirm"
+          @cancel="cancel"
+        />
+      </view>
+    </r-popup>
   </view>
 </template>
 <script setup>
 import { ref } from "vue";
+import { _, dayjs } from "@/uni_modules/r-utils/js_sdk/index.js";
 
-import { region } from "@/uni_modules/r-region/js_sdk/region.js";
-const currentPage = ref(1);
-const columns3 = ref([
-  { text: "杭州", value: "Hangzhou" },
-  { text: "宁波", value: "Ningbo" },
-  { text: "温州", value: "Wenzhou" },
-  { text: "绍兴", value: "Shaoxing" },
-  { text: "湖州", value: "Huzhou" },
-]);
-const columns2 = ref([
-  // 第一列
-  [
-    { text: "周一", value: "Monday" },
-    { text: "周二", value: "Tuesday" },
-    { text: "周三", value: "Wednesday" },
-    { text: "周四", value: "Thursday" },
-    { text: "周五", value: "Friday" },
-  ],
-  // 第二列
-  [
-    { text: "上午", value: "Morning" },
-    { text: "下午", value: "Afternoon" },
-    { text: "晚上", value: "Evening" },
-  ],
-]);
-const columns = ref(region);
-
-const pickerValues = ref([]);
-const pickerValues2 = ref([]);
-const pickerValues3 = ref([]);
+const currentDate = ref([]);
 const show = ref(false);
-const changeData = (e) => {
+const formatter = [
+  {
+    type: "year",
+    fn: (e) => {
+      e.item[e.fields.text] = e.item[e.fields.text] + "年";
+      return e.item;
+    },
+  },
+  {
+    type: "month",
+    fn: (e) => {
+      e.item[e.fields.text] =
+        (e.item[e.fields.text] < 10
+          ? "0" + e.item[e.fields.text]
+          : e.item[e.fields.text]) + "月";
+      console.log("e", e);
+      return e.item;
+    },
+  },
+  {
+    type: "day",
+    fn: (e) => {
+      e.item[e.fields.text] =
+        (e.item[e.fields.text] < 10
+          ? "0" + e.item[e.fields.text]
+          : e.item[e.fields.text]) + "日";
+      return e.item;
+    },
+  },
+];
+
+const filter = [
+  {
+    type: "year",
+    fn: (e) => {
+      return e.item[e.fields.value] >= dayjs().year();
+    },
+  },
+  {
+    type: "month",
+    fn: (e) => {
+      return e.item[e.fields.value] % 2;
+    },
+  },
+];
+const change = (e) => {
   console.log("e", e);
 };
 const confirm = (e) => {
