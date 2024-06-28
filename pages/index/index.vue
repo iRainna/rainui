@@ -91,8 +91,9 @@
 </template>
 <script setup>
 import { ref } from "vue";
-import { _, dayjs } from "@/uni_modules/r-utils/js_sdk/index.js";
-
+import { _, dayjs, Schema } from "@/uni_modules/r-utils/js_sdk/index.js";
+// import {} from '@/uni_modules/r-async-validator/js_sdk/index.js'
+console.log("Schema", Schema);
 const currentDate = ref([]);
 const show = ref(false);
 const formatter = [
@@ -110,7 +111,7 @@ const formatter = [
         (e.item[e.fields.text] < 10
           ? "0" + e.item[e.fields.text]
           : e.item[e.fields.text]) + "月";
-      console.log("e", e);
+
       return e.item;
     },
   },

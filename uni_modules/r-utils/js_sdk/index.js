@@ -1,7 +1,8 @@
-import lodashFull from "../../iRainna-lodash/js_sdk/js/lodash.full.min.js";
+import lodashFull from "@/uni_modules/iRainna-lodash/js_sdk/js/lodash.full.min.js";
 export const _ = lodashFull();
-export { dayjs } from "../../iRainna-dayjs/js_sdk/dayjs.min.js";
+export { dayjs } from "@/uni_modules/iRainna-dayjs/js_sdk/dayjs.min.js";
 
+export * from "@/uni_modules/r-async-validator/js_sdk/index.js";
 export * from "./utils.js";
 
 export * from "./basic.js";

@@ -6,3 +6,4 @@ export const CHECKBOX_GROUP_KEY = Symbol("r-checkbox-group");
 export const TABS_KEY = Symbol("r-tabs");
 export const COLLAPSE_KEY = Symbol("r-collapse");
 export const CONFIG_PROVIDER_KEY = Symbol("r-config-provider");
+export const FORM_KEY = Symbol("r-form");
