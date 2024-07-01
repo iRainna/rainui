@@ -1,7 +1,7 @@
 {
   "id": "r-cell-group",
   "displayName": "r-cell-group",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "r-cell单元格组件，为列表中的单个展示项。",
   "keywords": [
     "van-cell-group"
