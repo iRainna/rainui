@@ -1,10 +1,3 @@
-<!--
- * @Description: 
- * @Author: iRainna
- * @Date: 2023-08-09 16:29:02
- * @LastEditTime: 2023-09-06 16:55:04
- * @FilePath: \i-r-ui\uni_modules\iR-ui\components\field\index.vue
--->
 <template>
   <r-cell
     :size="size"

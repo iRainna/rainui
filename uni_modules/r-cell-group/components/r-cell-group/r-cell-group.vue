@@ -36,12 +36,16 @@
   </view>
 </template>
 <script setup>
-import { defineProps, inject, computed } from "vue";
+import { defineProps, ref, inject, provide, computed } from "vue";
 import {
   getThemeCssVar,
   getComponentThemeCssVar,
 } from "@/uni_modules/r-theme/js_sdk/index.js";
-import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
+import {
+  CONFIG_PROVIDER_KEY,
+  CELL_GROUP_KEY,
+  _,
+} from "@/uni_modules/r-utils/js_sdk/index.js";
 
 const props = defineProps({
   // 分组标题
@@ -90,6 +94,17 @@ const getComponentThemeStyle = computed(() => {
     ...getComponentThemeCssVar(themeName, "r-base"),
     ...getComponentThemeCssVar(themeName, componentsName),
   };
+});
+const { cloneDeep, uniqWith, isEqual } = _;
+const children = ref([]);
+const setChildren = (v) => {
+  const arr = cloneDeep([...children.value, v]);
+  children.value = uniqWith(arr, isEqual);
+};
+
+provide(CELL_GROUP_KEY, {
+  children,
+  setChildren,
 });
 </script>
 <style lang="scss" scoped>

@@ -8,11 +8,13 @@
       'r-cell--center': center,
       'r-cell--required': required,
       'r-cell--borderless': !border,
+
       [customClass]: customClass,
     }"
     :hoverClass="clickable ? hoverClass : ''"
     :style="getComponentThemeStyle"
   >
+    <view class="r-cell__divider" v-if="haveDivider"></view>
     <!-- left icon -->
     <slot name="icon" v-if="$slots.icon" />
     <r-icon
@@ -65,12 +67,25 @@
 </template>
 <script setup>
 import CellProps from "./props.js";
-import { defineProps, defineEmits, computed, inject } from "vue";
+import {
+  defineProps,
+  defineEmits,
+  getCurrentInstance,
+  nextTick,
+  computed,
+  inject,
+} from "vue";
 import {
   getThemeCssVar,
   getComponentThemeCssVar,
 } from "@/uni_modules/r-theme/js_sdk/index.js";
-import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
+import {
+  CONFIG_PROVIDER_KEY,
+  CELL_GROUP_KEY,
+  GetRect,
+  _,
+} from "@/uni_modules/r-utils/js_sdk/index.js";
+const { uniqueId, findIndex } = _;
 const props = defineProps({ ...CellProps });
 const componentsName = "r-cell";
 const themeInject = inject(CONFIG_PROVIDER_KEY, {});
@@ -97,6 +112,24 @@ const emit = defineEmits(["click"]);
 const clickHandler = (e) => {
   emit("click", e);
 };
+const id = uniqueId("cell-");
+const groupInject = inject(CELL_GROUP_KEY, {});
+const haveDivider = computed(() => {
+  if (groupInject?.children?.value?.length) {
+    console.log("groupInject?.children?.value", groupInject?.children?.value);
+    return (
+      groupInject.children.value[groupInject.children.value.length - 1].id != id
+    );
+  }
+  return false;
+});
+if (Object.keys(groupInject).length) {
+  nextTick(() => {
+    groupInject.setChildren({
+      id,
+    });
+  });
+}
 </script>
 <style lang="scss" scoped>
 @mixin hairline-common {
@@ -111,7 +144,7 @@ const clickHandler = (e) => {
   bottom: 0;
   left: $left;
   border-bottom: 1px solid $color;
-  transform: scaleY(0.5);
+  // transform: scaleY(0.5);
 }
 
 .r-cell {
@@ -130,7 +163,14 @@ const clickHandler = (e) => {
   // var(--r-background-2);
     var(--r-cell-background);
 
-  &::after {
+  // &::after {
+  //   @include hairline-bottom(
+  //     var(--r-cell-border-color),
+  //     var(--r-padding-md),
+  //     var(--r-padding-md)
+  //   );
+  // }
+  &__divider {
     @include hairline-bottom(
       var(--r-cell-border-color),
       var(--r-padding-md),

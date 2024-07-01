@@ -3,76 +3,10 @@
     <!-- <r-badge :content="20" /> -->
 
     <r-config-provider>
-      <view style="padding: 20rpx">
-        <view style="padding: 20rpx 0">基本使用</view>
-        <r-date-picker
-          v-model:value="currentDate"
-          title="基本使用"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
-        <view style="padding: 20rpx 0">加载中</view>
-        <r-date-picker
-          v-model:value="currentDate"
-          title="使用年月"
-          loading
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
-        <view style="padding: 20rpx 0">使用年</view>
-        <r-date-picker
-          v-model:value="currentDate"
-          title="使用年"
-          columnsType="year"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
-
-        <view style="padding: 20rpx 0">使用年月</view>
-        <r-date-picker
-          v-model:value="currentDate"
-          title="使用年月"
-          columnsType="month"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
-
-        <view style="padding: 20rpx 0">使用时间到秒</view>
-        <r-date-picker
-          v-model:value="currentDate"
-          title="使用时间到秒"
-          columnsType="second"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
-
-        <view style="padding: 20rpx 0">格式化</view>
-        <r-date-picker
-          v-model:value="currentDate"
-          title="格式化"
-          :formatter="formatter"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
-        <view style="padding: 20rpx 0">使用过滤</view>
-        <r-date-picker
-          v-model:value="currentDate"
-          title="使用过滤"
-          :filter="filter"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
-
-        <view style="padding: 20rpx 0">配合r-popup</view>
-        <r-cell title="配合r-popup使用" is-link @click="show = true" />
-      </view>
+      <r-cell-group>
+        <r-cell title="单元格" value="内容" />
+        <r-cell title="单元格" value="内容" label="描述信息" />
+      </r-cell-group>
     </r-config-provider>
 
     <r-popup v-model:show="show" position="bottom">
