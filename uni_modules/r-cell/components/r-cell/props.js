@@ -89,6 +89,12 @@ export default {
     type: String,
     default: "",
   },
+  //自定义样式
+  customStyle: {
+    type: Object,
+    default: () => {},
+  },
+
   //右侧icon自定义样式
   rightIconCustomStyle: {
     type: Object,

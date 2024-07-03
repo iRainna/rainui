@@ -17,7 +17,6 @@ export default {
   //   输入框 id，同时会设置 label 的 for 属性
   id: {
     type: String,
-    default: "van-field-n-input",
   },
   //   输入框类型, 支持 text number idcard digit tel password safe-password	 nickname
   type: {
@@ -32,7 +31,7 @@ export default {
   //   输入的最大字符数
   maxlength: {
     type: [Number, String],
-    default: "",
+    default: 140,
   },
   //   输入框占位提示文字
   placeholder: {
@@ -77,12 +76,16 @@ export default {
   //   清除图标名称或图片链接，等同于 Icon 组件的 name 属性
   clearIcon: {
     type: String,
-    default: "icon-close-circle",
+    default: "clear",
+  },
+  clearPrefix: {
+    type: String,
+    default: "van-icon",
   },
   //   显示清除图标的时机，always 表示输入框不为空时展示，focus 表示输入框聚焦且不为空时展示
   clearTrigger: {
-    type: Function,
-    default: () => {},
+    type: String,
+    default: "focus",
   },
   //   是否开启点击反馈
   clickable: {
@@ -154,15 +157,10 @@ export default {
     type: String,
     default: "left",
   },
-  //   是否自适应内容高度，只对 textarea 有效，可传入对象,如 { maxHeight: 100, minHeight: 50 }，单位为px
-  autosize: {
-    type: [Boolean, Object],
-    default: false,
-  },
   //   左侧图标名称或图片链接，等同于 Icon 组件的 name 属性
   leftIcon: {
     type: String,
-    default: "icon-edit-square",
+    default: "",
   },
   //   右侧图标名称或图片链接，等同于 Icon 组件的 name 属性
   rightIcon: {
@@ -172,11 +170,11 @@ export default {
   //   图标类名前缀，等同于 Icon 组件的 class-prefix 属性
   iconPrefix: {
     type: String,
-    default: "iconfont",
+    default: "van-icon",
   },
   //   表单校验规则，详见 Form 组件
   rules: {
-    type: [Array, Object],
+    type: [Array],
     default: () => [],
   },
 
@@ -282,5 +280,11 @@ export default {
   inputmode: {
     type: String,
     default: "text",
+  },
+
+  //主题名称
+  themeName: {
+    type: String,
+    default: "default",
   },
 };

@@ -4,233 +4,217 @@
 
     <r-config-provider>
       <view style="padding: 20px">基础用法</view>
-      <r-cell-group>
-        <r-cell title="单元格" value="内容" />
-        <r-cell title="单元格" value="内容" label="描述信息" />
-      </r-cell-group>
-      <view style="padding: 20px">卡片风格</view>
       <r-cell-group inset>
-        <r-cell title="单元格" value="内容" />
-        <r-cell title="单元格" value="内容" label="描述信息" />
+        <r-field
+          v-model:value="value"
+          label="文本"
+          placeholder="请输入用户名"
+        />
       </r-cell-group>
-      <view style="padding: 20px">单元格大小</view>
-      <r-cell title="单元格" value="内容" size="large" />
-      <r-cell title="单元格" value="内容" size="large" label="描述信息" />
-
-      <view style="padding: 20px">展示图标</view>
-      <r-cell title="单元格" icon="location-o" />
-
-      <view style="padding: 20px">展示箭头</view>
-      <r-cell title="单元格" is-link />
-      <r-cell title="单元格" is-link value="内容" />
-      <r-cell title="单元格" is-link arrow-direction="down" value="内容" />
-
-      <view style="padding: 20px">分组标题</view>
-      <r-cell-group title="分组1">
-        <r-cell title="单元格" value="内容" />
+      <view style="padding: 20px">自定义类型</view>
+      <r-cell-group inset>
+        <!-- 输入任意文本 -->
+        <r-field v-model:value="text" label="文本" />
+        <!-- 输入手机号，调起手机号键盘 -->
+        <r-field v-model:value="tel" type="tel" label="手机号" />
+        <!-- 允许输入正整数，调起纯数字键盘 -->
+        <r-field v-model:value="digit" type="digit" label="整数" />
+        <!-- 允许输入数字，调起带符号的纯数字键盘 -->
+        <r-field v-model:value="number" type="number" label="数字" />
+        <!-- 输入密码 -->
+        <r-field v-model:value="password" type="password" label="密码" />
       </r-cell-group>
-      <r-cell-group title="分组2">
-        <r-cell title="单元格" value="内容" />
+
+      <view style="padding: 20px">禁用输入框</view>
+      <r-cell-group inset>
+        <r-field label="文本" v-model:value="readonlyValue" readonly />
+        <r-field label="文本" v-model:value="disabledValue" disabled />
       </r-cell-group>
-      <!--  -->
-      <view style="padding: 20px">使用插槽</view>
-      <r-cell value="内容" is-link>
-        <!-- 使用 title 插槽来自定义标题 -->
-        <template #title>
-          <span class="custom-title">单元格</span>
-          <r-tag type="primary">标签</r-tag>
-        </template>
-      </r-cell>
+      <view style="padding: 20px">显示图标</view>
+      <r-cell-group inset>
+        <r-field
+          v-model:value="value1"
+          label="文本"
+          left-icon="smile-o"
+          right-icon="warning-o"
+          placeholder="显示图标"
+        />
+        <r-field
+          v-model:value="value2"
+          clearable
+          label="文本"
+          left-icon="music-o"
+          placeholder="显示清除图标"
+          @clear="onClear"
+        />
+      </r-cell-group>
+
+      <view style="padding: 20px">必填星号</view>
+      <r-cell-group inset>
+        <r-field
+          v-model:value="username"
+          required
+          label="用户名"
+          placeholder="请输入用户名"
+        />
+        <r-field
+          v-model:value="phone"
+          required
+          label="手机号"
+          placeholder="请输入手机号"
+        />
+      </r-cell-group>
+
+      <view style="padding: 20px">自动展示星号</view>
+      <r-form>
+        <r-field
+          v-model:value="username"
+          name="username"
+          :rules="[{ required: true }]"
+          label="用户名"
+          placeholder="请输入用户名"
+        />
+        <r-field
+          v-model:value="phone"
+          name="phone"
+          :rules="[{ required: false }]"
+          label="手机号"
+          placeholder="请输入手机号"
+        />
+      </r-form>
+      <view style="padding: 20px">错误提示</view>
+      <r-cell-group inset>
+        <r-field
+          v-model:value="username"
+          error
+          label="用户名"
+          placeholder="请输入用户名"
+        />
+        <r-field
+          v-model:value="phone"
+          label="手机号"
+          placeholder="请输入手机号"
+          error-message="手机号格式错误"
+        />
+      </r-cell-group>
+      <view style="padding: 20px">插入按钮</view>
+      <r-cell-group inset>
+        <r-field
+          v-model:value="sms"
+          center
+          clearable
+          label="短信验证码"
+          placeholder="请输入短信验证码"
+        >
+          <template #button>
+            <r-button size="small" type="primary">发送验证码</r-button>
+          </template>
+        </r-field>
+      </r-cell-group>
+      <view style="padding: 20px">格式化输入内容</view>
+      <r-cell-group inset>
+        <r-field
+          v-model:value="value1"
+          label="文本"
+          :formatter="formatter"
+          placeholder="在输入时执行格式化"
+        />
+        <r-field
+          v-model:value="value2"
+          label="文本"
+          :formatter="formatter"
+          format-trigger="onBlur"
+          placeholder="在失焦时执行格式化"
+        />
+      </r-cell-group>
+
+      <view style="padding: 20px">使用textarea</view>
+      <r-cell-group inset>
+        <r-field
+          v-model:value="message"
+          rows="1"
+          label="留言"
+          type="textarea"
+          placeholder="请输入留言"
+        />
+      </r-cell-group>
+
+      <view style="padding: 20px">显示字数统计</view>
+      <r-cell-group inset>
+        <r-field
+          v-model:value="message"
+          rows="2"
+          autosize
+          label="留言"
+          type="textarea"
+          maxlength="50"
+          placeholder="请输入留言"
+          show-word-limit
+        />
+      </r-cell-group>
+
+      <view style="padding: 20px">输入框内容对齐</view>
+      <r-cell-group inset>
+        <r-field
+          v-model:value="value"
+          label="文本"
+          placeholder="输入框内容右对齐"
+          input-align="right"
+        />
+      </r-cell-group>
+
+      <view style="padding: 20px">输入框文本位置</view>
+      <r-cell-group inset>
+        <r-field
+          v-model:value="value"
+          label="文本"
+          placeholder="顶部对齐"
+          label-align="top"
+        />
+        <r-field
+          v-model:value="value2"
+          label="文本"
+          placeholder="左对齐"
+          label-align="left"
+        />
+        <r-field
+          v-model:value="value3"
+          label="文本"
+          placeholder="居中对齐"
+          label-align="center"
+        />
+        <r-field
+          v-model:value="value4"
+          label="文本"
+          placeholder="右对齐"
+          label-align="right"
+        />
+      </r-cell-group>
+	   <view style="padding: 20px"></view>
     </r-config-provider>
   </view>
 </template>
 <script setup>
 import { ref } from "vue";
-import { _, dayjs, Schema } from "@/uni_modules/r-utils/js_sdk/index.js";
-// import {} from '@/uni_modules/r-async-validator/js_sdk/index.js'
-console.log("Schema", Schema);
-const currentDate = ref([]);
-const show = ref(false);
-const formatter = [
-  {
-    type: "year",
-    fn: (e) => {
-      e.item[e.fields.text] = e.item[e.fields.text] + "年";
-      return e.item;
-    },
-  },
-  {
-    type: "month",
-    fn: (e) => {
-      e.item[e.fields.text] =
-        (e.item[e.fields.text] < 10
-          ? "0" + e.item[e.fields.text]
-          : e.item[e.fields.text]) + "月";
-
-      return e.item;
-    },
-  },
-  {
-    type: "day",
-    fn: (e) => {
-      e.item[e.fields.text] =
-        (e.item[e.fields.text] < 10
-          ? "0" + e.item[e.fields.text]
-          : e.item[e.fields.text]) + "日";
-      return e.item;
-    },
-  },
-];
-
-const filter = [
-  {
-    type: "year",
-    fn: (e) => {
-      return e.item[e.fields.value] >= dayjs().year();
-    },
-  },
-  {
-    type: "month",
-    fn: (e) => {
-      return e.item[e.fields.value] % 2;
-    },
-  },
-];
-const change = (e) => {
-  console.log("e", e);
-};
-const confirm = (e) => {
-  console.log("e", e);
-  show.value = false;
-};
-const cancel = () => {
-  show.value = false;
+const value = ref("");
+const tel = ref("");
+const text = ref("");
+const digit = ref("");
+const number = ref("");
+const password = ref("");
+const value1 = ref("");
+const value2 = ref("");
+const value3 = ref("");
+const value4 = ref("");
+const username = ref("");
+const phone = ref("");
+const message = ref("");
+const sms = ref("");
+const readonlyValue = ref("输入框只读");
+const disabledValue = ref("输入框已禁用");
+// 过滤输入的数字
+const formatter = (value) => value.replace(/\d/g, "");
+const onClear = () => {
+  value2.value = "";
 };
 </script>
-<!-- <script>
-import { addTheme } from "@/uni_modules/r-theme/js_sdk/index.js";
-
-export default {
-  data() {
-    return {
-      cShow: false,
-      cascaderValue: "",
-      options: [
-        {
-          text: "浙江省",
-          value: "330000",
-          children: [
-            {
-              text: "杭州市",
-              value: "330100",
-              children: [
-                {
-                  text: "经开区",
-                  value: "331110",
-                },
-              ],
-            },
-          ],
-        },
-        {
-          text: "江苏省",
-          value: "320000",
-          children: [
-            {
-              text: "南京市",
-              value: "320100",
-              children: [
-                {
-                  text: "经开区",
-                  value: "320110",
-                },
-              ],
-            },
-          ],
-        },
-      ],
-      tabActive: "tab1",
-      title: "Hello",
-      activeNames: [],
-      rateValue: 1.8,
-      stepperValue: 1,
-      radioData: "",
-      flag: true,
-      checked: false,
-      checkList: [],
-      fieldValue: "",
-      theme: "dark",
-    };
-  },
-  mounted() {
-    addTheme("dark", {
-      "r-background": "var(--r-red)",
-      "r-background-2": "var(--r-green)",
-      "r-badge-color": "black",
-    });
-  },
-  onLoad() {},
-  methods: {
-    // 全部选项选择完毕后，会触发 finish 事件
-    onFinish({ selectedOptions }) {
-      this.cShow = false;
-      this.fieldValue = selectedOptions.map((option) => option.text).join("/");
-    },
-    changeSwitch(e) {
-      console.log("e", e);
-    },
-  },
-};
-</script> -->
-
-<style>
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo {
-  height: 200rpx;
-  width: 200rpx;
-  margin-top: 200rpx;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50rpx;
-}
-
-.text-area {
-  display: flex;
-  justify-content: center;
-}
-
-.title {
-  font-size: 36rpx;
-  color: #8f8f94;
-}
-</style>
-
-<style>
-.child {
-  width: 40px;
-  height: 40px;
-  background: #f2f3f5;
-  border-radius: 4px;
-}
-
-.r-badge-icon {
-  display: block;
-  font-size: 10px;
-  line-height: 16px;
-}
-
-.list {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
-  grid-gap: 60rpx;
-  padding: 60rpx;
-}
-</style>

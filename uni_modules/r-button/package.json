@@ -1,7 +1,7 @@
 {
   "id": "r-button",
   "displayName": "r-button",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "r-button按钮组件，按钮用于触发一个操作，如提交表单。",
   "keywords": [
     "van-button"
@@ -41,13 +41,13 @@
       },
       "client": {
         "Vue": {
-          "vue2": "y",
+          "vue2": "n",
           "vue3": "y"
         },
         "App": {
           "app-vue": "y",
-          "app-nvue": "u",
-          "app-uvue": "u"
+          "app-nvue": "n",
+          "app-uvue": "n"
         },
         "H5-mobile": {
           "Safari": "y",

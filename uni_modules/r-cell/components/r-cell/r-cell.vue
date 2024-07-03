@@ -12,7 +12,10 @@
       [customClass]: customClass,
     }"
     :hoverClass="clickable ? hoverClass : ''"
-    :style="getComponentThemeStyle"
+    :style="{
+      ...getComponentThemeStyle,
+      ...customStyle,
+    }"
   >
     <view class="r-cell__divider" v-if="haveDivider"></view>
     <!-- left icon -->
@@ -65,6 +68,11 @@
     <slot name="extra" />
   </view>
 </template>
+<script>
+export default {
+  options: { styleIsolation: "shared" },
+};
+</script>
 <script setup>
 import CellProps from "./props.js";
 import {
@@ -116,7 +124,6 @@ const id = uniqueId("cell-");
 const groupInject = inject(CELL_GROUP_KEY, {});
 const haveDivider = computed(() => {
   if (groupInject?.children?.value?.length) {
-    console.log("groupInject?.children?.value", groupInject?.children?.value);
     return (
       groupInject.children.value[groupInject.children.value.length - 1].id != id
     );

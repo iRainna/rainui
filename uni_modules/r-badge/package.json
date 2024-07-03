@@ -1,12 +1,12 @@
 {
   "id": "r-badge",
   "displayName": "r-badge",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "r-badge徽标组件，可在右上角展示徽标数字或小红点。",
   "keywords": [
     "r-badge"
 ],
-  "repository": "",
+  "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
@@ -41,13 +41,13 @@
       },
       "client": {
         "Vue": {
-          "vue2": "u",
+          "vue2": "n",
           "vue3": "y"
         },
         "App": {
           "app-vue": "y",
-          "app-nvue": "u",
-          "app-uvue": "u"
+          "app-nvue": "n",
+          "app-uvue": "n"
         },
         "H5-mobile": {
           "Safari": "y",
