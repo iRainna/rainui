@@ -57,15 +57,15 @@ const validate = async () => {
     try {
       await validateField(i.name);
     } catch (error) {
-      const { errors, fields } = error;
-      errorData.value = {
-        errors: [
-          ...new Set(
-            [...errorData.value.errors, ...errors].map((i) => JSON.stringify(i))
-          ),
-        ].map((i) => JSON.parse(i)),
-        fields: { ...errorData.value.fields, ...fields },
-      };
+      // const { errors, fields } = error;
+      // errorData.value = {
+      //   errors: [
+      //     ...new Set(
+      //       [...errorData.value.errors, ...errors].map((i) => JSON.stringify(i))
+      //     ),
+      //   ].map((i) => JSON.parse(i)),
+      //   fields: { ...errorData.value.fields, ...fields },
+      // };
       // [...errors.value, error];
       flag = false;
     }
@@ -80,10 +80,28 @@ const validateField = (field) =>
         .filter((i) => i.name == field)[0]
         .validate()
         .then((req) => {
+          let { errors, fields } = errorData.value;
+          errors = errors.filter((t) => t.field != field);
+          delete fields[field];
+          errorData.value = {
+            errors,
+            fields,
+          };
           resolve(req);
         })
-        .catch((err) => {
-          reject(err);
+        .catch((error) => {
+          const { errors, fields } = error;
+          errorData.value = {
+            errors: [
+              ...new Set(
+                [...errorData.value.errors, ...errors].map((i) =>
+                  JSON.stringify(i)
+                )
+              ),
+            ].map((i) => JSON.parse(i)),
+            fields: { ...errorData.value.fields, ...fields },
+          };
+          reject(error);
         });
   });
 const clearValidateField = (field) => {

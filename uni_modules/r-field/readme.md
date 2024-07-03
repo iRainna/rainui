@@ -281,6 +281,7 @@ const formatter = (value) => value.replace(/\d/g, "");
 | 名称           | 说明                                                                                                                                       | 参数                 |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------- |
 | update:value   | 输入框内容变化时触发                                                                                                                       | value (当前输入的值) |
+| change         | 输入框内容变化后触发                                                                                                                       | value (当前输入的值) |
 | focus          | 输入框获得焦点时触发                                                                                                                       | event                |
 | blur           | 输入框失去焦点时触发                                                                                                                       | event                |
 | clear          | 点击清除按钮时触发                                                                                                                         | event                |
@@ -289,5 +290,3 @@ const formatter = (value) => value.replace(/\d/g, "");
 | clickLeftIcon  | 点击左侧图标时触发                                                                                                                         | event                |
 | clickRightIcon | 点击右侧图标时触发                                                                                                                         | event                |
 | 其他           | `uniapp` [input](https://uniapp.dcloud.net.cn/component/input.html) [textarea](https://uniapp.dcloud.net.cn/component/textarea.html)的事件 |                      |
-
-###

@@ -165,7 +165,9 @@ const getScoreByPosition = (x, y) => {
 const select = (value) => {
   if (unselectable.value || value === props.value) return;
   emit("update:value", value);
-  emit("change", value);
+  nextTick(() => {
+    emit("change", value);
+  });
 };
 
 const onClickItem = (event, index) => {

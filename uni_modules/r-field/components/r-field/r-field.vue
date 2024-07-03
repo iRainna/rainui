@@ -283,7 +283,7 @@ const emit = defineEmits([
   "focus",
   "clear",
   "clickInput",
-
+  "change",
   "clickLeftIcon",
   "clickRightIcon",
   "update:value",
@@ -374,7 +374,6 @@ const clickInput = (e) => {
   emit("clickInput", e);
 };
 const onClear = (e) => {
-  console.log("e", e);
   emit("clear", e);
 };
 const blur = () => {
@@ -395,9 +394,18 @@ const onInput = (event) => {
     props?.formatTrigger === "onChange" &&
     props?.formatter &&
     isFunction(props.formatter)
-  )
+  ) {
     emit("update:value", props.formatter(value));
-  else emit("update:value", value);
+    nextTick(() => {
+      emit("change", props.formatter(value));
+    });
+  } else {
+    emit("update:value", value);
+
+    nextTick(() => {
+      emit("change", value);
+    });
+  }
 };
 const onFocus = (event) => {
   state.focused = true;
@@ -408,7 +416,7 @@ const onFocus = (event) => {
 };
 
 const onConfirm = () => {
-  this.$emit("confirm", props.value);
+  emit("confirm", props.value);
 };
 const keyboardheightchange = (e) => {
   emit("keyboardheightchange");
