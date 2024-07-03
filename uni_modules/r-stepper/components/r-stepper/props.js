@@ -57,7 +57,7 @@ export default {
   //   是否只允许输入整数
   integer: {
     type: Boolean,
-    default: true,
+    default: false,
   },
   //   是否禁用步进器
   disabled: {

@@ -32,14 +32,49 @@
       :titleClass="titleClass"
       :valueClass="valueClass"
       :labelClass="labelClass"
-      :rightIconCustomStyle="getRightIconCustomStyle"
       @click="onClickTitle"
     >
-      <slot v-if="$slots.icon" name="icon" />
-      <slot v-if="$slots.title" name="title" />
-      <slot v-if="$slots.value" name="value" />
-      <slot v-if="$slots.label" name="label" />
-      <slot v-if="$slots.rightIcon" name="rightIcon" />
+      <template #title>
+        <slot name="title" v-if="$slots.title" />
+        <text
+          :class="{
+            'r-collapse-item__title--disabled': disabled,
+          }"
+          v-else
+        >
+          {{ title }}
+        </text>
+      </template>
+      <template #value>
+        <slot name="value" v-if="$slots.value" />
+        <text v-else>{{ value }}</text>
+      </template>
+      <template #icon>
+        <slot name="icon" v-if="$slots.icon" />
+        <r-icon :name="icon"></r-icon>
+      </template>
+      <template #label>
+        <slot name="icon" v-if="$slots.label" />
+        <text>{{ label }}</text>
+      </template>
+      <template #rightIcon>
+        <slot name="icon" v-if="$slots.rightIcon" />
+
+        <r-icon
+          v-else-if="isLink"
+          class="r-cell__right-icon"
+          name="arrow"
+          size="var(--r-cell-icon-size)"
+          :color="
+            disabled
+              ? 'var(--r-collapse-item-title-disabled-color)'
+              : 'var(--r-cell-right-icon-color)'
+          "
+          :customStyle="getRightIconCustomStyle"
+        ></r-icon>
+      </template>
+
+      <slot name="rightIcon" />
     </r-cell>
     <!-- renderContent -->
     <!-- v-show="expanded" -->
@@ -60,7 +95,6 @@
   </view>
 </template>
 <script setup>
-	import RCell from "@/uni_modules/r-cell/components/r-cell/r-cell.vue"
 import {
   _,
   COLLAPSE_KEY,
@@ -185,7 +219,7 @@ onMounted(async () => {
     .r-cell__right-icon::before {
       // using translateZ to fix safari rendering issues
       // see: https://github.com/vant-ui/vant/issues/8608
-      transform: rotate(90deg) translateZ(0);
+      // transform: rotate(90deg) translateZ(0);
       transition: transform var(--r-collapse-item-duration);
     }
 
@@ -195,9 +229,9 @@ onMounted(async () => {
     }
 
     &--expanded {
-      .r-cell__right-icon::before {
-        transform: rotate(-90deg);
-      }
+      // .r-cell__right-icon::before {
+      //   transform: rotate(-90deg);
+      // }
 
       &::after {
         display: block;

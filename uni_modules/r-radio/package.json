@@ -1,7 +1,7 @@
 {
   "id": "r-radio",
   "displayName": "r-radio",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "r-radio单选框，在一组备选项中进行单选。",
   "keywords": [
     "r-radio"
@@ -41,13 +41,13 @@
       },
       "client": {
         "Vue": {
-          "vue2": "y",
+          "vue2": "n",
           "vue3": "y"
         },
         "App": {
           "app-vue": "y",
-          "app-nvue": "u",
-          "app-uvue": "u"
+          "app-nvue": "n",
+          "app-uvue": "n"
         },
         "H5-mobile": {
           "Safari": "y",

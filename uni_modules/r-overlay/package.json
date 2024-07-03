@@ -1,12 +1,12 @@
 {
   "id": "r-overlay",
   "displayName": "r-overlay",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "r-overlay 是一个基于 animate.css 的一个 vue3 的遮罩层组件，一般用于弹窗场景。",
   "keywords": [
     "animate.css"
 ],
-  "repository": "",
+  "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
@@ -41,13 +41,13 @@
       },
       "client": {
         "Vue": {
-          "vue2": "u",
+          "vue2": "n",
           "vue3": "y"
         },
         "App": {
           "app-vue": "y",
-          "app-nvue": "u",
-          "app-uvue": "u"
+          "app-nvue": "n",
+          "app-uvue": "n"
         },
         "H5-mobile": {
           "Safari": "y",

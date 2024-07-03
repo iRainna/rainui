@@ -1,7 +1,7 @@
 {
   "id": "r-icon",
   "displayName": "r-icon",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "r-icon 是一个使用 iconfont 的一个的字体图标组件，内置vantui图标库可直接使用，引用iconfont一些图标（可替换为自己的图标库）",
   "keywords": [
     "r-icon"
@@ -41,13 +41,13 @@
       },
       "client": {
         "Vue": {
-          "vue2": "u",
+          "vue2": "n",
           "vue3": "y"
         },
         "App": {
           "app-vue": "y",
-          "app-nvue": "u",
-          "app-uvue": "u"
+          "app-nvue": "n",
+          "app-uvue": "n"
         },
         "H5-mobile": {
           "Safari": "y",

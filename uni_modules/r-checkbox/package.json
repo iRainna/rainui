@@ -1,7 +1,7 @@
 {
   "id": "r-checkbox",
   "displayName": "r-checkbox",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "`r-checkbox`复选框，在一组备选项中进行多选。",
   "keywords": [
     "r-checkbox"
@@ -41,13 +41,13 @@
       },
       "client": {
         "Vue": {
-          "vue2": "y",
+          "vue2": "n",
           "vue3": "y"
         },
         "App": {
           "app-vue": "y",
-          "app-nvue": "u",
-          "app-uvue": "u"
+          "app-nvue": "n",
+          "app-uvue": "n"
         },
         "H5-mobile": {
           "Safari": "y",

@@ -1,12 +1,12 @@
 {
   "id": "r-checkbox-group",
   "displayName": "r-checkbox-group",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "`r-checkbox`复选框，在一组备选项中进行多选。",
   "keywords": [
     "r-checkbox-group"
 ],
-  "repository": "",
+  "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
@@ -41,13 +41,13 @@
       },
       "client": {
         "Vue": {
-          "vue2": "y",
+          "vue2": "n",
           "vue3": "y"
         },
         "App": {
           "app-vue": "y",
-          "app-nvue": "u",
-          "app-uvue": "u"
+          "app-nvue": "n",
+          "app-uvue": "n"
         },
         "H5-mobile": {
           "Safari": "y",

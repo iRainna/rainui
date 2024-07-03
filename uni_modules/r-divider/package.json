@@ -1,7 +1,7 @@
 {
   "id": "r-divider",
   "displayName": "r-divider",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "r-divider分割线组件,用于将内容分隔为多个区域",
   "keywords": [
     "r-divider"
@@ -41,13 +41,13 @@
       },
       "client": {
         "Vue": {
-          "vue2": "u",
+          "vue2": "n",
           "vue3": "y"
         },
         "App": {
           "app-vue": "y",
-          "app-nvue": "u",
-          "app-uvue": "u"
+          "app-nvue": "n",
+          "app-uvue": "n"
         },
         "H5-mobile": {
           "Safari": "y",

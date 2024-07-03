@@ -7,7 +7,62 @@
  
 
 ```vue
-<r-stepper v-model:value="stepperValue" ></r-stepper>
+<template>
+  <view class="content">
+    <!-- <r-badge :content="20" /> -->
+
+    <r-config-provider>
+      <view style="padding: 20px">基础使用</view>
+
+      <r-stepper rv-model:value="value" />
+
+      <view style="padding: 20px">步长设置</view>
+      <r-stepper rv-model:value="value" step="2" />
+
+      <view style="padding: 20px">限制输入范围</view>
+      <r-stepper rv-model:value="value" min="5" max="8" />
+
+      <view style="padding: 20px">限制输入整数</view>
+      <r-stepper rv-model:value="value" integer />
+
+      <view style="padding: 20px">禁用状态</view>
+      <r-stepper rv-model:value="value" disabled />
+
+      <view style="padding: 20px">禁用输入框</view>
+      <r-stepper rv-model:value="value" disableInput />
+
+      <view style="padding: 20px">固定小数位数</view>
+      <r-stepper rv-model:value="value" step="0.2" :decimal-length="1" />
+      <view style="padding: 20px">自定义大小</view>
+      <r-stepper rv-model:value="value" input-width="40px" button-size="32px" />
+      <view style="padding: 20px">异步变更</view>
+      <r-stepper rv-model:value="value" :before-change="beforeChange" />
+
+      <view style="padding: 20px">圆角风格</view>
+      <r-stepper
+        rv-model:value="value"
+        theme="round"
+        button-size="22"
+        disable-input
+      />
+      <view style="padding: 20px"></view>
+    </r-config-provider>
+  </view>
+</template>
+<script setup>
+import { ref } from "vue";
+const value = ref(1);
+
+const beforeChange = (value) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      // 在 resolve 函数中返回 true 或 false
+      resolve(true);
+    }, 500);
+  });
+};
+</script>
+
 ```
 
 

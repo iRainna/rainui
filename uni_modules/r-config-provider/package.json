@@ -1,12 +1,12 @@
 {
   "id": "r-config-provider",
   "displayName": "r-config-provider",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "r-config-provider",
   "keywords": [
     "r-config-provider"
 ],
-  "repository": "",
+  "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
@@ -41,13 +41,13 @@
       },
       "client": {
         "Vue": {
-          "vue2": "y",
+          "vue2": "n",
           "vue3": "y"
         },
         "App": {
           "app-vue": "y",
-          "app-nvue": "u",
-          "app-uvue": "u"
+          "app-nvue": "n",
+          "app-uvue": "n"
         },
         "H5-mobile": {
           "Safari": "y",

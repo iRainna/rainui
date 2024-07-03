@@ -30,7 +30,7 @@
         width: inputWidth,
         height: buttonSize,
       }"
-      :disabled="disabled"
+      :disabled="disabled || disableInput"
       :placeholder="placeholder"
       @input="onInput"
       @blur="onBlur"

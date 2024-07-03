@@ -1,7 +1,7 @@
 {
   "id": "r-cell-group",
   "displayName": "r-cell-group",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "r-cell单元格组件，为列表中的单个展示项。",
   "keywords": [
     "van-cell-group"
@@ -41,13 +41,13 @@
       },
       "client": {
         "Vue": {
-          "vue2": "y",
+          "vue2": "n",
           "vue3": "y"
         },
         "App": {
           "app-vue": "y",
-          "app-nvue": "u",
-          "app-uvue": "u"
+          "app-nvue": "n",
+          "app-uvue": "n"
         },
         "H5-mobile": {
           "Safari": "y",

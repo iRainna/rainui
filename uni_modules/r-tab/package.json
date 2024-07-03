@@ -1,7 +1,7 @@
 {
   "id": "r-tab",
   "displayName": "r-tab",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "r-tab",
   "keywords": [
     "r-tab"
@@ -41,13 +41,13 @@
       },
       "client": {
         "Vue": {
-          "vue2": "y",
+          "vue2": "n",
           "vue3": "y"
         },
         "App": {
           "app-vue": "y",
-          "app-nvue": "u",
-          "app-uvue": "u"
+          "app-nvue": "n",
+          "app-uvue": "n"
         },
         "H5-mobile": {
           "Safari": "y",
