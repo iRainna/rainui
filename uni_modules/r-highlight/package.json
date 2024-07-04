@@ -1,17 +1,17 @@
 {
-  "id": "r-theme",
-  "displayName": "r-theme",
-  "version": "1.2.4",
-  "description": "r-theme 是一个为 r-overlay、r-icon等组件提供定制样式的 jssdk。",
+  "id": "r-highlight",
+  "displayName": "r-highlight",
+  "version": "1.0.0",
+  "description": "r-highlight高亮文本，高亮指定文本内容。",
   "keywords": [
-    "r-theme"
+    "r-highlight"
 ],
   "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
   "dcloudext": {
-    "type": "sdk-js",
+    "type": "component-vue",
     "sale": {
       "regular": {
         "price": "0.00"
@@ -41,13 +41,13 @@
       },
       "client": {
         "Vue": {
-          "vue2": "u",
+          "vue2": "n",
           "vue3": "y"
         },
         "App": {
           "app-vue": "y",
-          "app-nvue": "u",
-          "app-uvue": "u"
+          "app-nvue": "n",
+          "app-uvue": "n"
         },
         "H5-mobile": {
           "Safari": "y",

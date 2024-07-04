@@ -22,6 +22,7 @@ import { pickerData } from "./picker.js";
 import { paginationData } from "./pagination.js";
 import { dividerData } from "./divider.js";
 import { fieldData } from "./field.js";
+import { highlightData } from "./highlight.js";
 
 export const data = computed(() => ({
   ...baseData.value,
@@ -47,6 +48,7 @@ export const data = computed(() => ({
   ...paginationData.value,
   ...dividerData.value,
   ...fieldData.value,
+  ...highlightData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -73,4 +75,5 @@ export const moduleData = computed(() => ({
   "r-paginationData": paginationData.value,
   "r-divider": dividerData.value,
   "r-field": fieldData.value,
+  "r-highlight": highlightData.value,
 }));
