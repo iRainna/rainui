@@ -67,6 +67,25 @@
               ></r-rate>
             </template>
           </r-field>
+
+          <r-field name="checkbox" :value="form2.checkbox" label="复选框">
+            <template #input>
+              <!-- <r-checkbox
+                v-model:value="form2.checkbox"
+                @change="validateField2('checkbox')"
+                shape="square"
+              /> -->
+
+              <r-checkbox-group
+                v-model:value="form2.checkbox"
+                direction="horizontal"
+                @change="validateField2('checkbox')"
+              >
+                <r-checkbox name="1" shape="square">复选框 1</r-checkbox>
+                <r-checkbox name="2" shape="square">复选框 2</r-checkbox>
+              </r-checkbox-group>
+            </template>
+          </r-field>
         </r-cell-group>
         <view style="padding: 20px">
           <r-button type="primary" size="large" @click="confirm2"
@@ -125,12 +144,23 @@ const rules2 = {
       message: "请选择等级",
     },
   ],
+  checkbox: [
+    {
+      required: true,
+      message: "请勾选",
+    },
+  ],
 };
 const form = ref({
   username: null,
   password: null,
 });
-const form2 = ref({});
+const form2 = ref({
+  username: null,
+  password: null,
+  level: null,
+  checkbox: [],
+});
 const confirm = () => {
   formRef.value
     .validate()

@@ -105,7 +105,7 @@
 </template>
 <script setup>
 import CheckboxProps from "./props.js";
-import { defineProps, ref, defineEmits, computed, inject } from "vue";
+import { defineProps, ref, defineEmits, nextTick, computed, inject } from "vue";
 import {
   CHECKBOX_GROUP_KEY,
   CONFIG_PROVIDER_KEY,
@@ -227,6 +227,9 @@ const toggle = (newValue) => {
     parentData.updateValue(value);
   } else {
     emit("update:value", newValue);
+    nextTick(() => {
+      emit("change", newValue);
+    });
   }
 };
 </script>
