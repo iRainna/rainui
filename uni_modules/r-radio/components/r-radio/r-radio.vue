@@ -18,7 +18,7 @@
       }"
       v-if="getProps('labelPosition') === 'left' && $slots.default"
     >
-      <slot :checked="checked" :disabled="getProps('disabled')" />
+      <slot />
     </text>
 
     <!-- renderIcon -->
@@ -99,7 +99,7 @@
       }"
       v-if="getProps('labelPosition') !== 'left' && $slots.default"
     >
-      <slot :checked="checked" :disabled="getProps('disabled')" />
+      <slot />
     </text>
   </view>
 </template>
@@ -107,7 +107,7 @@
 <script setup>
 import CheckboxProps from "./props.js";
 
-import { defineProps, ref, defineEmits, computed, inject } from "vue";
+import { defineProps, ref, defineEmits, computed, inject, nextTick } from "vue";
 
 import { RADIO_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
@@ -149,7 +149,7 @@ const checked = computed(() => {
     return false;
   }
 });
-const emit = defineEmits(["update:value", "click"]);
+const emit = defineEmits(["update:value", "click", "change"]);
 
 const iconRef = ref();
 const iconStyle = computed(() => {
@@ -190,6 +190,9 @@ const toggle = (newValue) => {
     parentData.updateValue(value);
   } else {
     emit("update:value", newValue);
+    nextTick(() => {
+      emit("change", newValue);
+    });
   }
 };
 </script>

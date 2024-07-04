@@ -1,5 +1,7 @@
 # r-form
 
+`r-form` 表单，用于数据录入、校验，支持输入框、单选框、复选框等类型，需要与[r-field](https://ext.dcloud.net.cn/plugin?id=19086) 组件搭配使用。
+
 ## 示例
 
 ```vue
@@ -59,11 +61,11 @@
             @change="validateField2('password')"
           ></r-field>
 
-          <r-field name="level" :value="form2.level" label="等级">
+          <r-field name="rate" :value="form2.rate" label="评分">
             <template #input>
               <r-rate
-                v-model:value="form2.level"
-                @change="(e) => validateField2('level')"
+                v-model:value="form2.rate"
+                @change="(e) => validateField2('rate')"
               ></r-rate>
             </template>
           </r-field>
@@ -84,6 +86,25 @@
                 <r-checkbox name="1" shape="square">复选框 1</r-checkbox>
                 <r-checkbox name="2" shape="square">复选框 2</r-checkbox>
               </r-checkbox-group>
+            </template>
+          </r-field>
+
+          <r-field name="switch" :value="form2.switch" label="开关">
+            <template #input>
+              <r-switch v-model:value="form2.switch" />
+            </template>
+          </r-field>
+
+          <r-field name="radio" :value="form2.radio" label="单选框">
+            <template #input>
+              <r-radio-group
+                v-model:value="form2.radio"
+                direction="horizontal"
+                @change="validateField2('radio')"
+              >
+                <r-radio name="1">单选框 1</r-radio>
+                <r-radio name="2">单选框 2</r-radio>
+              </r-radio-group>
             </template>
           </r-field>
         </r-cell-group>
@@ -138,13 +159,19 @@ const rules2 = {
       message: "请输入密码",
     },
   ],
-  level: [
+  rate: [
     {
       required: true,
       message: "请选择等级",
     },
   ],
   checkbox: [
+    {
+      required: true,
+      message: "请勾选",
+    },
+  ],
+  radio: [
     {
       required: true,
       message: "请勾选",
@@ -158,7 +185,7 @@ const form = ref({
 const form2 = ref({
   username: null,
   password: null,
-  level: null,
+  rate: null,
   checkbox: [],
 });
 const confirm = () => {
@@ -209,3 +236,23 @@ const validateField2 = (name) => {
 };
 </script>
 ```
+
+## API
+
+### Props
+
+| 名称  | 说明 | 类型   | 默认值 | 可选值 |
+| ----- | ---- | ------ | ------ | ------ |
+| value | 数据 | Object | {}     | -      |
+| rules | 规则 | Object | {}     | -      |
+
+### Methods
+
+| 名称               | 说明                                                                                                                                                                 |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| validate           | 对整个表单进行校验的方法，参数为一个回调函数。该回调函数会在校验结束后被调用，并传入两个参数：是否校验成功和未通过校验的字段。若不传入回调函数，则会返回一个 promise |
+| validateField      | 对部分表单字段进行校验的方法                                                                                                                                         |
+| clearValidate      | 移除表单项的校验结果。                                                                                                                                               |
+| clearValidateField | 移除指定表单项的校验结果。                                                                                                                                           |
+| resetFields        | 对表单特定字段进行重置，重置为初始值并移除校验结果                                                                                                                   |
+| resetForm          | 对整个表单进行重置，将所有字段值重置为初始值并移除校验结果                                                                                                           |

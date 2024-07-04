@@ -30,6 +30,12 @@ provide(CHECKBOX_GROUP_KEY, { props, updateValue });
   &--horizontal {
     display: flex;
     flex-wrap: wrap;
+    gap: 12rpx;
+  }
+  &--vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 12rpx;
   }
 }
 </style>

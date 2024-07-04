@@ -11,15 +11,7 @@ import {
   _,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
 import FormProps from "./props.js";
-import {
-  provide,
-  defineProps,
-  ref,
-  watch,
-  defineEmits,
-  defineExpose,
-} from "vue";
-const emit = defineEmits(["submit"]);
+import { provide, defineProps, ref, watch, defineExpose } from "vue";
 const props = defineProps({ ...FormProps });
 // const validate = new Schema(props.rules);
 //校验的list
