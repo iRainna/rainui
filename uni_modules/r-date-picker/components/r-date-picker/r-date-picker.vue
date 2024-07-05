@@ -12,10 +12,8 @@
     :optionHeight="optionHeight"
     :visibleOptionNum="visibleOptionNum"
     :themeName="themeName"
-    @confirm="confirm"
     @change="change"
     @update:value="updateValue"
-    @cancel="cancel"
   >
     <template #toolbar>
       <slot name="toolbar" v-if="!!$slots.toolbar"></slot>
@@ -57,6 +55,7 @@
     </template>
   </r-picker>
 </template>
+
 <script setup>
 import { defineProps, ref, watch, computed, defineEmits } from "vue";
 
@@ -162,9 +161,6 @@ const fields = computed(() => ({
   ...props.columnsFieldNames,
 }));
 const pickerValue = ref([]);
-const confirm = (e) => {
-  emit("confirm", e);
-};
 
 const change = (e) => {
   emit("change", e);
@@ -174,9 +170,6 @@ const updateValue = (e) => {
   emit("update:value", e);
 };
 
-const cancel = () => {
-  emit("cancel");
-};
 const getYearList = computed(() => {
   let formatter = props.formatter.find((t) => t.type == "year");
   let filter = props.filter.find((t) => t.type == "year");
@@ -424,6 +417,22 @@ const columns = computed(() => {
   );
   return list.map((t) => t.value);
 });
+
+const onCancel = () => emit("cancel");
+const onConfirm = () => {
+  emit("confirm", {
+    selectedValues: pickerValue.value,
+    selectedOptions: pickerValue.value.map(
+      (t, index) =>
+        columns.value[index][
+          findIndex(columns.value[index], (m) => m[fields.value.value] == t)
+        ]
+    ),
+    selectedIndexes: pickerValue.value.map((t, index) =>
+      findIndex(columns.value[index], (m) => m[fields.value.value] == t)
+    ),
+  });
+};
 
 watch(
   () => props.value,
