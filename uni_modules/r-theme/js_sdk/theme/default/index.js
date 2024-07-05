@@ -23,6 +23,11 @@ import { paginationData } from "./pagination.js";
 import { dividerData } from "./divider.js";
 import { fieldData } from "./field.js";
 import { highlightData } from "./highlight.js";
+import { skeletonData } from "./skeleton.js";
+import { skeletonAvatarData } from "./skeleton-avatar.js";
+import { skeletonImageData } from "./skeleton-image.js";
+import { skeletonParagraphData } from "./skeleton-paragraph.js";
+import { skeletonTitleData } from "./skeleton-title.js";
 
 export const data = computed(() => ({
   ...baseData.value,
@@ -49,6 +54,11 @@ export const data = computed(() => ({
   ...dividerData.value,
   ...fieldData.value,
   ...highlightData.value,
+  ...skeletonData.value,
+  ...skeletonAvatarData.value,
+  ...skeletonImageData.value,
+  ...skeletonParagraphData.value,
+  ...skeletonTitleData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -76,4 +86,9 @@ export const moduleData = computed(() => ({
   "r-divider": dividerData.value,
   "r-field": fieldData.value,
   "r-highlight": highlightData.value,
+  "r-skeleton": skeletonData.value,
+  "r-skeleton-avatar": skeletonAvatarData.value,
+  "r-skeleton-image": skeletonImageData.value,
+  "r-skeleton-paragraph": skeletonParagraphData.value,
+  "r-skeleton-title": skeletonTitleData.value,
 }));
