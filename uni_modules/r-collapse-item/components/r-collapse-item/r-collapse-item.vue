@@ -58,7 +58,7 @@
         <text>{{ label }}</text>
       </template>
       <template #rightIcon>
-        <slot name="icon" v-if="$slots.rightIcon" />
+        <slot name="rightIcon" v-if="$slots.rightIcon" />
 
         <r-icon
           v-else-if="isLink"
@@ -73,8 +73,6 @@
           :customStyle="getRightIconCustomStyle"
         ></r-icon>
       </template>
-
-      <slot name="rightIcon" />
     </r-cell>
     <!-- renderContent -->
     <!-- v-show="expanded" -->

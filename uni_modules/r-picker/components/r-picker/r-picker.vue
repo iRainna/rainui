@@ -2,43 +2,41 @@
   <view class="r-picker">
     <!-- renderToolbar -->
     <view
-      v-if="toolbarPosition === 'top' && showToolbar"
+      v-if="toolbarPosition === 'top' && showToolbar && !$slots.toolbar"
       :class="{
         'r-picker__toolbar': true,
       }"
       :style="getComponentThemeStyle"
     >
-      <slot name="toolbar" v-if="$slots.toolbar"></slot>
-      <template v-else>
-        <!-- renderCancel -->
-        <r-button
-          :customClass="`r-haptics-feedback r-picker__cancel`"
-          :customStyle="{
-            borderColor: 'transparent',
-          }"
-          @click="onCancel"
-        >
-          <slot v-if="$slots.cancel" name="cancel"></slot>
-          <text v-else>{{ cancelButtonText }}</text>
-        </r-button>
+      <!-- renderCancel -->
+      <r-button
+        :customClass="`r-haptics-feedback r-picker__cancel`"
+        :customStyle="{
+          borderColor: 'transparent',
+        }"
+        @click="onCancel"
+      >
+        <slot v-if="$slots.cancel" name="cancel"></slot>
+        <text v-else>{{ cancelButtonText }}</text>
+      </r-button>
 
-        <!-- renderTitle -->
-        <slot name="title" v-if="$slots.title"></slot>
-        <view v-else class="r-picker__title r-ellipsis">{{ title }}</view>
+      <!-- renderTitle -->
+      <slot name="title" v-if="$slots.title"></slot>
+      <view v-else class="r-picker__title r-ellipsis">{{ title }}</view>
 
-        <!-- renderConfirm -->
-        <r-button
-          :customClass="`r-haptics-feedback r-picker__confirm`"
-          :customStyle="{
-            borderColor: 'transparent',
-          }"
-          @click="onConfirm"
-        >
-          <slot v-if="$slots.confirm" name="confirm"></slot>
-          <text v-else>{{ confirmButtonText }}</text>
-        </r-button>
-      </template>
+      <!-- renderConfirm -->
+      <r-button
+        :customClass="`r-haptics-feedback r-picker__confirm`"
+        :customStyle="{
+          borderColor: 'transparent',
+        }"
+        @click="onConfirm"
+      >
+        <slot v-if="$slots.confirm" name="confirm"></slot>
+        <text v-else>{{ confirmButtonText }}</text>
+      </r-button>
     </view>
+    <slot name="toolbar" v-else></slot>
     <view
       v-if="loading"
       class="r-picker__loading"
@@ -78,44 +76,47 @@
     <slot name="columnsBottom" v-if="$slots.columnsBottom" />
     <!-- renderToolbar -->
     <view
-      v-if="toolbarPosition === 'bottom' && showToolbar"
+      v-if="toolbarPosition === 'bottom' && showToolbar && !$slots.toolbar"
       :class="{
         'r-picker__toolbar': true,
       }"
     >
-      <slot name="toolbar" v-if="$slots.toolbar"></slot>
-      <template v-else>
-        <!-- renderCancel -->
-        <r-button
-          :customClass="`r-haptics-feedback r-picker__cancel`"
-          :customStyle="{
-            borderColor: 'transparent',
-          }"
-          @click="onCancel"
-        >
-          <slot v-if="$slots.cancel" name="cancel"></slot>
-          <text v-else>{{ cancelButtonText }}</text>
-        </r-button>
+      <!-- renderCancel -->
+      <r-button
+        :customClass="`r-haptics-feedback r-picker__cancel`"
+        :customStyle="{
+          borderColor: 'transparent',
+        }"
+        @click="onCancel"
+      >
+        <slot v-if="$slots.cancel" name="cancel"></slot>
+        <text v-else>{{ cancelButtonText }}</text>
+      </r-button>
 
-        <!-- renderTitle -->
-        <slot name="title" v-if="$slots.title"></slot>
-        <view v-else class="r-picker__title r-ellipsis">{{ title }}</view>
+      <!-- renderTitle -->
+      <slot name="title" v-if="$slots.title"></slot>
+      <view v-else class="r-picker__title r-ellipsis">{{ title }}</view>
 
-        <!-- renderConfirm -->
-        <r-button
-          :customClass="`r-haptics-feedback r-picker__confirm`"
-          :customStyle="{
-            borderColor: 'transparent',
-          }"
-          @click="onConfirm"
-        >
-          <slot v-if="$slots.confirm" name="confirm"></slot>
-          <text v-else>{{ confirmButtonText }}</text>
-        </r-button>
-      </template>
+      <!-- renderConfirm -->
+      <r-button
+        :customClass="`r-haptics-feedback r-picker__confirm`"
+        :customStyle="{
+          borderColor: 'transparent',
+        }"
+        @click="onConfirm"
+      >
+        <slot v-if="$slots.confirm" name="confirm"></slot>
+        <text v-else>{{ confirmButtonText }}</text>
+      </r-button>
     </view>
+    <slot name="toolbar" v-else="$slots.toolbar"></slot>
   </view>
 </template>
+<script>
+export default {
+  options: { styleIsolation: "shared" },
+};
+</script>
 <script setup>
 import pickerProps from "./props";
 import {
@@ -127,6 +128,7 @@ import {
   inject,
   onMounted,
   getCurrentInstance,
+  nextTick,
 } from "vue";
 
 import {
@@ -230,10 +232,12 @@ const bindChange = (e) => {
       (t, index) => currentColumns.value[index][t]
     );
     emit("update:value", values);
-    emit("change", {
-      selectedValues: values,
-      selectedOptions: options,
-      selectedIndexes: indexValue.value,
+    nextTick(() => {
+      emit("change", {
+        selectedValues: values,
+        selectedOptions: options,
+        selectedIndexes: indexValue.value,
+      });
     });
   } catch (error) {}
 };

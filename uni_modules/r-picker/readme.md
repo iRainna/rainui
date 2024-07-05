@@ -1,6 +1,6 @@
 # r-picker
 
-`r-picker` 选择器，提供多个选项集合供用户选择，支持单列选择、多列选择和级联选择，通常与r-popup弹出层组件配合使用。
+`r-picker` 选择器，提供多个选项集合供用户选择，支持单列选择、多列选择和级联选择，通常与 r-popup 弹出层组件配合使用。
 
 ## 示例
 
@@ -148,5 +148,5 @@ const cancel = () => {
 | ------------ | -------------------- | ------------------------------------------------------ |
 | confirm      | 点击完成按钮时触发   | _{ selectedValues, selectedOptions, selectedIndexes }_ |
 | cancel       | 点击取消按钮时触发   | -                                                      |
-| change       | 选中的选项改变时触发 | { selectedValues, selectedOptions, selectedIndexes }   |
+| change       | 选中的选项改变后触发 | { selectedValues, selectedOptions, selectedIndexes }   |
 | update:value | 选中的选项改变时触发 | selectedValues                                         |

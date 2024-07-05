@@ -18,22 +18,42 @@
     @cancel="cancel"
   >
     <template #toolbar>
-      <slot name="toolbar"></slot>
+      <slot name="toolbar" v-if="!!$slots.toolbar"></slot>
+      <view class="r-picker__toolbar" v-else>
+        <r-button
+          :customClass="`r-haptics-feedback r-picker__cancel`"
+          :customStyle="{
+            borderColor: 'transparent',
+          }"
+          @click="onCancel"
+        >
+          <slot v-if="$slots.cancel" name="cancel"></slot>
+          <text v-else>{{ cancelButtonText }}</text>
+        </r-button>
+
+        <!-- renderTitle -->
+        <slot name="title" v-if="$slots.title"></slot>
+        <view v-else class="r-picker__title r-ellipsis">{{ title }}</view>
+
+        <!-- renderConfirm -->
+        <r-button
+          :customClass="`r-haptics-feedback r-picker__confirm`"
+          :customStyle="{
+            borderColor: 'transparent',
+          }"
+          @click="onConfirm"
+        >
+          <slot v-if="$slots.confirm" name="confirm"></slot>
+          <text v-else>{{ confirmButtonText }}</text>
+        </r-button>
+      </view>
     </template>
-    <template #title>
-      <slot name="title"></slot>
-    </template>
-    <template #confirm>
-      <slot name="confirm"></slot>
-    </template>
-    <template #cancel>
-      <slot name="cancel"></slot>
-    </template>
+
     <template #columnsTop>
-      <slot name="columnsTop"></slot>
+      <slot name="columnsTop" v-if="$slots.columnsTop"></slot>
     </template>
     <template #columnsBottom>
-      <slot name="columnsBottom"></slot>
+      <slot name="columnsBottom" v-if="$slots.columnsBottom"></slot>
     </template>
   </r-picker>
 </template>
@@ -41,7 +61,7 @@
 import { defineProps, ref, watch, computed, defineEmits } from "vue";
 
 import { _, dayjs } from "@/uni_modules/r-utils/js_sdk/index.js";
-const { cloneDeep } = _;
+const { cloneDeep, findIndex } = _;
 const emit = defineEmits(["cancel", "confirm", "change", "update:value"]);
 const props = defineProps({
   // 当前选中项对应的值
@@ -105,12 +125,12 @@ const props = defineProps({
     type: String,
     default: "day",
   },
-  //   可选的最小年份 //字符串
+  //   可选的最小年份
   minDate: {
     type: [String, Number],
     default: dayjs().year() - 10,
   },
-  //   可选的最大年份，时间戳
+  //   可选的最大年份
   maxDate: {
     type: [String, Number],
     default: dayjs().year() + 10,
@@ -122,6 +142,11 @@ const props = defineProps({
   },
   // 选项格式化函数
   formatter: {
+    type: Array,
+    default: () => [],
+  },
+  //不显示的字段 year month day hour minute second
+  hideFields: {
     type: Array,
     default: () => [],
   },
@@ -155,13 +180,11 @@ const cancel = () => {
 const getYearList = computed(() => {
   let formatter = props.formatter.find((t) => t.type == "year");
   let filter = props.filter.find((t) => t.type == "year");
-  let list = new Array(
-    dayjs(`${props.maxDate}`).year() - dayjs(`${props.minDate}`).year()
-  )
+  let list = new Array(Number(props.maxDate) - Number(props.minDate))
     .fill(0)
     .map((t, index) => ({
-      [fields.value.text]: dayjs(`${props.minDate}`).year() + Number(index),
-      [fields.value.value]: dayjs(`${props.minDate}`).year() + Number(index),
+      [fields.value.text]: Number(props.minDate) + Number(index),
+      [fields.value.value]: Number(props.minDate) + Number(index),
     }));
   if (formatter && formatter.fn) {
     list = list.map((item, index, array) =>
@@ -231,9 +254,7 @@ const getDayList = computed(() => {
   let chooseArr = cloneDeep(pickerValue.value);
 
   if (chooseArr.length >= 2) {
-    len = dayjs(`${chooseArr[0]}/${Number(chooseArr[1]) + 1}`)
-      .endOf("month")
-      .date();
+    len = dayjs().year(chooseArr[0]).month(chooseArr[1]).endOf("month").date();
   }
   let list = new Array(len).fill(0).map((t, index) => ({
     [fields.value.text]: Number(index) + 1,
@@ -370,51 +391,38 @@ const getSecondList = computed(() => {
   }
   return list;
 });
-
+const allFields = computed(() => [
+  {
+    key: "year",
+    value: getYearList.value,
+  },
+  {
+    key: "month",
+    value: getMonthList.value,
+  },
+  {
+    key: "day",
+    value: getDayList.value,
+  },
+  {
+    key: "hour",
+    value: getHourList.value,
+  },
+  {
+    key: "minute",
+    value: getMinuteList.value,
+  },
+  {
+    key: "second",
+    value: getSecondList.value,
+  },
+]);
 const columns = computed(() => {
-  let arr = [];
-
-  switch (props.columnsType) {
-    case "year":
-      arr = [getYearList.value];
-      break;
-    case "month":
-      arr = [getYearList.value, getMonthList.value];
-      break;
-    case "day":
-      arr = [getYearList.value, getMonthList.value, getDayList.value];
-
-      break;
-    case "hour":
-      arr = [
-        getYearList.value,
-        getMonthList.value,
-        getDayList.value,
-        getHourList.value,
-      ];
-      break;
-    case "minute":
-      arr = [
-        getYearList.value,
-        getMonthList.value,
-        getDayList.value,
-        getHourList.value,
-        getMinuteList.value,
-      ];
-      break;
-    case "second":
-      arr = [
-        getYearList.value,
-        getMonthList.value,
-        getDayList.value,
-        getHourList.value,
-        getMinuteList.value,
-        getSecondList.value,
-      ];
-      break;
-  }
-
-  return arr;
+  let index = findIndex(allFields.value, (t) => t.key == props.columnsType);
+  let list = allFields.value.filter(
+    (t, i) => i <= index && !props.hideFields.includes(t.key)
+  );
+  return list.map((t) => t.value);
 });
 
 watch(
@@ -423,54 +431,11 @@ watch(
     if (value && value.length) {
       pickerValue.value = props.value;
     } else {
-      switch (props.columnsType) {
-        case "year":
-          pickerValue.value = [getYearList.value[0][fields.value.value]];
-          break;
-        case "month":
-          pickerValue.value = [
-            getYearList.value[0][fields.value.value],
-            getMonthList.value[0][fields.value.value],
-          ];
-          break;
-        case "day":
-          pickerValue.value = [
-            getYearList.value[0][fields.value.value],
-            getMonthList.value[0][fields.value.value],
-            getDayList.value[0][fields.value.value],
-          ];
-          break;
-        case "hour":
-          pickerValue.value = [
-            getYearList.value[0][fields.value.value],
-            getMonthList.value[0][fields.value.value],
-            getDayList.value[0][fields.value.value],
-
-            getHourList.value[0][fields.value.value],
-          ];
-          break;
-        case "minute":
-          pickerValue.value = [
-            getYearList.value[0][fields.value.value],
-            getMonthList.value[0][fields.value.value],
-            getDayList.value[0][fields.value.value],
-
-            getHourList.value[0][fields.value.value],
-            getMinuteList.value[0][fields.value.value],
-          ];
-          break;
-        case "second":
-          pickerValue.value = [
-            getYearList.value[0][fields.value.value],
-            getMonthList.value[0][fields.value.value],
-            getDayList.value[0][fields.value.value],
-
-            getHourList.value[0][fields.value.value],
-            getMinuteList.value[0][fields.value.value],
-            getSecondList.value[0][fields.value.value],
-          ];
-          break;
-      }
+      let index = findIndex(allFields.value, (t) => t.key == props.columnsType);
+      let list = allFields.value.filter(
+        (t, i) => i <= index && !props.hideFields.includes(t.key)
+      );
+      pickerValue.value = list.map((t) => t.value[0][fields.value.value]);
     }
   },
   {
