@@ -1,10 +1,10 @@
 {
-  "id": "r-popup",
-  "displayName": "r-popup",
-  "version": "1.0.4",
-  "description": "`r-popup` 是一个基于 `animate.css` 的一个`uniapp ` `vue3` 的弹出层容器，用于展示弹窗、信息提示等内容。",
+  "id": "r-action-sheet",
+  "displayName": "r-action-sheet",
+  "version": "1.0.0",
+  "description": "r-action-sheet动作面板，底部弹起的模态面板，包含与当前情境相关的多个选项。",
   "keywords": [
-    "animate.css"
+    "r-action-sheet"
 ],
   "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-utils","r-animation","r-overlay","r-icon","r-theme"],
+    "dependencies": ["r-popup","r-theme","r-utils","r-icon","r-loading"],
     "encrypt": [],
     "platforms": {
       "cloud": {

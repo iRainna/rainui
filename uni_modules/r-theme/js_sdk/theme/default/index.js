@@ -28,6 +28,7 @@ import { skeletonAvatarData } from "./skeleton-avatar.js";
 import { skeletonImageData } from "./skeleton-image.js";
 import { skeletonParagraphData } from "./skeleton-paragraph.js";
 import { skeletonTitleData } from "./skeleton-title.js";
+import { actionSheetData } from "./action-sheet.js";
 
 export const data = computed(() => ({
   ...baseData.value,
@@ -59,6 +60,7 @@ export const data = computed(() => ({
   ...skeletonImageData.value,
   ...skeletonParagraphData.value,
   ...skeletonTitleData.value,
+  ...actionSheetData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -91,4 +93,5 @@ export const moduleData = computed(() => ({
   "r-skeleton-image": skeletonImageData.value,
   "r-skeleton-paragraph": skeletonParagraphData.value,
   "r-skeleton-title": skeletonTitleData.value,
+  "r-action-sheet": actionSheetData.value,
 }));
