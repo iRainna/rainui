@@ -29,6 +29,7 @@ import { skeletonImageData } from "./skeleton-image.js";
 import { skeletonParagraphData } from "./skeleton-paragraph.js";
 import { skeletonTitleData } from "./skeleton-title.js";
 import { actionSheetData } from "./action-sheet.js";
+import { uploaderData } from "./uploader.js";
 
 export const data = computed(() => ({
   ...baseData.value,
@@ -61,6 +62,7 @@ export const data = computed(() => ({
   ...skeletonParagraphData.value,
   ...skeletonTitleData.value,
   ...actionSheetData.value,
+  ...uploaderData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -94,4 +96,5 @@ export const moduleData = computed(() => ({
   "r-skeleton-paragraph": skeletonParagraphData.value,
   "r-skeleton-title": skeletonTitleData.value,
   "r-action-sheet": actionSheetData.value,
+  "r-uploader": uploaderData.value,
 }));
