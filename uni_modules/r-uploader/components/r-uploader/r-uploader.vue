@@ -126,7 +126,12 @@
             }"
             @click.stop="onDel(item, index)"
           >
-            <slot name="previewDelete" v-if="!!$slots.previewDelete"></slot>
+            <slot
+              name="previewDelete"
+              v-if="!!$slots.previewDelete"
+              :item="item"
+              :index="index"
+            ></slot>
             <r-icon
               v-else
               name="cross"
@@ -147,10 +152,6 @@
           v-show="!(list.length >= maxCount && reupload)"
           :class="{
             'r-uploader__input-wrapper': true,
-          }"
-          :style="{
-            width: getImageWidth,
-            height: getImageHeight,
           }"
           @click="onClickUpload"
         >

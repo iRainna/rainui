@@ -42,7 +42,7 @@ export default {
   //   预览图和上传区域的尺寸，默认单位为 px
   previewSize: {
     type: [String, Number, Array],
-    default: "160rpx",
+    default: 80,
   },
   //   是否在上传完成后展示预览图
   previewImage: {
