@@ -1,6 +1,7 @@
 <template>
   <view class="content" style="padding: 0px; background-color: transparent">
     <r-config-provider>
+      <view style="padding: 10px">rainui提供了{{ getCount }}个组件</view>
       <view style="padding: 10px 0">
         <view v-for="(m, n) in list" :key="n">
           <r-divider contentPosition="left">{{ m.title }}</r-divider>
@@ -19,7 +20,9 @@
   </view>
 </template>
 <script setup>
-import { ref } from "vue";
+import { _ } from "@/uni_modules/r-utils/js_sdk/index.js";
+import { ref, computed } from "vue";
+
 const list = ref([
   {
     title: "基础组件",
@@ -179,4 +182,13 @@ const goPage = (url) => {
     url,
   });
 };
+
+const { reduce } = _;
+const getCount = computed(() => {
+  return reduce(
+    list.value.map((t) => t.list.length),
+    (sum, n) => sum + n,
+    0
+  );
+});
 </script>
