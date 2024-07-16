@@ -30,6 +30,7 @@ import { skeletonParagraphData } from "./skeleton-paragraph.js";
 import { skeletonTitleData } from "./skeleton-title.js";
 import { actionSheetData } from "./action-sheet.js";
 import { uploaderData } from "./uploader.js";
+import { dialogData } from "./dialog.js";
 
 export const data = computed(() => ({
   ...baseData.value,
@@ -63,6 +64,7 @@ export const data = computed(() => ({
   ...skeletonTitleData.value,
   ...actionSheetData.value,
   ...uploaderData.value,
+  ...dialogData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -97,4 +99,5 @@ export const moduleData = computed(() => ({
   "r-skeleton-title": skeletonTitleData.value,
   "r-action-sheet": actionSheetData.value,
   "r-uploader": uploaderData.value,
+  "r-dialog": dialogData.value,
 }));

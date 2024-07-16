@@ -215,6 +215,12 @@
 			{
 				"navigationBarTitleText" : "分页"
 			}
+		},{
+			"path" : "pages/example/dialog/dialog",
+			"style" : 
+			{
+				"navigationBarTitleText" : "弹出框"
+			}
 		},
 		{
 			"path" : "pages/example/tab/tab",

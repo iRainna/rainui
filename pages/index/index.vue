@@ -132,6 +132,10 @@ const list = ref([
         title: "SwipeCell-滑动单元格",
         url: "/pages/example/swipe-cell/swipe-cell",
       },
+	  {
+	    title: "Dialog-弹出框",
+	    url: "/pages/example/dialog/dialog",
+	  },
     ],
   },
   {

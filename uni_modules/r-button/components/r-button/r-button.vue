@@ -229,6 +229,7 @@ const getphonenumber = (e) => {
 const clickHandler = (e) => {
   // 非禁止并且非加载中，才能点击
   if (!props.disabled && !props.loading) {
+    console.log("this");
     emit("click", e);
   }
 };
