@@ -2,19 +2,20 @@
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 	
 	
-		{
-			"path" : "pages/example/action-bar/action-bar",
-			"style" : 
-			{
-				"navigationBarTitleText" : "动作栏"
-			}
-		},	
+		
 		{
 				"path": "pages/index/index",
 				"style": {
 					"navigationBarTitleText": "rainui"
 				}
 			},
+			{
+				"path" : "pages/example/action-bar/action-bar",
+				"style" : 
+				{
+					"navigationBarTitleText" : "动作栏"
+				}
+			},	
 		
 		{
 			"path" : "pages/example/uploader/uploader",
@@ -188,21 +189,21 @@
 			"path" : "pages/example/collapse/collapse",
 			"style" : 
 			{
-				"navigationBarTitleText" : ""
+				"navigationBarTitleText" : "折叠面板"
 			}
 		},
 		{
 			"path" : "pages/example/divider/divider",
 			"style" : 
 			{
-				"navigationBarTitleText" : ""
+				"navigationBarTitleText" : "分割线"
 			}
 		},
 		{
 			"path" : "pages/example/highlight/highlight",
 			"style" : 
 			{
-				"navigationBarTitleText" : ""
+				"navigationBarTitleText" : "高亮文本"
 			}
 		},
 		{
@@ -237,6 +238,13 @@
 			"style" : 
 			{
 				"navigationBarTitleText" : "标签页"
+			}
+		},
+		{
+			"path" : "pages/example/sidebar/sidebar",
+			"style" : 
+			{
+				"navigationBarTitleText" : "侧边导航"
 			}
 		}
 	],
