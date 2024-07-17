@@ -49,8 +49,7 @@ import {
   defineProps,
   defineEmits,
   nextTick,
-  onMonuted,
-  defineSlots,
+  useSlots,
   getCurrentInstance,
 } from "vue";
 import { _, GetRect } from "@/uni_modules/r-utils/js_sdk/index.js";
@@ -71,7 +70,7 @@ const props = defineProps({
   },
 });
 const emit = defineEmits(["open", "close", "click"]);
-const slots = defineSlots();
+const slots = useSlots();
 const startOffset = ref(0);
 const opened = ref(false);
 const leftRect = ref({});

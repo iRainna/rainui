@@ -31,6 +31,9 @@ import { skeletonTitleData } from "./skeleton-title.js";
 import { actionSheetData } from "./action-sheet.js";
 import { uploaderData } from "./uploader.js";
 import { dialogData } from "./dialog.js";
+import { actionBarData } from "./action-bar.js";
+import { actionBarIconData } from "./action-bar-icon.js";
+import { actionBarButtonData } from "./action-bar-button.js";
 
 export const data = computed(() => ({
   ...baseData.value,
@@ -65,6 +68,9 @@ export const data = computed(() => ({
   ...actionSheetData.value,
   ...uploaderData.value,
   ...dialogData.value,
+  ...actionBarData.value,
+  ...actionBarIconData.value,
+  ...actionBarButtonData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -88,7 +94,7 @@ export const moduleData = computed(() => ({
   "r-toast": toastData.value,
   "r-tag": tagData.value,
   "r-picker": pickerData.value,
-  "r-paginationData": paginationData.value,
+  "r-pagination": paginationData.value,
   "r-divider": dividerData.value,
   "r-field": fieldData.value,
   "r-highlight": highlightData.value,
@@ -100,4 +106,7 @@ export const moduleData = computed(() => ({
   "r-action-sheet": actionSheetData.value,
   "r-uploader": uploaderData.value,
   "r-dialog": dialogData.value,
+  "r-action-bar": actionBarData.value,
+  "r-action-bar-icon": actionBarIconData.value,
+  "r-action-bar-button": actionBarButtonData.value,
 }));

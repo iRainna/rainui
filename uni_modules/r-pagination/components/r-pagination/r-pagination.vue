@@ -1,5 +1,5 @@
 <template>
-  <view class="r-pagination">
+  <view class="r-pagination" :style="getComponentThemeStyle">
     <view class="r-pagination__items">
       <!-- renderPrevButton     -->
       <view

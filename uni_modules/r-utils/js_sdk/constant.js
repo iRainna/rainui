@@ -8,3 +8,4 @@ export const COLLAPSE_KEY = Symbol("r-collapse");
 export const CONFIG_PROVIDER_KEY = Symbol("r-config-provider");
 export const FORM_KEY = Symbol("r-form");
 export const CELL_GROUP_KEY = Symbol("r-cell-group");
+export const ACTION_BAR_KEY = Symbol("r-action-bar");

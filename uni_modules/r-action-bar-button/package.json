@@ -1,17 +1,18 @@
 {
-  "id": "r-theme",
-  "displayName": "r-theme",
-  "version": "1.2.9",
-  "description": "r-theme 是一个为 r-overlay、r-icon等组件提供定制样式的 jssdk。",
+  "id": "r-action-bar-button",
+  "displayName": "r-action-bar-button",
+  "version": "1.0.0",
+  "description": "r-action-bar-button",
   "keywords": [
-    "r-theme"
+    "r-action-bar-button",
+    "动作栏，用于为页面相关操作提供便捷交互。"
 ],
   "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
   "dcloudext": {
-    "type": "sdk-js",
+    "type": "component-vue",
     "sale": {
       "regular": {
         "price": "0.00"
@@ -31,7 +32,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": [],
+    "dependencies": ["r-utils","r-theme","r-button"],
     "encrypt": [],
     "platforms": {
       "cloud": {
@@ -41,13 +42,13 @@
       },
       "client": {
         "Vue": {
-          "vue2": "u",
+          "vue2": "n",
           "vue3": "y"
         },
         "App": {
           "app-vue": "y",
-          "app-nvue": "u",
-          "app-uvue": "u"
+          "app-nvue": "n",
+          "app-uvue": "n"
         },
         "H5-mobile": {
           "Safari": "y",

@@ -4,4 +4,3 @@ export const skeletonData = computed(() => ({
   ...skeletonParagraphData.value,
   "r-skeleton-duration": "1.2s",
 }));
-console.log("skeletonData", skeletonData);

@@ -1,7 +1,7 @@
 {
   "id": "r-swipe-cell",
   "displayName": "r-swipe-cell",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "r-swipe-cell滑动单元格，可以左右滑动来展示操作按钮的单元格组件。",
   "keywords": [
     "r-swipe-cell"
