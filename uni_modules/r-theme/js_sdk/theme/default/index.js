@@ -34,7 +34,8 @@ import { dialogData } from "./dialog.js";
 import { actionBarData } from "./action-bar.js";
 import { actionBarIconData } from "./action-bar-icon.js";
 import { actionBarButtonData } from "./action-bar-button.js";
-
+import { sidebarData } from "./sidebar.js";
+import { sidebarItemData } from "./sidebar-item.js";
 export const data = computed(() => ({
   ...baseData.value,
   ...overlayData.value,
@@ -71,6 +72,8 @@ export const data = computed(() => ({
   ...actionBarData.value,
   ...actionBarIconData.value,
   ...actionBarButtonData.value,
+  ...sidebarData.value,
+  ...sidebarItemData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -109,4 +112,6 @@ export const moduleData = computed(() => ({
   "r-action-bar": actionBarData.value,
   "r-action-bar-icon": actionBarIconData.value,
   "r-action-bar-button": actionBarButtonData.value,
+  "r-sidebar": sidebarData.value,
+  "r-sidebar-item": sidebarItemData.value,
 }));

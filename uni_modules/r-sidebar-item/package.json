@@ -1,10 +1,10 @@
 {
-  "id": "r-sidebar",
-  "displayName": "r-sidebar",
+  "id": "r-sidebar-item",
+  "displayName": "r-sidebar-item",
   "version": "1.0.0",
-  "description": "r-sidebar侧边导航，垂直展示的导航栏，用于在不同的内容区域之间进行切换。",
+  "description": "r-sidebar-item 侧边导航，垂直展示的导航栏，用于在不同的内容区域之间进行切换。",
   "keywords": [
-    "r-sidebar"
+    "r-sidebar-item"
 ],
   "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-utils","r-theme","r-sidebar-item"],
+    "dependencies": ["r-utils","r-theme","r-badge"],
     "encrypt": [],
     "platforms": {
       "cloud": {

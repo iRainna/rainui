@@ -178,6 +178,10 @@ const list = ref([
         title: "Tab-标签页",
         url: "/pages/example/tab/tab",
       },
+      {
+        title: "Sidebar-侧边导航",
+        url: "/pages/example/sidebar/sidebar",
+      },
     ],
   },
 ]);
