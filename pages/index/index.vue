@@ -1,14 +1,14 @@
 <template>
   <view class="content" style="padding: 0px; background-color: transparent">
     <r-config-provider>
-      <view style="padding: 20rpx">
+      <view style="padding: var(--r-padding-xs)">
         <view
           style="
             display: flex;
             flex-direction: row;
             align-items: center;
             gap: 24rpx;
-            padding: 0 40rpx;
+            padding: 0 var(--r-padding-md);
           "
         >
           <r-image
@@ -24,18 +24,37 @@
               justify-content: space-between;
             "
           >
-            <view style="font-weight: bolder; font-size: 40rpx">Rainui</view>
-            <view style="font-size: 28rpx; color: #999"
+            <view
+              style="
+                font-weight: var(--r-font-bold);
+                font-size: var(--r-font-size-lg);
+              "
+              >Rainui</view
+            >
+            <view
+              style="
+                font-size: var(--r-font-size-md);
+                color: var(--r-text-color-2);
+              "
               >多平台快速开发的UI框架</view
             >
           </view>
         </view>
         <view
-          style="color: #333; font-size: 28rpx; padding: 40rpx 40rpx 0 40rpx"
+          style="
+            color: var(--r-text-color);
+            font-size: var(--r-font-size-sm);
+            padding: var(--r-padding-md);
+            padding-bottom: 0;
+          "
         >
-          基于uniapp+vue3实现的Rainui组件库提供了{{
-            getCount
-          }}个组件,按需引入轻量简洁。
+          基于uniapp+vue3实现的Rainui组件库提供了<text
+            style="
+              color: var(--r-primary-color);
+              font-size: var(--r-font-size-md);
+            "
+            >{{ getCount }}</text
+          >个组件,按需引入轻量简洁。
         </view>
       </view>
       <view style="padding: 10px 0">
@@ -225,6 +244,10 @@ const list = ref([
       {
         title: "Sidebar-侧边导航",
         url: "/pages/example/sidebar/sidebar",
+      },
+      {
+        title: "Tabbar-标签栏",
+        url: "/pages/example/tabbar/tabbar",
       },
     ],
   },

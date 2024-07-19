@@ -37,6 +37,8 @@ import { actionBarButtonData } from "./action-bar-button.js";
 import { sidebarData } from "./sidebar.js";
 import { sidebarItemData } from "./sidebar-item.js";
 import { navBarData } from "./nav-bar.js";
+import { tabbarData } from "./tabbar.js";
+import { tabbarItemData } from "./tabbar-item.js";
 
 export const data = computed(() => ({
   ...baseData.value,
@@ -77,6 +79,8 @@ export const data = computed(() => ({
   ...sidebarData.value,
   ...sidebarItemData.value,
   ...navBarData.value,
+  ...tabbarData.value,
+  ...tabbarItemData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -118,4 +122,6 @@ export const moduleData = computed(() => ({
   "r-sidebar": sidebarData.value,
   "r-sidebar-item": sidebarItemData.value,
   "r-nav-bar": navBarData.value,
+  "r-tabbar": tabbarData.value,
+  "r-tabbar-item": tabbarItemData.value,
 }));

@@ -253,6 +253,13 @@
 			{
 				"navigationBarTitleText" : "导航栏"
 			}
+		},
+		{
+			"path" : "pages/example/tabbar/tabbar",
+			"style" : 
+			{
+				"navigationBarTitleText" : "标签栏"
+			}
 		}
 	],
 	"globalStyle": {
