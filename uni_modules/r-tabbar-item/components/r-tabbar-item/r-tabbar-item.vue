@@ -203,6 +203,9 @@ onMounted(() => {
     margin-bottom: var(--r-tabbar-item-icon-margin-bottom);
     font-size: var(--r-tabbar-item-icon-size);
     padding-top: var(--r-padding-base);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   &--active {
