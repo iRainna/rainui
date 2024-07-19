@@ -1,7 +1,43 @@
 <template>
   <view class="content" style="padding: 0px; background-color: transparent">
     <r-config-provider>
-      <view style="padding: 10px">rainui提供了{{ getCount }}个组件</view>
+      <view style="padding: 20rpx">
+        <view
+          style="
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 24rpx;
+            padding: 0 40rpx;
+          "
+        >
+          <r-image
+            src="/static/logo.jpg"
+            width="120rpx"
+            height="120rpx"
+          ></r-image>
+          <view
+            style="
+              display: flex;
+              flex-direction: column;
+              height: 120rpx;
+              justify-content: space-between;
+            "
+          >
+            <view style="font-weight: bolder; font-size: 40rpx">Rainui</view>
+            <view style="font-size: 28rpx; color: #999"
+              >多平台快速开发的UI框架</view
+            >
+          </view>
+        </view>
+        <view
+          style="color: #333; font-size: 28rpx; padding: 40rpx 40rpx 0 40rpx"
+        >
+          基于uniapp+vue3实现的Rainui组件库提供了{{
+            getCount
+          }}个组件,按需引入轻量简洁。
+        </view>
+      </view>
       <view style="padding: 10px 0">
         <view v-for="(m, n) in list" :key="n">
           <r-divider contentPosition="left">{{ m.title }}</r-divider>
@@ -170,6 +206,14 @@ const list = ref([
   {
     title: "导航组件",
     list: [
+      {
+        title: "ActionBar-动作栏",
+        url: "/pages/example/action-bar/action-bar",
+      },
+      {
+        title: "NavBar-导航栏",
+        url: "/pages/example/nar-bar/nar-bar",
+      },
       {
         title: "Pagination-分页",
         url: "/pages/example/pagination/pagination",

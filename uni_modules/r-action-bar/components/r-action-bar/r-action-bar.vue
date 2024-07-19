@@ -2,7 +2,7 @@
   <view
     v-if="placeholder"
     :style="{
-      height: height + 'px',
+      height: Rect.height + 'px',
     }"
   ></view>
   <view

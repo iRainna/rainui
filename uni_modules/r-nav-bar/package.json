@@ -1,10 +1,10 @@
 {
-  "id": "r-action-bar",
-  "displayName": "r-action-bar",
-  "version": "1.0.1",
-  "description": "r-action-bar动作栏，用于为页面相关操作提供便捷交互。",
+  "id": "r-nav-bar",
+  "displayName": "r-nav-bar",
+  "version": "1.0.0",
+  "description": "r-nav-bar导航栏，为页面提供导航功能，常用于页面顶部。",
   "keywords": [
-    "r-action-bar"
+    "r-nav-bar"
 ],
   "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-utils","r-theme","r-action-bar-button","r-action-bar-icon"],
+    "dependencies": ["r-utils","r-theme","r-icon"],
     "encrypt": [],
     "platforms": {
       "cloud": {

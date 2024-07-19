@@ -246,6 +246,13 @@
 			{
 				"navigationBarTitleText" : "侧边导航"
 			}
+		},
+		{
+			"path" : "pages/example/nar-bar/nar-bar",
+			"style" : 
+			{
+				"navigationBarTitleText" : "导航栏"
+			}
 		}
 	],
 	"globalStyle": {
