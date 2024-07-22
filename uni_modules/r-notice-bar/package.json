@@ -1,12 +1,12 @@
 {
   "id": "r-notice-bar",
   "displayName": "r-notice-bar",
-  "version": "1.0.0",
-  "description": "r-notice-bar",
+  "version": "1.0.1",
+  "description": "r-notice-bar 通知栏，用于循环播放展示一组消息通知。",
   "keywords": [
     "r-notice-bar"
 ],
-  "repository": "",
+  "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": [],
+    "dependencies": ["r-theme","r-utils","r-icon"],
     "encrypt": [],
     "platforms": {
       "cloud": {
@@ -45,37 +45,37 @@
           "vue3": "y"
         },
         "App": {
-          "app-vue": "n",
+          "app-vue": "y",
           "app-nvue": "n",
           "app-uvue": "n"
         },
         "H5-mobile": {
-          "Safari": "n",
-          "Android Browser": "n",
-          "微信浏览器(Android)": "n",
-          "QQ浏览器(Android)": "n"
+          "Safari": "y",
+          "Android Browser": "y",
+          "微信浏览器(Android)": "y",
+          "QQ浏览器(Android)": "y"
         },
         "H5-pc": {
-          "Chrome": "n",
-          "IE": "n",
-          "Edge": "n",
-          "Firefox": "n",
-          "Safari": "n"
+          "Chrome": "y",
+          "IE": "y",
+          "Edge": "y",
+          "Firefox": "y",
+          "Safari": "y"
         },
         "小程序": {
-          "微信": "n",
-          "阿里": "n",
-          "百度": "n",
-          "字节跳动": "n",
-          "QQ": "n",
-          "钉钉": "n",
-          "快手": "n",
-          "飞书": "n",
-          "京东": "n"
+          "微信": "y",
+          "阿里": "y",
+          "百度": "y",
+          "字节跳动": "y",
+          "QQ": "y",
+          "钉钉": "y",
+          "快手": "y",
+          "飞书": "y",
+          "京东": "y"
         },
         "快应用": {
-          "华为": "n",
-          "联盟": "n"
+          "华为": "y",
+          "联盟": "y"
         }
       }
     }

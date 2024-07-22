@@ -260,6 +260,13 @@
 			{
 				"navigationBarTitleText" : "标签栏"
 			}
+		},
+		{
+			"path" : "pages/example/notice-bar/notice-bar",
+			"style" : 
+			{
+				"navigationBarTitleText" : "通知栏"
+			}
 		}
 	],
 	"globalStyle": {

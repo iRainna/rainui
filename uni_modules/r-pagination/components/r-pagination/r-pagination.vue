@@ -63,7 +63,7 @@
 </template>
 <script setup>
 import paginationProps from "./props";
-import { defineProps, defineEmits, computed, ref, inject } from "vue";
+import { computed, ref, inject } from "vue";
 
 import {
   getThemeCssVar,

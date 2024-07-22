@@ -39,6 +39,7 @@ import { sidebarItemData } from "./sidebar-item.js";
 import { navBarData } from "./nav-bar.js";
 import { tabbarData } from "./tabbar.js";
 import { tabbarItemData } from "./tabbar-item.js";
+import { noticeBarData } from "./notice-bar.js";
 
 export const data = computed(() => ({
   ...baseData.value,
@@ -81,6 +82,7 @@ export const data = computed(() => ({
   ...navBarData.value,
   ...tabbarData.value,
   ...tabbarItemData.value,
+  ...noticeBarData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -124,4 +126,5 @@ export const moduleData = computed(() => ({
   "r-nav-bar": navBarData.value,
   "r-tabbar": tabbarData.value,
   "r-tabbar-item": tabbarItemData.value,
+  "r-notice-bar": noticeBarData.value,
 }));

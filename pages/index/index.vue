@@ -213,6 +213,10 @@ const list = ref([
         url: "/pages/example/highlight/highlight",
       },
       {
+        title: "NoticeBar-通知栏",
+        url: "/pages/example/notice-bar/notice-bar",
+      },
+      {
         title: "Skeleton-骨架屏",
         url: "/pages/example/skeleton/skeleton",
       },
