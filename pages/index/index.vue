@@ -57,6 +57,7 @@
           >个组件,按需引入轻量简洁。
         </view>
       </view>
+
       <view style="padding: 10px 0">
         <view v-for="(m, n) in list" :key="n">
           <r-divider contentPosition="left">{{ m.title }}</r-divider>
@@ -215,6 +216,10 @@ const list = ref([
       {
         title: "NoticeBar-通知栏",
         url: "/pages/example/notice-bar/notice-bar",
+      },
+      {
+        title: "Popover-气泡弹出框",
+        url: "/pages/example/popover/popover",
       },
       {
         title: "Skeleton-骨架屏",

@@ -267,6 +267,13 @@
 			{
 				"navigationBarTitleText" : "通知栏"
 			}
+		},
+		{
+			"path" : "pages/example/popover/popover",
+			"style" : 
+			{
+				"navigationBarTitleText" : "气泡弹出框"
+			}
 		}
 	],
 	"globalStyle": {
