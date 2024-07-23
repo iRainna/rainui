@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { defineProps, provide, computed } from "vue";
+import { provide, computed } from "vue";
 import ConfigProviderProps from "./props.js";
 import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";

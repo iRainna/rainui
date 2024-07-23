@@ -34,7 +34,7 @@
 <script setup>
 import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 import IconProps from "./props.js";
-import { defineProps, defineEmits } from "vue";
+
 const props = defineProps({
   ...IconProps,
 });

@@ -48,22 +48,10 @@
   </view>
 </template>
 <script setup>
-import {
-  defineProps,
-  computed,
-  inject,
-  defineEmits,
-  ref,
-  nextTick,
-  getCurrentInstance,
-  onMounted,
-} from "vue";
+import { computed, inject, ref, onMounted } from "vue";
 import {
   _,
   CONFIG_PROVIDER_KEY,
-  GetRect,
-  getSystemInfo,
-  callInterceptor,
   TABBAR_KEY,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
 
@@ -141,7 +129,7 @@ const getComponentThemeStyle = computed(() => {
 });
 
 const parentInject = inject(TABBAR_KEY, {});
-console.log("parentInject", parentInject);
+
 const widthComp = computed(() => {
   let width = 0;
   if (parentInject?.Rect?.value?.width) {
@@ -151,7 +139,7 @@ const widthComp = computed(() => {
   if (parentInject?.children?.value?.length) {
     length = parentInject?.children?.value?.length;
   }
-  console.log("width", width);
+
   return width / length;
 });
 const index = computed(() => {
@@ -178,7 +166,6 @@ const onClick = (event) => {
   emit("click", event);
 };
 onMounted(() => {
-  console.log("parentInject", parentInject);
   componentsId.value = uniqueId(componentsName + "-");
   if (parentInject?.setChildren) {
     parentInject.setChildren({

@@ -89,7 +89,7 @@
   </r-animation>
 </template>
 <script setup>
-import { defineProps, ref, inject, computed, defineEmits } from "vue";
+import { ref, inject, computed } from "vue";
 import ImageProps from "./props.js";
 
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";

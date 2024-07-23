@@ -9,16 +9,7 @@ import {
   SIDEBAR_KEY,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
-import {
-  defineProps,
-  inject,
-  computed,
-  defineEmits,
-  nextTick,
-  provide,
-  ref,
-  watch,
-} from "vue";
+import { inject, computed, nextTick, provide, ref } from "vue";
 const emit = defineEmits(["change", "update:value"]);
 const props = defineProps({
   value: {
@@ -52,9 +43,7 @@ const getComponentThemeStyle = computed(() => {
 });
 const children = ref([]);
 const setChildren = (e) => {
-  console.log("e", e);
   children.value = [...children.value, e];
-  console.log("children.value", children.value);
 };
 const getActive = () => props.value;
 const setActive = (value) => {
@@ -72,12 +61,6 @@ provide(SIDEBAR_KEY, {
   setChildren,
   children,
 });
-watch(
-  () => children.value,
-  (value) => {
-    console.log("value", value);
-  }
-);
 </script>
 <style lang="scss" scoped>
 .r-sidebar {

@@ -33,7 +33,7 @@
   </r-animation>
 </template>
 <script setup>
-import { defineProps, computed, defineEmits, inject } from "vue";
+import { computed, inject } from "vue";
 import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 const emit = defineEmits(["close", "click"]);

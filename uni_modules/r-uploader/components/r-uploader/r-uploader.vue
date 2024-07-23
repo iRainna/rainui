@@ -212,7 +212,7 @@ export default {
 };
 </script>
 <script setup>
-import { defineProps, computed, nextTick, defineEmits, ref, inject } from "vue";
+import { computed, nextTick, ref, inject } from "vue";
 import uploaderProps from "./props";
 import { isImageFile, chooseFile } from "./utils";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
@@ -283,7 +283,6 @@ const getDetail = (index = props.value.length) => ({
 const onClickUpload = (event) => emit("clickUpload", event);
 
 const onClickImage = (item, index) => {
-  console.log("is click");
   props.reupload ? onReupload(item, index) : onPreview(item);
 };
 function onAfterRead(file) {
@@ -331,7 +330,6 @@ function onAfterRead(file) {
 }
 // 文件读取之前
 function onBeforeRead(file) {
-  console.log("before");
   const { beforeRead } = props;
   let res = true;
   // beforeRead是否为一个方法
@@ -366,7 +364,6 @@ const onInputClick = (index = -1) => {
     maxCount: props.maxCount,
   })
     .then((files) => {
-      console.log("files", files);
       onBeforeRead(props.multiple ? files : files[0]);
     })
     .catch((error) => {
@@ -388,8 +385,6 @@ const onPreview = (item) => {
       fail() {},
     });
   }
-
-  console.log("onPreview", item);
 };
 const onDel = (item, index) => {
   emit(

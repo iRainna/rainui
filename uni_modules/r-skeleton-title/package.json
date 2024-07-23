@@ -1,7 +1,7 @@
 {
   "id": "r-skeleton-title",
   "displayName": "r-skeleton-title",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "r-skeleton-title 骨架屏，用于在内容加载过程中展示一组占位图形。",
   "keywords": [
     "r-skeleton-title"

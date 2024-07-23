@@ -46,8 +46,6 @@ import {
   computed,
   reactive,
   ref,
-  defineProps,
-  defineEmits,
   nextTick,
   useSlots,
   getCurrentInstance,

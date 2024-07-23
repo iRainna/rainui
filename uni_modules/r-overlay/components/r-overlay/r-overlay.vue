@@ -50,7 +50,6 @@
   </r-animation>
 </template>
 <script setup>
-import { defineProps, defineEmits } from "vue";
 import OverlayProps from "./props.js";
 
 import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";

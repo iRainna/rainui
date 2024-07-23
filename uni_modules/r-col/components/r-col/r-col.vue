@@ -15,7 +15,7 @@
   </view>
 </template>
 <script setup>
-import { defineProps, inject, defineEmits } from "vue";
+import { inject } from "vue";
 import ColProps from "./props.js";
 import { LAYOUT_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
 const props = defineProps({

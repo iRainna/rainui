@@ -34,16 +34,7 @@
 </template>
 <script setup>
 import RowProps from "./props.js";
-import {
-  defineProps,
-  defineEmits,
-  onMounted,
-  getCurrentInstance,
-  ref,
-  computed,
-  provide,
-  watch,
-} from "vue";
+import { onMounted, getCurrentInstance, ref, computed, provide } from "vue";
 import {
   GetRect,
   SplitUnitNum,

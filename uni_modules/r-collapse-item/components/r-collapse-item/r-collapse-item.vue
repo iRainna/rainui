@@ -98,16 +98,8 @@ import {
   COLLAPSE_KEY,
   GetRect,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
-import {
-  computed,
-  inject,
-  getCurrentInstance,
-  watch,
-  onMounted,
-  ref,
-} from "vue";
+import { computed, inject, getCurrentInstance, onMounted, ref } from "vue";
 import CollapseItemProps from "./props.js";
-// import Cell from "../cell/index.vue";
 
 import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 

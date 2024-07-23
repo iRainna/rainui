@@ -12,7 +12,7 @@
   </view>
 </template>
 <script setup>
-import { defineProps, defineEmits, shallowRef, ref, watch } from "vue";
+import { shallowRef, ref, watch } from "vue";
 import TransitionAnimationProps from "./props.js";
 const emit = defineEmits(["open", "close", "opened", "closed"]);
 const props = defineProps({
@@ -52,5 +52,5 @@ watch(
 </script>
 
 <style scoped>
-	@import 'animate.css';
+@import "animate.css";
 </style>

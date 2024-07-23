@@ -107,7 +107,7 @@
 <script setup>
 import CheckboxProps from "./props.js";
 
-import { defineProps, ref, defineEmits, computed, inject, nextTick } from "vue";
+import { ref, computed, inject, nextTick } from "vue";
 
 import { RADIO_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";

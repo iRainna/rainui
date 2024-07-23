@@ -1,7 +1,7 @@
 {
   "id": "r-date-picker",
   "displayName": "r-date-picker",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "r-date-picker日期选择器，用于选择年、月、日、时、分、秒，通常与 r-popup 组件配合使用。",
   "keywords": [
     "r-date-picker"

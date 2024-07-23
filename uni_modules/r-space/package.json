@@ -1,7 +1,7 @@
 {
   "id": "r-space",
   "displayName": "r-space",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "r-space间距组件，设置元素之间的间距。",
   "keywords": [
     "r-space"

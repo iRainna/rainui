@@ -38,25 +38,9 @@
   </view>
 </template>
 <script setup>
-import {
-  getSystemInfo,
-  GetRect,
-  CONFIG_PROVIDER_KEY,
-} from "@/uni_modules/r-utils/js_sdk/index.js";
-import {
-  getThemeCssVar,
-  getComponentThemeCssVar,
-} from "@/uni_modules/r-theme/js_sdk/index.js";
-import {
-  defineProps,
-  nextTick,
-  inject,
-  watchEffect,
-  getCurrentInstance,
-  computed,
-  defineEmits,
-  ref,
-} from "vue";
+import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { inject, computed } from "vue";
 const emit = defineEmits(["click"]);
 const props = defineProps({
   // 按钮文字

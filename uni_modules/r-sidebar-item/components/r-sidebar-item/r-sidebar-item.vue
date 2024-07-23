@@ -30,16 +30,7 @@ import {
   _,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
-import {
-  defineProps,
-  inject,
-  computed,
-  defineEmits,
-  nextTick,
-  provide,
-  onMounted,
-  ref,
-} from "vue";
+import { inject, computed, onMounted, ref } from "vue";
 const { uniqueId, findIndex } = _;
 const emit = defineEmits(["click"]);
 const props = defineProps({
@@ -143,7 +134,6 @@ const onClick = () => {
   emit("click", index);
 };
 onMounted(() => {
-  console.log("parentInject", parentInject);
   id.value = uniqueId(componentsName + "-");
   if (parentInject.setChildren) {
     parentInject.setChildren({

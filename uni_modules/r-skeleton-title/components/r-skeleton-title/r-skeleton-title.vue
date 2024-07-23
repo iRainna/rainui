@@ -16,7 +16,7 @@ export default {
 };
 </script>
 <script setup>
-import { defineProps, computed, inject } from "vue";
+import { computed, inject } from "vue";
 import {
   CONFIG_PROVIDER_KEY,
   isNumeric,

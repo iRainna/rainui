@@ -14,30 +14,13 @@
   </r-button>
 </template>
 <script setup>
-// import { computed, defineProps } from "vue";
-
 import {
-  getSystemInfo,
-  GetRect,
   CONFIG_PROVIDER_KEY,
   _,
   ACTION_BAR_KEY,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
-import {
-  getThemeCssVar,
-  getComponentThemeCssVar,
-} from "@/uni_modules/r-theme/js_sdk/index.js";
-import {
-  defineProps,
-  nextTick,
-  inject,
-  watchEffect,
-  getCurrentInstance,
-  computed,
-  ref,
-  onMounted,
-  defineEmits,
-} from "vue";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { inject, computed, ref, onMounted } from "vue";
 const emit = defineEmits(["click"]);
 const { uniqueId } = _;
 const props = defineProps({
@@ -95,7 +78,6 @@ const getComponentThemeStyle = computed(() => {
 const parentInject = inject(ACTION_BAR_KEY, {});
 
 const isFirst = computed(() => {
-  console.log("parentInject.children", parentInject.children);
   if (parentInject?.children?.value?.length) {
     if (parentInject.children.value[0].id == componentsId.value) {
       return true;
@@ -158,7 +140,6 @@ const onClick = (e) => emit("click", e);
 onMounted(() => {
   componentsId.value = uniqueId(componentsName + "-");
   if (parentInject && parentInject.setChildren) {
-    console.log("SET");
     parentInject.setChildren({
       id: componentsId.value,
     });

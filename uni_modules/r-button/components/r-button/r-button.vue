@@ -126,11 +126,8 @@
 
 <script setup>
 import ButtonProps from "./props.js";
-import { defineProps, computed, defineEmits, inject } from "vue";
-import {
-  getThemeCssVar,
-  getComponentThemeCssVar,
-} from "@/uni_modules/r-theme/js_sdk/index.js";
+import { computed, inject } from "vue";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
 
 const props = defineProps({

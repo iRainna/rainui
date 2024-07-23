@@ -1,7 +1,7 @@
 {
   "id": "r-nav-bar",
   "displayName": "r-nav-bar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "r-nav-bar导航栏，为页面提供导航功能，常用于页面顶部。",
   "keywords": [
     "r-nav-bar"

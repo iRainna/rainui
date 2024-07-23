@@ -22,10 +22,8 @@
 </template>
 <script setup>
 import {
-  defineProps,
   computed,
   inject,
-  defineEmits,
   ref,
   nextTick,
   getCurrentInstance,

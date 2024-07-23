@@ -21,12 +21,9 @@ export default {
 };
 </script>
 <script setup>
-import {
-  CONFIG_PROVIDER_KEY,
-  isNumeric,
-} from "@/uni_modules/r-utils/js_sdk/index.js";
+import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
-import { defineProps, computed, inject } from "vue";
+import { computed, inject } from "vue";
 const props = defineProps({
   // 图片占位图大小
   imageSize: {

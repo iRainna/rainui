@@ -111,7 +111,7 @@
   </r-popup>
 </template>
 <script setup>
-import { defineProps, reactive, computed, inject, defineEmits } from "vue";
+import { reactive, computed, inject } from "vue";
 import {
   _,
   CONFIG_PROVIDER_KEY,

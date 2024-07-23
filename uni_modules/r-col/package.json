@@ -1,7 +1,7 @@
 {
   "id": "r-col",
   "displayName": "r-col",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Layout布局组件配合r-row使用",
   "keywords": [
     "Layout"

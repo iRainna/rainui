@@ -27,7 +27,6 @@ import {
   reactive,
   watch,
   nextTick,
-  defineProps,
 } from "vue";
 import {
   getThemeCssVar,

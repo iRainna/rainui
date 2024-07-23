@@ -98,7 +98,7 @@
 import PopupProps from "./props.js";
 import { getSystemInfo } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
-import { computed, defineProps, defineEmits, ref, nextTick } from "vue";
+import { computed, ref, nextTick } from "vue";
 const props = defineProps({ ...PopupProps });
 const emit = defineEmits([
   "click",

@@ -24,12 +24,8 @@ import {
   CONFIG_PROVIDER_KEY,
   ACTION_BAR_KEY,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 import {
-  getThemeCssVar,
-  getComponentThemeCssVar,
-} from "@/uni_modules/r-theme/js_sdk/index.js";
-import {
-  defineProps,
   nextTick,
   inject,
   watchEffect,

@@ -18,7 +18,7 @@
   </view>
 </template>
 <script setup>
-import { defineProps, computed, inject } from "vue";
+import { computed, inject } from "vue";
 import { _, CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
 
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
@@ -85,7 +85,6 @@ const highlightChunks = computed(() => {
   const { autoEscape, caseSensitive, keywords, sourceString } = props;
   const flags = caseSensitive ? "g" : "gi";
   const _keywords = Array.isArray(keywords) ? keywords : [keywords];
-  console.log("_keywords", _keywords);
 
   // generate chunks
   let chunks = _keywords

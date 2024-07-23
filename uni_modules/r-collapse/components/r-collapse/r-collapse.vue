@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref, provide, defineEmits, defineExpose } from "vue";
+import { ref, provide } from "vue";
 import CollapseProps from "./props.js";
 import { COLLAPSE_KEY, _ } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";

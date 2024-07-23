@@ -1,7 +1,7 @@
 {
   "id": "r-action-bar",
   "displayName": "r-action-bar",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "r-action-bar动作栏，用于为页面相关操作提供便捷交互。",
   "keywords": [
     "r-action-bar"

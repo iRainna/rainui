@@ -58,7 +58,7 @@
 </template>
 
 <script setup>
-import { computed, useSlots, defineProps, inject } from "vue";
+import { computed, useSlots, inject } from "vue";
 import BadgeProps from "./props.js";
 
 import {
@@ -66,10 +66,7 @@ import {
   isNumeric,
   CONFIG_PROVIDER_KEY,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
-import {
-  getThemeCssVar,
-  getComponentThemeCssVar,
-} from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 
 const componentsName = "r-badge";
 const themeInject = inject(CONFIG_PROVIDER_KEY, {});

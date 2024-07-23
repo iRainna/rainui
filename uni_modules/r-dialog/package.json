@@ -1,7 +1,7 @@
 {
   "id": "r-dialog",
   "displayName": "r-dialog",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "r-dialog 弹出框，弹出模态框，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。",
   "keywords": [
     "r-dialog"

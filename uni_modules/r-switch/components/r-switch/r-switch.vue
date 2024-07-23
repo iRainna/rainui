@@ -24,7 +24,7 @@
   </view>
 </template>
 <script setup>
-import { defineProps, defineEmits, computed } from "vue";
+import { computed } from "vue";
 import SwitchProps from "./props.js";
 import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 const emit = defineEmits(["update:value", "change"]);

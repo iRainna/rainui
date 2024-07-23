@@ -61,15 +61,7 @@
 </template>
 <script setup>
 import RateProps from "./props.js";
-import {
-  defineProps,
-  getCurrentInstance,
-  computed,
-  ref,
-  nextTick,
-  defineEmits,
-  watch,
-} from "vue";
+import { getCurrentInstance, computed, ref, nextTick, watch } from "vue";
 
 import { GetRect, _, isNumeric } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";

@@ -22,7 +22,7 @@ import {
   isNumeric,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
-import { defineProps, inject, computed } from "vue";
+import { inject, computed } from "vue";
 
 const props = defineProps({
   avatarSize: {

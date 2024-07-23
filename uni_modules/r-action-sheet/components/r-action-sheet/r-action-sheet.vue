@@ -150,12 +150,9 @@ export default {
 };
 </script>
 <script setup>
-import {
-  CONFIG_PROVIDER_KEY,
-  isNumeric,
-} from "@/uni_modules/r-utils/js_sdk/index.js";
+import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
-import { defineProps, inject, computed, nextTick, defineEmits } from "vue";
+import { inject, computed, nextTick } from "vue";
 
 const props = defineProps({
   // 是否显示动作面板

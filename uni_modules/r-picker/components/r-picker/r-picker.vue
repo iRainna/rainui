@@ -120,9 +120,7 @@ export default {
 <script setup>
 import pickerProps from "./props";
 import {
-  defineProps,
   watch,
-  defineEmits,
   computed,
   ref,
   inject,

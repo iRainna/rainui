@@ -105,15 +105,12 @@
 </template>
 <script setup>
 import CheckboxProps from "./props.js";
-import { defineProps, ref, defineEmits, nextTick, computed, inject } from "vue";
+import { ref, nextTick, computed, inject } from "vue";
 import {
   CHECKBOX_GROUP_KEY,
   CONFIG_PROVIDER_KEY,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
-import {
-  getThemeCssVar,
-  getComponentThemeCssVar,
-} from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 
 const parentData = inject(CHECKBOX_GROUP_KEY, {});
 

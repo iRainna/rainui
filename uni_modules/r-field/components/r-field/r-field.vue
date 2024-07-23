@@ -249,17 +249,13 @@ export default {
 import FieldProps from "./props.js";
 
 import {
-  defineProps,
   reactive,
   computed,
   shallowRef,
   ref,
   watch,
-  defineEmits,
-  useSlots,
   nextTick,
   inject,
-  watchEffect,
 } from "vue";
 
 import {

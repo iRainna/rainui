@@ -9,7 +9,7 @@
 
 <script setup>
 import CheckboxGroupProps from "./props.js";
-import { defineProps, defineEmits, provide, nextTick } from "vue";
+import { provide, nextTick } from "vue";
 import { RADIO_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 const props = defineProps({ ...CheckboxGroupProps });

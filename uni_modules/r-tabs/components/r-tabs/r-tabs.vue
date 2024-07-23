@@ -115,7 +115,6 @@
 
 <script setup>
 import {
-  defineProps,
   ref,
   provide,
   reactive,
@@ -123,7 +122,6 @@ import {
   nextTick,
   watch,
   getCurrentInstance,
-  defineEmits,
   inject,
 } from "vue";
 import TabsProps from "./props.js";

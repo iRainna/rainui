@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref, watch, computed, defineEmits } from "vue";
+import { ref, watch, computed } from "vue";
 
 import { _, dayjs } from "@/uni_modules/r-utils/js_sdk/index.js";
 const { cloneDeep, findIndex } = _;

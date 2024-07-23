@@ -1,7 +1,7 @@
 {
   "id": "r-field",
   "displayName": "r-field",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "r-field输入框,用户可以在文本框内输入或编辑文字。",
   "keywords": [
     "r-field"

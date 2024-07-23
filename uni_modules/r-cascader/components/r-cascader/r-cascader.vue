@@ -119,21 +119,10 @@ import {
   CONFIG_PROVIDER_KEY,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
 
-import {
-  defineEmits,
-  computed,
-  watch,
-  nextTick,
-  inject,
-  ref,
-  defineProps,
-} from "vue";
+import { computed, watch, nextTick, inject, ref } from "vue";
 
 import CascaderProps from "./props.js";
-import {
-  getThemeCssVar,
-  getComponentThemeCssVar,
-} from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 const props = defineProps(CascaderProps);
 
 const componentsName = "r-cascader";

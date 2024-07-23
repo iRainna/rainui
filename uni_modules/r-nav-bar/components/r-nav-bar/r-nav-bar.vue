@@ -92,15 +92,7 @@
   </view>
 </template>
 <script setup>
-import {
-  defineProps,
-  computed,
-  inject,
-  defineEmits,
-  ref,
-  nextTick,
-  getCurrentInstance,
-} from "vue";
+import { computed, inject, ref, nextTick, getCurrentInstance } from "vue";
 import {
   _,
   CONFIG_PROVIDER_KEY,

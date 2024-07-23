@@ -36,11 +36,8 @@
   </view>
 </template>
 <script setup>
-import { defineProps, ref, inject, provide, computed } from "vue";
-import {
-  getThemeCssVar,
-  getComponentThemeCssVar,
-} from "@/uni_modules/r-theme/js_sdk/index.js";
+import { ref, inject, provide, computed } from "vue";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 import {
   CONFIG_PROVIDER_KEY,
   CELL_GROUP_KEY,

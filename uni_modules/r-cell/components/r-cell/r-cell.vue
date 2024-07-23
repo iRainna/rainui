@@ -75,25 +75,14 @@ export default {
 </script>
 <script setup>
 import CellProps from "./props.js";
-import {
-  defineProps,
-  defineEmits,
-  getCurrentInstance,
-  nextTick,
-  computed,
-  inject,
-} from "vue";
-import {
-  getThemeCssVar,
-  getComponentThemeCssVar,
-} from "@/uni_modules/r-theme/js_sdk/index.js";
+import { nextTick, computed, inject } from "vue";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 import {
   CONFIG_PROVIDER_KEY,
   CELL_GROUP_KEY,
-  GetRect,
   _,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
-const { uniqueId, findIndex } = _;
+const { uniqueId } = _;
 const props = defineProps({ ...CellProps });
 const componentsName = "r-cell";
 const themeInject = inject(CONFIG_PROVIDER_KEY, {});

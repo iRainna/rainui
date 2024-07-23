@@ -77,7 +77,6 @@
   </view>
 </template>
 <script setup>
-import { defineProps } from "vue";
 import LoadingProps from "./props.js";
 import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 

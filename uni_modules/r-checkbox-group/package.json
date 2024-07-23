@@ -1,7 +1,7 @@
 {
   "id": "r-checkbox-group",
   "displayName": "r-checkbox-group",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "`r-checkbox`复选框，在一组备选项中进行多选。",
   "keywords": [
     "r-checkbox-group"

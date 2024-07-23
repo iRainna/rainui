@@ -53,14 +53,7 @@
   </view>
 </template>
 <script setup>
-import {
-  defineProps,
-  ref,
-  watch,
-  shallowRef,
-  defineEmits,
-  computed,
-} from "vue";
+import { ref, watch, shallowRef, computed } from "vue";
 import StepperProps from "./props.js";
 import {
   callInterceptor,
