@@ -9,6 +9,7 @@
 					"navigationBarTitleText": "rainui"
 				}
 			},
+			
 			{
 				"path" : "pages/example/action-bar/action-bar",
 				"style" : 
@@ -262,17 +263,17 @@
 			}
 		},
 		{
-			"path" : "pages/example/notice-bar/notice-bar",
-			"style" : 
-			{
-				"navigationBarTitleText" : "通知栏"
-			}
-		},
-		{
 			"path" : "pages/example/popover/popover",
 			"style" : 
 			{
 				"navigationBarTitleText" : "气泡弹出框"
+			}
+		},
+		{
+			"path" : "pages/example/notice-bar/notice-bar",
+			"style" : 
+			{
+				"navigationBarTitleText" : "通知栏"
 			}
 		}
 	],

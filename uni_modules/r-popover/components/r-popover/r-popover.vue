@@ -3,16 +3,18 @@
     :class="{
       'r-popover__wrapper': true,
     }"
-    @click="onClickWrapper"
+    @click.stop="onClickWrapper"
   >
     <slot v-if="$slots.reference" name="reference"></slot>
   </view>
   <r-animation
+    :duration="duration"
     :show="show"
-    :customStyle="{
-      position: 'relative',
-      zIndex: zIndex,
-    }"
+    :customStyle="positionStyle"
+    @open="onOpen"
+    @close="onClose"
+    @opened="onOpened"
+    @closed="onClosed"
   >
     <view
       :class="{
@@ -53,7 +55,7 @@
             :style="{
               color: action.color,
             }"
-            @click="onClickAction(action, index)"
+            @click.stop="onClickAction(action, index)"
           >
             <!-- renderActionContent -->
             <slot v-if="!!$slots.action" :action="action" :index="index"></slot>
@@ -92,14 +94,31 @@ export default {
 };
 </script>
 <script setup>
-import { computed, ref, inject } from "vue";
-
 import {
-  getThemeCssVar,
-  getComponentThemeCssVar,
-} from "@/uni_modules/r-theme/js_sdk/index.js";
-import { _, CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
-const emit = defineEmits(["select", "update:show"]);
+  computed,
+  ref,
+  inject,
+  nextTick,
+  getCurrentInstance,
+  onMounted,
+} from "vue";
+
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+import {
+  _,
+  CONFIG_PROVIDER_KEY,
+  GetRect,
+} from "@/uni_modules/r-utils/js_sdk/index.js";
+
+const { proxy } = getCurrentInstance();
+const emit = defineEmits([
+  "select",
+  "update:show",
+  "open",
+  "opened",
+  "close",
+  "closed",
+]);
 const props = defineProps({
   // 是否展示气泡弹出层
   show: {
@@ -126,21 +145,13 @@ const props = defineProps({
     type: String,
     default: "light",
   },
-  //   触发方式，可选值为 manual
-  trigger: {
-    type: String,
-    default: "click",
-  },
+
   //   动画时长，单位秒，设置为 0 可以禁用动画
   duration: {
     type: Number,
     default: 300,
   },
-  //   出现位置的偏移量
-  offset: {
-    type: Array,
-    default: [0, 8],
-  },
+
   //   是否展示小箭头
   showArrow: {
     type: Boolean,
@@ -151,11 +162,7 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
-  //   是否在点击外部元素后关闭菜单
-  closeOnClickOutside: {
-    type: Boolean,
-    default: true,
-  },
+
   //   图标类名前缀，等同于 r-icon 组件的 class-prefix 属性
   iconPrefix: {
     type: String,
@@ -166,13 +173,18 @@ const props = defineProps({
     type: Number,
     default: 2000,
   },
+  //弹出框与内容之间的距离
+  gap: {
+    style: String,
+    default: "8rpx",
+  },
   //  r-theme 主题名称
   themeName: {
     type: String,
     default: "default",
   },
 });
-console.log("props.showArrow", props.showArrow);
+
 const componentsName = "r-popover";
 const themeInject = inject(CONFIG_PROVIDER_KEY, {});
 
@@ -198,6 +210,118 @@ const show = computed({
   set: (val) => {
     emit("update:show", val);
   },
+});
+const wrapperRect = ref({});
+const contentRect = ref({});
+const onOpen = () => {
+  getConentRect();
+  emit("open");
+};
+const onClose = () => {
+  emit("close");
+};
+const onOpened = () => {
+  emit("opened");
+};
+const onClosed = () => {
+  emit("closed");
+};
+const positionStyle = computed(() => {
+  const cssVar = {
+    position: "relative",
+    zIndex: props.zIndex,
+  };
+  const wrapperRectWidth = wrapperRect.value?.width || 0;
+  const wrapperRectHeight = wrapperRect.value?.height || 0;
+  const contentRectWidth = contentRect.value?.width || 0;
+  const contentRectHeight = contentRect.value?.height || 0;
+  const gap = props.gap;
+  switch (props.placement) {
+    case "bottom":
+      cssVar.top = gap;
+      cssVar.left = `${(wrapperRectWidth - contentRectWidth) / 2}px`;
+      break;
+
+    case "bottom-start":
+      cssVar.top = gap;
+      break;
+
+    case "bottom-end":
+      cssVar.top = gap;
+      cssVar.left = `${wrapperRectWidth - contentRectWidth}px`;
+      break;
+
+    case "top":
+      cssVar.top = `calc(${-wrapperRectHeight - contentRectHeight}px - ${
+        props.showArrow ? "var(--r-popover-arrow-size)" : 0
+      } - ${gap})`;
+
+      cssVar.marginLeft = `${(wrapperRectWidth - contentRectWidth) / 2}px`;
+      break;
+
+    case "top-start":
+      cssVar.top = `calc(${-wrapperRectHeight - contentRectHeight}px - ${
+        props.showArrow ? "var(--r-popover-arrow-size)" : 0
+      } - ${gap})`;
+      break;
+
+    case "top-end":
+      cssVar.top = `calc(${-wrapperRectHeight - contentRectHeight}px - ${
+        props.showArrow ? "var(--r-popover-arrow-size)" : 0
+      } - ${gap})`;
+
+      cssVar.marginLeft = `${wrapperRectWidth - contentRectWidth}px`;
+      break;
+
+    case "left":
+      cssVar.left = `calc(${-contentRectWidth}px - ${
+        props.showArrow ? "var(--r-popover-arrow-size)" : 0
+      } - ${gap})`;
+
+      cssVar.top = `calc((${-wrapperRectHeight - contentRectHeight}px ) / 2)`;
+
+      break;
+
+    case "left-start":
+      cssVar.left = `calc(${-contentRectWidth}px - ${
+        props.showArrow ? "var(--r-popover-arrow-size)" : 0
+      } - ${gap})`;
+
+      cssVar.top = `${-wrapperRectHeight}px `;
+
+      break;
+
+    case "left-end":
+      cssVar.left = `calc(${-contentRectWidth}px - ${
+        props.showArrow ? "var(--r-popover-arrow-size)" : 0
+      } - ${gap})`;
+
+      cssVar.top = `${-contentRectHeight}px `;
+
+      break;
+
+    case "right":
+      cssVar.left = `calc(${wrapperRectWidth}px  + ${gap})`;
+
+      cssVar.top = `calc((${-wrapperRectHeight - contentRectHeight}px ) / 2)`;
+
+      break;
+
+    case "right-start":
+      cssVar.left = `calc(${wrapperRectWidth}px  + ${gap})`;
+
+      cssVar.top = `${-wrapperRectHeight}px `;
+
+      break;
+    case "right-end":
+      cssVar.left = `calc(${wrapperRectWidth}px  + ${gap})`;
+
+      cssVar.top = `${-contentRectHeight}px `;
+
+      break;
+  }
+
+  return cssVar;
 });
 const otherStyle = computed(() => {
   let cssVar = {};
@@ -362,12 +486,18 @@ const onClickAction = (action, index) => {
 };
 
 const onClickWrapper = () => {
-  if (props.trigger === "click") {
-    console.log("show.value", show.value, !show.value);
-    show.value = !show.value;
-    console.log("show.value2", show.value);
-  }
+  show.value = !show.value;
 };
+const getConentRect = () => {
+  nextTick(async () => {
+    wrapperRect.value = await GetRect(".r-popover__wrapper", proxy);
+    contentRect.value = await GetRect(".r-popover", proxy);
+  });
+};
+
+defineExpose({
+  getConentRect,
+});
 </script>
 <style lang="scss" scoped>
 .r-popover {
