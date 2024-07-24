@@ -229,6 +229,10 @@ const list = ref([
         title: "Tag-标签",
         url: "/pages/example/tag/tag",
       },
+      {
+        title: "TextEllipsis-文本省略",
+        url: "/pages/example/text-ellipsis/text-ellipsis",
+      },
     ],
   },
   {

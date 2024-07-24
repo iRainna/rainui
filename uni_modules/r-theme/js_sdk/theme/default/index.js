@@ -41,6 +41,7 @@ import { tabbarData } from "./tabbar.js";
 import { tabbarItemData } from "./tabbar-item.js";
 import { noticeBarData } from "./notice-bar.js";
 import { popoverData } from "./popover.js";
+import { textEllipsisData } from "./text-ellipsis.js";
 
 export const data = computed(() => ({
   ...baseData.value,
@@ -85,6 +86,7 @@ export const data = computed(() => ({
   ...tabbarItemData.value,
   ...noticeBarData.value,
   ...popoverData.value,
+  ...textEllipsisData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -130,4 +132,5 @@ export const moduleData = computed(() => ({
   "r-tabbar-item": tabbarItemData.value,
   "r-notice-bar": noticeBarData.value,
   "r-popover": popoverData.value,
+  "r-text-ellipsis": textEllipsisData.value,
 }));

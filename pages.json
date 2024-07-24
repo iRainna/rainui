@@ -275,6 +275,13 @@
 			{
 				"navigationBarTitleText" : "通知栏"
 			}
+		},
+		{
+			"path" : "pages/example/text-ellipsis/text-ellipsis",
+			"style" : 
+			{
+				"navigationBarTitleText" : "文本省略"
+			}
 		}
 	],
 	"globalStyle": {
