@@ -12,3 +12,4 @@ export const ACTION_BAR_KEY = Symbol("r-action-bar");
 export const SIDEBAR_KEY = Symbol("r-sidebar");
 export const TABBAR_KEY = Symbol("r-tabbar");
 export const STEPS_KEY = Symbol("r-steps");
+export const GRID_KEY = Symbol("r-grid");

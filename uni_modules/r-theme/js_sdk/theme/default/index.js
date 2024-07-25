@@ -44,6 +44,7 @@ import { popoverData } from "./popover.js";
 import { textEllipsisData } from "./text-ellipsis.js";
 import { stepsData } from "./steps.js";
 import { stepData } from "./step.js";
+import { gridItemData } from "./grid-item.js";
 
 export const data = computed(() => ({
   ...baseData.value,
@@ -91,6 +92,7 @@ export const data = computed(() => ({
   ...textEllipsisData.value,
   ...stepsData.value,
   ...stepData.value,
+  ...gridItemData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -139,4 +141,5 @@ export const moduleData = computed(() => ({
   "r-text-ellipsis": textEllipsisData.value,
   "r-steps": stepsData.value,
   "r-step": stepData.value,
+  "r-grid-item": gridItemData.value,
 }));

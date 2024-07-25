@@ -289,6 +289,13 @@
 			{
 				"navigationBarTitleText" : "步骤条"
 			}
+		},
+		{
+			"path" : "pages/example/grid/grid",
+			"style" : 
+			{
+				"navigationBarTitleText" : "宫格"
+			}
 		}
 	],
 	"globalStyle": {

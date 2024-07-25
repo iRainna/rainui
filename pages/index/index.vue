@@ -246,6 +246,10 @@ const list = ref([
         title: "ActionBar-动作栏",
         url: "/pages/example/action-bar/action-bar",
       },
+	  {
+	    title: "Grid-宫格",
+	    url: "/pages/example/grid/grid",
+	  },
       {
         title: "NavBar-导航栏",
         url: "/pages/example/nar-bar/nar-bar",
