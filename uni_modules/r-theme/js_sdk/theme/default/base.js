@@ -66,31 +66,25 @@ const data = ref({
   "r-radius-max": "1998rpx",
 });
 
-const quoteData = computed(() => {
-  let value = {
-    "r-primary-color": data.value["r-blue"],
-    "r-success-color": data.value["r-green"],
-    "r-danger-color": data.value["r-red"],
-    "r-warning-color": data.value["r-orange"],
-    "r-text-color": data.value["r-gray-8"],
-    "r-text-color-2": data.value["r-gray-6"],
-    "r-text-color-3": data.value["r-gray-5"],
-    "r-active-color": data.value["r-gray-2"],
+const quoteData = computed(() => ({
+  "r-primary-color": data.value["r-blue"],
+  "r-success-color": data.value["r-green"],
+  "r-danger-color": data.value["r-red"],
+  "r-warning-color": data.value["r-orange"],
+  "r-text-color": data.value["r-gray-8"],
+  "r-text-color-2": data.value["r-gray-6"],
+  "r-text-color-3": data.value["r-gray-5"],
+  "r-active-color": data.value["r-gray-2"],
 
-    "r-background": data.value["r-gray-1"],
-    "r-background-2": data.value["r-white"],
+  "r-background": data.value["r-gray-1"],
+  "r-background-2": data.value["r-white"],
 
-    "r-border-color": data.value["r-gray-3"],
-  };
+  "r-border-color": data.value["r-gray-3"],
+}));
 
-  return value;
-});
-
-const baseData = computed(() => {
-  return {
-    ...data.value,
-    ...quoteData.value,
-  };
-});
+const baseData = computed(() => ({
+  ...data.value,
+  ...quoteData.value,
+}));
 
 export { baseData };

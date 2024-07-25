@@ -1,17 +1,17 @@
 {
-  "id": "r-utils",
-  "displayName": "r-utils",
-  "version": "1.0.9",
-  "description": "r-utils 封装了lodash、dayjs以及其他常用的方法。",
+  "id": "r-step",
+  "displayName": "r-step",
+  "version": "1.0.0",
+  "description": "r-step 步骤条，用于展示操作流程的各个环节，让用户了解当前的操作在整体流程中的位置。",
   "keywords": [
-    "r-utils"
+    "r-step"
 ],
   "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
   "dcloudext": {
-    "type": "sdk-js",
+    "type": "component-vue",
     "sale": {
       "regular": {
         "price": "0.00"
@@ -31,7 +31,11 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["iRainna-dayjs","iRainna-lodash","r-async-validator"],
+    "dependencies": [
+      "r-utils",
+      "r-theme",
+      "r-icon"
+    ],
     "encrypt": [],
     "platforms": {
       "cloud": {
@@ -41,13 +45,13 @@
       },
       "client": {
         "Vue": {
-          "vue2": "y",
+          "vue2": "n",
           "vue3": "y"
         },
         "App": {
           "app-vue": "y",
-          "app-nvue": "u",
-          "app-uvue": "u"
+          "app-nvue": "n",
+          "app-uvue": "n"
         },
         "H5-mobile": {
           "Safari": "y",

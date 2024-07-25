@@ -226,6 +226,10 @@ const list = ref([
         url: "/pages/example/skeleton/skeleton",
       },
       {
+        title: "Steps-步骤条",
+        url: "/pages/example/steps/steps",
+      },
+      {
         title: "Tag-标签",
         url: "/pages/example/tag/tag",
       },

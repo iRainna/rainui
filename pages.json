@@ -282,6 +282,13 @@
 			{
 				"navigationBarTitleText" : "文本省略"
 			}
+		},
+		{
+			"path" : "pages/example/steps/steps",
+			"style" : 
+			{
+				"navigationBarTitleText" : "步骤条"
+			}
 		}
 	],
 	"globalStyle": {

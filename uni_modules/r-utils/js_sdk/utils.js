@@ -1,6 +1,6 @@
 // 查询节点信息
 export const GetRect = (selector, _this, all) => {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     uni
       .createSelectorQuery()
       .in(_this)
@@ -12,6 +12,7 @@ export const GetRect = (selector, _this, all) => {
         if (!all && rect) {
           resolve(rect);
         }
+        reject(rect);
       })
       .exec();
   });
