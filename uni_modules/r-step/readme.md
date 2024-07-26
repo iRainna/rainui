@@ -1,6 +1,6 @@
-# r-steps
+# r-step
 
-`r-steps`步骤条，用于展示操作流程的各个环节，让用户了解当前的操作在整体流程中的位置。
+`r-step`步骤条，用于展示操作流程的各个环节，让用户了解当前的操作在整体流程中的位置。该组件是[r-steps](https://ext.dcloud.net.cn/plugin?id=19509)的子组件，直接安装[r-steps](https://ext.dcloud.net.cn/plugin?id=19509)使用即可
 
 ## 示例
 
@@ -106,5 +106,3 @@ const active3 = ref(0);
 | activeIcon   | 自定义激活状态图标                                      |
 | inactiveIcon | 自定义未激活状态图标                                    |
 | finishIcon   | 自定义已完成步骤对应的底部图标，优先级高于 inactiveIcon |
-
-###

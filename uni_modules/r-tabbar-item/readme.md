@@ -1,6 +1,6 @@
-# r-tabbar
+# r-tabbar-item
 
-`r-tabbar`  标签栏，底部导航栏，用于在不同页面之间进行切换。
+`r-tabbar-item` 标签栏，底部导航栏，用于在不同页面之间进行切换。该组件为[r-tabbar](https://ext.dcloud.net.cn/plugin?id=19419)的子组件，导入[r-tabbar](https://ext.dcloud.net.cn/plugin?id=19419)使用即可
 
 ## 示例
 
@@ -80,51 +80,50 @@ const onChange = (e) => {
   console.log("e", e);
 };
 </script>
-
 ```
 
 ## API
 
 ### Tabbar Props
 
-| 名称                   | 说明                                                         | 类型             | 默认值    | 可选值 |
-| ---------------------- | ------------------------------------------------------------ | ---------------- | --------- | ------ |
-| value                  | 当前选中标签的名称或索引值                                   | String\|Number   | 0         |        |
-| fixed                  | 是否固定在顶部                                               | Boolean          | false     |        |
-| border                 | 是否显示下边框                                               | Boolean          | true      |        |
-| z-index                | 导航栏 z-index                                               | String \| Number | 1         |        |
-| active-color           | 选中标签的颜色                                               | String           | `#1989fa` |        |
-| inactive-color         | 未选中标签的颜色                                             | String           | `#7d7e80` |        |
-| placeholder            | 固定在底部时，是否在标签位置生成一个等高的占位元素           | Boolean          | false     |        |
-| safe-area-inset-bottom | 是否开启底部安全区适配                                       | Boolean          | false     |        |
+| 名称                   | 说明                                                            | 类型             | 默认值    | 可选值 |
+| ---------------------- | --------------------------------------------------------------- | ---------------- | --------- | ------ |
+| value                  | 当前选中标签的名称或索引值                                      | String\|Number   | 0         |        |
+| fixed                  | 是否固定在顶部                                                  | Boolean          | false     |        |
+| border                 | 是否显示下边框                                                  | Boolean          | true      |        |
+| z-index                | 导航栏 z-index                                                  | String \| Number | 1         |        |
+| active-color           | 选中标签的颜色                                                  | String           | `#1989fa` |        |
+| inactive-color         | 未选中标签的颜色                                                | String           | `#7d7e80` |        |
+| placeholder            | 固定在底部时，是否在标签位置生成一个等高的占位元素              | Boolean          | false     |        |
+| safe-area-inset-bottom | 是否开启底部安全区适配                                          | Boolean          | false     |        |
 | before-change          | 切换标签前的回调函数，返回 `false` 可阻止切换，支持返回 Promise | Function         | -         |        |
-| themeName              | 主题名称                                                     | String           | default   |        |
+| themeName              | 主题名称                                                        | String           | default   |        |
 
 ### Tabbar Events
 
 | 名称         | 说明           | 回调参数 |
 | ------------ | -------------- | -------- |
-| update:value | 切换标签时触发 | *active* |
-| change       | 切换标签后触发 | *active* |
+| update:value | 切换标签时触发 | _active_ |
+| change       | 切换标签后触发 | _active_ |
 
 ### TabbarItem Props
 
-| 名称        | 说明                                                         | 类型            | 默认值      | 可选值                                              |
-| ----------- | ------------------------------------------------------------ | --------------- | ----------- | --------------------------------------------------- |
-| name        | 标签名称，作为匹配的标识符                                   | Number\|String  | -           | -                                                   |
-| icon        | 图标名称                                                     | String          | -           | -                                                   |
-| icon-prefix | 图标类名前缀                                                 | String          | `van-icon`  | `iconfont`                                          |
-| dot         | 是否显示图标右上角小红点                                     | Boolean         | false       | true                                                |
-| badge       | 图标右上角徽标的内容                                         | Number\|String  | -           | -                                                   |
-| badgeColor  | 徽标背景颜色                                                 | String          | -           | -                                                   |
-| max         | 最大值,超过最大值会显示 {max}+，仅当 content 为数字时有效    | Number\| String | -           | -                                                   |
+| 名称        | 说明                                                                              | 类型            | 默认值      | 可选值                                              |
+| ----------- | --------------------------------------------------------------------------------- | --------------- | ----------- | --------------------------------------------------- |
+| name        | 标签名称，作为匹配的标识符                                                        | Number\|String  | -           | -                                                   |
+| icon        | 图标名称                                                                          | String          | -           | -                                                   |
+| icon-prefix | 图标类名前缀                                                                      | String          | `van-icon`  | `iconfont`                                          |
+| dot         | 是否显示图标右上角小红点                                                          | Boolean         | false       | true                                                |
+| badge       | 图标右上角徽标的内容                                                              | Number\|String  | -           | -                                                   |
+| badgeColor  | 徽标背景颜色                                                                      | String          | -           | -                                                   |
+| max         | 最大值,超过最大值会显示 {max}+，仅当 content 为数字时有效                         | Number\| String | -           | -                                                   |
 | offset      | 设置徽标的偏移量，数组的两项分别对应水平向右和垂直向下方向的偏移量，默认单位为 px | Array           | -           | -                                                   |
-| showZero    | 当 content 为数字 0 或字符串 '0' 时，是否展示徽标            | Boolean         | true        | false                                               |
-| position    | 徽标位置                                                     | String          | `top-right` | `top-right` `top-left` `bottom-left` `bottom-right` |
-| themeName   | 主题名称                                                     | String          | default     |                                                     |
+| showZero    | 当 content 为数字 0 或字符串 '0' 时，是否展示徽标                                 | Boolean         | true        | false                                               |
+| position    | 徽标位置                                                                          | String          | `top-right` | `top-right` `top-left` `bottom-left` `bottom-right` |
+| themeName   | 主题名称                                                                          | String          | default     |                                                     |
 
 ### TabbarItem Slots
 
 | 名称 | 说明       | 回调参数 |
 | ---- | ---------- | -------- |
-| icon | 自定义图标 | *active* |
+| icon | 自定义图标 | _active_ |

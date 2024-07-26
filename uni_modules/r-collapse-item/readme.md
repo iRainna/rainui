@@ -1,6 +1,6 @@
-# r-collapse
+# r-collapse-item
 
-`r-collapse `折叠面板组件，将一组内容放置在多个折叠面板中，点击面板的标题可以展开或收缩其内容。
+`r-collapse-item`折叠面板组件，将一组内容放置在多个折叠面板中，点击面板的标题可以展开或收缩其内容。该组件为 [r-collapse](https://ext.dcloud.net.cn/plugin?id=18894)的子组件，导入[r-collapse](https://ext.dcloud.net.cn/plugin?id=18894)使用即可
 
 ## 示例
 

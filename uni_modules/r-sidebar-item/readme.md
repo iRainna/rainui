@@ -1,6 +1,6 @@
-# r-sidebar
+# r-sidebar-item
 
-`r-sidebar` 侧边导航，垂直展示的导航栏，用于在不同的内容区域之间进行切换。
+`r-sidebar-item` 侧边导航，垂直展示的导航栏，用于在不同的内容区域之间进行切换。该组件为[r-sidebar](https://ext.dcloud.net.cn/plugin?id=19390)的子组件，导入[r-sidebar](https://ext.dcloud.net.cn/plugin?id=19390)使用即可
 
 ## 示例
 
@@ -61,18 +61,18 @@ const onChange = (index) => {
 
 ### SidebarItem Props
 
-| 名称       | 说明                                                                              | 类型             | 默认值      | 可选值                                  |
-| ---------- | --------------------------------------------------------------------------------- | ---------------- | ----------- | --------------------------------------- |
-| title      | 内容                                                                              | String           | -           |                                         |
-| dot        | 是否显示图标右上角小红点                                                          | Boolean          | false       |                                         |
-| badge      | 图标右上角徽标的内容                                                              | String\|Number   | -           |                                         |
-| badgeColor | 徽标背景颜色                                                                      | String           | `#ee0a24`   |                                         |
-| max        | 徽标最大值，超过最大值会显示 {max}+，仅当 content 为数字时有效                    | String \| Number | -           |                                         |
+| 名称       | 说明                                                         | 类型             | 默认值      | 可选值                                  |
+| ---------- | ------------------------------------------------------------ | ---------------- | ----------- | --------------------------------------- |
+| title      | 内容                                                         | String           | -           |                                         |
+| dot        | 是否显示图标右上角小红点                                     | Boolean          | false       |                                         |
+| badge      | 图标右上角徽标的内容                                         | String\|Number   | -           |                                         |
+| badgeColor | 徽标背景颜色                                                 | String           | `#ee0a24`   |                                         |
+| max        | 徽标最大值，超过最大值会显示 {max}+，仅当 content 为数字时有效 | String \| Number | -           |                                         |
 | offset     | 设置徽标的偏移量，数组的两项分别对应水平向右和垂直向下方向的偏移量，默认单位为 px | Array            | -           |                                         |
-| showZero   | 当 徽标值为数字 0 或字符串 '0' 时，是否展示徽标                                   | Boolean          | true        |                                         |
-| position   | 徽标位置                                                                          | String           | `top-right` | `top-left` `bottom-left` `bottom-right` |
-| disabled   | 是否禁用该项                                                                      | Boolean          | false       |                                         |
-| themeName  | 主题名称                                                                          | String           | default     |                                         |
+| showZero   | 当 徽标值为数字 0 或字符串 '0' 时，是否展示徽标              | Boolean          | true        |                                         |
+| position   | 徽标位置                                                     | String           | `top-right` | `top-left` `bottom-left` `bottom-right` |
+| disabled   | 是否禁用该项                                                 | Boolean          | false       |                                         |
+| themeName  | 主题名称                                                     | String           | default     |                                         |
 
 ### Sidebar Events
 

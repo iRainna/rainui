@@ -1,7 +1,7 @@
 {
   "id": "r-step",
   "displayName": "r-step",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "r-step 步骤条，用于展示操作流程的各个环节，让用户了解当前的操作在整体流程中的位置。",
   "keywords": [
     "r-step"
