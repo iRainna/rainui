@@ -1,7 +1,7 @@
 {
   "id": "r-divider",
   "displayName": "r-divider",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "r-divider分割线组件,用于将内容分隔为多个区域",
   "keywords": [
     "r-divider"

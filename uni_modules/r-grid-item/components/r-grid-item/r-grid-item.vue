@@ -193,6 +193,7 @@ const rootStyle = computed(() => {
 
   cssVar.flexBasis = parentWidth / columnNum + "px";
   cssVar.width = parentWidth / columnNum + "px";
+  cssVar.opacity = parentWidth ? 1 : 0;
   if (square) {
     cssVar.paddingTop = parentWidth / columnNum + "px";
   } else if (gutter) {
@@ -271,6 +272,7 @@ onMounted(async () => {
     line-height: 1.5;
     // https://github.com/vant-ui/vant/issues/3894
     word-break: break-all;
+    text-align: center;
   }
 
   &__icon + &__text {

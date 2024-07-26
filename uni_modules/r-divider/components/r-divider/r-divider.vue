@@ -11,6 +11,7 @@
       ...getComponentThemeStyle,
       ...customStyle,
     }"
+    @click="onClick"
   >
     <slot v-if="!vertical"></slot>
   </view>
@@ -19,7 +20,7 @@
 import { computed, inject } from "vue";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
-
+const emit = defineEmits(["click"]);
 const props = defineProps({
   // 是否使用虚线
   dashed: {
@@ -73,6 +74,7 @@ const getComponentThemeStyle = computed(() => {
     ...getComponentThemeCssVar(themeName, componentsName),
   };
 });
+const onClick = (e) => emit("click", e);
 </script>
 <style lang="scss" scoped>
 .r-divider {
