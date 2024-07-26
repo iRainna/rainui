@@ -1,25 +1,74 @@
 <template>
   <view
     :class="{
-      'van-grid-item': true,
-      'van-grid-item--square': parentProps.square,
+      'r-grid-item': true,
+      'r-grid-item--square': parentProps.square,
     }"
     :style="{
       ...getComponentThemeStyle,
       ...rootStyle,
     }"
+    :hover-class="
+      parentProps.clickable ? 'r-grid-item__content--clickable' : 'none'
+    "
+    @click="onClick"
   >
     <view
       :class="{
-        'van-grid-item__content': true,
+        'r-grid-item__content': true,
         'r-hairline': true,
-        [`van-grid-item__content--${parentProps.direction}`]: true,
-        'van-grid-item__content--center': parentProps.center,
-        'van-grid-item__content--square': parentProps.square,
+        [`r-grid-item__content--${parentProps.direction}`]: true,
+        'r-grid-item__content--center': parentProps.center,
+
+        'r-grid-item__content--square': parentProps.square,
       }"
+      :hover-class="
+        parentProps.clickable ? 'r-grid-item__content--clickable' : 'none'
+      "
       :style="contentStyle"
-    ></view>
-    r-grid-item
+    >
+      <!-- renderContent -->
+      <slot v-if="$slots.default"></slot>
+      <template v-else>
+        <!-- renderIcon -->
+        <r-badge
+          :dot="dot"
+          :content="badge"
+          :color="badgeColor"
+          :max="max"
+          :showZero="showZero"
+          :position="position"
+        >
+          <slot v-if="$slots.icon" name="icon"></slot>
+          <view
+            :class="{
+              'r-grid-item__icon': true,
+            }"
+          >
+            <r-icon
+              :name="icon"
+              :size="
+                isNumeric(parentProps.iconSize)
+                  ? parentProps.iconSize + 'px'
+                  : parentProps.iconSize
+              "
+              :color="iconColor"
+              :prefix="iconPrefix"
+            ></r-icon>
+          </view>
+        </r-badge>
+        <!-- renderText -->
+        <slot name="text" v-if="!!$slots.text"></slot>
+        <text
+          v-else-if="text"
+          :class="{
+            'r-grid-item__text': true,
+          }"
+          :style="textStyle"
+          >{{ text }}</text
+        >
+      </template>
+    </view>
   </view>
 </template>
 <script setup>
@@ -32,8 +81,8 @@ import {
   GRID_KEY,
   isNumeric,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
-
-const { uniqueId, findIndex } = _;
+const emit = defineEmits(["click"]);
+const { uniqueId, findIndex, floor } = _;
 const props = defineProps({
   // 文字
   text: {
@@ -143,13 +192,17 @@ const rootStyle = computed(() => {
   const { square, gutter, columnNum } = parentProps.value;
 
   cssVar.flexBasis = parentWidth / columnNum + "px";
+  cssVar.width = parentWidth / columnNum + "px";
   if (square) {
     cssVar.paddingTop = parentWidth / columnNum + "px";
   } else if (gutter) {
+    cssVar.width = (parentWidth - gutter) / columnNum + "px";
+    cssVar.flexBasis = (parentWidth - gutter) / columnNum + "px";
+
     const gutterValue = isNumeric(gutter) ? gutter + "px" : gutter;
     cssVar.paddingRight = gutterValue;
     if (index.value >= +columnNum) {
-      style.marginTop = gutterValue;
+      cssVar.marginTop = gutterValue;
     }
   }
   return cssVar;
@@ -157,20 +210,42 @@ const rootStyle = computed(() => {
 
 const contentStyle = computed(() => {
   const cssVar = {};
-  const { border, gutter } = parentProps.value;
+  const { border, gutter, reverse, direction } = parentProps.value;
   if (border) {
     cssVar["border-width"] = `0 var(--r-border-width) var(--r-border-width) 0`;
   }
   if (border && gutter) {
-    cssVar["border-width"] = `var(--van-border-width)`;
+    cssVar["border-width"] = `var(--r-border-width)`;
+  }
+  if (reverse) {
+    if (direction == "horizontal") {
+      cssVar["flex-direction"] = `row-reverse`;
+    } else {
+      cssVar["flex-direction"] = `column-reverse`;
+    }
   }
 
   return cssVar;
 });
 
-onMounted(async () => {
-  console.log("parentInject", parentInject);
+const textStyle = computed(() => {
+  const cssVar = {};
+  const { reverse, direction } = parentProps.value;
+  if (reverse) {
+    if (direction == "horizontal") {
+      cssVar["margin"] = `0 var(--r-padding-xs) 0 0`;
+    } else {
+      cssVar["margin"] = `0 0 var(--r-padding-xs)`;
+    }
+  }
+  return cssVar;
+});
 
+const onClick = (e) => {
+  emit("click", e);
+};
+
+onMounted(async () => {
   componentsId.value = uniqueId(componentsName + "-");
   parentInject.setChildren({
     id: componentsId.value,
@@ -178,7 +253,7 @@ onMounted(async () => {
 });
 </script>
 <style lang="scss" scoped>
-.van-grid-item {
+.r-grid-item {
   position: relative;
   box-sizing: border-box;
 
@@ -187,19 +262,19 @@ onMounted(async () => {
   }
 
   &__icon {
-    font-size: var(--van-grid-item-icon-size);
+    font-size: var(--r-grid-item-icon-size);
   }
 
   &__text {
-    color: var(--van-grid-item-text-color);
-    font-size: var(--van-grid-item-text-font-size);
+    color: var(--r-grid-item-text-color);
+    font-size: var(--r-grid-item-text-font-size);
     line-height: 1.5;
     // https://github.com/vant-ui/vant/issues/3894
     word-break: break-all;
   }
 
   &__icon + &__text {
-    margin-top: var(--van-padding-xs);
+    margin-top: var(--r-padding-xs);
   }
 
   &__content {
@@ -207,12 +282,12 @@ onMounted(async () => {
     flex-direction: column;
     box-sizing: border-box;
     height: 100%;
-    padding: var(--van-grid-item-content-padding);
-    background: var(--van-grid-item-content-background);
+    padding: var(--r-grid-item-content-padding);
+    background: var(--r-grid-item-content-background);
 
     &::after {
       z-index: 1;
-      border-width: 0 var(--van-border-width) var(--van-border-width) 0;
+      border-width: 0 var(--r-border-width) var(--r-border-width) 0;
     }
 
     &--square {
@@ -230,30 +305,30 @@ onMounted(async () => {
     &--horizontal {
       flex-direction: row;
 
-      .van-grid-item__text {
-        margin: 0 0 0 var(--van-padding-xs);
+      .r-grid-item__text {
+        margin: 0 0 0 var(--r-padding-xs);
       }
     }
 
     &--reverse {
       flex-direction: column-reverse;
 
-      .van-grid-item__text {
-        margin: 0 0 var(--van-padding-xs);
+      .r-grid-item__text {
+        margin: 0 0 var(--r-padding-xs);
       }
     }
 
     &--horizontal &--reverse {
       flex-direction: row-reverse;
 
-      .van-grid-item__text {
-        margin: 0 var(--van-padding-xs) 0 0;
+      .r-grid-item__text {
+        margin: 0 var(--r-padding-xs) 0 0;
       }
     }
 
     &--surround {
       &::after {
-        border-width: var(--van-border-width);
+        border-width: var(--r-border-width);
       }
     }
 
@@ -261,7 +336,7 @@ onMounted(async () => {
       cursor: pointer;
 
       &:active {
-        background-color: var(--van-grid-item-content-active-color);
+        background-color: var(--r-grid-item-content-active-color);
       }
     }
   }

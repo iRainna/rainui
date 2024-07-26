@@ -34,7 +34,7 @@ const { proxy } = getCurrentInstance();
 const props = defineProps({
   // 列数
   columnNum: {
-    type: [Number, String],
+    type: [Number],
     default: 4,
   },
   //   图标大小，默认单位为px
@@ -44,7 +44,7 @@ const props = defineProps({
   },
   //   格子之间的间距，默认单位为px
   gutter: {
-    type: [Number, String],
+    type: [Number],
     default: 0,
   },
   //   是否显示边框
