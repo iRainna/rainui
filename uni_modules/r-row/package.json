@@ -1,12 +1,12 @@
 {
   "id": "r-row",
   "displayName": "r-row",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Layout布局组件配合r-col使用",
   "keywords": [
     "Layout"
 ],
-  "repository": "",
+  "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },

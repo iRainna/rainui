@@ -79,7 +79,7 @@
 
       <r-divider content-position="left">设置列元素间距</r-divider>
 
-      <r-row gutter="20rpx">
+      <r-row gutter="10">
         <r-col span="8">
           <view
             style="
@@ -111,6 +111,55 @@
             "
           >
             span: 8
+          </view>
+        </r-col>
+      </r-row>
+
+      <r-divider content-position="left">垂直间距 </r-divider>
+
+      <r-row :gutter="[20, 20]">
+        <r-col span="12">
+          <view
+            style="
+              background-color: #39a9ed;
+              text-align: center;
+              padding: 20rpx 0;
+            "
+          >
+            span: 12
+          </view>
+        </r-col>
+        <r-col span="12">
+          <view
+            style="
+              background-color: #66c6f2;
+              text-align: center;
+              padding: 20rpx 0;
+            "
+          >
+            span: 12
+          </view>
+        </r-col>
+        <r-col span="12">
+          <view
+            style="
+              background-color: #39a9ed;
+              text-align: center;
+              padding: 20rpx 0;
+            "
+          >
+            span: 12
+          </view>
+        </r-col>
+        <r-col span="12">
+          <view
+            style="
+              background-color: #66c6f2;
+              text-align: center;
+              padding: 20rpx 0;
+            "
+          >
+            span: 12
           </view>
         </r-col>
       </r-row>
@@ -154,7 +203,7 @@
 
       <r-divider content-position="left">对齐方式--右对齐</r-divider>
 
-      <r-row justify="flex-end">
+      <r-row justify="end">
         <r-col span="6">
           <view
             style="
