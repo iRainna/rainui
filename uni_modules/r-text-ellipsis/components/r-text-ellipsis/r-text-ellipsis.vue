@@ -282,10 +282,9 @@ const onClickAction = (event) => {
   emit("clickAction", event);
 };
 
-nextTick(async () => {
+onMounted(async () => {
   realRect.value = await GetRect(".r-text-ellipsis--real", proxy);
-});
-onMounted(() => {
+
   calcEllipsised();
 });
 
