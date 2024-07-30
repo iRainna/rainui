@@ -1,7 +1,7 @@
 {
   "id": "r-overlay",
   "displayName": "r-overlay",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "r-overlay 是一个基于 animate.css 的一个 vue3 的遮罩层组件，一般用于弹窗场景。",
   "keywords": [
     "animate.css"
@@ -31,7 +31,11 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-animation","r-theme"],
+    "dependencies": [
+      "r-animation",
+      "r-theme",
+      "r-utils"
+    ],
     "encrypt": [],
     "platforms": {
       "cloud": {

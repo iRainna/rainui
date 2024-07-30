@@ -65,10 +65,7 @@
 import paginationProps from "./props";
 import { computed, ref, inject } from "vue";
 
-import {
-  getThemeCssVar,
-  getComponentThemeCssVar,
-} from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 import { _, CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
 
 const props = defineProps(paginationProps);

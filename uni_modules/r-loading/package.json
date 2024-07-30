@@ -1,7 +1,7 @@
 {
   "id": "r-loading",
   "displayName": "r-loading",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "r-loading是一个加载图标，用于表示加载中的过渡状态。",
   "keywords": [
     "r-loading"
@@ -31,7 +31,11 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-icon","r-theme"],
+    "dependencies": [
+      "r-icon",
+      "r-theme",
+      "r-utils"
+    ],
     "encrypt": [],
     "platforms": {
       "cloud": {

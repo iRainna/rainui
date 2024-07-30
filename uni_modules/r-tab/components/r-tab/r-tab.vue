@@ -28,10 +28,7 @@ import {
   watch,
   nextTick,
 } from "vue";
-import {
-  getThemeCssVar,
-  getComponentThemeCssVar,
-} from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 import {
   _,
   TABS_KEY,

@@ -45,7 +45,6 @@
       ...styleComp,
     }"
   >
-    <!-- ...getThemeCssVar(themeName), -->
     <!-- renderContent -->
     <text v-if="!dot && hasContent">
       <slot v-if="$slots.content" name="content"></slot>

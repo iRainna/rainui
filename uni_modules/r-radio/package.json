@@ -1,7 +1,7 @@
 {
   "id": "r-radio",
   "displayName": "r-radio",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "r-radio单选框，在一组备选项中进行单选。",
   "keywords": [
     "r-radio"

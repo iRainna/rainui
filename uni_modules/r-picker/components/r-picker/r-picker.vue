@@ -36,7 +36,7 @@
         <text v-else>{{ confirmButtonText }}</text>
       </r-button>
     </view>
-    <slot name="toolbar" v-else></slot>
+    <slot name="toolbar" v-else-if="$slots.toolbar"></slot>
     <view
       v-if="loading"
       class="r-picker__loading"
@@ -56,7 +56,10 @@
       :style="{
         height: `calc(${optionHeight} * ${visibleOptionNum})`,
       }"
+      class="r-picker-content"
       :indicator-style="indicatorStyle"
+      :mark-style="`backgroundImage: none;display: none`"
+      mask-class="r-picker__mask"
     >
       <picker-view-column v-for="(m, n) in currentColumns" :key="n">
         <view
@@ -109,7 +112,7 @@
         <text v-else>{{ confirmButtonText }}</text>
       </r-button>
     </view>
-    <slot name="toolbar" v-else="$slots.toolbar"></slot>
+    <slot name="toolbar" v-else-if="$slots.toolbar"></slot>
   </view>
 </template>
 <script>
@@ -134,10 +137,7 @@ import {
   CONFIG_PROVIDER_KEY,
   GetRect,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
-import {
-  getThemeCssVar,
-  getComponentThemeCssVar,
-} from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 const emit = defineEmits(["cancel", "confirm", "change", "update:value"]);
 const { proxy } = getCurrentInstance();
 const props = defineProps(pickerProps);
