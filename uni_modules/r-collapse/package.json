@@ -1,7 +1,7 @@
 {
   "id": "r-collapse",
   "displayName": "r-collapse",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "`r-collapse `折叠面板组件，将一组内容放置在多个折叠面板中，点击面板的标题可以展开或收缩其内容。",
   "keywords": [
     "r-collapse"

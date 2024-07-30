@@ -1,5 +1,6 @@
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="加载"></page-header>
     <view style="padding: 20px">
       <r-divider content-position="left">基础使用</r-divider>
       <r-loading type="circular"></r-loading>
@@ -26,3 +27,7 @@
     </view>
   </r-config-provider>
 </template>
+<script setup>
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
+</script>

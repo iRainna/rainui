@@ -67,19 +67,19 @@ const data = ref({
 });
 
 const quoteData = computed(() => ({
-  "r-primary-color": data.value["r-blue"],
-  "r-success-color": data.value["r-green"],
-  "r-danger-color": data.value["r-red"],
-  "r-warning-color": data.value["r-orange"],
-  "r-text-color": data.value["r-gray-8"],
-  "r-text-color-2": data.value["r-gray-6"],
-  "r-text-color-3": data.value["r-gray-5"],
-  "r-active-color": data.value["r-gray-2"],
+  "r-primary-color": "var(--r-blue)",
+  "r-success-color": "var(--r-green)",
+  "r-danger-color": "var(--r-red)",
+  "r-warning-color": "var(--r-orange)",
+  "r-text-color": "var(--r-gray-8)",
+  "r-text-color-2": "var(--r-gray-6)",
+  "r-text-color-3": "var(--r-gray-5)",
+  "r-active-color": "var(--r-gray-2)",
 
-  "r-background": data.value["r-gray-1"],
-  "r-background-2": data.value["r-white"],
+  "r-background": "var(--r-gray-1)",
+  "r-background-2": "var(--r-white)",
 
-  "r-border-color": data.value["r-gray-3"],
+  "r-border-color": "var(--r-gray-3)",
 }));
 
 const baseData = computed(() => ({

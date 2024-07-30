@@ -1,5 +1,6 @@
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="宫格"></page-header>
     <view style="padding: 20rpx 0">
       <r-divider content-position="left">基本使用</r-divider>
       <r-grid>
@@ -70,3 +71,7 @@
     </view>
   </r-config-provider>
 </template>
+<script setup>
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
+</script>

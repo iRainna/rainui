@@ -84,9 +84,9 @@ const themeInject = inject(CONFIG_PROVIDER_KEY, {});
 const getComponentThemeStyle = computed(() => {
   let themeName = "default";
 
-  if (themeInject?.themeName) {
+  if (themeInject?.value?.themeName) {
     //传递过来的有就用传递了
-    themeName = themeInject?.themeName;
+    themeName = themeInject?.value?.themeName;
   }
 
   return {

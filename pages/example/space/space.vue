@@ -1,5 +1,6 @@
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="间距"></page-header>
     <view style="padding: 20rpx">
       <r-divider content-position="left">基本使用</r-divider>
       <r-space>
@@ -59,5 +60,7 @@
 
 <script setup>
 import { ref } from "vue";
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 const align = ref("center");
 </script>

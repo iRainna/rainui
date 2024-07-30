@@ -3,7 +3,7 @@
     :class="`r-stepper ${
       props.theme == 'round' ? 'r-stepper--' + props.theme : ''
     }`"
-    :style="getThemeCssVar(themeName)"
+    :style="getComponentThemeStyle"
   >
     <button
       v-show="showMinus"
@@ -53,7 +53,7 @@
   </view>
 </template>
 <script setup>
-import { ref, watch, shallowRef, computed } from "vue";
+import { ref, watch, shallowRef, computed, inject } from "vue";
 import StepperProps from "./props.js";
 import {
   callInterceptor,
@@ -61,10 +61,32 @@ import {
   isDef,
   addNumber,
   LONG_PRESS_START_TIME,
+  CONFIG_PROVIDER_KEY,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
-import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 
 const props = defineProps({ ...StepperProps });
+
+const componentsName = "r-stepper";
+const themeInject = inject(CONFIG_PROVIDER_KEY, {});
+
+const getComponentThemeStyle = computed(() => {
+  let themeName = props.themeName;
+
+  if (themeInject?.value?.themeName) {
+    //传递过来的有就用传递了
+    themeName = themeInject?.value?.themeName;
+  }
+  if (props.themeName != "default") {
+    //单独设置了组件的 就用单独设置的
+    themeName = props.themeName;
+  }
+
+  return {
+    ...getComponentThemeCssVar(themeName, "r-base"),
+    ...getComponentThemeCssVar(themeName, componentsName),
+  };
+});
 
 const LONG_PRESS_INTERVAL = 200;
 const emit = defineEmits([

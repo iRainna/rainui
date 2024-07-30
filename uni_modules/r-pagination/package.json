@@ -1,7 +1,7 @@
 {
   "id": "r-pagination",
   "displayName": "r-pagination",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "r-pagination分页组件,数据量过多时，采用分页的形式将数据分隔，每次只加载一个页面。",
   "keywords": [
     "r-pagination"

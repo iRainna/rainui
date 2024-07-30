@@ -27,5 +27,9 @@ const getComponentStyle = computed(() => {
     ...getThemeCssVar(props.themeName),
   };
 });
-provide(CONFIG_PROVIDER_KEY, { themeName: props.themeName });
+
+const toChildren = computed(() => ({
+  themeName: props.themeName,
+}));
+provide(CONFIG_PROVIDER_KEY, toChildren);
 </script>

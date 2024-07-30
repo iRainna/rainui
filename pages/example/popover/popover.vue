@@ -1,5 +1,6 @@
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="气泡弹出框"></page-header>
     <view style="padding: 20rpx" @click="hide">
       <r-divider content-position="left">基本使用</r-divider>
       <r-popover
@@ -114,6 +115,8 @@
 
 <script setup>
 import { ref, computed } from "vue";
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 const position = ref("bottom");
 const chooseValue = ref("bottom");
 const popupShow = ref(false);

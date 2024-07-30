@@ -1,5 +1,6 @@
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="侧边导航"></page-header>
     <view style="padding: 20px; background-color: #f8f7f6">
       <r-divider content-position="left">基本使用</r-divider>
       <r-sidebar v-model:value="active">
@@ -36,6 +37,8 @@
 
 <script setup>
 import { ref } from "vue";
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 const active = ref(0);
 const onChange = (index) => {
   console.log(index);

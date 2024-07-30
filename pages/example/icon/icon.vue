@@ -1,5 +1,6 @@
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="图标" :leftArrow="true"></page-header>
     <view style="padding: 20rpx">
       <r-divider content-position="left" @click="baseShow = !baseShow">
         基础图标--<text style="color: var(--r-primary-color)">{{
@@ -56,7 +57,10 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useThemeStore } from "@/stores/theme";
+const themeStore = useThemeStore();
+const themeName = computed(() => themeStore.theme);
 const baseShow = ref(true);
 const outlineShow = ref(true);
 const filledShow = ref(true);

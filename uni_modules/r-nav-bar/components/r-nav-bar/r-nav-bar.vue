@@ -2,7 +2,6 @@
   <view
     v-if="fixed && placeholder"
     :style="{
-      paddingTop: safeAreaInsetTop ? `${safeTop}px` : 0,
       borderBottom: border ? 'solid 1px transparent' : 0,
       height: Rect.height + 'px',
     }"
@@ -177,9 +176,9 @@ const themeInject = inject(CONFIG_PROVIDER_KEY, {});
 const getComponentThemeStyle = computed(() => {
   let themeName = props.themeName;
 
-  if (themeInject?.themeName) {
+  if (themeInject?.value?.themeName) {
     //传递过来的有就用传递了
-    themeName = themeInject?.themeName;
+    themeName = themeInject?.value?.themeName;
   }
   if (props.themeName != "default") {
     //单独设置了组件的 就用单独设置的

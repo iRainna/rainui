@@ -1,7 +1,7 @@
 {
   "id": "r-image",
   "displayName": "r-image",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "r-image是增强版的 image vue3组件，支持图片懒加载、加载中提示、加载失败提示。",
   "keywords": [
     "van-image"

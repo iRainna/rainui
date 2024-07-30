@@ -1,6 +1,6 @@
-
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="分割线"></page-header>
     <view style="padding: 20rpx">
       <view style="padding: 20rpx 0">基础用法</view>
       <r-divider />
@@ -39,3 +39,7 @@
     </view>
   </r-config-provider>
 </template>
+<script setup>
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
+</script>

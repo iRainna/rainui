@@ -1,5 +1,6 @@
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="布局"></page-header>
     <view style="padding: 20rpx 0">
       <r-divider content-position="left">基本使用--示例1</r-divider>
       <r-row>
@@ -319,13 +320,7 @@
   </r-config-provider>
 </template>
 
-<script>
-export default {
-  data() {
-    return {};
-  },
-  methods: {},
-};
+<script setup>
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 </script>
-
-<style></style>

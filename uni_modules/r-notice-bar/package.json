@@ -1,7 +1,7 @@
 {
   "id": "r-notice-bar",
   "displayName": "r-notice-bar",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "r-notice-bar 通知栏，用于循环播放展示一组消息通知。",
   "keywords": [
     "r-notice-bar"

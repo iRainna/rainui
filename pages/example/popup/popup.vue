@@ -1,5 +1,6 @@
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="弹出层"></page-header>
     <view style="padding: 20rpx">
       <r-divider content-position="left">弹出位置 </r-divider>
       <r-cell-group>
@@ -108,22 +109,32 @@
         />
       </r-cell-group>
     </view>
+
+    <r-popup
+      v-model:show="show"
+      :round="popupParams.round"
+      :position="popupParams.position || 'bottom'"
+      :closeable="popupParams.closeable"
+      :close-icon="popupParams.closeIcon || 'cross'"
+      :close-icon-position="popupParams.closeIconPosition || 'top-right'"
+      @click-close-icon="show = false"
+      safeAreaInsetTop
+      safeAreaInsetBottom
+      :customStyle="{
+        marginTop: !['bottom', 'center'].includes(popupParams.position)
+          ? '92rpx'
+          : '0',
+      }"
+    >
+      <view style="height: 100px; background-color: #fff">11111</view>
+    </r-popup>
   </r-config-provider>
-  <r-popup
-    v-model:show="show"
-    :round="popupParams.round"
-    :position="popupParams.position || 'bottom'"
-    :closeable="popupParams.closeable"
-    :close-icon="popupParams.closeIcon || 'cross'"
-    :close-icon-position="popupParams.closeIconPosition || 'top-right'"
-    @click-close-icon="show = false"
-  >
-    <view style="height: 100px; background-color: #fff">11111</view>
-  </r-popup>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 const show = ref(false);
 const popupParams = ref({});
 const open = (e) => {

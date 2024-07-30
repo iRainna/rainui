@@ -1,89 +1,89 @@
 <template>
-  <view class="content">
-    <r-config-provider>
-      <view style="padding: 20rpx">
-        <view style="padding: 20rpx 0">基本使用</view>
-        <r-date-picker
-          v-model:value="currentDate"
-          title="基本使用"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
-        <view style="padding: 20rpx 0">加载中</view>
-        <r-date-picker
-          v-model:value="currentDate2"
-          title="使用年月"
-          loading
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
-        <view style="padding: 20rpx 0">使用年</view>
-        <r-date-picker
-          v-model:value="currentDate3"
-          title="使用年"
-          columnsType="year"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
+  <r-config-provider :themeName="themeName">
+    <page-header title="日期选择"></page-header>
+    <view style="padding: 20rpx">
+      <view style="padding: 20rpx 0">基本使用</view>
+      <r-date-picker
+        v-model:value="currentDate"
+        title="基本使用"
+        @change="change"
+        @confirm="confirm"
+        @cancel="cancel"
+      />
+      <view style="padding: 20rpx 0">加载中</view>
+      <r-date-picker
+        v-model:value="currentDate2"
+        title="使用年月"
+        loading
+        @change="change"
+        @confirm="confirm"
+        @cancel="cancel"
+      />
+      <view style="padding: 20rpx 0">使用年</view>
+      <r-date-picker
+        v-model:value="currentDate3"
+        title="使用年"
+        columnsType="year"
+        @change="change"
+        @confirm="confirm"
+        @cancel="cancel"
+      />
 
-        <view style="padding: 20rpx 0">使用年月</view>
-        <r-date-picker
-          v-model:value="currentDate4"
-          title="使用年月"
-          columnsType="month"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
+      <view style="padding: 20rpx 0">使用年月</view>
+      <r-date-picker
+        v-model:value="currentDate4"
+        title="使用年月"
+        columnsType="month"
+        @change="change"
+        @confirm="confirm"
+        @cancel="cancel"
+      />
 
-        <view style="padding: 20rpx 0">使用时间到秒</view>
-        <r-date-picker
-          v-model:value="currentDate5"
-          title="使用时间到秒"
-          columnsType="second"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
+      <view style="padding: 20rpx 0">使用时间到秒</view>
+      <r-date-picker
+        v-model:value="currentDate5"
+        title="使用时间到秒"
+        columnsType="second"
+        @change="change"
+        @confirm="confirm"
+        @cancel="cancel"
+      />
 
-        <view style="padding: 20rpx 0">格式化</view>
-        <r-date-picker
-          v-model:value="currentDate6"
-          title="格式化"
-          :formatter="formatter"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
-        <view style="padding: 20rpx 0">使用过滤</view>
-        <r-date-picker
-          v-model:value="currentDate7"
-          title="使用过滤"
-          :filter="filter"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
-        <view style="padding: 20rpx 0">使用时分秒且格式化</view>
-        <r-date-picker
-          v-model:value="currentDate8"
-          title="使用时分秒且格式化"
-          :filter="filter"
-          columnsType="second"
-          :formatter="formatter"
-          :hideFields="['year', 'month', 'day']"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
+      <view style="padding: 20rpx 0">格式化</view>
+      <r-date-picker
+        v-model:value="currentDate6"
+        title="格式化"
+        :formatter="formatter"
+        @change="change"
+        @confirm="confirm"
+        @cancel="cancel"
+      />
+      <view style="padding: 20rpx 0">使用过滤</view>
+      <r-date-picker
+        v-model:value="currentDate7"
+        title="使用过滤"
+        :filter="filter"
+        @change="change"
+        @confirm="confirm"
+        @cancel="cancel"
+      />
+      <view style="padding: 20rpx 0">使用时分秒且格式化</view>
+      <r-date-picker
+        v-model:value="currentDate8"
+        title="使用时分秒且格式化"
+        :filter="filter"
+        columnsType="second"
+        :formatter="formatter"
+        :hideFields="['year', 'month', 'day']"
+        @change="change"
+        @confirm="confirm"
+        @cancel="cancel"
+      />
 
-        <view style="padding: 20rpx 0">配合r-popup</view>
-        <r-cell title="配合r-popup使用" is-link @click="show = true" />
-      </view>
-    </r-config-provider>
+      <view style="padding: 20rpx 0">配合r-popup</view>
+      <r-cell title="配合r-popup使用" is-link @click="show = true" />
+    </view>
+
     <r-popup v-model:show="show" position="bottom">
       <view style="width: 100%">
         <r-date-picker
@@ -96,11 +96,13 @@
         />
       </view>
     </r-popup>
-  </view>
+  </r-config-provider>
 </template>
 <script setup>
 import { ref } from "vue";
 import { _, dayjs } from "@/uni_modules/r-utils/js_sdk/index.js";
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 
 const currentDate = ref([]);
 const currentDate2 = ref([]);

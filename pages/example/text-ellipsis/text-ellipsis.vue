@@ -1,5 +1,6 @@
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="文本省略"></page-header>
     <view style="padding: 20rpx">
       <r-divider content-position="left">基本使用</r-divider>
       <r-text-ellipsis :content="text" />
@@ -47,6 +48,8 @@
 
 <script setup>
 import { ref } from "vue";
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 const text = ref("慢慢来，不要急，生活给你出了难题，可也终有一天会给出答案。");
 const text2 = ref(
   "似水流年是一个人所有的一切，只有这个东西，才真正归你所有。其余的一切，都是片刻的欢娱和不幸，转眼间就已跑到那似水流年里去了。"

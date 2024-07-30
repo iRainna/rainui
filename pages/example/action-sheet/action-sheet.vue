@@ -1,27 +1,26 @@
-
 <template>
-  <view class="content" style="padding: 0px; background-color: transparent">
-    <r-config-provider>
-      <view style="padding: 10px 0">
-        <r-divider content-position="left">基本使用</r-divider>
-        <r-cell-group inset>
-          <r-cell is-link title="基础用法" @click="show = true" />
-          <r-cell is-link title="展示图标" @click="show2 = true" />
-          <r-cell is-link title="展示取消按钮" @click="show3 = true" />
-          <r-cell is-link title="展示描述信息" @click="show4 = true" />
-        </r-cell-group>
+  <r-config-provider :themeName="themeName">
+    <page-header title="动作面板"></page-header>
+    <view style="padding: 10px 0">
+      <r-divider content-position="left">基本使用</r-divider>
+      <r-cell-group inset>
+        <r-cell is-link title="基础用法" @click="show = true" />
+        <r-cell is-link title="展示图标" @click="show2 = true" />
+        <r-cell is-link title="展示取消按钮" @click="show3 = true" />
+        <r-cell is-link title="展示描述信息" @click="show4 = true" />
+      </r-cell-group>
 
-        <r-divider content-position="left">选项状态</r-divider>
-        <r-cell-group inset>
-          <r-cell is-link title="选项状态" @click="show5 = true" />
-        </r-cell-group>
+      <r-divider content-position="left">选项状态</r-divider>
+      <r-cell-group inset>
+        <r-cell is-link title="选项状态" @click="show5 = true" />
+      </r-cell-group>
 
-        <r-divider content-position="left">自定义面板</r-divider>
-        <r-cell-group inset>
-          <r-cell is-link title="自定义面板" @click="show6 = true" />
-        </r-cell-group>
-      </view>
-    </r-config-provider>
+      <r-divider content-position="left">自定义面板</r-divider>
+      <r-cell-group inset>
+        <r-cell is-link title="自定义面板" @click="show6 = true" />
+      </r-cell-group>
+    </view>
+
     <r-action-sheet v-model:show="show" :actions="actions" @select="onSelect" />
     <r-action-sheet
       v-model:show="show2"
@@ -55,10 +54,12 @@
     <r-action-sheet v-model:show="show6" title="标题">
       <div style="padding: 16px 16px 160px">内容</div>
     </r-action-sheet>
-  </view>
+  </r-config-provider>
 </template>
 <script setup>
 import { ref } from "vue";
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 const show = ref(false);
 const actions = ref([
   { name: "选项一" },

@@ -1,7 +1,7 @@
 {
   "id": "r-button",
   "displayName": "r-button",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "r-button按钮组件，按钮用于触发一个操作，如提交表单。",
   "keywords": [
     "van-button"

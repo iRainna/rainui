@@ -58,14 +58,16 @@ const themeInject = inject(CONFIG_PROVIDER_KEY, {});
 const getComponentThemeStyle = computed(() => {
   let themeName = props.themeName;
 
-  if (themeInject?.themeName) {
+  if (themeInject?.value?.themeName) {
     //传递过来的有就用传递了
-    themeName = themeInject?.themeName;
+    themeName = themeInject?.value?.themeName;
   }
   if (props.themeName != "default") {
     //单独设置了组件的 就用单独设置的
     themeName = props.themeName;
   }
+
+  console.log("themeInject", themeInject.value);
 
   return {
     ...getComponentThemeCssVar(themeName, "r-base"),
@@ -77,7 +79,7 @@ const Rect = ref({});
 
 nextTick(async () => {
   Rect.value = await GetRect(".r-action-bar", proxy);
-  console.log("Rect", Rect);
+  console.log("Rect", Rect, themeInject);
 });
 
 const safeBottom = ref(0);

@@ -1,5 +1,6 @@
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="通知栏"></page-header>
     <view style="padding: 10rpx 0">
       <r-divider content-position="left">基本使用</r-divider>
       <r-notice-bar
@@ -42,3 +43,7 @@
     </view>
   </r-config-provider>
 </template>
+<script setup>
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
+</script>

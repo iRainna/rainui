@@ -1,6 +1,7 @@
 <template>
+  <page-header title="Rain-ui" :leftArrow="false"></page-header>
   <view class="content" style="padding: 0px; background-color: transparent">
-    <r-config-provider>
+    <r-config-provider :themeName="themeName">
       <view style="padding: var(--r-padding-xs)">
         <view
           style="
@@ -9,6 +10,7 @@
             align-items: center;
             gap: 24rpx;
             padding: 0 var(--r-padding-md);
+            position: relative;
           "
         >
           <r-image
@@ -39,6 +41,12 @@
               >多平台快速开发的UI框架</view
             >
           </view>
+          <r-icon
+            :name="themeName == 'default' ? 'icon-sun' : 'icon-moon'"
+            prefix="other"
+            style="position: absolute; right: 0px; top: 0px"
+            @click="changeTheme(themeName == 'default' ? 'dark' : 'default')"
+          ></r-icon>
         </view>
         <view
           style="
@@ -77,7 +85,10 @@
 </template>
 <script setup>
 import { _ } from "@/uni_modules/r-utils/js_sdk/index.js";
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
+
+import useTheme from "@/hooks/useTheme";
+const { themeName, changeTheme } = useTheme();
 
 const list = ref([
   {
@@ -246,10 +257,10 @@ const list = ref([
         title: "ActionBar-动作栏",
         url: "/pages/example/action-bar/action-bar",
       },
-	  {
-	    title: "Grid-宫格",
-	    url: "/pages/example/grid/grid",
-	  },
+      {
+        title: "Grid-宫格",
+        url: "/pages/example/grid/grid",
+      },
       {
         title: "NavBar-导航栏",
         url: "/pages/example/nar-bar/nar-bar",

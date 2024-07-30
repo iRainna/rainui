@@ -1,86 +1,80 @@
 <template>
-  <view class="content" style="padding: 0px; background-color: transparent">
-    <r-config-provider>
-      <r-collapse v-model:value="activeName2" accordion @change="onChange">
-        <r-collapse-item title="基础用法" name="1">
-          <r-uploader v-model:value="fileList" :after-read="afterRead" />
-        </r-collapse-item>
-        <r-collapse-item title="文件预览" name="2">
-          <r-uploader v-model:value="fileList" :after-read="afterRead" />
-        </r-collapse-item>
-        <r-collapse-item title="上传状态" name="3">
-          <r-uploader v-model:value="fileList" :after-read="afterRead" />
-        </r-collapse-item>
-        <r-collapse-item title="限制上传数量" name="4">
-          <r-uploader
-            v-model:value="fileList"
-            multiple
-            :max-count="2"
-            :after-read="afterRead"
-          />
-        </r-collapse-item>
-        <r-collapse-item title="限制上传大小" name="5">
-          <r-uploader
-            v-model:value="fileList"
-            multiple
-            :max-size="500 * 1024"
-            :after-read="afterRead"
-            @oversize="onOversize"
-          />
-        </r-collapse-item>
-        <r-collapse-item title="自定义上传样式" name="6">
-          <view style="min-height: 80px">
-            <r-uploader v-model:value="fileList" :after-read="afterRead">
-              <r-button icon="plus" type="primary">上传文件</r-button>
-            </r-uploader>
-          </view>
-        </r-collapse-item>
-
-        <r-collapse-item title="自定义预览样式" name="7">
+  <r-config-provider :themeName="themeName">
+    <page-header title="文件上传"></page-header>
+    <r-collapse v-model:value="activeName2" accordion @change="onChange">
+      <r-collapse-item title="基础用法" name="1">
+        <r-uploader v-model:value="fileList" :after-read="afterRead" />
+      </r-collapse-item>
+      <r-collapse-item title="文件预览" name="2">
+        <r-uploader v-model:value="fileList" :after-read="afterRead" />
+      </r-collapse-item>
+      <r-collapse-item title="上传状态" name="3">
+        <r-uploader v-model:value="fileList" :after-read="afterRead" />
+      </r-collapse-item>
+      <r-collapse-item title="限制上传数量" name="4">
+        <r-uploader
+          v-model:value="fileList"
+          multiple
+          :max-count="2"
+          :after-read="afterRead"
+        />
+      </r-collapse-item>
+      <r-collapse-item title="限制上传大小" name="5">
+        <r-uploader
+          v-model:value="fileList"
+          multiple
+          :max-size="500 * 1024"
+          :after-read="afterRead"
+          @oversize="onOversize"
+        />
+      </r-collapse-item>
+      <r-collapse-item title="自定义上传样式" name="6">
+        <view style="min-height: 80px">
           <r-uploader v-model:value="fileList" :after-read="afterRead">
-            <template #previewCover="file">
-              <view class="preview-cover">{{ file.item.name }}</view>
-            </template>
+            <r-button icon="plus" type="primary">上传文件</r-button>
           </r-uploader>
-        </r-collapse-item>
-        <r-collapse-item title="自定义预览大小" name="8">
-          <r-uploader
-            v-model:value="fileList"
-            :after-read="afterRead"
-            :preview-size="[120, 80]"
-          />
-        </r-collapse-item>
+        </view>
+      </r-collapse-item>
 
-        <r-collapse-item title="上传前置处理" name="9">
-          <r-uploader
-            v-model:value="fileList"
-            :before-read="beforeRead"
-            :after-read="afterRead"
-          />
-        </r-collapse-item>
-        <r-collapse-item title="禁用文件上传" name="10">
-          <r-uploader
-            v-model:value="fileList"
-            disabled
-            :after-read="afterRead"
-          />
-        </r-collapse-item>
+      <r-collapse-item title="自定义预览样式" name="7">
+        <r-uploader v-model:value="fileList" :after-read="afterRead">
+          <template #previewCover="file">
+            <view class="preview-cover">{{ file.item.name }}</view>
+          </template>
+        </r-uploader>
+      </r-collapse-item>
+      <r-collapse-item title="自定义预览大小" name="8">
+        <r-uploader
+          v-model:value="fileList"
+          :after-read="afterRead"
+          :preview-size="[120, 80]"
+        />
+      </r-collapse-item>
 
-        <r-collapse-item title="开启覆盖上传" name="11">
-          <r-uploader
-            v-model:value="fileList"
-            reupload
-            :after-read="afterRead"
-          />
-        </r-collapse-item>
-      </r-collapse>
-    </r-config-provider>
+      <r-collapse-item title="上传前置处理" name="9">
+        <r-uploader
+          v-model:value="fileList"
+          :before-read="beforeRead"
+          :after-read="afterRead"
+        />
+      </r-collapse-item>
+      <r-collapse-item title="禁用文件上传" name="10">
+        <r-uploader v-model:value="fileList" disabled :after-read="afterRead" />
+      </r-collapse-item>
+
+      <r-collapse-item title="开启覆盖上传" name="11">
+        <r-uploader v-model:value="fileList" reupload :after-read="afterRead" />
+      </r-collapse-item>
+    </r-collapse>
+
     <r-toast ref="toastRef"></r-toast>
-  </view>
+  </r-config-provider>
 </template>
 <script setup>
 import { ref } from "vue";
 import useToast from "@/uni_modules/r-toast/components/r-toast/useToast";
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 const toastRef = ref(null);
 const {
   showToast,

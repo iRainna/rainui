@@ -1,5 +1,6 @@
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="徽标"></page-header>
     <view style="padding: 20px">
       <r-divider content-position="left">基础用法 </r-divider>
       <r-space size="32rpx">
@@ -115,6 +116,10 @@
     </view>
   </r-config-provider>
 </template>
+<script setup>
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
+</script>
 <style scoped>
 .child {
   width: 40px;

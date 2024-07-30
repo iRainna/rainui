@@ -1,5 +1,6 @@
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="步骤条"></page-header>
     <view style="padding: 20rpx">
       <r-divider content-position="left">基本使用</r-divider>
       <r-steps
@@ -63,6 +64,8 @@
 
 <script setup>
 import { ref } from "vue";
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 const active = ref(1);
 const active2 = ref(2);
 const active3 = ref(0);

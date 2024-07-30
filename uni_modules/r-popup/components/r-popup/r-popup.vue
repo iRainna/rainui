@@ -12,7 +12,7 @@
     :color="overlay ? '' : 'transparent'"
     :customClass="overlayClass"
     :customStyle="{
-      ...getThemeCssVar(themeName),
+      ...getComponentThemeStyle,
       ...overlayStyle,
     }"
     :duration="duration"
@@ -29,7 +29,7 @@
       :style="{
         ...getPosition,
         boxSizing: 'border-box',
-        ...getThemeCssVar(themeName),
+        ...getComponentThemeStyle,
       }"
       style="display: flex; flex-direction: row; width: 100%; height: 100%"
     >
@@ -97,9 +97,30 @@
 <script setup>
 import PopupProps from "./props.js";
 import { getSystemInfo } from "@/uni_modules/r-utils/js_sdk/index.js";
-import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
-import { computed, ref, nextTick } from "vue";
+import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { computed, ref, inject, nextTick } from "vue";
 const props = defineProps({ ...PopupProps });
+const componentsName = "r-popup";
+const themeInject = inject(CONFIG_PROVIDER_KEY, {});
+
+const getComponentThemeStyle = computed(() => {
+  let themeName = props.themeName;
+
+  if (themeInject?.value?.themeName) {
+    //传递过来的有就用传递了
+    themeName = themeInject?.value?.themeName;
+  }
+  if (props.themeName != "default") {
+    //单独设置了组件的 就用单独设置的
+    themeName = props.themeName;
+  }
+
+  return {
+    ...getComponentThemeCssVar(themeName, "r-base"),
+    ...getComponentThemeCssVar(themeName, componentsName),
+  };
+});
 const emit = defineEmits([
   "click",
   "click-overlay",

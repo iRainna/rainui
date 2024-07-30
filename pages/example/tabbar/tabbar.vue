@@ -1,5 +1,6 @@
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="标签栏"></page-header>
     <view style="padding: 10rpx 0">
       <r-divider content-position="left">基本使用</r-divider>
       <r-tabbar v-model:value="active" :fixed="false">
@@ -63,6 +64,8 @@
 
 <script setup>
 import { ref } from "vue";
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 const active = ref(0);
 const active2 = ref("home");
 const icon = ref({

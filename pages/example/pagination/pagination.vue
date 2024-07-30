@@ -1,5 +1,6 @@
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="分页"></page-header>
     <view style="padding: 20rpx">
       <view style="padding: 20rpx 0">基础用法</view>
       <r-pagination
@@ -39,5 +40,7 @@
 </template>
 <script setup>
 import { ref } from "vue";
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 const currentPage = ref(1);
 </script>

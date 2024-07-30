@@ -1,5 +1,6 @@
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="导航栏"></page-header>
     <view style="padding: 10rpx 0">
       <r-divider content-position="left">基本使用</r-divider>
       <r-nav-bar title="标题" />
@@ -49,6 +50,8 @@
 </template>
 
 <script setup>
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 const onClickLeft = () => {
   uni.navigateBack();
 };

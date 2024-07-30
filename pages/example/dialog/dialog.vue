@@ -1,5 +1,6 @@
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="弹出框"></page-header>
     <view style="padding: 20px 0">
       <r-divider content-position="left">基础使用</r-divider>
       <r-cell-group inset>
@@ -18,40 +19,42 @@
         <r-cell title="自定义内容" isLink @click="show3 = true"></r-cell>
       </r-cell-group>
     </view>
+    <r-dialog
+      v-model:show="show"
+      :title="title"
+      closeOnClickOverlay
+      message="message"
+      :showCancelButton="showCancelButton"
+    ></r-dialog>
+
+    <r-dialog
+      v-model:show="show2"
+      title="title"
+      message="message"
+      showCancelButton
+      :beforeClose="beforeClose"
+    ></r-dialog>
+
+    <r-dialog
+      v-model:show="show3"
+      title="title"
+      message="message"
+      showCancelButton
+    >
+      <view style="width: 100%; padding: 10px; box-sizing: border-box">
+        <r-image
+          width="346px"
+          src="https://fastly.jsdelivr.net/npm/@vant/assets/apple-3.jpeg"
+        ></r-image>
+      </view>
+    </r-dialog>
   </r-config-provider>
-  <r-dialog
-    v-model:show="show"
-    :title="title"
-    closeOnClickOverlay
-    message="message"
-    :showCancelButton="showCancelButton"
-  ></r-dialog>
-
-  <r-dialog
-    v-model:show="show2"
-    title="title"
-    message="message"
-    showCancelButton
-    :beforeClose="beforeClose"
-  ></r-dialog>
-
-  <r-dialog
-    v-model:show="show3"
-    title="title"
-    message="message"
-    showCancelButton
-  >
-    <view style="width: 100%; padding: 10px; box-sizing: border-box">
-      <r-image
-        width="346px"
-        src="https://fastly.jsdelivr.net/npm/@vant/assets/apple-3.jpeg"
-      ></r-image>
-    </view>
-  </r-dialog>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 const show = ref(false);
 const show2 = ref(false);
 const show3 = ref(false);

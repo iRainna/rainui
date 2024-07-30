@@ -1,17 +1,17 @@
 import { computed, ref } from "vue";
-import { baseData } from "./base.js";
+
 export const toastData = computed(() => ({
   "r-toast-max-width": "70vw",
-  "r-toast-font-size": baseData.value["r-font-size-md"],
-  "r-toast-text-color": baseData.value["r-white"],
-  "r-toast-loading-icon-color": baseData.value["r-white"],
-  "r-toast-line-height": baseData.value["r-line-height-md"],
-  "r-toast-radius": baseData.value["r-radius-lg"],
+  "r-toast-font-size": "var(--r-font-size-md)",
+  "r-toast-text-color": "var(--r-white)",
+  "r-toast-loading-icon-color": "var(--r-white)",
+  "r-toast-line-height": "var(--r-line-height-md)",
+  "r-toast-radius": "var(--r-radius-lg)",
   "r-toast-background": "rgba(0, 0, 0, 0.7)",
   "r-toast-icon-size": "72rpx",
   "r-toast-text-min-width": "192rpx",
-  "r-toast-text-padding": `${baseData.value["r-padding-xs"]} ${baseData.value["r-padding-sm"]}`,
-  "r-toast-default-padding": baseData.value["r-padding-md"],
+  "r-toast-text-padding": `${"var(--r-padding-xs)"} ${"var(--r-padding-sm)"}`,
+  "r-toast-default-padding": "var(--r-padding-md)",
   "r-toast-default-width": "176rpx",
   "r-toast-default-min-height": "176rpx",
   "r-toast-position-top-distance": "20vh",

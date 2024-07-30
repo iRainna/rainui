@@ -136,7 +136,7 @@ import {
 } from "@/uni_modules/r-utils/js_sdk/index.js";
 
 import {
-  getThemeCssVar,
+
   getComponentThemeCssVar,
 } from "@/uni_modules/r-theme/js_sdk/index.js";
 const { proxy } = getCurrentInstance();
@@ -148,9 +148,9 @@ const themeInject = inject(CONFIG_PROVIDER_KEY, {});
 const getComponentThemeStyle = computed(() => {
   let themeName = props.themeName;
 
-  if (themeInject?.themeName) {
+  if (themeInject?.value?.themeName) {
     //传递过来的有就用传递了
-    themeName = themeInject?.themeName;
+    themeName = themeInject?.value?.themeName;
   }
   if (props.themeName != "default") {
     //单独设置了组件的 就用单独设置的

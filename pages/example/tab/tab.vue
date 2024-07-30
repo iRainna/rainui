@@ -1,5 +1,6 @@
 <template>
-  <r-config-provider>
+  <r-config-provider :themeName="themeName">
+    <page-header title="标签页"></page-header>
     <r-tabs v-model:active="tabActive">
       <r-tab title="标签 1" name="tab1">内容 1 </r-tab>
       <r-tab title="标签 2" name="tab2">内容 2</r-tab>
@@ -17,5 +18,7 @@
 
 <script setup>
 import { ref } from "vue";
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 const tabActive = ref("tab1");
 </script>

@@ -1,22 +1,11 @@
 <template>
-	<view>
-		image
-	</view>
+  <r-config-provider :themeName="themeName">
+    <page-header title="图片"></page-header>
+    <view> image </view>
+  </r-config-provider>
 </template>
 
-<script>
-	export default {
-		data() {
-			return {
-				
-			}
-		},
-		methods: {
-			
-		}
-	}
+<script setup>
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 </script>
-
-<style>
-
-</style>

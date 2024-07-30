@@ -43,7 +43,7 @@
       <r-icon
         :class="`r-loading__${type}`"
         name="icon-loading"
-        prefix="iconfont"
+        prefix="other"
         :size="size"
         :color="color"
       />
