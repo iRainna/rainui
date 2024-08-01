@@ -1,6 +1,6 @@
 # r-calendar
 
-`r-calendar` 日历， 日历组件用于选择日期或日期区间。
+`r-calendar` 日历， 日历组件用于选择日期或日期区间。该组件为子组件请使用[r-calendar](https://ext.dcloud.net.cn/plugin?id=19123) 
 
 ## 示例
 

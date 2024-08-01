@@ -1,7 +1,7 @@
 {
   "id": "r-icon",
   "displayName": "r-icon",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "r-icon 是一个使用 iconfont 的一个的字体图标组件，内置vantui图标库可直接使用，引用iconfont一些图标（可替换为自己的图标库）",
   "keywords": [
     "r-icon"

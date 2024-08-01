@@ -8,7 +8,7 @@
       ['van-icon-' + name]: true,
     }"
     @click="clickHandler"
-    v-if="name && show"
+    v-if="name"
     :style="{
       ...getComponentThemeStyle,
       ...customStyle,
@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import { inject, watch, watchEffect, ref, computed } from "vue";
+import { inject, ref, computed } from "vue";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 
 import { CONFIG_PROVIDER_KEY, _ } from "@/uni_modules/r-utils/js_sdk/index.js";
@@ -89,7 +89,7 @@ const props = defineProps({
     default: 0,
   },
 });
-const show = ref(true);
+
 const componentsName = "r-icon";
 const themeInject = inject(CONFIG_PROVIDER_KEY, {});
 
@@ -110,13 +110,6 @@ const getComponentThemeStyle = computed(() => {
     ...getComponentThemeCssVar(themeName, componentsName),
   });
 });
-
-watch(
-  () => [props.themeName, themeInject?.value?.themeName],
-  (v) => {
-    console.log("getComponentThemeStyle===>", v);
-  }
-);
 
 const emit = defineEmits(["click"]);
 const clickHandler = (e) => {

@@ -6659,7 +6659,7 @@ export default function() {
      * @returns {number|Object} Returns the timer id or timeout object.
      */
     var setTimeout = ctxSetTimeout || function(func, wait) {
-      console.log('root',root)
+     
       return root.setTimeout.call(window,func, wait);
     };
 

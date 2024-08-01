@@ -1,7 +1,7 @@
 {
   "id": "iRainna-lodash",
   "displayName": "lodash",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "包含lodash core 和 lodash full 由lodash github下载并修改部分代码而来 ",
   "keywords": [
     "lodash"
@@ -35,7 +35,8 @@
     "platforms": {
       "cloud": {
         "tcb": "y",
-        "aliyun": "y"
+        "aliyun": "y",
+        "alipay": "n"
       },
       "client": {
         "Vue": {

@@ -45,6 +45,7 @@ import { textEllipsisData } from "./text-ellipsis.js";
 import { stepsData } from "./steps.js";
 import { stepData } from "./step.js";
 import { gridItemData } from "./grid-item.js";
+import { calendarData } from "./calendar.js";
 
 export const data = computed(() => ({
   ...baseData.value,
@@ -93,6 +94,7 @@ export const data = computed(() => ({
   ...stepsData.value,
   ...stepData.value,
   ...gridItemData.value,
+  ...calendarData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -142,4 +144,5 @@ export const moduleData = computed(() => ({
   "r-steps": stepsData.value,
   "r-step": stepData.value,
   "r-grid-item": gridItemData.value,
+  "r-calendar": calendarData.value,
 }));

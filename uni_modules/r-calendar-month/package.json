@@ -1,10 +1,10 @@
 {
-  "id": "r-calendar",
-  "displayName": "r-calendar",
-  "version": "1.0.1",
-  "description": "r-calendar 日历， 日历组件用于选择日期或日期区间。",
+  "id": "r-calendar-month",
+  "displayName": "r-calendar-month",
+  "version": "1.0.0",
+  "description": "r-calendar-month 日历， 日历组件用于选择日期或日期区间。",
   "keywords": [
-    "r-calendar"
+    "r-calendar-month"
 ],
   "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
@@ -32,12 +32,9 @@
   },
   "uni_modules": {
     "dependencies": [
-      "r-calendar-header",
-      "r-calendar-month",
-      "r-icon",
+      "r-calendar-day",
       "r-theme",
-      "r-utils",
-      "r-toast"
+      "r-utils"
     ],
     "encrypt": [],
     "platforms": {
@@ -52,37 +49,37 @@
           "vue3": "y"
         },
         "App": {
-          "app-vue": "n",
+          "app-vue": "y",
           "app-nvue": "n",
           "app-uvue": "n"
         },
         "H5-mobile": {
-          "Safari": "n",
-          "Android Browser": "n",
-          "微信浏览器(Android)": "n",
-          "QQ浏览器(Android)": "n"
+          "Safari": "y",
+          "Android Browser": "y",
+          "微信浏览器(Android)": "y",
+          "QQ浏览器(Android)": "y"
         },
         "H5-pc": {
-          "Chrome": "n",
-          "IE": "n",
-          "Edge": "n",
-          "Firefox": "n",
-          "Safari": "n"
+          "Chrome": "y",
+          "IE": "y",
+          "Edge": "y",
+          "Firefox": "y",
+          "Safari": "y"
         },
         "小程序": {
-          "微信": "n",
-          "阿里": "n",
-          "百度": "n",
-          "字节跳动": "n",
-          "QQ": "n",
-          "钉钉": "n",
-          "快手": "n",
-          "飞书": "n",
-          "京东": "n"
+          "微信": "y",
+          "阿里": "y",
+          "百度": "y",
+          "字节跳动": "y",
+          "QQ": "y",
+          "钉钉": "y",
+          "快手": "y",
+          "飞书": "y",
+          "京东": "y"
         },
         "快应用": {
-          "华为": "n",
-          "联盟": "n"
+          "华为": "y",
+          "联盟": "y"
         }
       }
     }

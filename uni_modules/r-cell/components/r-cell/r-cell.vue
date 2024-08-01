@@ -20,13 +20,15 @@
     <view class="r-cell__divider" v-if="haveDivider"></view>
     <!-- left icon -->
     <slot name="icon" v-if="$slots.icon" />
-    <r-icon
-      v-if="icon && !$slots.icon"
-      :name="icon"
-      class="r-cell__left-icon"
-      customClass="r-cell__left-icon"
-      :prefix="iconPrefix"
-    ></r-icon>
+    <view v-else-if="icon && !$slots.icon" :class="r - cell__left - icon">
+      <r-icon
+        :name="icon"
+        size="inherit"
+        color="inherit"
+        :prefix="iconPrefix"
+      ></r-icon>
+    </view>
+
     <!-- title -->
     <view
       v-if="$slots.title || title"
@@ -53,17 +55,16 @@
     </view>
     <!-- right icon -->
     <slot v-if="$slots.rightIcon" name="rightIcon"></slot>
-    <r-icon
-      v-else-if="isLink"
-      class="r-cell__right-icon"
-      :name="`${
-        arrowDirection != 'right' ? 'arrow-' + arrowDirection : 'arrow'
-      }`"
-      size="var(--r-cell-icon-size)"
-      color="var(--r-cell-right-icon-color)"
-      :customClass="`r-cell__right-icon`"
-      :customStyle="rightIconCustomStyle"
-    ></r-icon>
+    <view class="r-cell__right-icon" v-else-if="isLink">
+      <r-icon
+        :name="`${
+          arrowDirection != 'right' ? 'arrow-' + arrowDirection : 'arrow'
+        }`"
+        size="inherit"
+        color="inherit"
+      ></r-icon>
+    </view>
+
     <!-- extra 自定义单元格最右侧的额外内容-->
     <slot name="extra" />
   </view>

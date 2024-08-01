@@ -268,6 +268,9 @@ const getIconPosition = computed(() => {
   cssStyles.display = "flex";
   cssStyles.width = getWidth.value;
   cssStyles.height = getHeight.value;
+  cssStyles.position = "fixed";
+  cssStyles.padding = "var(--r-padding-xs)";
+  cssStyles.boxSizing = "border-box";
 
   if (["top-left"].includes(props.closeIconPosition)) {
     cssStyles.justifyContent = "flex-start";
