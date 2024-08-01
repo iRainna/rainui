@@ -594,7 +594,7 @@ const months = computed(() => {
 });
 
 const onScroll = debounce(async (e) => {
-  const top = e.detail.scrollTop;
+  const top = e?.detail?.scrollTop || 0;
   // scrollTop.value = top;
   let list = children?.value || [];
   let length = list?.length || 0;
@@ -677,7 +677,11 @@ const scrollToCurrentDate = () => {
     }
   } else if (!canSwitch.value) {
     // setTimeout(() => {
-    onScroll();
+    onScroll({
+      detail: {
+        scrollTop: scrollTop.value,
+      },
+    });
     // }, 0);
   }
 };
