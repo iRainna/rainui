@@ -13,18 +13,6 @@ export const compareMonth = (date1, date2) => {
 };
 
 export const compareDay = (day1, day2) => {
-  // console.log(
-  //   "d1",
-  //   dayjs(day1).year(),
-  //   dayjs(day1).month(),
-  //   dayjs(day1).date()
-  // );
-  // console.log(
-  //   "d2",
-  //   dayjs(day2).year(),
-  //   dayjs(day2).month(),
-  //   dayjs(day2).date()
-  // );
   const compareMonthResult = compareMonth(day1, day2);
   if (compareMonthResult === 0) {
     return dayjs(day1).date() === dayjs(day2).date()
