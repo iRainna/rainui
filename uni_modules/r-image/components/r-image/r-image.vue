@@ -14,6 +14,7 @@
       :style="{
         ...getComponentThemeStyle,
         ...customStyle,
+        ...sizeStyle,
         overflow: 'hidden',
       }"
       :class="`${customClass}`"
@@ -22,8 +23,7 @@
         v-if="showLoading && isLoading && !isError"
         class="not-image"
         :style="{
-          width: width || (customStyle && customStyle.width) || '200rpx',
-          height: width || (customStyle && customStyle.width) || '200rpx',
+          ...sizeStyle,
           color: iconColor || 'var(--r-image-loading-icon-color)',
           fontSize: iconSize || 'var(--r-image-loading-icon-size)',
           borderRadius: round
@@ -45,8 +45,7 @@
         v-if="showError && !isLoading && isError"
         class="not-image"
         :style="{
-          width: width || (customStyle && customStyle.width) || '200rpx',
-          height: width || (customStyle && customStyle.width) || '200rpx',
+          ...sizeStyle,
           color: iconColor || 'var(--r-image-loading-icon-color)',
           fontSize: iconSize || 'var(--r-image-loading-icon-size)',
           borderRadius: round
@@ -68,12 +67,12 @@
         v-else
         :style="{
           ...customStyle,
-          width: width || (customStyle && customStyle.width) || '200rpx',
-          height: width || (customStyle && customStyle.width) || '200rpx',
+          ...sizeStyle,
           borderRadius: round
             ? 'var(--r-radius-max)'
             : radius || (customStyle && customStyle.borderRadius) || '0rpx',
           display: 'block',
+          opacity: isLoading || isError ? 0 : 1,
         }"
         :src="src"
         :mode="mode"
@@ -127,6 +126,19 @@ const load = () => {
   isLoading.value = false;
   isError.value = false;
 };
+
+const sizeStyle = computed(() => {
+  const { customStyle, width, height } = props;
+  const cssVar = {};
+  if (width || (customStyle && customStyle.width)) {
+    cssVar.width = width || (customStyle && customStyle.width);
+  }
+  if (height || (customStyle && customStyle.height)) {
+    cssVar.height = height || (customStyle && customStyle.height);
+  }
+
+  return cssVar;
+});
 const error = () => {
   isError.value = true;
   isLoading.value = false;
