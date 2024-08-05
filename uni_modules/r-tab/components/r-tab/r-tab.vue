@@ -4,7 +4,6 @@
     :class="{ 'r-tab': true, 'r-tab__panel': true }"
     :style="{
       ...getComponentThemeStyle,
-      padding: show ? '0 var(--r-padding-base)' : '0',
     }"
   >
     <view
@@ -13,7 +12,7 @@
         width: tabsWidth,
       }"
     >
-      <slot v-if="$slots.default"></slot>
+      <slot v-if="$slots.default && show"></slot>
     </view>
   </view>
 </template>
@@ -64,7 +63,7 @@ const getComponentThemeStyle = computed(() => {
 
 const id = uniqueId("tab-");
 
-const parent = inject(TABS_KEY);
+const parent = inject(TABS_KEY, {});
 const index = computed(() => {
   return findIndex(parent.children.value, (i) => i.id == id);
 });

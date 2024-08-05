@@ -20,7 +20,7 @@
     <view class="r-cell__divider" v-if="haveDivider"></view>
     <!-- left icon -->
     <slot name="icon" v-if="$slots.icon" />
-    <view v-else-if="icon && !$slots.icon" :class="r - cell__left - icon">
+    <view v-else-if="icon && !$slots.icon" class="r-cell__left-icon">
       <r-icon
         :name="icon"
         size="inherit"

@@ -49,7 +49,7 @@
             <!-- renderTitle -->
             <view
               v-for="(m, n) in children"
-              :key="n"
+              :key="n + '-' + m.id"
               class="tab-title"
               @click="(e) => onClickTab(n, e)"
               :class="{
@@ -57,10 +57,21 @@
                 [`r-tab--${type}`]: true,
                 'r-tab--grow': scrollable && !shrink,
                 'r-tab--shrink': shrink,
-                'r-tab--active': m.active,
+                'r-tab--active': state.currentIndex == n,
                 'r-tab--disabled': m.disabled,
               }"
-              :style="m.childrenStyle"
+              :style="{
+                ...m.childrenStyle,
+
+                color:
+                  state.currentIndex == n && type === 'card'
+                    ? 'var(--r-white)'
+                    : null,
+                backgroundColor:
+                  state.currentIndex == n && type === 'card'
+                    ? 'var(--r-tabs-default-color)'
+                    : null,
+              }"
             >
               <!-- renderText -->
               <r-badge
@@ -69,7 +80,7 @@
                 :content="m.badge"
                 :showZero="m.showZeroBadge"
               >
-                <text
+                <view
                   :class="{
                     'r-tab__text': true,
                     'r-tab__text--ellipsis': scrollable,
@@ -77,11 +88,17 @@
                 >
                   <!-- <text v-if="m.slots?.title"> {{ m.slots?.title() }}</text> -->
 
-                  <slot v-if="$slots.title" name="title" :item="m"></slot>
+                  <slot
+                    v-if="$slots.title"
+                    name="title"
+                    :item="m"
+                    :isActive="state.currentIndex == n"
+                    :index="n"
+                  ></slot>
                   {{ !$slots.title ? m.title : "" }}
-                </text>
+                </view>
               </r-badge>
-              <text
+              <view
                 v-else
                 :class="{
                   'r-tab__text': true,
@@ -89,15 +106,22 @@
                 }"
               >
                 <!-- <text v-if="m.slots?.title"> {{ m.slots?.title() }}</text>  -->
-                <slot v-if="$slots.title" :item="m" name="title"></slot>
+                <slot
+                  v-if="$slots.title"
+                  :item="m"
+                  name="title"
+                  :isActive="state.currentIndex == n"
+                  :index="n"
+                ></slot>
                 {{ !$slots.title ? m.title : "" }}
-              </text>
+              </view>
             </view>
             <!-- renderLine -->
             <view
               :class="{
                 'r-tabs__line': true,
               }"
+              v-if="type === 'line' && children.length"
               :style="state.lineStyle"
             ></view>
             <slot name="navRight"></slot>
@@ -123,6 +147,7 @@ import {
   watch,
   getCurrentInstance,
   inject,
+  onMounted,
 } from "vue";
 import TabsProps from "./props.js";
 
@@ -135,10 +160,8 @@ import {
   CONFIG_PROVIDER_KEY,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
 
-import {
-
-  getComponentThemeCssVar,
-} from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+const { max } = _;
 const { proxy } = getCurrentInstance();
 const props = defineProps(TabsProps);
 
@@ -204,7 +227,7 @@ const tabsContentStyle = computed(() => {
   const css = {};
   const left = state.currentIndex * tabsWidth.value;
   css.transform = `translateX(-${left}px) `;
-  css.transitionDuration = "300ms";
+  css.transitionDuration = `${props.duration}ms`;
   return css;
 });
 const scrollable = computed(
@@ -220,11 +243,21 @@ const getNavWidth = computed(() => {
     return "auto";
   }
 });
-const navStyle = computed(() => ({
-  borderColor: props.color,
-  background: props.background,
-  width: Math.max(getNavWidth.value, state.tabsRect?.width) + "px",
-}));
+const navStyle = computed(() => {
+  const cssVar = {
+    borderColor: props.color,
+    background: props.background,
+    width:
+      props.type == "card"
+        ? `calc(${max([
+            getNavWidth.value,
+            state.tabsRect?.width,
+          ])}px - var(--r-padding-md) - var(--r-padding-md))`
+        : `${max([getNavWidth.value, state.tabsRect?.width])}px`,
+  };
+
+  return cssVar;
+});
 
 const getTabName = (tab, index) => tab.name || index;
 
@@ -348,6 +381,7 @@ const onClickTab = (index, event) => {
   });
 };
 const onRendered = (name, title) => emit("rendered", name, title);
+
 provide(TABS_KEY, {
   children,
   setChildren,
@@ -373,6 +407,12 @@ watch(
     deep: true,
   }
 );
+
+onMounted(async () => {
+  await nextTick();
+  state.tabsRect = await GetRect(".r-tabs", proxy);
+  state.tabRect = await GetRect(".tab-title", proxy, true);
+});
 </script>
 
 <style lang="scss" scoped>
@@ -417,7 +457,7 @@ watch(
       border-right: none;
     }
 
-    &.r-tab--active {
+    & .r-tab--active {
       color: var(--r-white);
       background-color: var(--r-tabs-default-color);
     }
