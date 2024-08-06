@@ -282,6 +282,7 @@ import {
   isNumeric,
   _,
   calcDateNum,
+  isFunction,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { GetRect } from "../../../r-utils/js_sdk";
 
@@ -465,7 +466,12 @@ const getComponentThemeStyle = computed(() => {
     ...getComponentThemeCssVar(themeName, componentsName),
   };
 });
-
+const formatMonthTitle = (year, month) =>{
+	if(props.formatMonthTitle && isFunction(props.formatMonthTitle)){
+		return  props.formatMonthTitle(year,month)
+	}
+	return `${year}年${month}月`
+}  
 const children = ref([]);
 const setChildren = (e) => {
   children.value = [...children.value, e];

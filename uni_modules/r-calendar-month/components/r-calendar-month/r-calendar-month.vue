@@ -62,6 +62,7 @@ import {
   GetRect,
   _,
   getPrevDay,
+  isFunction,
   getNextDay,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
@@ -292,7 +293,7 @@ const days = computed(() => {
       bottomInfo: getBottomInfo(type),
     };
 
-    if (props.formatter) {
+    if (props?.formatter && isFunction(props.formatter)) {
       config = props.formatter(config);
     }
 
