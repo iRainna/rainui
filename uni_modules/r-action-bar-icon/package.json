@@ -1,12 +1,12 @@
 {
   "id": "r-action-bar-icon",
   "displayName": "r-action-bar-icon",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "r-action-bar-icon",
   "keywords": [
     "动作栏，用于为页面相关操作提供便捷交互。"
 ],
-  "repository": "",
+  "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },

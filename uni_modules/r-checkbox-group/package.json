@@ -5,7 +5,7 @@
   "description": "`r-checkbox`复选框，在一组备选项中进行多选。",
   "keywords": [
     "r-checkbox-group"
-],
+  ],
   "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
@@ -31,7 +31,11 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-theme","r-utils"],
+    "dependencies": [
+      "r-theme",
+      "r-utils",
+      "r-checkbox"
+    ],
     "encrypt": [],
     "platforms": {
       "cloud": {

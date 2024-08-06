@@ -122,3 +122,6 @@ const show = ref(1);
 | disabled  | 是否禁用按钮                               | Boolean | false     |                                                  |
 | loading   | 是否显示为加载状态                         | Boolean | false     |                                                  |
 | themeName | 主题名称                                   | String  | default   |                                                  |
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

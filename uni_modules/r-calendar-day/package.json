@@ -1,7 +1,7 @@
 {
   "id": "r-calendar-day",
   "displayName": "r-calendar-day",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "r-calendar-day 日历， 日历组件用于选择日期或日期区间。",
   "keywords": [
     "r-calendar-day"

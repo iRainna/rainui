@@ -112,3 +112,7 @@
 | ----- | -------------------------------------------------------------------------------- | -------- |
 | click | 点击按钮，且按钮状态不为加载或禁用时触发                                         | e        |
 | 其他  | 支持`uniapp`的[button](https://uniapp.dcloud.net.cn/component/button.html)的事件 |          |
+
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

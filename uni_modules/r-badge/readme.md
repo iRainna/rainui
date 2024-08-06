@@ -131,3 +131,5 @@
 | default | 徽标包裹的子元素 |
 | content | 自定义徽标内容   |
 
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

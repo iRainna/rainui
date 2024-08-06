@@ -56,7 +56,8 @@
             padding-bottom: 0;
           "
         >
-          基于uniapp+vue3实现的Rainui组件库提供了<text
+          Rain-ui是一个基于uniapp-vue3使用了lodash、dayjs、animate等工具库，实现了vantui样式风格的组件库。
+          共计提供了<text
             style="
               color: var(--r-primary-color);
               font-size: var(--r-font-size-md);

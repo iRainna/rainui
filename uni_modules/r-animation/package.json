@@ -1,12 +1,12 @@
 {
   "id": "r-animation",
   "displayName": "r-animation",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "r-animation是基于animate.css的过度动画组件，方便简洁的使用animate.css动画",
   "keywords": [
     "r-animation"
 ],
-  "repository": "",
+  "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },

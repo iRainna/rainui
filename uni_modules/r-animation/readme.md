@@ -57,3 +57,6 @@
 | opened | 打开动画结束时的回调 | -        |
 | close  | 关闭的回调           | -        |
 | closed | 关闭动画结束时的回调 | -        |
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

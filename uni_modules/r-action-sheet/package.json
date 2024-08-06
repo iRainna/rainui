@@ -1,7 +1,7 @@
 {
   "id": "r-action-sheet",
   "displayName": "r-action-sheet",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "r-action-sheet动作面板，底部弹起的模态面板，包含与当前情境相关的多个选项。",
   "keywords": [
     "r-action-sheet"

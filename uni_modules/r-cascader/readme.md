@@ -235,3 +235,7 @@ const onClose = () => {
 | update:value | 选中项变化时触发       | value                                       |
 | change       | 选中项变化时触发       | { _value_ , _selectedOptions_ , _tabIndex_} |
 | finish       | 全部选项选择完成后触发 | { _value_ , _selectedOptions_ , _tabIndex_} |
+
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

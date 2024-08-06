@@ -270,3 +270,5 @@ const onConfirm = (value, field) => {
 | prevYear    | 自定义上一年按钮       | {disabled}  |
 | nextMonth   | 自定义下个月按钮       | {disabled}  |
 | nextYear    | 自定义下一年按钮       | {disabled}  |
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

@@ -21,17 +21,23 @@
       <r-divider content-position="left">自定义内容 </r-divider>
       <r-grid :border="false" :column-num="3">
         <r-grid-item>
-          <r-image
+          <image
+            style="width: 100%"
+            mode="widthFix"
             src="https://fastly.jsdelivr.net/npm/@vant/assets/apple-1.jpeg"
           />
         </r-grid-item>
         <r-grid-item>
-          <r-image
+          <image
+            style="width: 100%"
+            mode="widthFix"
             src="https://fastly.jsdelivr.net/npm/@vant/assets/apple-2.jpeg"
           />
         </r-grid-item>
         <r-grid-item>
-          <r-image
+          <image
+            style="width: 100%"
+            mode="widthFix"
             src="https://fastly.jsdelivr.net/npm/@vant/assets/apple-3.jpeg"
           />
         </r-grid-item>
