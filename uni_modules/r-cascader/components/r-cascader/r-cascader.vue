@@ -4,6 +4,7 @@
       'r-cascader': true,
     }"
     :style="getComponentThemeStyle"
+    v-if="show"
   >
     <!-- renderHeader() -->
     <view
@@ -38,6 +39,7 @@
       :color="activeColor"
       :swipeable="swipeable"
       @clickTab="onClickTab"
+      shrink
     >
       <!-- renderTab -->
       <r-tab
@@ -117,6 +119,7 @@
 import {
   extend,
   CONFIG_PROVIDER_KEY,
+  _,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
 
 import { computed, watch, nextTick, inject, ref } from "vue";
@@ -124,6 +127,7 @@ import { computed, watch, nextTick, inject, ref } from "vue";
 import CascaderProps from "./props.js";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 const props = defineProps(CascaderProps);
+const { cloneDeep } = _;
 
 const componentsName = "r-cascader";
 const themeInject = inject(CONFIG_PROVIDER_KEY, {});
@@ -152,18 +156,38 @@ const emit = defineEmits([
   "change",
   "finish",
 ]);
-
-const {
-  text: textKey,
-  value: valueKey,
-  children: childrenKey,
-} = extend(
-  {
-    text: "text",
-    value: "value",
-    children: "children",
-  },
-  props.fieldNames
+const textKey = computed(
+  () =>
+    extend(
+      {
+        text: "text",
+        value: "value",
+        children: "children",
+      },
+      props.fieldNames
+    )["text"]
+);
+const valueKey = computed(
+  () =>
+    extend(
+      {
+        text: "text",
+        value: "value",
+        children: "children",
+      },
+      props.fieldNames
+    )["value"]
+);
+const childrenKey = computed(
+  () =>
+    extend(
+      {
+        text: "text",
+        value: "value",
+        children: "children",
+      },
+      props.fieldNames
+    )["children"]
 );
 
 const tabs = ref([]);
@@ -171,13 +195,13 @@ const activeTab = ref(0);
 
 const getSelectedOptionsByValue = (options, value) => {
   for (const option of options) {
-    if (option[valueKey] === value) {
+    if (option[valueKey.value] === value) {
       return [option];
     }
 
-    if (option[childrenKey]) {
+    if (option[childrenKey.value]) {
       const selectedOptions = getSelectedOptionsByValue(
-        option[childrenKey],
+        option[childrenKey.value],
         value
       );
       if (selectedOptions) {
@@ -202,10 +226,10 @@ const updateTabs = () => {
         };
 
         const next = optionsCursor.find(
-          (item) => item[valueKey] === option[valueKey]
+          (item) => item[valueKey.value] === option[valueKey.value]
         );
         if (next) {
-          optionsCursor = next[childrenKey];
+          optionsCursor = next[childrenKey.value];
         }
 
         return tab;
@@ -234,6 +258,7 @@ const updateTabs = () => {
   ];
 };
 const onSelect = (option, tabIndex) => {
+  console.log("opy", option, tabIndex, tabs.value);
   if (option.disabled) {
     return;
   }
@@ -243,18 +268,19 @@ const onSelect = (option, tabIndex) => {
   if (tabs.value.length > tabIndex + 1) {
     tabs.value = tabs.value.slice(0, tabIndex + 1);
   }
+  console.log(cloneDeep(tabs.value));
 
-  if (option[childrenKey]) {
+  if (option[childrenKey.value]) {
     const nextTab = {
-      options: option[childrenKey],
+      options: option[childrenKey.value],
       selected: null,
     };
-
-    if (tabs.value[tabIndex + 1]) {
-      tabs.value[tabIndex + 1] = nextTab;
-    } else {
-      tabs.value.push(nextTab);
-    }
+    tabs.value.push(nextTab);
+    // if (tabs.value[tabIndex + 1]) {
+    //   tabs.value[tabIndex + 1] = nextTab;
+    // } else {
+    //   tabs.value.push(nextTab);
+    // }
 
     nextTick(() => {
       activeTab.value++;
@@ -263,21 +289,24 @@ const onSelect = (option, tabIndex) => {
 
   const selectedOptions = tabs.value.map((tab) => tab.selected).filter(Boolean);
 
-  emit("update:value", option[valueKey]);
+  emit("update:value", option[valueKey.value]);
 
   const params = {
-    value: option[valueKey],
+    value: option[valueKey.value],
     tabIndex,
     selectedOptions,
   };
   emit("change", params);
 
-  if (!option[childrenKey]) {
+  if (!option[childrenKey.value]) {
     emit("finish", params);
   }
 };
 const onClose = () => emit("close");
-const onClickTab = ({ name, title }) => emit("clickTab", name, title);
+const onClickTab = ({ name, title }) => {
+  console.log("clickTab", name, title, tabs.value);
+  emit("clickTab", name, title);
+};
 
 updateTabs();
 watch(() => props.options, updateTabs, { deep: true });
@@ -286,7 +315,7 @@ watch(
   () => props.value,
   (value) => {
     if (value !== undefined) {
-      const values = tabs.value.map((tab) => tab.selected?.[valueKey]);
+      const values = tabs.value.map((tab) => tab.selected?.[valueKey.value]);
       if (values.includes(value)) {
         return;
       }

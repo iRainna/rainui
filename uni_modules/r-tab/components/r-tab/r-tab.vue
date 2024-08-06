@@ -25,6 +25,7 @@ import {
   ref,
   reactive,
   watch,
+  onUnmounted,
   nextTick,
 } from "vue";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
@@ -114,6 +115,9 @@ onMounted(() => {
     state.mounted = true;
     setChildren();
   });
+});
+onUnmounted(() => {
+  parent.delChildren(id);
 });
 </script>
 

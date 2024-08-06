@@ -221,6 +221,10 @@ const changeChildren = (v) => {
     init();
   });
 };
+
+const delChildren = (id) => {
+  children.value = children.value.filter((t) => t.id != id);
+};
 const tabsWidth = computed(() => state?.tabsRect?.width || 0);
 
 const tabsContentStyle = computed(() => {
@@ -391,6 +395,7 @@ provide(TABS_KEY, {
   state,
   onRendered,
   onClickTab,
+  delChildren,
 });
 watch(
   () => children.value,

@@ -53,7 +53,11 @@ export default {
       children: "children",
     }),
   },
-
+  //是否显示
+  show: {
+    type: Boolean,
+    default: true,
+  },
   //主题名称
   themeName: {
     type: String,
