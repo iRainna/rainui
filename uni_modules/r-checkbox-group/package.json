@@ -1,11 +1,11 @@
 {
   "id": "r-checkbox-group",
   "displayName": "r-checkbox-group",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "`r-checkbox`复选框，在一组备选项中进行多选。",
   "keywords": [
     "r-checkbox-group"
-  ],
+],
   "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"

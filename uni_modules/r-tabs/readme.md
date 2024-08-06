@@ -137,3 +137,6 @@ const onChange = (e) => {
 | change        | 当前激活的标签改变时触发 | name,title                    |
 | rendered      | 标签内容首次渲染时触发   | name,title                    |
 | clickTab      | 点击标签时触发           | { name,title,event,disabled } |
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

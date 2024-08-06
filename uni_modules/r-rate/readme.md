@@ -83,3 +83,6 @@ const value2 = ref(1.7);
 | ------------ | ------------------------ | -------- |
 | change       | value 值改变后触发的回调 | value    |
 | update:value | value 值改变时触发的回调 | value    |
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

@@ -1,7 +1,7 @@
 {
   "id": "r-form",
   "displayName": "r-form",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "r-form表单，用于数据录入、校验，支持输入框、单选框、复选框等类型",
   "keywords": [
     "r-form"

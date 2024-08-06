@@ -53,4 +53,6 @@ const keywords2 = ref(["难题", "终有一天", "答案"]);
 | unhighlightStyle | 非高亮元素的样式                                             | Object        | {}        |        |
 | themeName        | [r-theme](https://ext.dcloud.net.cn/plugin?id=18661)主题名称 | String        | `default` |        |
 
-###
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

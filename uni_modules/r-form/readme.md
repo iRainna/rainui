@@ -256,3 +256,7 @@ const validateField2 = (name) => {
 | clearValidateField | 移除指定表单项的校验结果。                                                                                                                                           |
 | resetFields        | 对表单特定字段进行重置，重置为初始值并移除校验结果                                                                                                                   |
 | resetForm          | 对整个表单进行重置，将所有字段值重置为初始值并移除校验结果                                                                                                           |
+
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

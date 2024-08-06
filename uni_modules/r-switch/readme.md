@@ -92,3 +92,6 @@ const checked = ref(false);
 | ------------ | ------------------ | -------- |
 | update:value | 开关状态切换时触发 | value    |
 | change       | 开关状态切换时触发 | value    |
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

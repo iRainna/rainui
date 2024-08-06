@@ -125,3 +125,6 @@ const checked2 = ref([]);
 | ------------ | ------------------------ | -------- |
 | update:value | 当绑定值变化时触发的事件 | value    |
 | change       | 当绑定值变化后触发的事件 | value    |
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

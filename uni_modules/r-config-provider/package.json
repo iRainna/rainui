@@ -1,7 +1,7 @@
 {
   "id": "r-config-provider",
   "displayName": "r-config-provider",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "r-config-provider 用于全局配置 rainui组件，提供深色模式、主题定制等能力。",
   "keywords": [
     "r-config-provider"

@@ -12,3 +12,4 @@
 | isNumeric    | 判断是否是数字   | isNumeric(1)//true isNumeric('sss')//false |
 | SplitUnitNum | 分割数字值和单位 | const {num,unit} = SplitUnitNum（str）     |
 
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

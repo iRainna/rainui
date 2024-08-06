@@ -107,4 +107,4 @@ const active3 = ref(0);
 | inactiveIcon | 自定义未激活状态图标                                    |
 | finishIcon   | 自定义已完成步骤对应的底部图标，优先级高于 inactiveIcon |
 
-###
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

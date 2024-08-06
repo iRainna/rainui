@@ -1,7 +1,7 @@
 {
   "id": "r-tab",
   "displayName": "r-tab",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "r-tab选项卡组件，用于在不同的内容区域之间进行切换。",
   "keywords": [
     "r-tab"

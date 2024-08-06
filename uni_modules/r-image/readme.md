@@ -158,3 +158,7 @@ const mode = computed(() => {
 | ----- | ---------- |
 | click | 点击时触发 |
 
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)
+

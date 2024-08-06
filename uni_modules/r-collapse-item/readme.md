@@ -131,3 +131,6 @@ const toggleAll = () => {
 | ------------ | -------------- | ---------------------------------------- |
 | update:value | 切换面板时触发 | activeNames: 类型与 v-model 绑定的值一致 |
 | change       | 切换面板时触发 | activeNames: 类型与 v-model 绑定的值一致 |
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

@@ -89,3 +89,6 @@ const onClick = (position) => {
 | ------ | ---------------- | ----------------------------- | ------ |
 | open   | 打开单元格侧边栏 | position // (`left`, `right`) | -      |
 | close  | 收起单元格侧边栏 | -                             | -      |
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

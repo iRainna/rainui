@@ -325,4 +325,6 @@ const getCount = computed(() => {
 | ------- | ------------------------------------------------------------------------------ |
 | default | 默认插槽(内部的[`rainui`](https://gitee.com/uv86e/rainui)组件样式将会统一切换) |
 
-###
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

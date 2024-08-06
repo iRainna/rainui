@@ -92,3 +92,6 @@ const onChange = (index) => {
 | 名称  | 说明       |
 | ----- | ---------- |
 | title | 自定义标题 |
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

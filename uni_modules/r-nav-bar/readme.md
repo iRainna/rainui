@@ -100,3 +100,6 @@ const onClickRight = () => {
 | title | 自定义标题         |
 | left  | 自定义左侧区域内容 |
 | right | 自定义右侧区域内容 |
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

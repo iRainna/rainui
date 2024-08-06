@@ -1,11 +1,11 @@
 {
   "id": "r-radio-group",
   "displayName": "r-radio-group",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "r-radio单选框，在一组备选项中进行单选。",
   "keywords": [
     "r-radio-group"
-  ],
+],
   "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"

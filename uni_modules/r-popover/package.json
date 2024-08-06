@@ -1,7 +1,7 @@
 {
   "id": "r-popover",
   "displayName": "r-popover",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "r-popover 气泡弹出框，弹出式的气泡菜单。",
   "keywords": [
     "r-popover"

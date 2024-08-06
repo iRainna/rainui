@@ -54,3 +54,5 @@
 | opened           | 打开弹出层且动画结束后触发 | -        |
 | closed           | 关闭弹出层且动画结束后触发 | -        |
 | update:show      | value值改变时触发          | value    |
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

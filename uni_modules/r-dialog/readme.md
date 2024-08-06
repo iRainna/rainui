@@ -136,3 +136,6 @@ const open2 = () => {
 | default | 自定义内容         | -    |
 | title   | 自定义标题         | -    |
 | footer  | 自定义底部按钮区域 | -    |
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

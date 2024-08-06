@@ -10,3 +10,7 @@
 | getTheme       | 获取主题          | Function | (name= "default") => themeObject.value[name]  |
 | addTheme       | 增加主题          | Function | (name, object) =>void  详细可在index.js内查看 |
 | getThemeCssVar | 获取主题的css变量 | Object   |                                               |
+
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

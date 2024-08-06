@@ -384,3 +384,7 @@ const copy = (m) => {
 | 事件名 | 说明       | 回调参数 |
 | ------ | ---------- | -------- |
 | click  | 点击的回调 | e        |
+
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

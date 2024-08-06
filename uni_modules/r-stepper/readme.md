@@ -108,3 +108,4 @@ const beforeChange = (value) => {
 | minus        | 点击减少按钮时触发     | -     |
 | overlimit    | 点击不可用的按钮时触发 | -     |
 
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

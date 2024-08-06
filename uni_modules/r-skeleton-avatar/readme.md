@@ -104,3 +104,7 @@ const loading = ref(true);
 | -------- | ---------- |
 | default  | 骨架屏内容 |
 | template | 自定义内容 |
+
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

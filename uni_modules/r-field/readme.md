@@ -290,3 +290,6 @@ const formatter = (value) => value.replace(/\d/g, "");
 | clickLeftIcon  | 点击左侧图标时触发                                                                                                                         | event                |
 | clickRightIcon | 点击右侧图标时触发                                                                                                                         | event                |
 | 其他           | `uniapp` [input](https://uniapp.dcloud.net.cn/component/input.html) [textarea](https://uniapp.dcloud.net.cn/component/textarea.html)的事件 |                      |
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

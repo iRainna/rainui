@@ -38,3 +38,6 @@
 | ------- | -------------- |
 | default | 加载文案       |
 | icon    | 自定义加载图标 |
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

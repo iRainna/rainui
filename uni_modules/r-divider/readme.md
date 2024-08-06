@@ -64,4 +64,6 @@
 | ------- | ---------- | ---- |
 | default | 自内容页码 | -    |
 
-###
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

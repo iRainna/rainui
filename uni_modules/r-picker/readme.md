@@ -150,3 +150,6 @@ const cancel = () => {
 | cancel       | 点击取消按钮时触发   | -                                                      |
 | change       | 选中的选项改变后触发 | { selectedValues, selectedOptions, selectedIndexes }   |
 | update:value | 选中的选项改变时触发 | selectedValues                                         |
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

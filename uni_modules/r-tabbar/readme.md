@@ -128,3 +128,6 @@ const onChange = (e) => {
 | 名称 | 说明       | 回调参数 |
 | ---- | ---------- | -------- |
 | icon | 自定义图标 | *active* |
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

@@ -302,3 +302,6 @@ const onChange = (name) => {
 | default       | 自定义上传区域                 | -          |
 | previewDelete | 自定义删除按钮                 | -          |
 | previewCover  | 自定义覆盖在预览区域上方的内容 | item,index |
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

@@ -272,3 +272,6 @@ const onSelect = (action) => {
 > [!IMPORTANT]
 >
 > 该组件未实现点击外部元素后关闭菜单，需自行在外层盒子上添加事件处理
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

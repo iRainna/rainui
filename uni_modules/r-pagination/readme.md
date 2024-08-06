@@ -85,3 +85,6 @@ const currentPage = ref(1);
 | ------------ | -------------- | -------- |
 | change       | 页码改变时触发 | value    |
 | update:value | 页码改变时触发 | value    |
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)
