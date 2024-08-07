@@ -1,11 +1,11 @@
 {
   "id": "rain-ui",
   "displayName": "rain-ui",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "rain-ui 是一个基于uniapp-vue3使用了lodash、dayjs、animate等工具库实现的vantui样式风格的组件库。共计提供了 40+个组件，自定义主题，按需引入，轻量高效。",
   "keywords": [
     "rain-ui"
-  ],
+],
   "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
@@ -96,37 +96,37 @@
           "vue3": "y"
         },
         "App": {
-          "app-vue": "n",
+          "app-vue": "y",
           "app-nvue": "n",
           "app-uvue": "n"
         },
         "H5-mobile": {
-          "Safari": "n",
-          "Android Browser": "n",
-          "微信浏览器(Android)": "n",
-          "QQ浏览器(Android)": "n"
+          "Safari": "y",
+          "Android Browser": "y",
+          "微信浏览器(Android)": "y",
+          "QQ浏览器(Android)": "y"
         },
         "H5-pc": {
-          "Chrome": "n",
-          "IE": "n",
-          "Edge": "n",
-          "Firefox": "n",
-          "Safari": "n"
+          "Chrome": "y",
+          "IE": "y",
+          "Edge": "y",
+          "Firefox": "y",
+          "Safari": "y"
         },
         "小程序": {
-          "微信": "n",
-          "阿里": "n",
-          "百度": "n",
-          "字节跳动": "n",
-          "QQ": "n",
-          "钉钉": "n",
-          "快手": "n",
-          "飞书": "n",
-          "京东": "n"
+          "微信": "y",
+          "阿里": "y",
+          "百度": "y",
+          "字节跳动": "y",
+          "QQ": "y",
+          "钉钉": "y",
+          "快手": "y",
+          "飞书": "y",
+          "京东": "y"
         },
         "快应用": {
-          "华为": "n",
-          "联盟": "n"
+          "华为": "y",
+          "联盟": "y"
         }
       }
     }
