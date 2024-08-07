@@ -1,0 +1,134 @@
+{
+  "id": "rain-ui",
+  "displayName": "rain-ui",
+  "version": "1.0.1",
+  "description": "rain-ui 是一个基于uniapp-vue3使用了lodash、dayjs、animate等工具库实现的vantui样式风格的组件库。共计提供了 40+个组件，自定义主题，按需引入，轻量高效。",
+  "keywords": [
+    "rain-ui"
+  ],
+  "repository": "https://gitee.com/uv86e/rainui.git",
+  "engines": {
+    "HBuilderX": "^3.1.0"
+  },
+  "dcloudext": {
+    "type": "component-vue",
+    "sale": {
+      "regular": {
+        "price": "0.00"
+      },
+      "sourcecode": {
+        "price": "0.00"
+      }
+    },
+    "contact": {
+      "qq": ""
+    },
+    "declaration": {
+      "ads": "无",
+      "data": "插件不采集任何数据",
+      "permissions": "无"
+    },
+    "npmurl": ""
+  },
+  "uni_modules": {
+    "dependencies": [
+      "r-theme",
+      "r-utils",
+      "r-action-bar",
+      "r-action-sheet",
+      "r-animation",
+      "r-badge",
+      "r-button",
+      "r-cascader",
+      "r-cell",
+      "r-cell-group",
+      "r-checkbox",
+      "r-checkbox-group",
+      "r-col",
+      "r-collapse",
+      "r-config-provider",
+      "r-date-picker",
+      "r-dialog",
+      "r-divider",
+      "r-field",
+      "r-form",
+      "r-grid",
+      "r-highlight",
+      "r-icon",
+      "r-image",
+      "r-loading",
+      "r-nav-bar",
+      "r-overlay",
+      "r-pagination",
+      "r-picker",
+      "r-popover",
+      "r-popup",
+      "r-radio",
+      "r-radio-group",
+      "r-rate",
+      "r-row",
+      "r-region",
+      "r-sidebar",
+      "r-skeleton",
+      "r-space",
+      "r-steps",
+      "r-stepper",
+      "r-calendar",
+      "r-switch",
+      "r-tabs",
+      "r-tabbar",
+      "r-tag",
+      "r-text-ellipsis",
+      "r-toast",
+      "r-uploader",
+      "r-swipe-cell"
+    ],
+    "encrypt": [],
+    "platforms": {
+      "cloud": {
+        "tcb": "y",
+        "aliyun": "y",
+        "alipay": "y"
+      },
+      "client": {
+        "Vue": {
+          "vue2": "n",
+          "vue3": "y"
+        },
+        "App": {
+          "app-vue": "n",
+          "app-nvue": "n",
+          "app-uvue": "n"
+        },
+        "H5-mobile": {
+          "Safari": "n",
+          "Android Browser": "n",
+          "微信浏览器(Android)": "n",
+          "QQ浏览器(Android)": "n"
+        },
+        "H5-pc": {
+          "Chrome": "n",
+          "IE": "n",
+          "Edge": "n",
+          "Firefox": "n",
+          "Safari": "n"
+        },
+        "小程序": {
+          "微信": "n",
+          "阿里": "n",
+          "百度": "n",
+          "字节跳动": "n",
+          "QQ": "n",
+          "钉钉": "n",
+          "快手": "n",
+          "飞书": "n",
+          "京东": "n"
+        },
+        "快应用": {
+          "华为": "n",
+          "联盟": "n"
+        }
+      }
+    }
+  }
+}
