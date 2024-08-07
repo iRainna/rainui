@@ -1,10 +1,17 @@
+# 构建 VitePress 站点并将其部署到 GitHub Pages 的示例工作流程
+#
 name: Deploy VitePress site to Pages
 
 on:
+  # 在针对 `main` 分支的推送上运行。如果你
+  # 使用 `master` 分支作为默认分支，请将其更改为 `master`
   push:
     branches: [master]
 
-# 设置tokenn访问权限
+  # 允许你从 Actions 选项卡手动运行此工作流程
+  workflow_dispatch:
+
+# 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -22,40 +29,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2 # 安装pnpm并添加到环境变量
-        with:
-          version: 8.6.12 # 指定需要的 pnpm 版本
+      # - uses: pnpm/action-setup@v3 # 如果使用 pnpm，请取消注释
+      # - uses: oven-sh/setup-bun@v1 # 如果使用 Bun，请取消注释
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: pnpm # 设置缓存
+          node-version: 20
+          cache: npm # 或 pnpm / yarn
       - name: Setup Pages
-        uses: actions/configure-pages@v3  # 在工作流程自动配置GithubPages
+        uses: actions/configure-pages@v4
       - name: Install dependencies
-        run: pnpm install # 安装依赖
+        run: npm ci # 或 pnpm install / yarn install / bun install
       - name: Build with VitePress
-        run: |
-          pnpm run docs:build # 启动项目
-          touch .nojekyll  # 通知githubpages不要使用Jekyll处理这个站点，不知道为啥不生效，就手动搞了
+        run: npm run docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2  # 上传构建产物
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: .vitepress/dist # 指定上传的路径，当前是根目录，如果是docs需要加docs/的前缀
+          path: docs/.vitepress/dist
 
   # 部署工作
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }} # 从后续的输出中获取部署后的页面URL
-    needs: build    # 在build后面完成
-    runs-on: ubuntu-latest  # 运行在最新版本的ubuntu系统上
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
     name: Deploy
     steps:
       - name: Deploy to GitHub Pages
-        id: deployment  # 指定id
-        uses: actions/deploy-pages@v2 # 将之前的构建产物部署到github pages中
+        id: deployment
+        uses: actions/deploy-pages@v4
