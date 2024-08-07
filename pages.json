@@ -296,6 +296,20 @@
 			{
 				"navigationBarTitleText" : "宫格"
 			}
+		},
+		{
+			"path" : "pages/example/configProvider/configProvider",
+			"style" : 
+			{
+				"navigationBarTitleText" : "全局配置"
+			}
+		},
+		{
+			"path" : "pages/example/animation/animation",
+			"style" : 
+			{
+				"navigationBarTitleText" : "动画"
+			}
 		}
 	],
 	"globalStyle": {

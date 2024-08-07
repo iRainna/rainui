@@ -1,3 +1,10 @@
+# r-config-provider 全局配置
+
+r-config-provider 全局配置,用于全局配置 组件，提供深色模式、主题定制等能力
+
+## 示例
+
+```vue
 <template>
   <page-header title="Rain-ui" :leftArrow="false"></page-header>
   <view class="content" style="padding: 0px; background-color: transparent">
@@ -102,10 +109,6 @@ const list = ref([
       {
         title: "Cell-单元格",
         url: "/pages/example/cell/cell",
-      },
-      {
-        title: "ConfigProvider-全局配置",
-        url: "/pages/example/configProvider/configProvider",
       },
       {
         title: "Icon-图标",
@@ -304,3 +307,21 @@ const getCount = computed(() => {
   );
 });
 </script>
+```
+
+## API
+
+### Props
+
+| 名称        | 说明             | 类型   | 默认值  | 可选值 |
+| ----------- | ---------------- | ------ | ------- | ------ |
+| themeName   | r-theme 主题样式 | String | default |        |
+| customStyle | 自定义样式       | Object | {}      |        |
+
+### Slots
+
+| 名称    | 说明                                                                           |
+| ------- | ------------------------------------------------------------------------------ |
+| default | 默认插槽(内部的[`rainui`](https://gitee.com/uv86e/rainui)组件样式将会统一切换) |
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

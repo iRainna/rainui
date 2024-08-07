@@ -28,3 +28,6 @@ pnpm-lock.yaml
 /package-lock.json
 /.build_cache
 /.dist_cache
+
+docs/.vitepress/dist
+docs/.vitepress/cache
