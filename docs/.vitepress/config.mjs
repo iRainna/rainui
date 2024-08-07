@@ -12,6 +12,9 @@ export default defineConfig({
       { text: "组件", link: "/guide/install" },
     ],
     logo: "/logo.jpg",
+    search: {
+      provider: "local",
+    },
 
     sidebar: [
       {
