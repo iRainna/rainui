@@ -25,7 +25,7 @@ pnpm-lock.yaml
 *.njsproj
 *.sln
 *.sw?
-/package-lock.json
+# /package-lock.json
 /.build_cache
 /.dist_cache
 
