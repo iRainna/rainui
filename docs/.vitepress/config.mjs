@@ -4,6 +4,7 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   title: "Rainui",
   description: "使用uniapp-vue3的ui库",
+  base: "/rainui/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
