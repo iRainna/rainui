@@ -15,3 +15,11 @@
 - 在`gitee`选择克隆/下载，再通过 HbuilderX 运行即可
 
 下载地址：https://gitee.com/uv86e/rainui
+
+#### 通过 GitHub 获取
+
+您可以在`GitHub`上获取。
+
+- 在`github`选择克隆/下载，再通过 HbuilderX 运行即可
+
+下载地址：https://github.com/iRainna/rainui
