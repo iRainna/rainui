@@ -250,12 +250,13 @@ const onConfirm = () => {
       ).fill(0),
     ];
   }
-  let values = indexValue.value.map(
-    (t, index) => currentColumns.value[index][t][fields.value.value]
-  );
-  let options = indexValue.value.map(
-    (t, index) => currentColumns.value[index][t]
-  );
+
+  let values = indexValue.value
+    .filter((t, index) => index < currentColumns.value.length)
+    .map((t, index) => currentColumns.value[index][t][fields.value.value]);
+  let options = indexValue.value
+    .filter((t, index) => index < currentColumns.value.length)
+    .map((t, index) => currentColumns.value[index][t]);
   emit("confirm", {
     selectedValues: values,
     selectedOptions: options,

@@ -123,6 +123,7 @@ const cancel = () => {
 };
 
 const open = (e) => {
+  pickerValues.value = [];
   show.value = true;
   columns.value = e.columns || [];
   loading.value = e.loading || false;
