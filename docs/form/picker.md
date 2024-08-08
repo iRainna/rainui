@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/picker/picker'
+ </script>
+
 # r-picker
 
 `r-picker` 选择器，提供多个选项集合供用户选择，支持单列选择、多列选择和级联选择，通常与 r-popup 弹出层组件配合使用。

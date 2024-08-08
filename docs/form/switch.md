@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/switch/switch'
+ </script>
+
 # r-switch
 
 r-switch 开关，用于在打开和关闭状态之间进行切换。

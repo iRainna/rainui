@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/dialog/dialog'
+ </script>
+
 # r-dialog
 
 `r-dialog` 弹出框，弹出模态框，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。

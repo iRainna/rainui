@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/overlay/overlay'
+ </script>
+
 # r-overlay
 
 `r-overlay` 是一个基于 `r-animation` 的一个 vue3 的遮罩层组件，一般用于弹窗场景。

@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/tabbar/tabbar'
+ </script>
+
 # r-tabbar
 
 `r-tabbar` 标签栏，底部导航栏，用于在不同页面之间进行切换。

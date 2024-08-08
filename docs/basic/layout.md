@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/layout/layout'
+ </script>
+
 # r-layout
 
 `Layout` 提供了 [r-row](https://ext.dcloud.net.cn/plugin?id=18722) 和 [r-col](https://ext.dcloud.net.cn/plugin?id=18723) 两个组件来进行行列布局。

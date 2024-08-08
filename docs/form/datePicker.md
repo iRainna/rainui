@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/datePicker/datePicker'
+ </script>
+
 # r-date-picker
 
 `r-date-picker` 日期选择器，用于选择年、月、日、时、分、秒，通常与 r-popup 组件配合使用。

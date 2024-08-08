@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/loading/loading'
+ </script>
+
 # r-loading
 
 `r-loading` 是一个加载图标，用于表示加载中的过渡状态。

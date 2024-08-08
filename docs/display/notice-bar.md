@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/notice-bar/notice-bar'
+ </script>
+
 # r-notice-bar
 
 `r-notice-bar` 通知栏，用于循环播放展示一组消息通知。

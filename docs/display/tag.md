@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/tag/tag'
+ </script>
+
 # r-tag
 
 `r-tag` 标签，用于标记关键词和概括主要内容。

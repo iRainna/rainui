@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/image/image'
+ </script>
+
 # r-image
 
 增强版的 `image` `vue3`组件，支持图片懒加载、加载中提示、加载失败提示。

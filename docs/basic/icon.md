@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/icon/icon'
+ </script>
+
 # r-icon
 
 `r-icon` 是一个使用 `iconfont` 的一个的字体图标组件，内置`vantui`图标库可直接使用，引用`iconfont`一些图标（可替换为自己的图标库，下载自己的图标文件后，将 iconfont 文件夹内容替换即可），方便简洁的使用`iconfont`图标。

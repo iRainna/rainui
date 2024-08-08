@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/badge/badge'
+ </script>
+
 # r-badge
 
 `r-badge`徽标组件，可在右上角展示徽标数字或小红点。

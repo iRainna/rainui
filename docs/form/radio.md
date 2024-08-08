@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/radio/radio'
+ </script>
+
 # r-radio
 
 `r-radio`单选框，在一组备选项中进行单选。

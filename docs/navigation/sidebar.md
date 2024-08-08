@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/sidebar/sidebar'
+ </script>
+
 # r-sidebar
 
 `r-sidebar` 侧边导航，垂直展示的导航栏，用于在不同的内容区域之间进行切换。

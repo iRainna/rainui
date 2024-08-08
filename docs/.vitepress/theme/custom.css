@@ -1,0 +1,101 @@
+:root {
+  --vp-sidebar-width: 272px;
+  --vp-layout-max-width: 1440px;
+}
+.content {
+  width: calc(100% - 360px) !important;
+}
+.aside-container {
+  width: 360px !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* 滚动条上的滚动滑块。样式 */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* 鼠标悬停时，设置滑块的背景颜色为深灰色 */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #999999;
+}
+
+/* 鼠标按下时，设置滑块的背景颜色为灰色 */
+::-webkit-scrollbar-thumb:active {
+  background-color: #666666;
+}
+
+/* //Firefox */
+
+/*滚动条宽高 */
+::-moz-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* 滚动条上的滚动滑块。样式 */
+::-moz-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* 鼠标悬停时，设置滑块的背景颜色为深灰色 */
+::-moz-scrollbar-thumb:hover {
+  background-color: #999999;
+}
+
+/* 鼠标按下时，设置滑块的背景颜色为灰色 */
+::-moz-scrollbar-thumb:active {
+  background-color: #666666;
+}
+
+/* //ie Internet Explorer */
+/*滚动条宽高 */
+::-ms-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* 滚动条上的滚动滑块。样式 */
+::-ms-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* 鼠标悬停时，设置滑块的背景颜色为深灰色 */
+::-ms-scrollbar-thumb:hover {
+  background-color: #999999;
+}
+
+/* 鼠标按下时，设置滑块的背景颜色为灰色 */
+::-ms-scrollbar-thumb:active {
+  background-color: #666666;
+}
+
+/* //Opera 旧版本 */
+/*滚动条宽高 */
+::-o-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* 滚动条上的滚动滑块。样式 */
+::-o-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* 鼠标悬停时，设置滑块的背景颜色为深灰色 */
+::-o-scrollbar-thumb:hover {
+  background-color: #999999;
+}
+
+/* 鼠标按下时，设置滑块的背景颜色为灰色 */
+::-o-scrollbar-thumb:active {
+  background-color: #666666;
+}

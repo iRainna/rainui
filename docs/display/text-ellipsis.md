@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/text-ellipsis/text-ellipsis'
+ </script>
+
 # r-text-ellipsis
 
 `r-text-ellipsis` 文本省略，对长文本进行省略，支持展开/收起。

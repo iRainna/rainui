@@ -6,6 +6,7 @@ export default defineConfig({
   lastUpdated: true,
   description: "使用uniapp-vue3的ui库",
   base: "/rainui/",
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -16,7 +17,8 @@ export default defineConfig({
     search: {
       provider: "local",
     },
-
+    aside: true,
+    outline: false,
     sidebar: [
       {
         text: "开发指南",

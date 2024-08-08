@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/swipe-cell/swipe-cell'
+ </script>
+
 # r-swipe-cell
 
 `r-swipe-cell` 滑动单元格，可以左右滑动来展示操作按钮的单元格组件。

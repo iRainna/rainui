@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/cascader/cascader'
+ </script>
+
 # r-cascader 级联选择
 
 r-cascader 级联选择框，用于多层级数据的选择，典型场景为省市区选择。

@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/form/form'
+ </script>
+
 # r-form
 
 `r-form` 表单，用于数据录入、校验，支持输入框、单选框、复选框等类型，需要与[r-field](https://ext.dcloud.net.cn/plugin?id=19086) 组件搭配使用。

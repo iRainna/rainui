@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/rate/rate'
+ </script>
+
 # r-rate
 
 `r-rate` 是一个借鉴了 `van-rate` 的一个的`uniapp` `vue3`评分组件，用于对事物进行评级操作。

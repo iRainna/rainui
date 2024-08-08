@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/field/field'
+ </script>
+
 # r-field
 
 `r-field`输入框,用户可以在文本框内输入或编辑文字。
