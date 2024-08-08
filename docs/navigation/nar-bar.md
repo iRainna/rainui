@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/nar-bar/nar-bar'
+ </script>
+
 # r-nav-bar
 
 `r-nav-bar` 导航栏，为页面提供导航功能，常用于页面顶部。

@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/calendar/calendar'
+ </script>
+
 # r-calendar
 
 `r-calendar` 日历， 日历组件用于选择日期或日期区间。

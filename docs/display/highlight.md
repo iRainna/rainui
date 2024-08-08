@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/highlight/highlight'
+ </script>
+
 # r-highlight
 
 `r-highlight ` 高亮文本，高亮指定文本内容。

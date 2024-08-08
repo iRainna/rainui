@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/cell/cell'
+ </script>
+
 # r-cell 单元格
 
 单元格为列表中的单个展示项。

@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/action-bar/action-bar'
+ </script>
+
 # r-action-bar
 
 `r-action-bar` 动作栏，用于为页面相关操作提供便捷交互。

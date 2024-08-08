@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/space/space'
+ </script>
+
 # r-space
 
 `r-space` 间距，设置元素之间的间距。

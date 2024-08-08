@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = ''
+ </script>
+
 # 示例项目
 
 ### 通过 HbuilderX 获取

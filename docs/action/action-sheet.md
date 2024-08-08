@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/action-sheet/action-sheet'
+ </script>
+
 # r-action-sheet
 
 `r-action-sheet` 动作面板，底部弹起的模态面板，包含与当前情境相关的多个选项。

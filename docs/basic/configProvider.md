@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/configProvider/configProvider'
+ </script>
+
 # r-config-provider 全局配置
 
 r-config-provider 全局配置,用于全局配置 组件，提供深色模式、主题定制等能力

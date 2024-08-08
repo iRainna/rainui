@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/divider/divider'
+ </script>
+
 # r-divider
 
 `r-divider` 分割线组件,用于将内容分隔为多个区域。

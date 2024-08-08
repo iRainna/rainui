@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/pagination/pagination'
+ </script>
+
 # r-pagination
 
 `r-pagination`分页组件,数据量过多时，采用分页的形式将数据分隔，每次只加载一个页面。

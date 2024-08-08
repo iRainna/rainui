@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/collapse/collapse'
+ </script>
+
 # r-collapse
 
 `r-collapse `折叠面板组件，将一组内容放置在多个折叠面板中，点击面板的标题可以展开或收缩其内容。

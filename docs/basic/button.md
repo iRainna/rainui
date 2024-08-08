@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/button/button'
+ </script>
+
 # r-button
 
 `r-button`按钮组件，按钮用于触发一个操作，如提交表单。

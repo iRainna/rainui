@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/popover/popover'
+ </script>
+
 # r-popover
 
 `r-popover` 气泡弹出框，弹出式的气泡菜单。

@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/steps/steps'
+ </script>
+
 # r-steps
 
 `r-steps`步骤条，用于展示操作流程的各个环节，让用户了解当前的操作在整体流程中的位置。

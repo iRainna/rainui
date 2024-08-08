@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/popup/popup'
+ </script>
+
 # r-popup
 
 `r-popup` 是一个基于 `animate.css` 的一个`uniapp ` `vue3` 的弹出层容器，用于展示弹窗、信息提示等内容。

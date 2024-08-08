@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/checkbox/checkbox'
+ </script>
+
 # r-checkbox
 
 `r-checkbox`复选框，在一组备选项中进行多选。
