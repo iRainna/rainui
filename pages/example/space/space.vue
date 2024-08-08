@@ -45,14 +45,14 @@
       <r-divider content-position="left">自动换行</r-divider>
 
       <r-space wrap>
-        <r-button type="primary" block>按钮</r-button>
-        <r-button type="primary" block>按钮</r-button>
-        <r-button type="primary" block>按钮</r-button>
-        <r-button type="primary" block>按钮</r-button>
-        <r-button type="primary" block>按钮</r-button>
-        <r-button type="primary" block>按钮</r-button>
-        <r-button type="primary" block>按钮</r-button>
-        <r-button type="primary" block>按钮</r-button>
+        <r-button type="primary" >按钮</r-button>
+        <r-button type="primary" >按钮</r-button>
+        <r-button type="primary" >按钮</r-button>
+        <r-button type="primary" >按钮</r-button>
+        <r-button type="primary" >按钮</r-button>
+        <r-button type="primary" >按钮</r-button>
+        <r-button type="primary" >按钮</r-button>
+        <r-button type="primary" >按钮</r-button>
       </r-space>
     </view>
   </r-config-provider>

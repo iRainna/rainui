@@ -8,5 +8,5 @@ export default {
   enhanceApp({ app }) {
     app.component("Simulator", SimulatorH5);
   },
-  Layout: MyLayout,
+  // Layout: MyLayout, //暂时关闭后续使用
 };

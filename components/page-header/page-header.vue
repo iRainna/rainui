@@ -22,7 +22,9 @@ import { useThemeStore } from "@/stores/theme";
 const themeStore = useThemeStore();
 const themeName = computed(() => themeStore.theme);
 const onClickLeft = () => {
-  uni.navigateBack();
+  uni.redirectTo({
+	  url:`/pages/index/index`
+  })
 };
 const props = defineProps({
   title: {
