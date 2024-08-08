@@ -4,7 +4,7 @@
     <view style="padding: 20px">基础使用</view>
     <r-switch v-model:value="checked" />
 
-    <view style="padding: 20px">基础使用</view>
+    <view style="padding: 20px">禁用状态</view>
     <r-switch v-model:value="checked" disabled />
     <view style="padding: 20px">加载状态</view>
     <r-switch v-model:value="checked" loading />

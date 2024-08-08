@@ -1,105 +1,124 @@
 # r-picker
 
-`r-picker` 选择器，提供多个选项集合供用户选择，支持单列选择、多列选择和级联选择，通常与 r-popup 弹出层组件配合使用。
+`r-picker` 选择器，提供多个选项集合供用户选择，支持单列选择、多列选择和级联选择，通常与 r-popup 弹出层组件配合使用。[全部组件](https://ext.dcloud.net.cn/plugin?id=19701) [完整文档请前往](https://irainna.github.io/rainui/form/picker.html)
 
 ## 示例
 
 ```vue
 <template>
-  <view class="content">
-    <r-config-provider>
-      <view style="padding: 20rpx">使用单列</view>
-      <r-picker
-        title="使用单列"
-        :columns="columns3"
-        v-model:value="pickerValues3"
-        @change="changeData"
-        @confirm="confirm"
-      ></r-picker>
-      <view style="padding: 20rpx">加载状态</view>
+  <r-config-provider :themeName="themeName">
+    <page-header title="选择器"></page-header>
+    <view style="padding: 20rpx 0">
+      <r-cell-group inset>
+        <r-cell
+          title="使用单列"
+          is-link
+          @click="
+            open({
+              columns: [
+                { text: '杭州', value: 'Hangzhou' },
+                { text: '宁波', value: 'Ningbo' },
+                { text: '温州', value: 'Wenzhou' },
+                { text: '绍兴', value: 'Shaoxing' },
+                { text: '湖州', value: 'Huzhou' },
+              ],
+              title: '使用单列',
+            })
+          "
+        ></r-cell>
+        <r-cell
+          title="加载状态"
+          is-link
+          @click="
+            open({
+              columns: [
+                { text: '杭州', value: 'Hangzhou' },
+                { text: '宁波', value: 'Ningbo' },
+                { text: '温州', value: 'Wenzhou' },
+                { text: '绍兴', value: 'Shaoxing' },
+                { text: '湖州', value: 'Huzhou' },
+              ],
+              loading: true,
+              title: '加载状态',
+            })
+          "
+        ></r-cell>
+        <r-cell
+          title="使用多列"
+          is-link
+          @click="
+            open({
+              columns: [
+                // 第一列
+                [
+                  { text: '周一', value: 'Monday' },
+                  { text: '周二', value: 'Tuesday' },
+                  { text: '周三', value: 'Wednesday' },
+                  { text: '周四', value: 'Thursday' },
+                  { text: '周五', value: 'Friday' },
+                ],
+                // 第二列
+                [
+                  { text: '上午', value: 'Morning' },
+                  { text: '下午', value: 'Afternoon' },
+                  { text: '晚上', value: 'Evening' },
+                ],
+              ],
 
-      <r-picker
-        title="使用单列"
-        :columns="columns2"
-        loading
-        v-model:value="pickerValues2"
-        @change="changeData"
-        @confirm="confirm"
-      ></r-picker>
-      <view style="padding: 20rpx">使用多列</view>
-      <r-picker
-        title="使用多列"
-        :columns="columns2"
-        v-model:value="pickerValues2"
-        @change="changeData"
-        @confirm="confirm"
-      ></r-picker>
-      <view style="padding: 20rpx">使用级联</view>
-      <r-picker
-        title="使用级联"
-        :columns="columns"
-        v-model:value="pickerValues"
-        :columnsFieldNames="{
-          text: 'label',
-          value: 'value',
-          children: 'children',
-        }"
-        @change="changeData"
-        @confirm="confirm"
-      ></r-picker>
+              title: '使用多列',
+            })
+          "
+        ></r-cell>
+        <r-cell
+          title="使用级联"
+          is-link
+          @click="
+            open({
+              columns: region,
+              columnsFieldNames: {
+                text: 'label',
+                value: 'value',
+                children: 'children',
+              },
+              title: '使用级联',
+            })
+          "
+        ></r-cell>
+      </r-cell-group>
+    </view>
 
-      <view style="padding: 20rpx">配合r-popup</view>
-      <r-cell title="配合r-popup使用" is-link @click="show = true" />
-    </r-config-provider>
     <r-popup v-model:show="show" position="bottom">
       <view style="width: 100%">
         <r-picker
-          title="使用单列"
-          :columns="columns3"
-          v-model:value="pickerValues3"
-          @change="changeData"
+          :show="show"
+          :title="title"
+          :columns="columns"
+          :loading="loading"
+          :columnsFieldNames="columnsFieldNames"
+          v-model:value="pickerValues"
+          @change="onChange"
           @confirm="confirm"
           @cancel="cancel"
         ></r-picker>
       </view>
     </r-popup>
-  </view>
+  </r-config-provider>
 </template>
 <script setup>
 import { ref } from "vue";
 
 import { region } from "@/uni_modules/r-region/js_sdk/region.js";
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 
-const columns3 = ref([
-  { text: "杭州", value: "Hangzhou" },
-  { text: "宁波", value: "Ningbo" },
-  { text: "温州", value: "Wenzhou" },
-  { text: "绍兴", value: "Shaoxing" },
-  { text: "湖州", value: "Huzhou" },
-]);
-const columns2 = ref([
-  // 第一列
-  [
-    { text: "周一", value: "Monday" },
-    { text: "周二", value: "Tuesday" },
-    { text: "周三", value: "Wednesday" },
-    { text: "周四", value: "Thursday" },
-    { text: "周五", value: "Friday" },
-  ],
-  // 第二列
-  [
-    { text: "上午", value: "Morning" },
-    { text: "下午", value: "Afternoon" },
-    { text: "晚上", value: "Evening" },
-  ],
-]);
 const columns = ref(region);
-
+const loading = ref(false);
+const title = ref("");
 const pickerValues = ref([]);
-const pickerValues2 = ref([]);
-const pickerValues3 = ref([]);
+
+const columnsFieldNames = ref({});
 const show = ref(false);
-const changeData = (e) => {
+const onChange = (e) => {
   console.log("e", e);
 };
 const confirm = (e) => {
@@ -108,6 +127,14 @@ const confirm = (e) => {
 };
 const cancel = () => {
   show.value = false;
+};
+
+const open = (e) => {
+  show.value = true;
+  columns.value = e.columns || [];
+  loading.value = e.loading || false;
+  title.value = e.title || "";
+  columnsFieldNames.value = e.columnsFieldNames;
 };
 </script>
 ```
@@ -150,6 +177,3 @@ const cancel = () => {
 | cancel       | 点击取消按钮时触发   | -                                                      |
 | change       | 选中的选项改变后触发 | { selectedValues, selectedOptions, selectedIndexes }   |
 | update:value | 选中的选项改变时触发 | selectedValues                                         |
-
-
-更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

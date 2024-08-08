@@ -138,6 +138,7 @@ import {
   GetRect,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+
 const emit = defineEmits(["cancel", "confirm", "change", "update:value"]);
 const { proxy } = getCurrentInstance();
 const props = defineProps(pickerProps);
@@ -261,9 +262,7 @@ const onConfirm = () => {
     selectedIndexes: indexValue.value,
   });
 };
-const getPickerRect = async () => {
-  pickerRect.value = await GetRect(".r-picker", proxy);
-};
+
 watch(
   () => props.value,
   (value) => {
@@ -312,10 +311,6 @@ watch(
     immediate: true,
   }
 );
-
-onMounted(async () => {
-  getPickerRect();
-});
 </script>
 <style lang="scss" scoped>
 ::v-deep .r-haptics-feedback {
@@ -388,10 +383,10 @@ onMounted(async () => {
   &__loading {
     position: absolute;
     top: 0;
-    // width: 100%;
-    // height: 100%;
-    //right: 0;
-    //bottom: 0;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    bottom: 0;
     left: 0;
     z-index: 4;
     display: flex;

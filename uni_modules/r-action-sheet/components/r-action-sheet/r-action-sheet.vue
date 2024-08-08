@@ -1,148 +1,141 @@
 <template>
-  <r-popup
-    :show="show"
-    position="bottom"
-    :overlay="overlay"
-    :overlayClass="overlayClass"
-    :overlayStyle="overlayStyle"
-    :round="round"
-    :duration="duration"
-    :zIndex="zIndex"
-    :lockScroll="lockScroll"
-    :closeOnClickOverlay="closeOnClickOverlay"
-    entryClass="animate__slideInUp"
-    exitClass="animate__slideOutDown"
-    :safeAreaInsetBottom="safeAreaInsetBottom"
-    @clickOverlay="clickOverlay"
-    @open="open"
-    @close="close"
-    @opened="opened"
-    @closed="closed"
+  <view
+    :class="{
+      'r-action-sheet': true,
+    }"
+    :style="getComponentThemeStyle"
   >
+    <!-- renderHeader -->
     <view
       :class="{
-        'r-action-sheet': true,
+        'r-action-sheet__header': true,
       }"
-      :style="getComponentThemeStyle"
+      v-if="title"
     >
-      <!-- renderHeader -->
+      <text>{{ title }}</text>
       <view
         :class="{
-          'r-action-sheet__header': true,
+          'r-action-sheet__close': true,
         }"
-        v-if="title"
+        v-if="closeable"
       >
-        <text>{{ title }}</text>
         <r-icon
-          v-if="closeable"
           :name="closeIcon"
           :prefix="iconPrefix"
-          :class="{
-            'r-action-sheet__close': true,
-          }"
+          color="inherit"
+          size="inherit"
           @click="onCancel"
         ></r-icon>
       </view>
-      <!-- renderDescription -->
-      <view
-        :class="{
-          'r-action-sheet__description': true,
-        }"
-        v-if="$slots.description || description"
-      >
-        <slot v-if="$slots.description" name="description" />
-        <text v-else-if="description">{{ description }}</text>
-      </view>
-      <view
-        :class="{
-          'r-action-sheet__content': true,
-        }"
-        v-if="$slots.default"
-      >
-        <slot></slot>
-      </view>
-      <view
-        v-else
-        :class="{
-          'r-action-sheet__content': true,
-        }"
-      >
-        <!-- renderAction -->
+    </view>
+    <!-- renderDescription -->
+    <view
+      :class="{
+        'r-action-sheet__description': true,
+      }"
+      v-if="$slots.description || description"
+    >
+      <slot v-if="$slots.description" name="description" />
+      <text v-else-if="description">{{ description }}</text>
+    </view>
+    <view
+      :class="{
+        'r-action-sheet__content': true,
+      }"
+      v-if="$slots.default"
+    >
+      <slot></slot>
+    </view>
+    <view
+      v-else
+      :class="{
+        'r-action-sheet__content': true,
+      }"
+    >
+      <!-- renderAction -->
 
+      <view
+        v-for="(action, index) in actions"
+        :key="index"
+        :style="{
+          color: action.color,
+        }"
+        :class="{
+          'r-action-sheet__item': true,
+          'r-action-sheet__item--loading': action.loading,
+          'r-action-sheet__item--disabled': action.disabled,
+          [`${action.className}`]: true,
+        }"
+        @click="onClick(action, index)"
+      >
+        <!-- renderIcon -->
         <view
-          v-for="(action, index) in actions"
-          :key="index"
-          :style="{
-            color: action.color,
-          }"
+          v-if="action.icon"
           :class="{
-            'r-action-sheet__item': true,
-            'r-action-sheet__item--loading': action.loading,
-            'r-action-sheet__item--disabled': action.disabled,
-            [`${action.className}`]: true,
+            'r-action-sheet__item-icon': true,
           }"
-          @click="onClick(action, index)"
         >
-          <!-- renderIcon -->
           <r-icon
-            v-if="action.icon"
-            :class="{
-              'r-action-sheet__item-icon': true,
-            }"
             :prefix="action && action.prefix ? action.prefix : iconPrefix"
+            color="inherit"
+            size="inherit"
             :name="action.icon"
           ></r-icon>
-          <!-- renderActionContent -->
-          <r-loading
-            v-if="action.loading"
-            :class="{
-              'r-action-sheet__loading-icon': true,
-            }"
-          ></r-loading>
-          <slot
-            v-else-if="$slots.action"
-            :action="action"
-            :index="index"
-            name="action"
-          />
-          <template v-else>
-            <text
-              :class="{
-                'r-action-sheet__name': true,
-              }"
-            >
-              {{ action.name }}
-            </text>
-            <view
-              v-if="action.subname"
-              :class="{
-                'r-action-sheet__subname': true,
-              }"
-            >
-              {{ action.subname }}
-            </view>
-          </template>
         </view>
-      </view>
-      <!-- renderCancel -->
-      <view
-        :class="{
-          'r-action-sheet__gap': true,
-        }"
-        v-if="$slots.cancel || cancelText"
-      ></view>
-      <view
-        :class="{
-          'r-action-sheet__cancel': true,
-        }"
-        @click="onCancel"
-        v-if="$slots.cancel || cancelText"
-      >
-        <slot name="cancel" v-if="$slots.cancel"></slot>
-        <text v-else-if="cancelText">{{ cancelText }}</text>
+
+        <!-- renderActionContent -->
+        <view
+          v-if="action.loading"
+          :class="{
+            'r-action-sheet__loading-icon': true,
+          }"
+        >
+          <r-loading color="inherit" size="inherit"></r-loading>
+        </view>
+
+        <slot
+          v-else-if="$slots.action"
+          :action="action"
+          :index="index"
+          name="action"
+        />
+        <template v-else>
+          <text
+            :class="{
+              'r-action-sheet__name': true,
+            }"
+          >
+            {{ action.name }}
+          </text>
+          <view
+            v-if="action.subname"
+            :class="{
+              'r-action-sheet__subname': true,
+            }"
+          >
+            {{ action.subname }}
+          </view>
+        </template>
       </view>
     </view>
-  </r-popup>
+    <!-- renderCancel -->
+    <view
+      :class="{
+        'r-action-sheet__gap': true,
+      }"
+      v-if="$slots.cancel || cancelText"
+    ></view>
+    <view
+      :class="{
+        'r-action-sheet__cancel': true,
+      }"
+      @click="onCancel"
+      v-if="$slots.cancel || cancelText"
+    >
+      <slot name="cancel" v-if="$slots.cancel"></slot>
+      <text v-else-if="cancelText">{{ cancelText }}</text>
+    </view>
+  </view>
 </template>
 <script>
 export default {
@@ -155,11 +148,6 @@ import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 import { inject, computed, nextTick } from "vue";
 
 const props = defineProps({
-  // 是否显示动作面板
-  show: {
-    type: Boolean,
-    default: false,
-  },
   //   面板选项列表
   actions: {
     type: Array,
@@ -194,56 +182,7 @@ const props = defineProps({
     type: String,
     default: "cross",
   },
-  //   动画时长
-  duration: {
-    type: Number,
-    default: 300,
-  },
-  //   将面板的 z-index 层级设置为一个固定值
-  zIndex: {
-    type: Number,
-    default: 2000,
-  },
-  //   是否显示圆角
-  round: {
-    type: Boolean,
-    default: true,
-  },
-  //   是否显示遮罩层
-  overlay: {
-    type: Boolean,
-    default: true,
-  },
-  //   自定义遮罩层类名
-  overlayClass: {
-    type: String,
-    default: "",
-  },
-  //   自定义遮罩层样式
-  overlayStyle: {
-    type: Object,
-    default: () => {},
-  },
-  //   是否锁定背景滚动
-  lockScroll: {
-    type: Boolean,
-    default: true,
-  },
-  //   是否在点击选项后关闭
-  closeOnClickAction: {
-    type: Boolean,
-    default: true,
-  },
-  //   是否在点击遮罩层后关闭
-  closeOnClickOverlay: {
-    type: Boolean,
-    default: true,
-  },
-  //   是否开启底部安全区适配
-  safeAreaInsetBottom: {
-    type: Boolean,
-    default: true,
-  },
+
   //主题名称
   themeName: {
     type: String,
@@ -251,6 +190,7 @@ const props = defineProps({
   },
 });
 
+console.log("props", props);
 const componentsName = "r-action-sheet";
 const themeInject = inject(CONFIG_PROVIDER_KEY, {});
 
@@ -272,34 +212,8 @@ const getComponentThemeStyle = computed(() => {
   };
 });
 
-const emit = defineEmits([
-  "update:show",
-  "cancel",
-  "select",
-  "open",
-  "close",
-  "opened",
-  "closed",
-  "clickOverlay",
-]);
-const open = () => {
-  emit("open");
-};
-const close = () => {
-  emit("close");
-};
-const opened = () => {
-  emit("opened");
-};
-const closed = () => {
-  emit("closed");
-};
-const clickOverlay = () => {
-  if (props.closeOnClickOverlay) {
-    emit("update:show", false);
-  }
-  emit("clickOverlay");
-};
+const emit = defineEmits(["update:show", "cancel", "select"]);
+
 const onCancel = () => {
   emit("update:show", false);
   nextTick(() => {
