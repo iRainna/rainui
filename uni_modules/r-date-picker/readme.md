@@ -6,196 +6,291 @@
 
 ```vue
 <template>
-  <view class="content">
-    <r-config-provider>
-      <view style="padding: 20rpx">
-        <view style="padding: 20rpx 0">基本使用</view>
-        <r-date-picker
-          v-model:value="currentDate"
+  <r-config-provider :themeName="themeName">
+    <page-header title="日期选择"></page-header>
+    <view style="padding: 20rpx 0">
+      <r-cell-group inset>
+        <r-cell
           title="基本使用"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
-        <view style="padding: 20rpx 0">加载中</view>
-        <r-date-picker
-          v-model:value="currentDate2"
-          title="使用年月"
-          loading
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
-        <view style="padding: 20rpx 0">使用年</view>
-        <r-date-picker
-          v-model:value="currentDate3"
+          is-link
+          @click="
+            open({
+              title: '基本使用',
+            })
+          "
+        ></r-cell>
+
+        <r-cell
+          title="加载中"
+          is-link
+          @click="
+            open({
+              title: '加载中',
+              loading: true,
+            })
+          "
+        ></r-cell>
+
+        <r-cell
           title="使用年"
-          columnsType="year"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
-
-        <view style="padding: 20rpx 0">使用年月</view>
-        <r-date-picker
-          v-model:value="currentDate4"
+          is-link
+          @click="
+            open({
+              title: '使用年',
+              columnsType: 'year',
+            })
+          "
+        ></r-cell>
+        <r-cell
           title="使用年月"
-          columnsType="month"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
+          is-link
+          @click="
+            open({
+              title: '使用年月',
+              columnsType: 'month',
+            })
+          "
+        ></r-cell>
 
-        <view style="padding: 20rpx 0">使用时间到秒</view>
-        <r-date-picker
-          v-model:value="currentDate5"
+        <r-cell
           title="使用时间到秒"
-          columnsType="second"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
+          is-link
+          @click="
+            open({
+              title: '使用时间到秒',
+              columnsType: 'second',
+            })
+          "
+        ></r-cell>
 
-        <view style="padding: 20rpx 0">格式化</view>
-        <r-date-picker
-          v-model:value="currentDate6"
+        <r-cell
           title="格式化"
-          :formatter="formatter"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
-        <view style="padding: 20rpx 0">使用过滤</view>
-        <r-date-picker
-          v-model:value="currentDate7"
-          title="使用过滤"
-          :filter="filter"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
-        <view style="padding: 20rpx 0">使用时分秒且格式化</view>
-        <r-date-picker
-          v-model:value="currentDate8"
-          title="使用时分秒且格式化"
-          :filter="filter"
-          columnsType="second"
-          :formatter="formatter"
-          :hideFields="['year', 'month', 'day']"
-          @change="change"
-          @confirm="confirm"
-          @cancel="cancel"
-        />
+          is-link
+          @click="
+            open({
+              title: '格式化',
+              formatter: [
+                {
+                  type: 'year',
+                  fn: (e) => {
+                    e.item[e.fields.text] = e.item[e.fields.text] + '年';
+                    return e.item;
+                  },
+                },
+                {
+                  type: 'month',
+                  fn: (e) => {
+                    e.item[e.fields.text] =
+                      (e.item[e.fields.text] < 10
+                        ? '0' + e.item[e.fields.text]
+                        : e.item[e.fields.text]) + '月';
+                    // console.log(&quot;e&quot;, e);
+                    return e.item;
+                  },
+                },
+                {
+                  type: 'day',
+                  fn: (e) => {
+                    e.item[e.fields.text] =
+                      (e.item[e.fields.text] < 10
+                        ? '0' + e.item[e.fields.text]
+                        : e.item[e.fields.text]) + '日';
+                    return e.item;
+                  },
+                },
 
-        <view style="padding: 20rpx 0">配合r-popup</view>
-        <r-cell title="配合r-popup使用" is-link @click="show = true" />
-      </view>
-    </r-config-provider>
+                {
+                  type: 'hour',
+                  fn: (e) => {
+                    e.item[e.fields.text] =
+                      (e.item[e.fields.text] < 10
+                        ? '0' + e.item[e.fields.text]
+                        : e.item[e.fields.text]) + '时';
+                    return e.item;
+                  },
+                },
+
+                {
+                  type: 'minute',
+                  fn: (e) => {
+                    e.item[e.fields.text] =
+                      (e.item[e.fields.text] < 10
+                        ? '0' + e.item[e.fields.text]
+                        : e.item[e.fields.text]) + '分';
+                    return e.item;
+                  },
+                },
+                {
+                  type: 'second',
+                  fn: (e) => {
+                    e.item[e.fields.text] =
+                      (e.item[e.fields.text] < 10
+                        ? '0' + e.item[e.fields.text]
+                        : e.item[e.fields.text]) + '秒';
+                    return e.item;
+                  },
+                },
+              ],
+            })
+          "
+        ></r-cell>
+
+        <r-cell
+          title="使用过滤"
+          is-link
+          @click="
+            open({
+              title: '使用过滤',
+              filter: [
+                {
+                  type: 'year',
+                  fn: (e) => {
+                    return e.item[e.fields.value] >= dayjs().year();
+                  },
+                },
+                {
+                  type: 'month',
+                  fn: (e) => {
+                    return e.item[e.fields.value] % 2;
+                  },
+                },
+              ],
+            })
+          "
+        ></r-cell>
+
+        <r-cell
+          title="使用时分秒且格式化"
+          is-link
+          @click="
+            open({
+              title: '使用时分秒且格式化',
+              columnsType: 'second',
+              formatter: [
+                {
+                  type: 'year',
+                  fn: (e) => {
+                    e.item[e.fields.text] = e.item[e.fields.text] + '年';
+                    return e.item;
+                  },
+                },
+                {
+                  type: 'month',
+                  fn: (e) => {
+                    e.item[e.fields.text] =
+                      (e.item[e.fields.text] < 10
+                        ? '0' + e.item[e.fields.text]
+                        : e.item[e.fields.text]) + '月';
+                    // console.log(&quot;e&quot;, e);
+                    return e.item;
+                  },
+                },
+                {
+                  type: 'day',
+                  fn: (e) => {
+                    e.item[e.fields.text] =
+                      (e.item[e.fields.text] < 10
+                        ? '0' + e.item[e.fields.text]
+                        : e.item[e.fields.text]) + '日';
+                    return e.item;
+                  },
+                },
+
+                {
+                  type: 'hour',
+                  fn: (e) => {
+                    e.item[e.fields.text] =
+                      (e.item[e.fields.text] < 10
+                        ? '0' + e.item[e.fields.text]
+                        : e.item[e.fields.text]) + '时';
+                    return e.item;
+                  },
+                },
+
+                {
+                  type: 'minute',
+                  fn: (e) => {
+                    e.item[e.fields.text] =
+                      (e.item[e.fields.text] < 10
+                        ? '0' + e.item[e.fields.text]
+                        : e.item[e.fields.text]) + '分';
+                    return e.item;
+                  },
+                },
+                {
+                  type: 'second',
+                  fn: (e) => {
+                    e.item[e.fields.text] =
+                      (e.item[e.fields.text] < 10
+                        ? '0' + e.item[e.fields.text]
+                        : e.item[e.fields.text]) + '秒';
+                    return e.item;
+                  },
+                },
+              ],
+              filter: [
+                {
+                  type: 'year',
+                  fn: (e) => {
+                    return e.item[e.fields.value] >= dayjs().year();
+                  },
+                },
+                {
+                  type: 'month',
+                  fn: (e) => {
+                    return e.item[e.fields.value] % 2;
+                  },
+                },
+              ],
+              hideFields: ['year', 'month', 'day'],
+            })
+          "
+        ></r-cell>
+      </r-cell-group>
+    </view>
+
     <r-popup v-model:show="show" position="bottom">
       <view style="width: 100%">
         <r-date-picker
-          v-model:value="currentDate9"
-          title="配合r-popup"
+          v-model:value="currentDate"
+          :title="title"
+          :loading="loading"
           :formatter="formatter"
+          :columnsType="columnsType"
+          :filter="filter"
+          :hideFields="hideFields"
           @change="change"
           @confirm="confirm"
           @cancel="cancel"
         />
       </view>
     </r-popup>
-  </view>
+  </r-config-provider>
 </template>
 <script setup>
 import { ref } from "vue";
 import { _, dayjs } from "@/uni_modules/r-utils/js_sdk/index.js";
+import useTheme from "@/hooks/useTheme";
+const { themeName } = useTheme();
 
 const currentDate = ref([]);
-const currentDate2 = ref([]);
-const currentDate3 = ref([]);
-const currentDate4 = ref([]);
-const currentDate5 = ref([]);
-const currentDate6 = ref([]);
-const currentDate7 = ref([]);
-const currentDate8 = ref([]);
-const currentDate9 = ref([]);
+const title = ref("");
+const loading = ref(false);
+const columnsType = ref("day");
 const show = ref(false);
-const formatter = [
-  {
-    type: "year",
-    fn: (e) => {
-      e.item[e.fields.text] = e.item[e.fields.text] + "年";
-      return e.item;
-    },
-  },
-  {
-    type: "month",
-    fn: (e) => {
-      e.item[e.fields.text] =
-        (e.item[e.fields.text] < 10
-          ? "0" + e.item[e.fields.text]
-          : e.item[e.fields.text]) + "月";
-      // console.log("e", e);
-      return e.item;
-    },
-  },
-  {
-    type: "day",
-    fn: (e) => {
-      e.item[e.fields.text] =
-        (e.item[e.fields.text] < 10
-          ? "0" + e.item[e.fields.text]
-          : e.item[e.fields.text]) + "日";
-      return e.item;
-    },
-  },
+const formatter = ref([]);
+const hideFields = ref([]);
+const filter = ref([]);
 
-  {
-    type: "hour",
-    fn: (e) => {
-      e.item[e.fields.text] =
-        (e.item[e.fields.text] < 10
-          ? "0" + e.item[e.fields.text]
-          : e.item[e.fields.text]) + "时";
-      return e.item;
-    },
-  },
-
-  {
-    type: "minute",
-    fn: (e) => {
-      e.item[e.fields.text] =
-        (e.item[e.fields.text] < 10
-          ? "0" + e.item[e.fields.text]
-          : e.item[e.fields.text]) + "分";
-      return e.item;
-    },
-  },
-  {
-    type: "second",
-    fn: (e) => {
-      e.item[e.fields.text] =
-        (e.item[e.fields.text] < 10
-          ? "0" + e.item[e.fields.text]
-          : e.item[e.fields.text]) + "秒";
-      return e.item;
-    },
-  },
-];
-
-const filter = [
-  {
-    type: "year",
-    fn: (e) => {
-      return e.item[e.fields.value] >= dayjs().year();
-    },
-  },
-  {
-    type: "month",
-    fn: (e) => {
-      return e.item[e.fields.value] % 2;
-    },
-  },
-];
+const open = (e) => {
+  show.value = true;
+  title.value = e.title || "";
+  loading.value = e.loading || false;
+  columnsType.value = e.columnsType || "day";
+  formatter.value = e.formatter || [];
+  filter.value = e.filter || [];
+  hideFields.value = e.hideFields || [];
+};
 const change = (e) => {
   console.log("e", e);
 };
@@ -207,6 +302,7 @@ const cancel = () => {
   show.value = false;
 };
 </script>
+
 
 ```
 

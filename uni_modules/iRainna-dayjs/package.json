@@ -1,7 +1,7 @@
 {
   "id": "iRainna-dayjs",
   "displayName": "dayjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "可直接在uniapp中使用dayjs的内置方法",
   "keywords": [
     "dayjs"
@@ -35,7 +35,8 @@
     "platforms": {
       "cloud": {
         "tcb": "y",
-        "aliyun": "y"
+        "aliyun": "y",
+        "alipay": "n"
       },
       "client": {
         "Vue": {
