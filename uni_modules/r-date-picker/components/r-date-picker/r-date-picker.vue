@@ -420,6 +420,18 @@ const columns = computed(() => {
 
 const onCancel = () => emit("cancel");
 const onConfirm = () => {
+  if (pickerValue.value.length != columns.value.length) {
+    if (pickerValue.value.length > columns.value.length) {
+      pickerValue.value = pickerValue.value.filter(
+        (t, index) => index < columns.value.length
+      );
+    } else {
+      pickerValue.value = [
+        ...pickerValue.value,
+        new Array(columns.value.length - pickerValue.value.length).fill(0),
+      ];
+    }
+  }
   emit("confirm", {
     selectedValues: pickerValue.value,
     selectedOptions: pickerValue.value.map(

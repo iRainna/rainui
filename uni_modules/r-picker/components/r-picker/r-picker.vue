@@ -36,7 +36,10 @@
         <text v-else>{{ confirmButtonText }}</text>
       </r-button>
     </view>
-    <slot name="toolbar" v-else-if="$slots.toolbar"></slot>
+    <slot
+      name="toolbar"
+      v-else-if="toolbarPosition === 'top' && $slots.toolbar"
+    ></slot>
     <view
       v-if="loading"
       class="r-picker__loading"
@@ -112,7 +115,10 @@
         <text v-else>{{ confirmButtonText }}</text>
       </r-button>
     </view>
-    <slot name="toolbar" v-else-if="$slots.toolbar"></slot>
+    <slot
+      name="toolbar"
+      v-else-if="toolbarPosition === 'bottom' && $slots.toolbar"
+    ></slot>
   </view>
 </template>
 <script>

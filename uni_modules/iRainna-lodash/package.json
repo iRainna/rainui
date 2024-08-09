@@ -1,7 +1,7 @@
 {
   "id": "iRainna-lodash",
   "displayName": "lodash",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "包含lodash core 和 lodash full 由lodash github下载并修改部分代码而来 ",
   "keywords": [
     "lodash"
