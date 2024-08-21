@@ -1,7 +1,7 @@
 {
   "id": "rain-ui",
   "displayName": "rain-ui",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "rain-ui 是一个基于uniapp-vue3使用了lodash、dayjs、animate等工具库实现的vantui样式风格的组件库。共计提供了 40+个组件，自定义主题，按需引入，轻量高效。",
   "keywords": [
     "rain-ui"

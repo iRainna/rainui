@@ -28,3 +28,9 @@
 - 在`github`选择克隆/下载，再通过 HbuilderX 运行即可
 
 下载地址：https://github.com/iRainna/rainui
+
+#### 预览
+
+您可以在网页或者手机上进行预览。
+
+预览地址：https://rainui.cn/h5/index.html#/

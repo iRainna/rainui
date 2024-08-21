@@ -1,7 +1,7 @@
 {
   "id": "r-utils",
   "displayName": "r-utils",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "r-utils 封装了lodash、dayjs以及其他常用的方法。",
   "keywords": [
     "r-utils"

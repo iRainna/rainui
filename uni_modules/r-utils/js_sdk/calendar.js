@@ -1,5 +1,6 @@
 import { dayjs } from "@/uni_modules/iRainna-dayjs/js_sdk/dayjs.min.js";
 
+export const DAY = 1000 * 60 * 60 * 24;
 export const compareMonth = (date1, date2) => {
   if (dayjs(date1).year() == dayjs(date2).year()) {
     return dayjs(date1).month() == dayjs(date2).month()

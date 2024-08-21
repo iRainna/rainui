@@ -1,7 +1,7 @@
 {
   "id": "r-popup",
   "displayName": "r-popup",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "`r-popup` 是一个基于 `animate.css` 的一个`uniapp ` `vue3` 的弹出层容器，用于展示弹窗、信息提示等内容。",
   "keywords": [
     "animate.css"

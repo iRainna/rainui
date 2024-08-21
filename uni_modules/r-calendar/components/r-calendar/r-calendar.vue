@@ -4,7 +4,6 @@
     :class="{
       'r-calendar': true,
     }"
-    v-if="componentShow"
   >
     <!-- CalendarHeader -->
     <r-calendar-header
@@ -288,13 +287,7 @@ import { GetRect } from "../../../r-utils/js_sdk";
 
 const toastRef = ref(null);
 
-const {
-  showToast,
-  showLoadingToast,
-  showSuccessToast,
-  showFailToast,
-  closeToast,
-} = useToast(toastRef);
+const { showToast } = useToast(toastRef);
 const { reduce, debounce } = _;
 const { proxy } = getCurrentInstance();
 const emit = defineEmits([
@@ -419,12 +412,6 @@ const props = defineProps({
     default: "default",
   },
 
-  //是否显示
-  show: {
-    type: Boolean,
-    default: true,
-  },
-
   // 日期区间最多可选天数 当 Calendar 的 type 为 range | multiple 时，支持
   maxRange: {
     type: [String, Number],
@@ -466,21 +453,16 @@ const getComponentThemeStyle = computed(() => {
     ...getComponentThemeCssVar(themeName, componentsName),
   };
 });
-const formatMonthTitle = (year, month) =>{
-	if(props.formatMonthTitle && isFunction(props.formatMonthTitle)){
-		return  props.formatMonthTitle(year,month)
-	}
-	return `${year}年${month}月`
-}  
-const children = ref([]);
-const setChildren = (e) => {
-  children.value = [...children.value, e];
+const formatMonthTitle = (year, month) => {
+  if (props.formatMonthTitle && isFunction(props.formatMonthTitle)) {
+    return props.formatMonthTitle(year, month);
+  }
+  return `${year}年${month}月`;
 };
-
-provide(CALENDAR_KEY, { children, setChildren });
+const children = ref([]);
 
 const bodyHeight = ref(0);
-const componentShow = ref(true);
+
 const scrollTop = ref(0);
 const scrollIndex = ref(0);
 const visibleIndexs = ref([]);
@@ -599,6 +581,14 @@ const months = computed(() => {
   return months;
 });
 
+const disabledDays = computed(() => {
+  let list = [];
+  if (children?.value?.length) {
+    list = children.value.map((t) => t.disabledDays);
+  }
+
+  return reduce(list, (sum, item) => [...sum, ...item], []);
+});
 const onScroll = debounce(async (e) => {
   const top = e?.detail?.scrollTop || 0;
   // scrollTop.value = top;
@@ -691,14 +681,7 @@ const scrollToCurrentDate = () => {
     // }, 0);
   }
 };
-const disabledDays = computed(() => {
-  let list = [];
-  if (children?.value?.length) {
-    list = children.value.map((t) => t.disabledDays);
-  }
 
-  return reduce(list, (sum, item) => [...sum, ...item], []);
-});
 const getDisabledDate = (disabledDays, startDay, date) =>
   disabledDays.find(
     (day) =>
@@ -811,7 +794,7 @@ const onClickDay = (item) => {
       return;
     }
 
-    const dates = currentDate.value;
+    const dates = currentDate.value || [];
 
     const selectedIndex = dates.findIndex(
       (dateItem) => compareDay(dateItem, date) === 0
@@ -832,19 +815,14 @@ const onClickDay = (item) => {
 const onClickDisabledDate = (item) => {
   emit("clickDisabledDate", item);
 };
+const setChildren = (e) => {
+  children.value = [...children.value, e];
+};
+provide(CALENDAR_KEY, { children, setChildren });
 watch(
-  () => props.show,
-  (v) => {
-    if (v) {
-      nextTick(() => {
-        componentShow.value = true;
-      });
-    } else {
-      componentShow.value = false;
-    }
-  },
-  {
-    immediate: true,
+  () => [props.type, props.defaultDate],
+  () => {
+    currentDate.value = getInitialDate();
   }
 );
 onMounted(async () => {

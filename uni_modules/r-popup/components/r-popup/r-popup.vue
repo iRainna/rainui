@@ -96,10 +96,14 @@
 </template>
 <script setup>
 import PopupProps from "./props.js";
-import { getSystemInfo } from "@/uni_modules/r-utils/js_sdk/index.js";
-import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
+
+import {
+  CONFIG_PROVIDER_KEY,
+  POPUP_KEY,
+  getSystemInfo,
+} from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
-import { computed, ref, inject, nextTick } from "vue";
+import { computed, ref, inject, nextTick, provide } from "vue";
 const props = defineProps({ ...PopupProps });
 const componentsName = "r-popup";
 const themeInject = inject(CONFIG_PROVIDER_KEY, {});
@@ -340,4 +344,8 @@ if (props.safeAreaInsetTop || props.safeAreaInsetBottom) {
   safeTop.value = data?.statusBarHeight;
   safeBottom.value = data?.safeAreaInsets?.bottom;
 }
+
+const toChildren = computed(() => props);
+
+provide(POPUP_KEY, toChildren);
 </script>

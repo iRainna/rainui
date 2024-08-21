@@ -53,6 +53,7 @@ import {
   getCurrentInstance,
   onMounted,
   nextTick,
+  watch,
 } from "vue";
 import {
   dayjs,
@@ -64,6 +65,7 @@ import {
   getPrevDay,
   isFunction,
   getNextDay,
+  POPUP_KEY,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 const { proxy } = getCurrentInstance();
@@ -168,7 +170,7 @@ const getComponentThemeStyle = computed(() => {
     ...getComponentThemeCssVar(themeName, componentsName),
   };
 });
-
+const popupInject = inject(POPUP_KEY, {});
 const parentInject = inject(CALENDAR_KEY, {});
 
 const offset = computed(() => {
@@ -313,21 +315,46 @@ const renderList = computed(() =>
 );
 const daysRect = ref({});
 const itemRect = ref({});
-onMounted(async () => {
-  daysRect.value = await GetRect(".r-calendar__days", proxy);
-  await nextTick();
 
-  itemRect.value = await GetRect(".r-calendar__month", proxy);
+const setRect = async () => {
+  try {
+    daysRect.value = await GetRect(".r-calendar__days", proxy);
+    await nextTick();
 
-  componentsId.value = uniqueId(componentsName + "-");
-  if (parentInject) {
-    parentInject.setChildren({
-      id: componentsId.value,
-      itemRect: itemRect.value,
-      props: props,
-      disabledDays: disabledDays.value,
-    });
+    itemRect.value = await GetRect(".r-calendar__month", proxy);
+
+    componentsId.value = uniqueId(componentsName + "-");
+    if (daysRect.value.width && itemRect.value.width) {
+      if (parentInject) {
+        parentInject.setChildren({
+          id: componentsId.value,
+          itemRect: itemRect.value,
+          props: props,
+          disabledDays: disabledDays.value,
+        });
+      }
+    }
+  } catch (error) {}
+};
+
+watch(
+  () => [popupInject],
+  async () => {
+    if (
+      popupInject?.value?.show &&
+      daysRect?.value?.width == 0 &&
+      itemRect?.value?.width == 0
+    ) {
+      setRect();
+    }
+  },
+  {
+    deep: true,
   }
+);
+
+onMounted(async () => {
+  setRect();
 });
 //
 </script>

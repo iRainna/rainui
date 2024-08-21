@@ -1,7 +1,7 @@
 <template>
   <div>
     <iframe
-      :src="`http://static-mp-a73ed887-bbaf-4905-8d7a-718d0006cd63.next.bspapp.com/#/${name}`"
+      :src="`https://rainui.cn/h5/index.html#/${name}`"
       width="360"
       height="640"
       style="border: solid 1px #999999; border-radius: 10px; overflow: hidden"

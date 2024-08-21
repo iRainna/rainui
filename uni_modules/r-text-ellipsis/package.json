@@ -1,7 +1,7 @@
 {
   "id": "r-text-ellipsis",
   "displayName": "r-text-ellipsis",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "r-text-ellipsis 文本省略，对长文本进行省略，支持展开/收起。",
   "keywords": [
     "r-text-ellipsis"

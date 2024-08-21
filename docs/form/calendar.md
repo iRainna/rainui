@@ -13,103 +13,163 @@
 <template>
   <r-config-provider :themeName="themeName">
     <page-header title="日历"></page-header>
-
-    <view style="padding: 20rpx">
-      <r-divider content-position="left">滚动切换 </r-divider>
-      <r-calendar></r-calendar>
-      <r-divider content-position="left">年月切换 </r-divider>
-      <r-calendar switch-mode="year-month"></r-calendar>
-      <r-divider content-position="left">月切换 </r-divider>
-      <r-calendar switch-mode="month"></r-calendar>
-
-      <r-divider content-position="left"
-        >选择单个日期---
-        {{ data.date1 ? dayjs(data.date1).format("YYYY-MM-DD") : "" }}
-      </r-divider>
-      <r-calendar
-        switch-mode="month"
-        @confirm="(e) => onConfirm(e, 'date1')"
-      ></r-calendar>
-
-      <r-divider content-position="left"
-        >选择多个日期---{{
-          data.date2.map((t) => dayjs(t).format("MM-DD")).join(",")
-        }}
-      </r-divider>
-      <r-calendar
-        switch-mode="month"
-        type="multiple"
-        @confirm="(e) => onConfirm(e, 'date2')"
-      ></r-calendar>
-      <r-divider content-position="left"
-        >选择日期区间---{{
-          data.date3.map((t) => dayjs(t).format("MM-DD")).join("~")
-        }}
-      </r-divider>
-      <r-calendar
-        switch-mode="month"
-        type="range"
-        allow-same-day
-        @confirm="(e) => onConfirm(e, 'date3')"
-      ></r-calendar>
-
-      <r-divider content-position="left"
-        >快捷选择---{{
-          data.date4 ? dayjs(data.date4).format("YYYY-MM-DD") : ""
-        }}
-      </r-divider>
-      <r-calendar
-        switch-mode="month"
-        :show-confirm="false"
-        @confirm="(e) => onConfirm(e, 'date4')"
-      ></r-calendar>
-
-      <r-divider content-position="left">自定义颜色 </r-divider>
-      <r-calendar switch-mode="month" color="#ee0a24" type="range"></r-calendar>
-      <r-divider content-position="left">自定义日期范围 </r-divider>
-      <r-calendar
-        switch-mode="month"
-        color="#ee0a24"
-        type="range"
-        :min-date="dayjs().year(2020).month(0).date(1).valueOf()"
-        :max-date="dayjs().year(2020).month(0).date(31).valueOf()"
-      ></r-calendar>
-
-      <r-divider content-position="left">自定义按钮文字 </r-divider>
-
-      <r-calendar
-        switch-mode="month"
-        color="#ee0a24"
-        type="range"
-        confirm-text="完成"
-        confirm-disabled-text="请选择结束时间"
-      ></r-calendar>
-
-      <r-divider content-position="left">自定义日期文案 </r-divider>
-      <r-calendar
-        type="range"
-        :formatter="formatter"
-        :min-date="dayjs().subtract(1, 'year').valueOf()"
-        :max-date="dayjs().add(1, 'year').valueOf()"
-      ></r-calendar>
-
-      <r-divider content-position="left">日期区间最大范围 </r-divider>
-
-      <r-calendar type="range" :max-range="3"></r-calendar>
-
-      <r-divider content-position="left">自定义周起始日 </r-divider>
-      <r-calendar :first-day-of-week="1"></r-calendar>
-
-      <r-divider content-position="left">配合r-popup弹窗使用</r-divider>
-
-      <r-cell-group>
+    <view style="padding: 20rpx 0">
+      <r-cell-group inset>
         <r-cell
+          title="滚动切换"
           is-link
-          title="弹窗选择"
-          :value="data.date5 ? dayjs(data.date5).format('YYYY-MM-DD') : ''"
-          @click="open({})"
+          :value="data.date0"
+          @click="
+            open({
+              changeField: 'date0',
+            })
+          "
         />
+        <r-cell
+          title="年月切换"
+          is-link
+          :value="data.date1"
+          @click="
+            open({
+              switchMode: 'year-month',
+              changeField: 'date1',
+            })
+          "
+        />
+
+        <r-cell
+          title="月切换"
+          is-link
+          :value="data.date2"
+          @click="
+            open({
+              switchMode: 'month',
+              changeField: 'date2',
+            })
+          "
+        />
+        <r-cell
+          title="单个日期"
+          is-link
+          :value="data.date3"
+          @click="
+            open({
+              switchMode: 'month',
+              type: 'single',
+              changeField: 'date3',
+            })
+          "
+        />
+
+        <r-cell
+          title="多个日期"
+          is-link
+          :value="data.date4"
+          @click="
+            open({
+              switchMode: 'month',
+              type: 'multiple',
+              changeField: 'date4',
+            })
+          "
+        />
+
+        <r-cell
+          title="选择日期区间"
+          is-link
+          :value="data.date5"
+          @click="
+            open({
+              switchMode: 'month',
+              type: 'range',
+              changeField: 'date5',
+            })
+          "
+        />
+
+        <r-cell
+          title="快捷选择"
+          is-link
+          :value="data.date6"
+          @click="
+            open({
+              switchMode: 'month',
+              showConfirm: false,
+              changeField: 'date6',
+            })
+          "
+        />
+
+        <r-cell
+          title="自定义颜色"
+          is-link
+          :value="data.date7"
+          @click="
+            open({
+              switchMode: 'month',
+
+              type: 'range',
+              color: '#ee0a24',
+              changeField: 'date7',
+            })
+          "
+        />
+        <r-cell
+          title="自定义按钮文字"
+          is-link
+          :value="data.date8"
+          @click="
+            open({
+              switchMode: 'month',
+
+              type: 'range',
+              color: '#ee0a24',
+              confirmText: '完成',
+              confirmDisabledText: '请选择结束时间',
+              changeField: 'date8',
+            })
+          "
+        />
+
+        <r-cell
+          title="日期区间最大范围"
+          is-link
+          :value="data.date9"
+          @click="
+            open({
+              switchMode: 'month',
+
+              type: 'range',
+
+              maxRange: '3',
+              changeField: 'date9',
+            })
+          "
+        />
+
+        <r-cell
+          title="自定义周起始日"
+          is-link
+          :value="data.date10"
+          @click="
+            open({
+              switchMode: 'month',
+
+              type: 'range',
+              firstDayOfWeek: 1,
+              changeField: 'date10',
+            })
+          "
+        />
+
+        <r-cell title="单独使用">
+          <template #value>
+            <r-switch v-model:value="flag"></r-switch>
+          </template>
+        </r-cell>
       </r-cell-group>
+      <r-divider content-position="left" v-if="flag">单独使用 </r-divider>
+      <r-calendar v-if="flag"></r-calendar>
     </view>
 
     <r-popup
@@ -123,16 +183,20 @@
         padding: 0,
       }"
     >
+      <!-- switch-mode="year-month" -->
+      <!-- :show="show" -->
       <view style="padding-bottom: 20px">
         <r-calendar
-          switch-mode="year-month"
-          :show="show"
-          @confirm="
-            (e) => {
-              onConfirm(e, 'date5');
-              show = false;
-            }
-          "
+          :switch-mode="switchMode"
+          :type="type"
+          :color="color"
+          :showConfirm="showConfirm"
+          :confirmText="confirmText"
+          :confirmDisabledText="confirmDisabledText"
+          :maxRange="maxRange"
+          :firstDayOfWeek="firstDayOfWeek"
+          :defaultDate="defaultDate[changeField]"
+          @confirm="onConfirm"
         ></r-calendar>
       </view>
     </r-popup>
@@ -145,13 +209,18 @@ import { ref } from "vue";
 import useTheme from "@/hooks/useTheme";
 const { themeName } = useTheme();
 const show = ref(false);
-
-const data = ref({
-  date1: "",
-  date2: [],
-  date3: [],
-  date4: "",
-});
+const switchMode = ref("none");
+const type = ref("single");
+const showConfirm = ref(true);
+const color = ref("#1989fa");
+const confirmText = ref("");
+const confirmDisabledText = ref("");
+const maxRange = ref(null);
+const firstDayOfWeek = ref(0);
+const flag = ref(false);
+const data = ref({});
+const defaultDate = ref({});
+const changeField = ref("");
 
 const formatter = (day) => {
   const month = dayjs(day.date).month() + 1;
@@ -190,11 +259,36 @@ const formatter = (day) => {
 
 const open = (e) => {
   show.value = true;
+  switchMode.value = e.switchMode || "none";
+  type.value = e.type || "single";
+  showConfirm.value = e.showConfirm !== false;
+  color.value = e.color || "#1989fa";
+  confirmDisabledText.value = e.confirmDisabledText || "确定";
+  confirmText.value = e.confirmText || "确定";
+  maxRange.value = e.maxRange || null;
+  firstDayOfWeek.value = e.firstDayOfWeek || 0;
+  changeField.value = e.changeField || "";
 };
-const onConfirm = (value, field) => {
+const onConfirm = (value) => {
   show.value = false;
+  if (changeField.value) {
+    if (type.value === "multiple") {
+      defaultDate.value[changeField.value] = value.map((t) =>
+        dayjs(t).valueOf()
+      );
+      value = value.map((i) => dayjs(i).format("YYYY-MM-DD")).join(",");
+    } else if (type.value === "range") {
+      defaultDate.value[changeField.value] = value.map((t) =>
+        dayjs(t).valueOf()
+      );
+      value = value.map((i) => dayjs(i).format("YYYY-MM-DD")).join("~");
+    } else {
+      defaultDate.value[changeField.value] = dayjs(value).valueOf();
+      value = dayjs(value).format("YYYY-MM-DD");
+    }
 
-  data.value[field] = value;
+    data.value[changeField.value] = value;
+  }
 };
 </script>
 ```
@@ -227,7 +321,6 @@ const onConfirm = (value, field) => {
 | firstDayOfWeek      | 设置周起始日 0-6                                                                                                                                                          | Number          | `0`                                          |                             |
 | weekdays            | 星期的文案                                                                                                                                                                | Array           | `["日", "一", "二", "三", "四", "五", "六"]` |                             |
 | themeName           | r-theme 主题名称                                                                                                                                                          | String          | `default`                                    |                             |
-| show                | 是否显示(通常在 popup 中使用)                                                                                                                                             | Boolean         | true                                         |                             |
 | maxRange            | 日期区间最多可选天数 当 Calendar 的 type 为 range 或 multiple 时，支持                                                                                                    | String \|Number | -                                            |                             |
 | rangePrompt         | 范围选择超过最多可选天数时的提示文案 当 Calendar 的 type 为 range 或 multiple 时，支持                                                                                    | Function        | `(num) => '最多选择'+ num + '天'`            |                             |
 | showRangePrompt     | 范围选择超过最多可选天数时，是否展示提示文案 当 Calendar 的 type 为 range 时，支持                                                                                        | Boolean         | true                                         |                             |
@@ -260,16 +353,16 @@ const onConfirm = (value, field) => {
 
 ### Slots
 
-| 名称        | 说明                   | 参数          |
-| ----------- | ---------------------- | ------------- |
-| title       | 自定义标题             | -             |
-| subtitle    | 自定义日历副标题       | _{text,date}_ |
-| monthTitle  | 自定义每个月份的小标题 | _{text,date}_ |
-| footer      | 自定义底部区域内容     | -             |
-| confirmText | 自定义确认按钮的内容   | {disabled}    |
-| prevMonth   | 自定义上个月按钮       | {disabled}    |
-| prevYear    | 自定义上一年按钮       | {disabled}    |
-| nextMonth   | 自定义下个月按钮       | {disabled}    |
-| nextYear    | 自定义下一年按钮       | {disabled}    |
+| 名称        | 说明                   | 参数        |
+| ----------- | ---------------------- | ----------- |
+| title       | 自定义标题             | -           |
+| subtitle    | 自定义日历副标题       | {text,date} |
+| monthTitle  | 自定义每个月份的小标题 | {text,date} |
+| footer      | 自定义底部区域内容     | -           |
+| confirmText | 自定义确认按钮的内容   | {disabled}  |
+| prevMonth   | 自定义上个月按钮       | {disabled}  |
+| prevYear    | 自定义上一年按钮       | {disabled}  |
+| nextMonth   | 自定义下个月按钮       | {disabled}  |
+| nextYear    | 自定义下一年按钮       | {disabled}  |
 
 更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

@@ -175,6 +175,14 @@ const list = ref([
         url: "/pages/example/rate/rate",
       },
       {
+        title: "Signature-签名",
+        url: "/pages/example/signature/signature",
+      },
+      {
+        title: "Stepper-步进器",
+        url: "/pages/example/stepper/stepper",
+      },
+      {
         title: "Switch-开关",
         url: "/pages/example/switch/switch",
       },

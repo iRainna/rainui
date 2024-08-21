@@ -123,6 +123,7 @@ import {
   getNextMonth,
   getNextYear,
   CONFIG_PROVIDER_KEY,
+  DAY,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 const props = defineProps({
@@ -170,7 +171,13 @@ const renderWeekDays = computed(() => [
 
 const prevMonthDisabled = computed(() => {
   const prevMonth = getPrevMonth(props.date).valueOf();
-  return props.minDate && prevMonth < dayjs(props.minDate).valueOf();
+
+  return (
+    props.minDate &&
+    prevMonth < dayjs(props.minDate).valueOf() &&
+    dayjs(props.minDate).format("YYYY-MM-DD") !==
+      dayjs(prevMonth).format("YYYY-MM-DD")
+  );
 });
 const prevYearDisabled = computed(() => {
   const prevYear = getPrevYear(props.date).valueOf();

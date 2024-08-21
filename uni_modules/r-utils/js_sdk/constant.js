@@ -14,3 +14,4 @@ export const TABBAR_KEY = Symbol("r-tabbar");
 export const STEPS_KEY = Symbol("r-steps");
 export const GRID_KEY = Symbol("r-grid");
 export const CALENDAR_KEY = Symbol("r-calendar");
+export const POPUP_KEY = Symbol("r-popup");
