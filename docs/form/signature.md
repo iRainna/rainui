@@ -1,8 +1,13 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/signature/signature'
+ </script>
+
 # r-signature
 
 `r-signature` 签名， 用于签名场景的组件，基于 Canvas 实现。
 
-[在线示例](https://rainui.cn/h5/index.html#/pages/example/signature/signature) [完整文档](https://rainui.cn/form/signature .html) [完整文档](https://irainna.github.io/rainui/form/signature .html)
+[在线示例](https://rainui.cn/h5/index.html#/pages/example/signature/signature) [完整文档](https://rainui.cn/form/signature.html) [完整文档](https://irainna.github.io/rainui/form/signature.html)
 
 ## 示例
 

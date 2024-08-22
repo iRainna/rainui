@@ -64,7 +64,7 @@ import {
 } from "vue";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 const { proxy } = getCurrentInstance();
-const { uniqueId, debounce } = _;
+const { uniqueId } = _;
 const emit = defineEmits(["start", "signing", "end", "submit", "clear"]);
 const props = defineProps({
   type: {
@@ -98,11 +98,11 @@ const props = defineProps({
 const canvasWidth = ref(0);
 const canvasHeight = ref(0);
 const isEmpty = ref(true);
+
+const moveStartX = ref(0);
+const moveStartY = ref(0);
 const canvasRect = ref({});
-const devicePixelRatio = computed(() => {
-  const data = getSystemInfo();
-  return data?.devicePixelRatio || 1;
-});
+
 const componentsName = "r-signature";
 const componentsId = ref(uniqueId(componentsName + "-"));
 
@@ -136,7 +136,7 @@ const getComponentThemeStyle = computed(() => {
 const setCanvasBgColor = (ctx) => {
   if (ctx && props.backgroundColor) {
     ctx.fillStyle = props.backgroundColor;
-    ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+    ctx.fillRect(0, 0, canvasWidth.value, canvasHeight.value);
     ctx.draw();
   }
 };
@@ -144,45 +144,46 @@ const initialize = async () => {
   try {
     await nextTick();
     const canvas = await GetRect(".canvas", proxy);
-    const wrap = await GetRect(".r-signature__content", proxy);
+    canvasRect.value = canvas;
 
-    canvasWidth.value = canvas.width =
-      (wrap.width || 0) * devicePixelRatio.value;
+    canvasWidth.value = canvas.width;
 
-    canvasHeight = canvas.height = (wrap.height || 0) * devicePixelRatio.value;
-    ctx.value?.scale(devicePixelRatio.value, devicePixelRatio.value);
+    canvasHeight.value = canvas.height;
 
     setCanvasBgColor(ctx.value);
   } catch (error) {}
 };
-const touchStart = async () => {
+const touchStart = async (event) => {
+  event.preventDefault();
   isEmpty.value = false;
   ctx.value.beginPath();
 
-  ctx.value.beginPath();
   ctx.value.lineWidth = props.lineWidth;
   ctx.value.strokeStyle = props.penColor;
 
-  canvasRect.value = await GetRect(".canvas", proxy);
-  console.log("ctx", ctx.value);
+  const touch = event.changedTouches[0];
+  moveStartX.value = touch.x;
+  moveStartY.value = touch.y;
+
   emit("start");
 };
-const draw = debounce(() => {
-  ctx.value.draw(true);
-}, 20);
+
 const touchMove = (event) => {
   try {
     event.preventDefault();
-    const touch = event.touches[0];
-    const mouseX = touch.clientX - (canvasRect.value?.left || 0);
-    const mouseY = touch.clientY - (canvasRect.value?.top || 0);
 
+    const touch = event.changedTouches[0];
+    const mouseX = touch.x;
+
+    const mouseY = touch.y;
+    ctx.value.moveTo(moveStartX.value, moveStartY.value);
+    ctx.value.lineTo(mouseX, mouseY);
     ctx.value.setLineCap("round");
     ctx.value.setLineJoin("round");
-    ctx.value.lineTo(mouseX, mouseY);
     ctx.value.stroke();
-    console.log("ctx", ctx.value);
-    draw();
+    ctx.value.draw(true);
+    moveStartX.value = mouseX;
+    moveStartY.value = mouseY;
   } catch (error) {
     console.log("e", error);
   }
@@ -197,8 +198,8 @@ const touchEnd = (event) => {
 const clear = () => {
   ctx.value.clearRect(0, 0, canvasWidth.value, canvasHeight.value);
   ctx.value.closePath();
+  ctx.value.draw(true);
   setCanvasBgColor(ctx.value);
-  ctx.value.draw();
 
   isEmpty.value = true;
   emit("clear");
@@ -225,17 +226,12 @@ const submit = () => {
       proxy
     );
   }
-
-  // emit("submit", {
-  //   image,
-  // });
 };
 defineExpose({
   clear,
   submit,
 });
 onMounted(() => {
-  console.log("ctx", ctx);
   initialize();
 });
 </script>
