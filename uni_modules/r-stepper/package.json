@@ -1,7 +1,7 @@
 {
   "id": "r-stepper",
   "displayName": "r-stepper",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "`r-stepper` 是`uniapp vue3`的步进器，由增加按钮、减少按钮和输入框组成，用于在一定范围内输入、调整数字。",
   "keywords": [
     "stepper"

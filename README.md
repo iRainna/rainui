@@ -1,6 +1,6 @@
 # Rain-ui
 
-`Rain-ui` 是一个基于`uniapp-vue3`使用了`lodash` `dayjs` `animate`等工具库实现的`vantui`样式风格的组件库。共计提供了 40+个组件，自定义主题，按需引入，轻量高效。[完整文档请前往](https://irainna.github.io/rainui/)
+`Rain-ui` 是一个基于`uniapp-vue3`使用了`lodash` `dayjs` `animate`等工具库实现的`vantui`样式风格的组件库。共计提供了 40+个组件，自定义主题，按需引入，轻量高效。[完整文档地址 1](https://rainui.cn/index.html) [完整文档地址 2](https://irainna.github.io/rainui/) [线上示例](https://rainui.cn/h5/index.html#/)
 
 ### 基础组件
 
@@ -41,6 +41,10 @@
 [Radio](https://ext.dcloud.net.cn/plugin?id=18850)-单选框
 
 [Rate](https://ext.dcloud.net.cn/plugin?id=18688)-评分
+
+[Signature](https://ext.dcloud.net.cn/plugin?id=19946)-开关
+
+[Stepper](https://ext.dcloud.net.cn/plugin?id=18749)-步进器
 
 [Switch](https://ext.dcloud.net.cn/plugin?id=18847)-开关
 

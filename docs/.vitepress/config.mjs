@@ -58,6 +58,7 @@ export default defineConfig({
           { text: "Radio-单选框", link: "/form/radio" },
           { text: "Rate-评分", link: "/form/rate" },
           { text: "Signature-签名", link: "/form/signature" },
+          { text: "Stepper-步进器", link: "/form/stepper" },
           { text: "Switch-开关", link: "/form/switch" },
           { text: "Uploader-上传", link: "/form/uploader" },
         ],

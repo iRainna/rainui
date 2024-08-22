@@ -1,7 +1,7 @@
 {
   "id": "r-theme",
   "displayName": "r-theme",
-  "version": "1.3.9",
+  "version": "1.4.0",
   "description": "r-theme 是一个为 r-overlay、r-icon等组件提供定制样式的 jssdk。",
   "keywords": [
     "r-theme"
