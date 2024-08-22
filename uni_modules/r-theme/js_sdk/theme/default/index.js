@@ -47,6 +47,7 @@ import { stepData } from "./step.js";
 import { gridItemData } from "./grid-item.js";
 import { calendarData } from "./calendar.js";
 import { signatureData } from "./signature.js";
+import { progressData } from "./progress.js";
 
 export const data = computed(() => ({
   ...baseData.value,
@@ -97,6 +98,7 @@ export const data = computed(() => ({
   ...gridItemData.value,
   ...calendarData.value,
   ...signatureData.value,
+  ...progressData.value,
 }));
 
 export const moduleData = computed(() => ({
@@ -148,4 +150,5 @@ export const moduleData = computed(() => ({
   "r-grid-item": gridItemData.value,
   "r-calendar": calendarData.value,
   "r-signature": signatureData.value,
+  "r-progress": progressData.value,
 }));

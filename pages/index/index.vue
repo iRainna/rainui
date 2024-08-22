@@ -246,6 +246,10 @@ const list = ref([
         url: "/pages/example/popover/popover",
       },
       {
+        title: "Progress-进度条",
+        url: "/pages/example/progress/progress",
+      },
+      {
         title: "Skeleton-骨架屏",
         url: "/pages/example/skeleton/skeleton",
       },

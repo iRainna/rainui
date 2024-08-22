@@ -1,10 +1,10 @@
 {
-  "id": "r-signature",
-  "displayName": "r-signature",
-  "version": "1.0.1",
-  "description": "r-signature 签名， 用于签名场景的组件，基于 Canvas 实现。",
+  "id": "r-progress",
+  "displayName": "r-progress",
+  "version": "1.0.0",
+  "description": "r-progress 进度条，用于展示操作的当前进度。",
   "keywords": [
-    "r-signature"
+    "r-progress"
 ],
   "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {

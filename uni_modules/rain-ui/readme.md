@@ -74,6 +74,8 @@
 
 [Popover](https://ext.dcloud.net.cn/plugin?id=19471)-气泡弹出框
 
+[Progress](https://ext.dcloud.net.cn/plugin?id=19950)-进度条
+
 [Skeleton](https://ext.dcloud.net.cn/plugin?id=19150)-骨架屏
 
 [Steps](https://ext.dcloud.net.cn/plugin?id=19509)-步骤条

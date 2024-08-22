@@ -282,6 +282,13 @@
     	{
     		"navigationBarTitleText" : "签名"
     	}
+    },
+    {
+    	"path" : "pages/example/progress/progress",
+    	"style" : 
+    	{
+    		"navigationBarTitleText" : "进度条"
+    	}
     }
   ],
   "globalStyle": {

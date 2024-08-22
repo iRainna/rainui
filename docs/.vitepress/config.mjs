@@ -85,6 +85,7 @@ export default defineConfig({
           { text: "Highlight-高亮文本", link: "/display/highlight" },
           { text: "NoticeBar-通知栏", link: "/display/notice-bar" },
           { text: "Popover-气泡弹出框", link: "/display/popover" },
+          { text: "Progress-进度条", link: "/display/progress" },
           { text: "Skeleton-骨架屏", link: "/display/skeleton" },
           { text: "Steps-步骤条", link: "/display/steps" },
           { text: "Tag-标签", link: "/display/tag" },
