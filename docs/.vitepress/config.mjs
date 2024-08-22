@@ -57,6 +57,7 @@ export default defineConfig({
           { text: "Picker-选择器", link: "/form/picker" },
           { text: "Radio-单选框", link: "/form/radio" },
           { text: "Rate-评分", link: "/form/rate" },
+          { text: "Signature-签名", link: "/form/signature" },
           { text: "Switch-开关", link: "/form/switch" },
           { text: "Uploader-上传", link: "/form/uploader" },
         ],
