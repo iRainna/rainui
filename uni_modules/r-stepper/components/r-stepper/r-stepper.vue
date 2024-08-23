@@ -8,9 +8,11 @@
     <button
       v-show="showMinus"
       :disabled="minusDisabled"
-      :class="`r-stepper__minus ${
-        minusDisabled ? 'r-stepper__minus--disabled' : ''
-      } ${!minusDisabled ? 'r-haptics-feedback' : ''}`"
+      :class="{
+        'r-stepper__minus': true,
+        'r-stepper__minus--disabled': minusDisabled,
+        'r-haptics-feedback': !minusDisabled,
+      }"
       :style="{
         width: buttonSize,
         height: buttonSize,
@@ -38,9 +40,11 @@
     <button
       v-show="showPlus"
       :disabled="plusDisabled"
-      :class="`r-stepper__plus ${
-        plusDisabled ? 'r-stepper__plus--disabled' : ''
-      } ${!plusDisabled ? 'r-haptics-feedback' : ''}`"
+      :class="{
+        'r-stepper__plus': true,
+        'r-stepper__plus--disabled': plusDisabled,
+        'r-haptics-feedback': !plusDisabled,
+      }"
       :style="{
         width: buttonSize,
         height: buttonSize,
@@ -125,7 +129,8 @@ const format = (value, autoFixed = true) => {
 };
 
 const getInitialValue = () => {
-  const defaultValue = props.value || props.defaultValue;
+  const defaultValue =
+    props.value || props.value === 0 ? props.value : props.defaultValue;
   const value = format(defaultValue);
 
   if (!isEqual(value, props.value)) {
@@ -242,7 +247,7 @@ const minusDisabled = computed(
   () =>
     props.disabled ||
     props.disableMinus ||
-    (props.min && Number(current.value) <= props.min)
+    ((props.min || props.min === 0) && Number(current.value) <= props.min)
 );
 const plusDisabled = computed(
   () =>
