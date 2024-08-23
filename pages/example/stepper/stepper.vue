@@ -41,7 +41,7 @@
 
         <r-cell title="固定小数位数">
           <template #value>
-            <r-stepper v-model:value="value4" step="0.2" :decimal-length="1" />
+            <r-stepper v-model:value="value4" :step="0.2" :decimal-length="1" />
           </template>
         </r-cell>
 
@@ -77,5 +77,5 @@ const { themeName } = useTheme();
 const value = ref(1);
 const value2 = ref(5);
 const value3 = ref(1);
-const value4 = ref(1.0);
+const value4 = ref(1.1);
 </script>

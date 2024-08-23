@@ -59,11 +59,12 @@ import {
   callInterceptor,
   formatNumber,
   isDef,
-  addNumber,
   LONG_PRESS_START_TIME,
   CONFIG_PROVIDER_KEY,
+  _,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+const { add } = _;
 
 const props = defineProps({ ...StepperProps });
 
@@ -107,8 +108,11 @@ const format = (value, autoFixed = true) => {
   }
 
   value = formatNumber(String(value), !props.integer);
+
   value = value === "" ? 0 : +value;
+
   value = Number.isNaN(value) ? +min : value;
+
   // whether to format the value entered by the user
   value = autoFixed ? Math.max(Math.min(+max, value), +min) : value;
 
@@ -141,7 +145,9 @@ const onChange = () => {
   }
 
   const diff = actionType.value === "minus" ? -props.step : +props.step;
-  const value = format(addNumber(current.value, diff));
+
+  // addNumber(current.value, diff)
+  const value = format(add(Number(current.value), diff));
 
   setValue(value);
   emit(actionType.value);
