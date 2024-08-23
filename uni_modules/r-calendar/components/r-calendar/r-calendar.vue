@@ -218,7 +218,7 @@
 
     <!-- renderFooter -->
     <view
-      :cass="{
+      :class="{
         'r-calendar__footer': true,
       }"
     >

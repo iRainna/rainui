@@ -318,9 +318,9 @@ const itemRect = ref({});
 
 const setRect = async () => {
   try {
+    await nextTick();
     daysRect.value = await GetRect(".r-calendar__days", proxy);
     await nextTick();
-
     itemRect.value = await GetRect(".r-calendar__month", proxy);
 
     componentsId.value = uniqueId(componentsName + "-");
