@@ -1,102 +1,58 @@
-import { ref, computed } from "vue";
-import { data, moduleData } from "./theme/default/index.js";
-import {
-  data as darkData,
-  moduleData as darkModuleData,
-} from "./theme/dark/index.js";
+import { ref } from "vue";
+import baseData from "./theme/default/modules/base";
 
-export const themeObject = ref({});
-export const themeObjectComp = computed(() => ({
-  default: data.value,
-  dark: Object.keys({
-    ...data.value,
-    ...darkData.value,
-  })
-    .map((t) => {
-      if (Object.keys(darkData.value).includes(t)) {
-        return {
-          key: t,
-          value: darkData.value[t],
-        };
-      }
-      return {
-        key: t,
-        value: data.value[t],
-      };
-    })
-    .reduce((obj, item) => {
-      obj[item.key] = item.value;
-      return obj;
-    }, {}),
-  ...themeObject.value,
-}));
-export const themeModuleObject = ref({});
-export const themeModuleObjectComp = computed(() => {
-  return {
-    default: moduleData.value,
-    dark: Object.keys({ ...moduleData.value, ...darkModuleData.value })
-      .map((t) => {
-        if (Object.keys(darkModuleData.value).includes(t)) {
-          return {
-            key: t,
-            value: {
-              ...moduleData.value[t],
-              ...darkModuleData.value[t],
-            },
-          };
-          //  { ...moduleData.value[t], ...darkModuleData.value[t] };
-        }
-        return {
-          key: t,
-          value: moduleData.value[t],
-        };
-      })
-      .reduce((obj, item) => {
-        obj[item.key] = item.value;
-        return obj;
-      }, {}),
-    // merge(moduleData.value, darkModuleData.value)
-    ...themeModuleObject.value,
-  };
-});
+const files = import.meta.glob("./theme/*/index.js", { eager: true });
+const datas = ref(
+  (() =>
+    Object.keys(files).reduce(
+      (pre, key) => ({ ...pre, [key]: files[key].default?.value }),
+      []
+    ))()
+);
 
 export const getThemeCssVar = (name = "default") => {
-  let value = themeObjectComp.value[name];
+  const useTheme =
+    datas.value[Object.keys(datas.value).find((m) => m.indexOf(name) >= 0)];
+
   let cssVar = {};
-  if (value) {
-    let keys = Object.keys(value);
+  if (useTheme) {
+    let keys = Object.keys(useTheme);
 
     keys.forEach((t) => {
-      cssVar[`--${t}`] = value[t];
+      cssVar[`--${t}`] = useTheme[t];
     });
   }
-
+  console.log("datas getThemeCssVar", datas.value, cssVar);
   return cssVar;
 };
 
 export const getComponentThemeCssVar = (
   themeName = "default",
-  compoentName
+  componentName
 ) => {
-  let value = themeModuleObjectComp.value[themeName]
-    ? themeModuleObjectComp.value[themeName][compoentName]
-    : {};
-  if (compoentName == "r-action-bar") {
-    console.log(value, compoentName, themeName);
-  }
+  const useTheme =
+    datas.value[
+      Object.keys(datas.value).find((m) => m.indexOf(themeName) >= 0)
+    ];
 
   let cssVar = {};
-  if (value) {
-    let keys = Object.keys(value);
+  if (componentName != "r-base") {
+    let keys = Object.keys(useTheme).filter(
+      (m) => m.indexOf(componentName) >= 0
+    );
 
     keys.forEach((t) => {
-      cssVar[`--${t}`] = value[t];
+      cssVar[`--${t}`] = useTheme[t];
+    });
+  } else {
+    let keys = Object.keys(useTheme).filter((m) =>
+      Object.keys(baseData.value).some((t) => t == m)
+    );
+
+    keys.forEach((t) => {
+      cssVar[`--${t}`] = useTheme[t];
     });
   }
 
   return cssVar;
-};
-
-export const addTheme = (name, object) => {
-  themeObject.value[name] = object;
 };

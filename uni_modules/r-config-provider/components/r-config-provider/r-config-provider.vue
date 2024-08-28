@@ -21,12 +21,7 @@ import { getThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
 const props = defineProps({
   ...ConfigProviderProps,
 });
-const getComponentStyle = computed(() => {
-  return {
-    ...getThemeCssVar("default"),
-    ...getThemeCssVar(props.themeName),
-  };
-});
+const getComponentStyle = computed(() => getThemeCssVar(props.themeName));
 
 const toChildren = computed(() => ({
   themeName: props.themeName,
