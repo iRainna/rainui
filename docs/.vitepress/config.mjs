@@ -125,7 +125,7 @@ export default defineConfig({
     ],
     footer: {
       message:
-        // '<a href="https://github.com/iRainna/rainui?tab=MIT-1-ov-file">MIT License</a>  |  <a href="https://beian.miit.gov.cn/">蜀ICP备2024094080号</a> | <img src="./ba.png" style="height: 18px;width: 18px;display: inline-block;position: relative;top: 4px;" /><a style="margin-left:5px" href="https://beian.mps.gov.cn/#/query/webSearch">公安备案<a/>',
+        // '<a href="https://github.com/iRainna/rainui?tab=MIT-1-ov-file">MIT License</a>  |  <a href="https://beian.miit.gov.cn/">蜀ICP备2024094080号</a> | <img src="./ba.png" style="height: 18px;width: 18px;display: inline-block;position: relative;top: 4px;" /><a style="margin-left:5px" href="https://beian.mps.gov.cn/#/query/webSearch">川公网安备51012202001910号<a/>',
         '<a href="https://github.com/iRainna/rainui?tab=MIT-1-ov-file">MIT License</a>',
       copyright: "Copyright (c) 2024 iRainna",
     },
