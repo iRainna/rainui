@@ -3,7 +3,10 @@
     :class="{
       'r-calendar__month': true,
     }"
-    :style="getComponentThemeStyle"
+    :style="{
+		...getComponentThemeStyle,
+		width:componentWidth
+	}"
   >
     <!-- renderTitle -->
     <view
@@ -75,6 +78,10 @@ const props = defineProps({
   date: {
     type: [Number, Array, Object],
     default: 0,
+  },
+  componentWidth:{
+	  type:String,
+	  default:'100vw'
   },
   currentDate: {
     type: [Number, Array, Object],
@@ -360,6 +367,7 @@ onMounted(async () => {
 </script>
 <style lang="scss" scoped>
 .r-calendar {
+	
   &__month-title {
     color: var(--r-text-color);
     height: var(--r-calendar-header-title-height);

@@ -152,6 +152,7 @@
           <r-calendar-month
             :date="dayjs(currentPanelDate).valueOf()"
             :currentDate="currentDate"
+			      :componentWidth="componentWidth"
             :showMonthTitle="!showSubtitle"
             :showMark="showMark"
             :firstDayOfWeek="firstDayOfWeek"
@@ -185,6 +186,7 @@
           <r-calendar-month
             v-for="(date, index) in months"
             :key="index"
+			      :componentWidth="componentWidth"
             :date="dayjs(date).valueOf()"
             :currentDate="currentDate"
             :showMonthTitle="index !== 0 || !showSubtitle"
@@ -310,6 +312,10 @@ const props = defineProps({
   switchMode: {
     type: String,
     default: "none",
+  },
+  componentWidth:{
+	  type:String,
+	  default:'100vw'
   },
   // 日历标题
   title: {
@@ -818,6 +824,7 @@ const onClickDisabledDate = (item) => {
 const setChildren = (e) => {
   children.value = [...children.value, e];
 };
+
 provide(CALENDAR_KEY, { children, setChildren });
 watch(
   () => [props.type, props.defaultDate],
