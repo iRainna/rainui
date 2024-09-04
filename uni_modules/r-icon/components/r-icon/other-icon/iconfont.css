@@ -1,8 +1,8 @@
 @font-face {
   font-family: "other"; /* Project id 4636649 */
-  src: url("iconfont.woff2?t=1724401888175") format("woff2"),
-    url("iconfont.woff?t=1724401888175") format("woff"),
-    url("iconfont.ttf?t=1724401888175") format("truetype");
+  src: url("iconfont.woff2?t=1722240545394") format("woff2"),
+    url("iconfont.woff?t=1722240545394") format("woff"),
+    url("iconfont.ttf?t=1722240545394") format("truetype");
 }
 
 .other {
@@ -11,14 +11,6 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-keyboard-hide:before {
-  content: "\e811";
-}
-
-.icon-delete:before {
-  content: "\e66a";
 }
 
 .icon-loading:before {

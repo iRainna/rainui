@@ -1,7 +1,7 @@
 {
   "id": "r-calendar-month",
   "displayName": "r-calendar-month",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "r-calendar-month 日历， 日历组件用于选择日期或日期区间。",
   "keywords": [
     "r-calendar-month"

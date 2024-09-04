@@ -300,6 +300,15 @@ const list = ref([
       },
     ],
   },
+  // {
+  //   title: "业务组件",
+  //   list: [
+  //     {
+  //       title: "AddressEdit-地址编辑",
+  //       url: "/pages/example/address-edit/address-edit",
+  //     },
+  //   ],
+  // },
 ]);
 const goPage = (url) => {
   uni.navigateTo({

@@ -270,25 +270,29 @@
       }
     },
     {
-    	"path" : "pages/example/stepper/stepper",
-    	"style" : 
-    	{
-    		"navigationBarTitleText" : "步进器"
-    	}
+      "path": "pages/example/stepper/stepper",
+      "style": {
+        "navigationBarTitleText": "步进器"
+      }
     },
     {
-    	"path" : "pages/example/signature/signature",
-    	"style" : 
-    	{
-    		"navigationBarTitleText" : "签名"
-    	}
+      "path": "pages/example/signature/signature",
+      "style": {
+        "navigationBarTitleText": "签名"
+      }
     },
     {
-    	"path" : "pages/example/progress/progress",
-    	"style" : 
-    	{
-    		"navigationBarTitleText" : "进度条"
-    	}
+      "path": "pages/example/progress/progress",
+      "style": {
+        "navigationBarTitleText": "进度条"
+      }
+    },
+
+    {
+      "path": "pages/example/address-edit/address-edit",
+      "style": {
+        "navigationBarTitleText": "地址编辑"
+      }
     }
   ],
   "globalStyle": {
@@ -296,7 +300,11 @@
     "navigationBarTitleText": "rainui",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8",
-    "navigationStyle": "custom"
+    "navigationStyle": "custom",
+    "mp-alipay": {
+      "transparentTitle": "always",
+      "titlePenetrate": "YES"
+    }
   },
   "uniIdRouter": {}
 }

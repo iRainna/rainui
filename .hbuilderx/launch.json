@@ -4,20 +4,32 @@
     "version" : "0.0",
     "configurations" : [
         {
-            "app-plus" : {
-                "launchtype" : "local"
-            },
-            "default" : {
-                "launchtype" : "local"
-            },
-            "h5" : {
-                "launchtype" : "remote"
-            },
-            "mp-weixin" : {
-                "launchtype" : "remote"
-            },
-            "provider" : "alipay",
-            "type" : "uniCloud"
+        	"app-plus" : 
+        	{
+        		"launchtype" : "local"
+        	},
+        	"default" : 
+        	{
+        		"launchtype" : "local"
+        	},
+        	"h5" : 
+        	{
+        		"launchtype" : "remote"
+        	},
+        	"mp-alipay" : 
+        	{
+        		"launchtype" : "remote"
+        	},
+        	"mp-baidu" : 
+        	{
+        		"launchtype" : "local"
+        	},
+        	"mp-weixin" : 
+        	{
+        		"launchtype" : "remote"
+        	},
+        	"provider" : "alipay",
+        	"type" : "uniCloud"
         }
     ]
 }

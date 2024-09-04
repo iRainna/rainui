@@ -152,7 +152,7 @@
           <r-calendar-month
             :date="dayjs(currentPanelDate).valueOf()"
             :currentDate="currentDate"
-			      :componentWidth="componentWidth"
+            :componentWidth="componentWidth"
             :showMonthTitle="!showSubtitle"
             :showMark="showMark"
             :firstDayOfWeek="firstDayOfWeek"
@@ -186,7 +186,7 @@
           <r-calendar-month
             v-for="(date, index) in months"
             :key="index"
-			      :componentWidth="componentWidth"
+            :componentWidth="componentWidth"
             :date="dayjs(date).valueOf()"
             :currentDate="currentDate"
             :showMonthTitle="index !== 0 || !showSubtitle"
@@ -313,9 +313,9 @@ const props = defineProps({
     type: String,
     default: "none",
   },
-  componentWidth:{
-	  type:String,
-	  default:'100vw'
+  componentWidth: {
+    type: String,
+    default: "100vw",
   },
   // 日历标题
   title: {
@@ -715,7 +715,7 @@ const onPanelChange = (date) => {
   emit("panelChange", { date });
 };
 const onConfirm = () =>
-  emit("confirm", currentDate.value ?? cloneDates(currentDate.value));
+  emit("confirm", currentDate.value || cloneDates(currentDate.value));
 const checkRange = (date) => {
   const { maxRange, rangePrompt, showRangePrompt } = props;
 

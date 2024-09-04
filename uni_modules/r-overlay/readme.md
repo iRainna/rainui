@@ -113,6 +113,3 @@ const hasContent = ref(false);
 | close  | 关闭的回调           | -        |
 | closed | 关闭动画结束时的回调 | -        |
 | click  | 点击遮罩层的事件     | e        |
-
-
-更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

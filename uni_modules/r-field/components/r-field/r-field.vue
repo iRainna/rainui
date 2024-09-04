@@ -460,9 +460,13 @@ const rulesComp = computed(() => {
   }
   return r;
 });
-const requiredComp = computed(() => {
-  return props.required || rulesComp.value[props.name]?.some((t) => t.required);
-});
+const requiredComp = computed(
+  () =>
+    props.required ||
+    (Array.isArray(rulesComp.value[props.name])
+      ? rulesComp.value[props.name].some((t) => t.required)
+      : rulesComp.value[props.name].required)
+);
 const validate = shallowRef();
 const resetFields = () => {
   clearValidate();

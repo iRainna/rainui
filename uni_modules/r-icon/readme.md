@@ -2,58 +2,68 @@
 
 `r-icon` 是一个使用 `iconfont` 的一个的字体图标组件，内置`vantui`图标库可直接使用，引用`iconfont`一些图标（可替换为自己的图标库，下载自己的图标文件后，将 iconfont 文件夹内容替换即可），方便简洁的使用`iconfont`图标。
 
-更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)
-[完整文档请前往](https://irainna.github.io/rainui/)
-
 ## 示例
 
 ```vue
 <template>
-  <r-config-provider :themeName="themeName">
-    <page-header title="图标" :leftArrow="true"></page-header>
+  <r-config-provider>
     <view style="padding: 20rpx">
-      <r-divider content-position="left"> 基础图标 </r-divider>
-      <r-grid square>
-        <r-grid-item
-          v-for="(m, n) in baseIcons.filter((t) => showIcons.includes(t))"
-          :key="m + n"
-          :icon="m.icon"
-          :text="m.icon"
-          @click="copy(m)"
-        />
-      </r-grid>
+      <r-divider content-position="left" @click="baseShow = !baseShow">
+        基础图标--<text style="color: var(--r-primary-color)">{{
+          baseShow ? "关闭" : "打开"
+        }}</text>
+      </r-divider>
+      <r-animation :show="baseShow" :duration="300" style="width: 100%">
+        <r-grid square>
+          <r-grid-item
+            v-for="(m, n) in baseIcons"
+            :key="m + n"
+            :icon="m.icon"
+            :text="m.icon"
+            @click="copy(m)"
+          />
+        </r-grid>
+      </r-animation>
 
-      <r-divider content-position="left">线性风格</r-divider>
-      <r-grid square>
-        <r-grid-item
-          v-for="(m, n) in outlineIcons.filter((t) => showIcons.includes(t))"
-          :key="m + n"
-          :icon="m.icon"
-          :text="m.icon"
-          @click="copy(m)"
-        />
-      </r-grid>
+      <r-divider content-position="left" @click="outlineShow = !outlineShow"
+        >线性风格--<text style="color: var(--r-primary-color)">{{
+          outlineShow ? "关闭" : "打开"
+        }}</text></r-divider
+      >
+      <r-animation :show="outlineShow" :duration="300" style="width: 100%">
+        <r-grid square>
+          <r-grid-item
+            v-for="(m, n) in outlineIcons"
+            :key="m + n"
+            :icon="m.icon"
+            :text="m.icon"
+            @click="copy(m)"
+          />
+        </r-grid>
+      </r-animation>
 
-      <r-divider content-position="left">实底风格</r-divider>
-      <r-grid square>
-        <r-grid-item
-          v-for="(m, n) in filledIcons.filter((t) => showIcons.includes(t))"
-          :key="m + n"
-          :icon="m.icon"
-          :text="m.icon"
-          @click="copy(m)"
-        />
-      </r-grid>
+      <r-divider content-position="left" @click="filledShow = !filledShow"
+        >实底风格--<text style="color: var(--r-primary-color)">{{
+          filledShow ? "关闭" : "打开"
+        }}</text></r-divider
+      >
+      <r-animation :show="filledShow" :duration="300" style="width: 100%">
+        <r-grid square>
+          <r-grid-item
+            v-for="(m, n) in filledIcons"
+            :key="m + n"
+            :icon="m.icon"
+            :text="m.icon"
+            @click="copy(m)"
+          />
+        </r-grid>
+      </r-animation>
     </view>
   </r-config-provider>
 </template>
 
 <script setup>
-import { ref, computed, watch } from "vue";
-import { useThemeStore } from "@/stores/theme";
-import { onPullDownRefresh, onReachBottom } from "@dcloudio/uni-app";
-const themeStore = useThemeStore();
-const themeName = computed(() => themeStore.theme);
+import { ref } from "vue";
 const baseShow = ref(true);
 const outlineShow = ref(true);
 const filledShow = ref(true);
@@ -339,48 +349,6 @@ const filledIcons = ref(
   ].map((t) => ({ icon: t }))
 );
 
-const showLength = ref(40);
-const showIcons = computed(() =>
-  new Array(showLength.value)
-    .fill(0)
-    .map((t, index) => {
-      if (Number(index) < baseIcons.value.length) {
-        return baseIcons.value[index];
-      } else if (
-        Number(index) >= baseIcons.value.length &&
-        Number(index) < baseIcons.value.length + outlineIcons.value.length
-      ) {
-        return outlineIcons.value[Number(index) - baseIcons.value.length];
-      } else if (
-        Number(index) >= baseIcons.value.length + outlineIcons.value.length &&
-        Number(index) <
-          baseIcons.value.length +
-            outlineIcons.value.length +
-            filledIcons.value.length
-      ) {
-        return filledIcons.value[
-          Number(index) - baseIcons.value.length - outlineIcons.value.length
-        ];
-      }
-      return 0;
-    })
-    .filter((t) => t)
-);
-
-onPullDownRefresh(() => {
-  showLength.value = 40;
-  uni.stopPullDownRefresh();
-});
-onReachBottom(() => {
-  if (
-    showLength.value <
-    baseIcons.value.length +
-      outlineIcons.value.length +
-      filledIcons.value.length
-  )
-    showLength.value = showLength.value + 40;
-});
-
 const copy = (m) => {
   uni.setClipboardData({
     data: `<r-icon name="${m.icon}" />`, //要被复制的内容
@@ -416,3 +384,7 @@ const copy = (m) => {
 | 事件名 | 说明       | 回调参数 |
 | ------ | ---------- | -------- |
 | click  | 点击的回调 | e        |
+
+
+
+更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

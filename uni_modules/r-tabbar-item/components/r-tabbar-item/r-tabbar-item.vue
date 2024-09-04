@@ -161,7 +161,7 @@ const color = computed(() => {
 });
 const onClick = (event) => {
   if (!active.value) {
-    parentInject.setActive(props.name ?? index.value);
+    parentInject.setActive(props.name || index.value);
   }
   emit("click", event);
 };

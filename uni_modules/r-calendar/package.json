@@ -1,7 +1,7 @@
 {
   "id": "r-calendar",
   "displayName": "r-calendar",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "r-calendar 日历， 日历组件用于选择日期或日期区间。",
   "keywords": [
     "r-calendar"
