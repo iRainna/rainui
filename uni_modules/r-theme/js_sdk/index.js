@@ -22,7 +22,7 @@ export const getThemeCssVar = (name = "default") => {
       cssVar[`--${t}`] = useTheme[t];
     });
   }
-  console.log("datas getThemeCssVar", datas.value, cssVar);
+
   return cssVar;
 };
 

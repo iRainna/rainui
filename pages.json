@@ -8,6 +8,18 @@
         "navigationBarTitleText": "rainui"
       }
     },
+    {
+      "path": "pages/example/form-edit/form-edit",
+      "style": {
+        "navigationBarTitleText": "配置项表单"
+      }
+    },
+    {
+      "path": "pages/example/address-edit/address-edit",
+      "style": {
+        "navigationBarTitleText": "地址编辑"
+      }
+    },
 
     {
       "path": "pages/example/action-bar/action-bar",
@@ -285,13 +297,6 @@
       "path": "pages/example/progress/progress",
       "style": {
         "navigationBarTitleText": "进度条"
-      }
-    },
-
-    {
-      "path": "pages/example/address-edit/address-edit",
-      "style": {
-        "navigationBarTitleText": "地址编辑"
       }
     }
   ],

@@ -307,6 +307,10 @@ const list = ref([
   //       title: "AddressEdit-地址编辑",
   //       url: "/pages/example/address-edit/address-edit",
   //     },
+  //  {
+  //    title: "FormEdit-自动表单",
+  //    url: "/pages/example/form-edit/form-edit",
+  //  },
   //   ],
   // },
 ]);
