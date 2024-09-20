@@ -101,7 +101,11 @@
     </view>
   </r-form>
 
-  <r-popup v-model:show="popupShow" position="bottom">
+  <r-popup
+    v-model:show="popupShow"
+    position="bottom"
+    :customStyle="{ '--r-padding-xs': 0 }"
+  >
     <r-picker
       v-if="popupData.type == 'picker'"
       :title="popupData?.picker?.title || ''"
@@ -121,17 +125,52 @@
       "
       @confirm="onPickerConfirm"
       @cancel="onPickerCancel"
-    ></r-picker>
+    />
+
+    <r-calendar
+      v-if="popupData.type == 'calendar'"
+      :switch-mode="popupData?.calendar?.switchMode || 'none'"
+      :type="popupData?.calendar?.type || 'single'"
+      :color="popupData?.calendar?.color || '#1989fa'"
+      :showConfirm="popupData?.calendar?.showConfirm || true"
+      :confirmText="popupData?.calendar?.confirmText || '确定'"
+      :confirmDisabledText="popupData?.calendar?.confirmDisabledText || '确定'"
+      :firstDayOfWeek="popupData?.calendar?.firstDayOfWeek || 0"
+      :defaultDate="getDefaultDate"
+      @confirm="(data) => onCalendarConfirm(data, popupData)"
+    />
+
+    <r-date-picker
+      v-if="popupData.type == 'datePicker'"
+      :value="currentDate"
+      :title="popupData?.datePicker?.title || ''"
+      :loading="popupData?.datePicker?.loading || ''"
+      :formatter="popupData?.datePicker?.formatter || []"
+      :columnsType="popupData?.datePicker?.columnsType || 'day'"
+      :filter="popupData?.datePicker?.filter || []"
+      :hideFields="popupData?.datePicker?.hideFields || []"
+      @confirm="onDatePickerConfirm"
+      @cancel="onDatePickerCancel"
+    />
+    <view
+      style="width: 100%"
+      :style="{
+        height: safeBottom + 'px',
+      }"
+    ></view>
   </r-popup>
 </template>
 <script setup>
 import {
   useComponentThemeStyle,
   _,
+  dayjs,
+  getSystemInfo,
 } from "@/uni_modules/r-utils/js_sdk/index.js";
-import { split } from "postcss/lib/list";
+
 import { ref, computed, watch } from "vue";
 const { reduce } = _;
+
 const props = defineProps({
   form: {
     type: Array,
@@ -162,6 +201,7 @@ const props = defineProps({
     default: () => [],
   },
 });
+
 const emit = defineEmits([
   "clickButton",
   "change",
@@ -169,31 +209,40 @@ const emit = defineEmits([
   "focus",
   "blur",
 ]);
+
 //弹出层显示
 const popupShow = ref(false);
+
 //弹出层数据
 const popupData = ref({});
+
 //表单显示对象
 const formComp = computed(() => {
   if (Array.isArray(props.form) && props.form?.every((m) => Array.isArray(m)))
     return props.form;
   return [props.form];
 });
+
 const componentsName = "r-address-edit";
 const getComponentThemeStyle = computed(() =>
   useComponentThemeStyle(props.themeName, componentsName)
 );
+
 //表单数据
 const formValue = computed({
   get: () => props.value,
   set: (v) => emit("update:value", v),
 });
+
 //表单示例
 const formRef = ref(null);
+
 //搜索列表显示对象
 const searchShow = ref({});
+
 //聚焦字段
 const focusKeys = ref("");
+
 //获取搜索列表数据
 const getCellList = (m) => {
   let list = [];
@@ -207,6 +256,20 @@ const getCellList = (m) => {
   }
   return list;
 };
+
+//默认选中的时间
+const getDefaultDate = computed(() => {
+  const { calendar, selectField, type } = popupData.value;
+  let data = formValue.value[selectField];
+
+  if (data)
+    if (["range", "multiple "].includes(calendar?.type))
+      return data.split(",").map((t) => Number(t));
+    else return Number(data);
+
+  return null;
+});
+
 //聚焦事件
 const onFocus = (item) => {
   focusKeys.value = item.field;
@@ -220,6 +283,7 @@ const onFocus = (item) => {
   });
   emit("focus", item);
 };
+
 //失焦事件
 const onBlur = (item) => emit("blur", item);
 
@@ -229,14 +293,7 @@ const onChange = (value, item) => {
   //校验
   const keys = Object.keys(props.rules);
   if (keys.includes(item.field)) {
-    formRef.value
-      .validateField(item.field)
-      .then((req) => {
-        console.log("req", req);
-      })
-      .catch((e) => {
-        console.log("e", e);
-      });
+    formRef.value.validateField(item.field);
   }
 
   if (item.showSearch && value) {
@@ -244,28 +301,38 @@ const onChange = (value, item) => {
   }
   emit("change", { value, item });
 };
+
 //点击输入框
 const onClickInput = (item) => {
-  console.log("e", item);
-  if (["picker"].includes(item.type)) {
+  if (["picker", "calendar"].includes(item.type)) {
     popupShow.value = true;
     popupData.value = item;
   }
 };
+
 //选中搜索框的数据
 const onChoose = (cellItem, filedItem) => {
-  console.log("ce", cellItem, filedItem);
   onChange(cellItem.label || cellItem.title, filedItem);
   searchShow.value[filedItem.field] = false;
 };
+
 //点击输入框内部右侧按钮
 const onClickButton = (m) => {
   emit("clickButton", m);
 };
+
 //点击底部按钮
 const onClickBottomBtn = (m) => {
   if (m.onClick) m.onClick(m);
 };
+
+//日期选择器确认按钮
+const onDatePickerConfirm = (data) => {};
+
+//日期选择器取消按钮
+const onDatePickerCancel = () => {};
+
+//点击选择器确认的事件
 const onPickerConfirm = (data) => {
   const { selectedValues, selectedOptions, selectedIndexes } = data;
   formValue.value[popupData.value.field] = selectedOptions
@@ -274,16 +341,52 @@ const onPickerConfirm = (data) => {
   formValue.value[popupData.value.selectField] = selectedValues.join(",");
   popupShow.value = false;
 };
+
+//点击日历确认按钮
+const onCalendarConfirm = (data, item) => {
+  const { calendar } = item;
+  if (calendar?.type == "multiple") {
+    formValue.value[popupData.value.field] = data
+      .map((t) => dayjs(t).format("YYYY-MM-DD"))
+      .join(",");
+
+    formValue.value[popupData.value.selectField] = data
+      .map((t) => dayjs(t).valueOf())
+      .join(",");
+  } else if (calendar?.type == "range") {
+    formValue.value[popupData.value.field] = data
+      .map((t) => dayjs(t).format("YYYY-MM-DD"))
+      .join("~");
+
+    formValue.value[popupData.value.selectField] = data
+      .map((t) => dayjs(t).valueOf())
+      .join(",");
+  } else {
+    formValue.value[popupData.value.field] = dayjs(data).format("YYYY-MM-DD");
+
+    formValue.value[popupData.value.selectField] = dayjs(data).valueOf();
+  }
+
+  popupShow.value = false;
+};
+
 //点击picker取消按钮
 const onPickerCancel = () => {
   popupShow.value = false;
 };
+
 //点击右侧icon的事件
 const onClickRightIcon = (m) => {
   if (m?.config?.onClickRightIcon) {
     m.config.onClickRightIcon(m);
   }
 };
+
+//安全底部距离
+const safeBottom = ref(0);
+const data = getSystemInfo();
+safeBottom.value = data?.safeAreaInsets?.bottom;
+
 //表单校验的方法
 const validate = async () => await formRef.value.validate();
 const validateField = async (name) => await formRef.value.validateField(name);

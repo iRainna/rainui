@@ -1,6 +1,6 @@
 <template>
   <r-config-provider :themeName="themeName">
-    <page-header title="自动表单"></page-header>
+    <page-header title="配置项表单"></page-header>
     <r-form-edit
       v-model:form="form"
       v-model:value="value"
@@ -22,6 +22,8 @@ const { themeName } = useTheme();
 const value = ref({
   area: "河北省/唐山市/开平区",
   areaCode: "130000,130200,130205",
+  date: "2024-09-20~2024-09-28",
+  dateValue: "1726814066702,1727505267588",
 });
 
 const form = ref([
@@ -78,6 +80,7 @@ const form = ref([
       },
     },
   ],
+
   [
     {
       field: "code",
@@ -87,6 +90,44 @@ const form = ref([
         type: "primary",
         disabled: false,
       },
+    },
+  ],
+  [
+    {
+      field: "date",
+      selectField: "dateValue",
+      label: "起止日期",
+      type: "calendar",
+      config: {
+        readonly: true,
+        get rigthIcon() {
+          return !!value.value.date ? "close" : "arrow";
+        },
+        onClickRightIcon: (m) => {
+          value.value.date = "";
+          value.value.dateValue = "";
+        },
+      },
+      calendar: {
+        type: "range",
+      },
+    },
+    {
+      field: "time",
+      selectField: "timeValue",
+      label: "时间",
+      type: "datePicker",
+      config: {
+        readonly: true,
+        get rigthIcon() {
+          return !!value.value.date ? "close" : "arrow";
+        },
+        onClickRightIcon: (m) => {
+          value.value.date = "";
+          value.value.dateValue = "";
+        },
+      },
+      datePicker: {},
     },
   ],
 ]);
