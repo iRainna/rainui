@@ -1,3 +1,8 @@
+<script setup>
+  import {pathName} from '../components/hooks/usePath'
+  pathName.value = 'pages/example/form-edit/form-edit'
+ </script>
+
 # r-form-edit
 
 `r-form-edit` 配置化表单，通过配置即可自动生成表单。[全部组件](https://ext.dcloud.net.cn/plugin?id=19701) [完整文档请前往](https://irainna.github.io/rainui/form/picker.html)
@@ -394,9 +399,9 @@ const onChange = (data) => {
 
 ### Slots
 
-| 名称    | 说明                           | 参数         |
-| ------- | ------------------------------ | ------------ |
-| default | 当 type==slot 时，可以使用插槽 | {item,value} |
+| 名称    | 说明                           | 参数                                                       |
+| ------- | ------------------------------ | ---------------------------------------------------------- |
+| default | 当 type==slot 时，可以使用插槽 | {value,item} //value 为数据值，item 为这一行的数据配置信息 |
 
 ### Methods
 

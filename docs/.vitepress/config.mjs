@@ -106,6 +106,11 @@ export default defineConfig({
           { text: "Tabbar-标签栏", link: "/navigation/tabbar" },
         ],
       },
+      {
+        text: "业务组件",
+        collapsed: false,
+        items: [{ text: "FormEdit-配置化表单", link: "/business/form-edit" }],
+      },
     ],
 
     socialLinks: [

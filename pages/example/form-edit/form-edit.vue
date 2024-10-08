@@ -24,6 +24,8 @@ const value = ref({
   areaCode: "130000,130200,130205",
   date: "2024-09-20~2024-09-28",
   dateValue: "1726814066702,1727505267588",
+  time: "00时/01分/01秒",
+  timeValue: "0,1,1",
 });
 
 const form = ref([
@@ -123,11 +125,104 @@ const form = ref([
           return !!value.value.date ? "close" : "arrow";
         },
         onClickRightIcon: (m) => {
-          value.value.date = "";
-          value.value.dateValue = "";
+          value.value.time = "";
+          value.value.timeValue = "";
         },
       },
-      datePicker: {},
+      datePicker: {
+        title: "请选择时间",
+        loading: false,
+        columnsType: "second",
+        hideFields: ["year", "month", "day"],
+        formatter: [
+          {
+            type: "hour",
+            fn: (e) => {
+              e.item[e.fields.text] =
+                (e.item[e.fields.text] < 10
+                  ? "0" + e.item[e.fields.text]
+                  : e.item[e.fields.text]) + "时";
+              return e.item;
+            },
+          },
+
+          {
+            type: "minute",
+            fn: (e) => {
+              e.item[e.fields.text] =
+                (e.item[e.fields.text] < 10
+                  ? "0" + e.item[e.fields.text]
+                  : e.item[e.fields.text]) + "分";
+              return e.item;
+            },
+          },
+          {
+            type: "second",
+            fn: (e) => {
+              e.item[e.fields.text] =
+                (e.item[e.fields.text] < 10
+                  ? "0" + e.item[e.fields.text]
+                  : e.item[e.fields.text]) + "秒";
+              return e.item;
+            },
+          },
+        ],
+      },
+    },
+  ],
+  [
+    {
+      field: "rate",
+      label: "评分",
+      type: "rate",
+      rate: {},
+    },
+    {
+      field: "checkbox",
+      label: "多选框",
+      type: "checkbox",
+      checkbox: {
+        list: [
+          {
+            label: "苹果",
+            value: "apple",
+          },
+          {
+            label: "梨子",
+            value: "pear",
+          },
+          {
+            label: "橘子",
+            value: "orange",
+          },
+        ],
+      },
+    },
+    {
+      field: "radio",
+      label: "单选框",
+      type: "radio",
+      radio: {
+        list: [
+          {
+            label: "苹果",
+            value: "apple",
+          },
+          {
+            label: "梨子",
+            value: "pear",
+          },
+          {
+            label: "橘子",
+            value: "orange",
+          },
+        ],
+      },
+    },
+    {
+      field: "switch",
+      label: "开关",
+      type: "switch",
     },
   ],
 ]);

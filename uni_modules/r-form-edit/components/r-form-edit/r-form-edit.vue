@@ -3,12 +3,16 @@
     <view
       class="r-form-edit"
       :style="{
+        ...getComponentThemeStyle,
         gap,
       }"
     >
       <r-cell-group inset v-for="(arr, index) in formComp" :key="index">
         <template v-for="(m, n) in arr" :key="n">
           <r-field
+            v-if="
+              ['picker', 'calendar', 'datePicker'].includes(m.type) || !m.type
+            "
             v-model:value="formValue[m.field]"
             :name="m.field"
             :label="m.label"
@@ -47,6 +51,95 @@
                 v-if="m?.config?.rigthIcon"
                 @click="onClickRightIcon(m)"
               ></r-icon>
+            </template>
+          </r-field>
+
+          <r-field
+            v-else
+            :value="formValue[m.field]"
+            :name="m.field"
+            :label="m.label"
+          >
+            <template #input>
+              <r-rate
+                v-if="m.type == 'rate'"
+                v-model:value="formValue[m.field]"
+                :count="m?.rate?.count || 5"
+                :size="m?.rate?.size || '40rpx'"
+                :gutter="m?.rate?.gutter || '8rpx'"
+                :delay="m?.rate?.delay || 0"
+                :color="m?.rate?.color || '#ee0a24'"
+                :voidColor="m?.rate?.voidColor || '#c8c9cc'"
+                :disabledColor="m?.rate?.disabledColor || '#c8c9cc'"
+                :icon="m?.rate?.icon || 'star'"
+                :voidIcon="m?.rate?.voidIcon || 'star-o'"
+                :iconPrefix="m?.rate?.iconPrefix || 'van-icon'"
+                :allowHalf="m?.rate?.allowHalf"
+                :clearable="m?.rate?.clearable"
+                :readonly="m?.rate?.readonly"
+                :disabled="m?.rate?.disabled"
+                @change="(e) => onChange(e, m)"
+              ></r-rate>
+
+              <r-checkbox-group
+                v-else-if="m.type == 'checkbox'"
+                v-model:value="formValue[m.field]"
+                :direction="m?.checkbox?.direction || 'horizontal'"
+                :disabled="m?.checkbox?.disabled"
+                :shape="m?.checkbox?.shape || 'square'"
+                :iconSize="m?.checkbox?.iconSize || '40rpx'"
+                :checkedColor="m?.checkbox?.checkedColor || '#1989fa'"
+                @change="(e) => onChange(e, m)"
+              >
+                <template v-if="m.checkbox?.list?.length">
+                  <r-checkbox
+                    :name="item.value"
+                    v-for="(item, index) in m.checkbox?.list"
+                    :key="index"
+                    >{{ item.label }}</r-checkbox
+                  >
+                </template>
+              </r-checkbox-group>
+
+              <r-radio-group
+                v-else-if="m.type == 'radio'"
+                v-model:value="formValue[m.field]"
+                :direction="m?.radio?.direction || 'horizontal'"
+                :disabled="m?.radio?.disabled"
+                :shape="m?.radio?.shape || 'round'"
+                :iconSize="m?.radio?.iconSize || '40rpx'"
+                :checkedColor="m?.radio?.checkedColor || '#1989fa'"
+                @change="(e) => onChange(e, m)"
+              >
+                <template v-if="m.radio?.list?.length">
+                  <r-radio
+                    :name="item.value"
+                    v-for="(item, index) in m.radio?.list"
+                    :key="index"
+                  >
+                    {{ item.label }}
+                  </r-radio>
+                  <!-- <r-radio name="2">单选框 2</r-radio> -->
+                </template>
+              </r-radio-group>
+
+              <r-switch
+                v-else-if="m.type == 'switch'"
+                v-model:value="formValue[m.field]"
+                :loading="m?.switch?.loading"
+                :disabled="m?.switch?.disabled"
+                :size="m?.switch?.size"
+                :activeColor="m?.switch?.activeColor"
+                :inactiveColor="m?.switch?.inactiveColor"
+                :activeValue="m?.switch?.activeValue || true"
+                :inactiveValue="m?.switch?.inactiveValue || false"
+              />
+
+              <slot
+                v-else-if="m.type == 'slot'"
+                :item="m"
+                :value="formValue[m.field]"
+              />
             </template>
           </r-field>
           <view
@@ -142,9 +235,13 @@
 
     <r-date-picker
       v-if="popupData.type == 'datePicker'"
-      :value="currentDate"
+      :value="
+        formValue[popupData.selectField]
+          ? formValue[popupData.selectField].split(',').map((t) => Number(t))
+          : []
+      "
       :title="popupData?.datePicker?.title || ''"
-      :loading="popupData?.datePicker?.loading || ''"
+      :loading="popupData?.datePicker?.loading"
       :formatter="popupData?.datePicker?.formatter || []"
       :columnsType="popupData?.datePicker?.columnsType || 'day'"
       :filter="popupData?.datePicker?.filter || []"
@@ -188,17 +285,14 @@ const props = defineProps({
     type: [String],
     default: "24rpx",
   },
-  confirm: {
-    type: [String],
-    default: "提交",
-  },
-  cancelText: {
-    type: String,
-    default: "取消",
-  },
+
   btns: {
     type: Array,
     default: () => [],
+  },
+  themeName: {
+    type: String,
+    default: "default",
   },
 });
 
@@ -223,9 +317,8 @@ const formComp = computed(() => {
   return [props.form];
 });
 
-const componentsName = "r-address-edit";
 const getComponentThemeStyle = computed(() =>
-  useComponentThemeStyle(props.themeName, componentsName)
+  useComponentThemeStyle(props.themeName, "r-base")
 );
 
 //表单数据
@@ -263,7 +356,7 @@ const getDefaultDate = computed(() => {
   let data = formValue.value[selectField];
 
   if (data)
-    if (["range", "multiple "].includes(calendar?.type))
+    if (["range", "multiple"].includes(calendar?.type))
       return data.split(",").map((t) => Number(t));
     else return Number(data);
 
@@ -304,7 +397,7 @@ const onChange = (value, item) => {
 
 //点击输入框
 const onClickInput = (item) => {
-  if (["picker", "calendar"].includes(item.type)) {
+  if (["picker", "calendar", "datePicker"].includes(item.type)) {
     popupShow.value = true;
     popupData.value = item;
   }
@@ -325,12 +418,6 @@ const onClickButton = (m) => {
 const onClickBottomBtn = (m) => {
   if (m.onClick) m.onClick(m);
 };
-
-//日期选择器确认按钮
-const onDatePickerConfirm = (data) => {};
-
-//日期选择器取消按钮
-const onDatePickerCancel = () => {};
 
 //点击选择器确认的事件
 const onPickerConfirm = (data) => {
@@ -375,6 +462,22 @@ const onPickerCancel = () => {
   popupShow.value = false;
 };
 
+//日期选择器确认按钮
+const onDatePickerConfirm = (data) => {
+  console.log("data", data, popupData.value);
+  formValue.value[popupData.value.selectField] = data.selectedValues.join(",");
+
+  formValue.value[popupData.value.field] = data.selectedOptions
+    .map((t) => t.text)
+    .join("/");
+
+  popupShow.value = false;
+};
+
+//日期选择器取消按钮
+const onDatePickerCancel = () => {
+  onPickerCancel();
+};
 //点击右侧icon的事件
 const onClickRightIcon = (m) => {
   if (m?.config?.onClickRightIcon) {
