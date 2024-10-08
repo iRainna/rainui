@@ -1,7 +1,7 @@
 {
   "id": "r-form-edit",
   "displayName": "r-form-edit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "通过简单配置生成动态表单",
   "keywords": [
     "r-form-edit"
@@ -47,7 +47,7 @@
       "r-popup",
       "r-picker",
       "r-calendar",
-      "r-date-picker"
+      "r-date-picker","r-switch"
     ],
     "encrypt": [],
     "platforms": {

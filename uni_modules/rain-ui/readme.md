@@ -100,6 +100,10 @@
 
 [Tabbar](https://ext.dcloud.net.cn/plugin?id=19419)-标签栏
 
+### 业务组件
+
+[FormEdit](https://ext.dcloud.net.cn/plugin?id=20516)-配置式表单
+
 ### 其他
 
 [Utils](https://ext.dcloud.net.cn/plugin?id=18681)-组件工具库

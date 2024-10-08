@@ -199,6 +199,7 @@
     position="bottom"
     :customStyle="{ '--r-padding-xs': 0 }"
   >
+  <view v-if="['picker','datePicker'].includes(popupData.type)" style="height: 20rpx;width: 100%;"></view>
     <r-picker
       v-if="popupData.type == 'picker'"
       :title="popupData?.picker?.title || ''"
