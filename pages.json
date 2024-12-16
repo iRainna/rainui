@@ -298,6 +298,13 @@
       "style": {
         "navigationBarTitleText": "进度条"
       }
+    },
+    {
+    	"path" : "pages/example/number-keyboard/number-keyboard",
+    	"style" : 
+    	{
+    		"navigationBarTitleText" : " 数字键盘"
+    	}
     }
   ],
   "globalStyle": {

@@ -202,6 +202,9 @@ const getRadius = computed(() => {
   const cssVars = {
     overflow: "hidden",
   };
+
+  if (!props.round) return cssVars;
+
   if (props.position == "center") {
     cssVars["border-radius"] = "var(--r-popup-round-radius)";
   }

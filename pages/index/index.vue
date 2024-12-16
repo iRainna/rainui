@@ -162,6 +162,10 @@ const list = ref([
         title: "Form-表单",
         url: "/pages/example/form/form",
       },
+	  {
+	    title: "NumberKeyboard-数字键盘",
+	    url: "/pages/example/number-keyboard/number-keyboard",
+	  },
       {
         title: "Picker-选择器",
         url: "/pages/example/picker/picker",

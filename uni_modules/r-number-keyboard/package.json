@@ -1,17 +1,17 @@
 {
-  "id": "r-theme",
-  "displayName": "r-theme",
-  "version": "1.4.4",
-  "description": "r-theme 是一个为 r-overlay、r-icon等组件提供定制样式的 jssdk。",
+  "id": "r-number-keyboard",
+  "displayName": "r-number-keyboard",
+  "version": "1.0.2",
+  "description": "r-number-keyboard虚拟数字键盘，可以配合自定义的输入框组件使用。",
   "keywords": [
-    "r-theme"
+    "r-number-keyboard"
 ],
   "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
   "dcloudext": {
-    "type": "sdk-js",
+    "type": "component-vue",
     "sale": {
       "regular": {
         "price": "0.00"
@@ -31,7 +31,13 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": [],
+    "dependencies": [
+      "r-utils",
+      "r-popup",
+      "r-theme",
+	  "r-loading",
+	  "r-icon"
+    ],
     "encrypt": [],
     "platforms": {
       "cloud": {
@@ -41,13 +47,13 @@
       },
       "client": {
         "Vue": {
-          "vue2": "u",
+          "vue2": "n",
           "vue3": "y"
         },
         "App": {
           "app-vue": "y",
-          "app-nvue": "u",
-          "app-uvue": "u"
+          "app-nvue": "n",
+          "app-uvue": "n"
         },
         "H5-mobile": {
           "Safari": "y",

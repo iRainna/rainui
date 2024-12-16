@@ -54,6 +54,7 @@ export default defineConfig({
           { text: "DatePicker-日期选择", link: "/form/datePicker" },
           { text: "Field-输入框", link: "/form/field" },
           { text: "Form-表单", link: "/form/form" },
+          { text: "NumberKeyboard-数字键盘", link: "/form/numberKeyboard" },
           { text: "Picker-选择器", link: "/form/picker" },
           { text: "Radio-单选框", link: "/form/radio" },
           { text: "Rate-评分", link: "/form/rate" },
