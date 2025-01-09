@@ -36,6 +36,8 @@
 
 [Form](https://ext.dcloud.net.cn/plugin?id=19120)-表单
 
+[NumberKeyboard](https://ext.dcloud.net.cn/plugin?id=21439)-数字键盘
+
 [Picker](https://ext.dcloud.net.cn/plugin?id=18989)-选择器
 
 [Radio](https://ext.dcloud.net.cn/plugin?id=18850)-单选框
