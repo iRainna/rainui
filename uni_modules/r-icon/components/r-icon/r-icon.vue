@@ -33,10 +33,10 @@
 
 <script setup>
 import { inject, ref, computed } from "vue";
-import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getComponentThemeCssVar } from "../themes/index.js";
 
-import { CONFIG_PROVIDER_KEY, _ } from "@/uni_modules/r-utils/js_sdk/index.js";
-const { cloneDeep } = _;
+import { cloneDeep } from "../utils/index.js";
+
 const props = defineProps({
   //icon名称
   name: {
@@ -91,15 +91,11 @@ const props = defineProps({
 });
 
 const componentsName = "r-icon";
-const themeInject = inject(CONFIG_PROVIDER_KEY, {});
+
 
 const getComponentThemeStyle = computed(() => {
   let themeName = props.themeName;
 
-  if (themeInject?.value?.themeName) {
-    //传递过来的有就用传递了
-    themeName = themeInject?.value?.themeName;
-  }
   if (props.themeName != "default") {
     //单独设置了组件的 就用单独设置的
     themeName = props.themeName;
@@ -119,7 +115,7 @@ const clickHandler = (e) => {
 
 <style lang="scss" scoped>
 @import "./vant-icons/encode-woff2.scss";
-@import "../../../r-animation/components/r-animation/animate.css";
+@import "./animate/animate.css";
 @import "./iconfont/iconfont.css";
 @import "./other-icon/iconfont.css";
 
