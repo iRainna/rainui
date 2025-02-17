@@ -1,7 +1,7 @@
 {
   "id": "r-rate",
   "displayName": "r-rate",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "r-rate 是一个借鉴了 van-rate 的一个的uniapp-vue3评分组件，用于对事物进行评级操作。",
   "keywords": [
     "van-rate"
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-icon","r-theme","r-utils"],
+    "dependencies": ["r-icon"],
     "encrypt": [],
     "platforms": {
       "cloud": {

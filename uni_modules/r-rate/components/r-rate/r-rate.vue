@@ -72,25 +72,20 @@ import {
 
 import {
   GetRect,
-  _,
   isNumeric,
-  CONFIG_PROVIDER_KEY,
-} from "@/uni_modules/r-utils/js_sdk/index.js";
-import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
-const { forEach } = _;
+} from "../utils/index.js";
+import { getComponentThemeCssVar } from "../themes/index.js";
+
 const emit = defineEmits(["change", "update:value"]);
 const props = defineProps(RateProps);
 
 const componentsName = "r-rate";
-const themeInject = inject(CONFIG_PROVIDER_KEY, {});
+
 
 const getComponentThemeStyle = computed(() => {
   let themeName = props.themeName;
 
-  if (themeInject?.value?.themeName) {
-    //传递过来的有就用传递了
-    themeName = themeInject?.value?.themeName;
-  }
+  
   if (props.themeName != "default") {
     //单独设置了组件的 就用单独设置的
     themeName = props.themeName;
@@ -138,33 +133,34 @@ const list = computed(() =>
 );
 const updateRanges = () => {
   ranges.value = [];
-  forEach(rects.value, (rect, index) => {
-    minRectTop = Math.min(rect.top, minRectTop);
-    maxRectTop = Math.max(rect.top, maxRectTop);
-    if (props.allowHalf) {
-      ranges.value.push(
-        {
-          score: index + 0.5,
-          left: rect.left,
-          top: rect.top,
-          height: rect.height,
-        },
-        {
-          score: index + 1,
-          left: rect.left + rect.width / 2,
-          top: rect.top,
-          height: rect.height,
-        }
-      );
-    } else {
-      ranges.value.push({
-        score: index + 1,
-        left: rect.left,
-        top: rect.top,
-        height: rect.height,
-      });
-    }
-  });
+  rects.value.forEach((rect, index) =>{
+	  minRectTop = Math.min(rect.top, minRectTop);
+	  maxRectTop = Math.max(rect.top, maxRectTop);
+	  if (props.allowHalf) {
+	    ranges.value.push(
+	      {
+	        score: index + 0.5,
+	        left: rect.left,
+	        top: rect.top,
+	        height: rect.height,
+	      },
+	      {
+	        score: index + 1,
+	        left: rect.left + rect.width / 2,
+	        top: rect.top,
+	        height: rect.height,
+	      }
+	    );
+	  } else {
+	    ranges.value.push({
+	      score: index + 1,
+	      left: rect.left,
+	      top: rect.top,
+	      height: rect.height,
+	    });
+	  }
+  })
+  
 };
 
 const getScoreByPosition = (x, y) => {
