@@ -4,9 +4,9 @@
       'r-calendar__month': true,
     }"
     :style="{
-		...getComponentThemeStyle,
-		width:componentWidth
-	}"
+      ...getComponentThemeStyle,
+      width: componentWidth,
+    }"
   >
     <!-- renderTitle -->
     <view
@@ -61,27 +61,27 @@ import {
 import {
   dayjs,
   CALENDAR_KEY,
-  CONFIG_PROVIDER_KEY,
   compareDay,
   GetRect,
-  _,
   getPrevDay,
   isFunction,
   getNextDay,
-  POPUP_KEY,
-} from "@/uni_modules/r-utils/js_sdk/index.js";
-import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+  uniqueId,
+  findIndex,
+} from "@/uni_modules/r-calendar/components/utils/index.js";
+import { POPUP_KEY } from "@/uni_modules/r-popup/components/utils/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-calendar/components/themes/index.js";
 const { proxy } = getCurrentInstance();
-const { uniqueId, findIndex } = _;
+
 const emit = defineEmits(["click", "clickDisabledDate"]);
 const props = defineProps({
   date: {
     type: [Number, Array, Object],
     default: 0,
   },
-  componentWidth:{
-	  type:String,
-	  default:'100vw'
+  componentWidth: {
+    type: String,
+    default: "100vw",
   },
   currentDate: {
     type: [Number, Array, Object],
@@ -152,7 +152,7 @@ const onClickDisabledDate = (e) => emit("clickDisabledDate", e);
 
 const componentsName = "r-calendar";
 const componentsId = ref("");
-const themeInject = inject(CONFIG_PROVIDER_KEY, {});
+
 const index = computed(() => {
   let list = [];
   if (parentInject?.children?.value?.length) {
@@ -163,10 +163,6 @@ const index = computed(() => {
 const getComponentThemeStyle = computed(() => {
   let themeName = props.themeName;
 
-  if (themeInject?.value?.themeName) {
-    //传递过来的有就用传递了
-    themeName = themeInject?.value?.themeName;
-  }
   if (props.themeName != "default") {
     //单独设置了组件的 就用单独设置的
     themeName = props.themeName;
@@ -367,7 +363,6 @@ onMounted(async () => {
 </script>
 <style lang="scss" scoped>
 .r-calendar {
-	
   &__month-title {
     color: var(--r-text-color);
     height: var(--r-calendar-header-title-height);

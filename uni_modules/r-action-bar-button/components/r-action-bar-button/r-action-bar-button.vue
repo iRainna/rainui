@@ -14,15 +14,11 @@
   </r-button>
 </template>
 <script setup>
-import {
-  CONFIG_PROVIDER_KEY,
-  _,
-  ACTION_BAR_KEY,
-} from "@/uni_modules/r-utils/js_sdk/index.js";
-import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { ACTION_BAR_KEY } from "@/uni_modules/r-action-bar/components/utils/index.js";
+import { uniqueId } from "../utils/index.js";
+import { getComponentThemeCssVar } from "../themes/index.js";
 import { inject, computed, ref, onMounted } from "vue";
 const emit = defineEmits(["click"]);
-const { uniqueId } = _;
 const props = defineProps({
   // 按钮文字
   text: {
@@ -55,15 +51,10 @@ const props = defineProps({
 
 const componentsName = "r-action-bar-button";
 const componentsId = ref(null);
-const themeInject = inject(CONFIG_PROVIDER_KEY, {});
 
 const getComponentThemeStyle = computed(() => {
   let themeName = props.themeName;
 
-  if (themeInject?.value?.themeName) {
-    //传递过来的有就用传递了
-    themeName = themeInject?.value?.themeName;
-  }
   if (props.themeName != "default") {
     //单独设置了组件的 就用单独设置的
     themeName = props.themeName;

@@ -1,7 +1,7 @@
 {
   "id": "r-calendar-month",
   "displayName": "r-calendar-month",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "r-calendar-month 日历， 日历组件用于选择日期或日期区间。",
   "keywords": [
     "r-calendar-month"
@@ -32,9 +32,7 @@
   },
   "uni_modules": {
     "dependencies": [
-      "r-calendar-day",
-      "r-theme",
-      "r-utils"
+      "r-calendar-day"
     ],
     "encrypt": [],
     "platforms": {

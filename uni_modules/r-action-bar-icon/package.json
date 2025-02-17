@@ -1,7 +1,7 @@
 {
   "id": "r-action-bar-icon",
   "displayName": "r-action-bar-icon",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "r-action-bar-icon",
   "keywords": [
     "动作栏，用于为页面相关操作提供便捷交互。"
@@ -31,7 +31,10 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-utils","r-theme","r-badge","r-icon"],
+    "dependencies": [
+      "r-badge",
+      "r-icon"
+    ],
     "encrypt": [],
     "platforms": {
       "cloud": {

@@ -266,10 +266,10 @@ import {
   getCurrentInstance,
   nextTick,
 } from "vue";
-import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getComponentThemeCssVar } from "../themes/index.js";
 import useToast from "@/uni_modules/r-toast/components/r-toast/useToast";
+
 import {
-  dayjs,
   getToday,
   getPrevDay,
   getNextDay,
@@ -277,20 +277,21 @@ import {
   cloneDate,
   getTimeByOffset,
   CALENDAR_KEY,
-  CONFIG_PROVIDER_KEY,
   compareMonth,
   cloneDates,
   isNumeric,
-  _,
   calcDateNum,
   isFunction,
-} from "@/uni_modules/r-utils/js_sdk/index.js";
-import { GetRect } from "../../../r-utils/js_sdk";
+  reduce,
+  debounce,
+  GetRect,
+  dayjs,
+} from "../utils/index.js";
 
 const toastRef = ref(null);
 
 const { showToast } = useToast(toastRef);
-const { reduce, debounce } = _;
+
 const { proxy } = getCurrentInstance();
 const emit = defineEmits([
   "clickDisabledDate",
@@ -440,15 +441,10 @@ const props = defineProps({
 });
 
 const componentsName = "r-calendar";
-const themeInject = inject(CONFIG_PROVIDER_KEY, {});
 
 const getComponentThemeStyle = computed(() => {
   let themeName = props.themeName;
 
-  if (themeInject?.value?.themeName) {
-    //传递过来的有就用传递了
-    themeName = themeInject?.value?.themeName;
-  }
   if (props.themeName != "default") {
     //单独设置了组件的 就用单独设置的
     themeName = props.themeName;

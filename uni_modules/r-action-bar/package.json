@@ -1,7 +1,7 @@
 {
   "id": "r-action-bar",
   "displayName": "r-action-bar",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "r-action-bar动作栏，用于为页面相关操作提供便捷交互。",
   "keywords": [
     "r-action-bar"
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-utils","r-theme","r-action-bar-button","r-action-bar-icon"],
+    "dependencies": ["r-action-bar-button","r-action-bar-icon"],
     "encrypt": [],
     "platforms": {
       "cloud": {

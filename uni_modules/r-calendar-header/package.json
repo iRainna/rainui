@@ -1,7 +1,7 @@
 {
   "id": "r-calendar-header",
   "displayName": "r-calendar-header",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "r-calendar-header 日历， 日历组件用于选择日期或日期区间。",
   "keywords": [
     "r-calendar-header"
@@ -31,10 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": [
-      "r-theme",
-      "r-utils"
-    ],
+    "dependencies": [],
     "encrypt": [],
     "platforms": {
       "cloud": {

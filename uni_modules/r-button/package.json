@@ -1,7 +1,7 @@
 {
   "id": "r-button",
   "displayName": "r-button",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "r-button按钮组件，按钮用于触发一个操作，如提交表单。",
   "keywords": [
     "van-button"
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-loading","r-icon","r-theme","r-utils"],
+    "dependencies": ["r-loading","r-icon"],
     "encrypt": [],
     "platforms": {
       "cloud": {

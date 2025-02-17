@@ -127,23 +127,19 @@
 <script setup>
 import ButtonProps from "./props.js";
 import { computed, inject } from "vue";
-import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
-import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
+import { getComponentThemeCssVar } from "../themes/index.js";
+
 
 const props = defineProps({
   ...ButtonProps,
 });
 
 const componentsName = "r-button";
-const themeInject = inject(CONFIG_PROVIDER_KEY, {});
+
 
 const getComponentThemeStyle = computed(() => {
   let themeName = props.themeName;
 
-  if (themeInject?.value?.themeName) {
-    //传递过来的有就用传递了
-    themeName = themeInject?.value?.themeName;
-  }
   if (props.themeName != "default") {
     //单独设置了组件的 就用单独设置的
     themeName = props.themeName;

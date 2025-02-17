@@ -1,7 +1,7 @@
 {
   "id": "r-action-bar-button",
   "displayName": "r-action-bar-button",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "r-action-bar-button",
   "keywords": [
     "r-action-bar-button",
@@ -32,7 +32,9 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-utils","r-theme","r-button"],
+    "dependencies": [
+      "r-button"
+    ],
     "encrypt": [],
     "platforms": {
       "cloud": {

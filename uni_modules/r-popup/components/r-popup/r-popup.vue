@@ -96,25 +96,19 @@
 </template>
 <script setup>
 import PopupProps from "./props.js";
-
 import {
-  CONFIG_PROVIDER_KEY,
   POPUP_KEY,
   getSystemInfo,
-} from "@/uni_modules/r-utils/js_sdk/index.js";
-import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+} from "../utils/index.js";
+import { getComponentThemeCssVar } from "../themes/index.js";
 import { computed, ref, inject, nextTick, provide } from "vue";
+
 const props = defineProps({ ...PopupProps });
 const componentsName = "r-popup";
-const themeInject = inject(CONFIG_PROVIDER_KEY, {});
 
 const getComponentThemeStyle = computed(() => {
   let themeName = props.themeName;
 
-  if (themeInject?.value?.themeName) {
-    //传递过来的有就用传递了
-    themeName = themeInject?.value?.themeName;
-  }
   if (props.themeName != "default") {
     //单独设置了组件的 就用单独设置的
     themeName = props.themeName;
@@ -125,6 +119,7 @@ const getComponentThemeStyle = computed(() => {
     ...getComponentThemeCssVar(themeName, componentsName),
   };
 });
+
 const emit = defineEmits([
   "click",
   "click-overlay",
