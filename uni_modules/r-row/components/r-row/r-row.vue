@@ -13,7 +13,7 @@
 </template>
 <script setup>
 import { provide, ref, computed, onMounted, getCurrentInstance } from "vue";
-import { LAYOUT_KEY, GetRect } from "@/uni_modules/r-utils/js_sdk/index.js";
+import { LAYOUT_KEY, GetRect } from "../utils/index.js";
 const { proxy } = getCurrentInstance();
 const props = defineProps({
   // 列元素之间的间距（单位为 px）

@@ -1,7 +1,7 @@
 {
   "id": "r-col",
   "displayName": "r-col",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Layout布局组件配合r-row使用",
   "keywords": [
     "Layout"
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-utils","r-row"],
+    "dependencies": ["r-row"],
     "encrypt": [],
     "platforms": {
       "cloud": {

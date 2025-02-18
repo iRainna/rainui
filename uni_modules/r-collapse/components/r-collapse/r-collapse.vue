@@ -1,8 +1,8 @@
 <template>
   <view
     :class="{
-      'van-collapse': true,
-      'van-hairline--top-bottom': border,
+      'r-collapse': true,
+      'r-hairline--top-bottom': border,
     }"
     :style="getComponentThemeStyle"
   >
@@ -15,22 +15,19 @@ import { ref, provide, computed, inject } from "vue";
 import CollapseProps from "./props.js";
 import {
   COLLAPSE_KEY,
-  _,
-  CONFIG_PROVIDER_KEY,
-} from "@/uni_modules/r-utils/js_sdk/index.js";
-import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+  uniqWith,
+  cloneDeep,
+  isEqual,
+  debounce,
+} from "../utils/index.js";
+import { getComponentThemeCssVar } from "../themes/index.js";
 const props = defineProps(CollapseProps);
 
 const componentsName = "r-collapse";
-const themeInject = inject(CONFIG_PROVIDER_KEY, {});
 
 const getComponentThemeStyle = computed(() => {
   let themeName = props.themeName;
 
-  if (themeInject?.value?.themeName) {
-    //传递过来的有就用传递了
-    themeName = themeInject?.value?.themeName;
-  }
   if (props.themeName != "default") {
     //单独设置了组件的 就用单独设置的
     themeName = props.themeName;
@@ -43,7 +40,7 @@ const getComponentThemeStyle = computed(() => {
 });
 
 const emit = defineEmits(["change", "update:value"]);
-const { uniqWith, cloneDeep, isEqual, debounce } = _;
+
 const children = ref([]);
 const setChildren = (v) => {
   const arr = cloneDeep([...children.value, v]);

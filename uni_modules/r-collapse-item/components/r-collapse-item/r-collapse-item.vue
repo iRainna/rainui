@@ -4,7 +4,7 @@
       'r-collapse-item': true,
       'r-collapse-item--border': index && border,
     }"
-    :style="getComponentThemeCssVar"
+    :style="getComponentThemeStyle"
   >
     <!-- renderTitle -->
     <r-cell
@@ -94,29 +94,24 @@
 </template>
 <script setup>
 import {
-  _,
+  uniqueId,
+  findIndex,
   COLLAPSE_KEY,
   GetRect,
-  CONFIG_PROVIDER_KEY,
-} from "@/uni_modules/r-utils/js_sdk/index.js";
+} from "@/uni_modules/r-collapse/components/utils/index.js";
 import { computed, inject, getCurrentInstance, onMounted, ref } from "vue";
 import CollapseItemProps from "./props.js";
 
-import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-collapse/components/themes/index.js";
 
 const { proxy } = getCurrentInstance();
 const props = defineProps(CollapseItemProps);
 
 const componentsName = "r-collapse-item";
-const themeInject = inject(CONFIG_PROVIDER_KEY, {});
 
 const getComponentThemeStyle = computed(() => {
   let themeName = props.themeName;
 
-  if (themeInject?.value?.themeName) {
-    //传递过来的有就用传递了
-    themeName = themeInject?.value?.themeName;
-  }
   if (props.themeName != "default") {
     //单独设置了组件的 就用单独设置的
     themeName = props.themeName;
@@ -127,7 +122,6 @@ const getComponentThemeStyle = computed(() => {
     ...getComponentThemeCssVar(themeName, componentsName),
   };
 });
-const { uniqueId, findIndex } = _;
 
 const id = uniqueId("collapse-item-");
 

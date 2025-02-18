@@ -12,8 +12,12 @@
 <script setup>
 import { inject, onMounted, ref, computed, watch } from "vue";
 
-import { LAYOUT_KEY, _ } from "@/uni_modules/r-utils/js_sdk/index.js";
-const { uniqueId, findIndex } = _;
+import {
+  LAYOUT_KEY,
+  uniqueId,
+  findIndex,
+} from "@/uni_modules/r-row/components/utils/index.js";
+
 const props = defineProps({
   // 列元素宽度
   span: {
