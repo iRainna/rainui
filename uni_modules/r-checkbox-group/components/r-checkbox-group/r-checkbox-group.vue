@@ -12,7 +12,7 @@
 <script setup>
 import CheckboxGroupProps from "./props.js";
 import { provide, nextTick } from "vue";
-import { CHECKBOX_GROUP_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
+import { CHECKBOX_GROUP_KEY } from "../utils/index.js";
 const props = defineProps({ ...CheckboxGroupProps });
 const emit = defineEmits(["update:value", "change"]);
 

@@ -106,11 +106,8 @@
 <script setup>
 import CheckboxProps from "./props.js";
 import { ref, nextTick, computed, inject } from "vue";
-import {
-  CHECKBOX_GROUP_KEY,
-  CONFIG_PROVIDER_KEY,
-} from "@/uni_modules/r-utils/js_sdk/index.js";
-import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { CHECKBOX_GROUP_KEY } from "@/uni_modules/r-checkbox-group/components/utils/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-checkbox-group/components/themes/index.js";
 
 const parentData = inject(CHECKBOX_GROUP_KEY, {});
 
@@ -143,15 +140,10 @@ const getProps = (name) => {
 };
 
 const componentsName = "r-checkbox";
-const themeInject = inject(CONFIG_PROVIDER_KEY, {});
 
 const getComponentThemeStyle = computed(() => {
   let themeName = getProps("themeName");
 
-  if (themeInject?.value?.themeName) {
-    //传递过来的有就用传递了
-    themeName = themeInject?.value?.themeName;
-  }
   if (getProps("themeName") != "default") {
     //单独设置了组件的 就用单独设置的
     themeName = getProps("themeName");

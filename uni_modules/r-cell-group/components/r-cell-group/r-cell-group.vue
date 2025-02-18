@@ -37,12 +37,13 @@
 </template>
 <script setup>
 import { ref, inject, provide, computed } from "vue";
-import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getComponentThemeCssVar } from "../themes/index.js";
 import {
-  CONFIG_PROVIDER_KEY,
+  cloneDeep,
+  uniqWith,
+  isEqual,
   CELL_GROUP_KEY,
-  _,
-} from "@/uni_modules/r-utils/js_sdk/index.js";
+} from "../utils/index.js";
 
 const props = defineProps({
   // 分组标题
@@ -73,15 +74,10 @@ const props = defineProps({
 });
 
 const componentsName = "r-cell-group";
-const themeInject = inject(CONFIG_PROVIDER_KEY, {});
 
 const getComponentThemeStyle = computed(() => {
   let themeName = props.themeName;
 
-  if (themeInject?.value?.themeName) {
-    //传递过来的有就用传递了
-    themeName = themeInject?.value?.themeName;
-  }
   if (props.themeName != "default") {
     //单独设置了组件的 就用单独设置的
     themeName = props.themeName;
@@ -92,7 +88,7 @@ const getComponentThemeStyle = computed(() => {
     ...getComponentThemeCssVar(themeName, componentsName),
   };
 });
-const { cloneDeep, uniqWith, isEqual } = _;
+
 const children = ref([]);
 const setChildren = (v) => {
   const arr = cloneDeep([...children.value, v]);

@@ -1,7 +1,7 @@
 {
   "id": "r-cascader",
   "displayName": "r-cascader",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "r-cascader 级联选择框，用于多层级数据的选择，典型场景为省市区选择。",
   "keywords": [
     "r-cascader"
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-theme","r-tabs","r-tab","r-icon","r-utils"],
+    "dependencies": ["r-tabs","r-tab","r-icon"],
     "encrypt": [],
     "platforms": {
       "cloud": {

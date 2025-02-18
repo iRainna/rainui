@@ -1,11 +1,11 @@
 {
   "id": "r-cell",
   "displayName": "r-cell",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "r-cell单元格组件，为列表中的单个展示项。",
   "keywords": [
     "van-cell"
-],
+  ],
   "repository": "https://gitee.com/uv86e/rainui.git",
   "engines": {
     "HBuilderX": "^3.1.0"
@@ -31,7 +31,10 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-theme","r-icon","r-utils"],
+    "dependencies": [
+      "r-icon",
+      "r-cell-group"
+    ],
     "encrypt": [],
     "platforms": {
       "cloud": {
