@@ -58,9 +58,8 @@
 
 <script setup>
 import { ref, watch, computed } from "vue";
+import { cloneDeep, findIndex, dayjs } from "../utils/index.js";
 
-import { _, dayjs } from "@/uni_modules/r-utils/js_sdk/index.js";
-const { cloneDeep, findIndex } = _;
 const emit = defineEmits(["cancel", "confirm", "change", "update:value"]);
 const props = defineProps({
   // 当前选中项对应的值
