@@ -85,7 +85,7 @@
   </view>
 </template>
 <script setup>
-import { _ } from "@/uni_modules/r-utils/js_sdk/index.js";
+import { _ } from "@/uni_modules/rain-ui/components/r-utils/index.js";
 import { ref, computed, watch } from "vue";
 
 import useTheme from "@/hooks/useTheme";

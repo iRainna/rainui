@@ -56,7 +56,7 @@
       <view style="padding: 20rpx">配合r-popup</view>
       <r-cell title="配合r-popup使用" is-link @click="show = true" />
     </r-config-provider>
-    <r-popup v-model:show="show" position="bottom">
+    <r-popup v-model:show="show" position="bottom" round>
       <view style="width: 100%">
         <r-picker
           title="使用单列"

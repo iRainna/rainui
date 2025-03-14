@@ -107,7 +107,7 @@
         />
       </r-cell-group>
     </view>
-    <r-popup v-model:show="show" position="bottom" safeAreaInsetBottom>
+    <r-popup v-model:show="show" position="bottom" safeAreaInsetBottom round>
       <r-action-sheet v-if="custom" title="标题" @cancel="onCancel">
         <div style="padding: 16px 16px 160px">内容</div>
       </r-action-sheet>

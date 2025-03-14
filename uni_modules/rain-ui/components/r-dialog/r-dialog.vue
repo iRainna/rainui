@@ -13,6 +13,7 @@
     @opened="onOpened"
     @open="onOpen"
     @update:show="updateShow"
+	round
   >
     <view
       :class="{

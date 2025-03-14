@@ -87,7 +87,7 @@
       </r-cell-group>
     </view>
 
-    <r-popup v-model:show="show" position="bottom">
+    <r-popup v-model:show="show" position="bottom" round>
       <view style="width: 100%">
         <r-picker
           :show="show"

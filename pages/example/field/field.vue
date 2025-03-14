@@ -8,15 +8,15 @@
     <view style="padding: 20px">自定义类型</view>
     <r-cell-group inset>
       <!-- 输入任意文本 -->
-      <r-field v-model:value="text" label="文本" />
+      <r-field v-model:value="text" label="文本" placeholder="请输入文本"/>
       <!-- 输入手机号，调起手机号键盘 -->
-      <r-field v-model:value="tel" type="tel" label="手机号" />
+      <r-field v-model:value="tel" type="tel" placeholder="请输入手机号" label="手机号" />
       <!-- 允许输入正整数，调起纯数字键盘 -->
-      <r-field v-model:value="digit" type="digit" label="整数" />
+      <r-field v-model:value="digit" type="digit" placeholder="请输入整数" label="整数" />
       <!-- 允许输入数字，调起带符号的纯数字键盘 -->
-      <r-field v-model:value="number" type="number" label="数字" />
+      <r-field v-model:value="number" type="number" placeholder="请输入数字" label="数字" />
       <!-- 输入密码 -->
-      <r-field v-model:value="password" type="password" label="密码" />
+      <r-field v-model:value="password" type="password" placeholder="请输入密码" label="密码" />
     </r-cell-group>
 
     <view style="padding: 20px">禁用输入框</view>

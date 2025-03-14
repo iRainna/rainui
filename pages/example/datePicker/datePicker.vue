@@ -242,7 +242,7 @@
       </r-cell-group>
     </view>
 
-    <r-popup v-model:show="show" position="bottom">
+    <r-popup v-model:show="show" position="bottom" round>
       <view style="width: 100%">
         <r-date-picker
           v-model:value="currentDate"
@@ -262,7 +262,7 @@
 </template>
 <script setup>
 import { ref } from "vue";
-import { _, dayjs } from "@/uni_modules/r-utils/js_sdk/index.js";
+import { _, dayjs } from "@/uni_modules/rain-ui/components/r-utils/index.js";
 import useTheme from "@/hooks/useTheme";
 const { themeName } = useTheme();
 

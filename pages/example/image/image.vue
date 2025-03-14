@@ -74,7 +74,7 @@
 
 <script setup>
 import { ref, computed, nextTick } from "vue";
-import { _ } from "@/uni_modules/r-utils/js_sdk/index.js";
+import { _ } from "@/uni_modules/rain-ui/components/r-utils/index.js";
 import useTheme from "@/hooks/useTheme";
 const { themeName } = useTheme();
 const { uniqueId } = _;
