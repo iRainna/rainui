@@ -98,3 +98,11 @@ export function cloneDeep(obj, hash = new WeakMap()) {
 
   return cloneObj;
 }
+
+export const getSystemInfo = () => {
+  try {
+    return uni.getSystemInfoSync();
+  } catch (error) {
+    return {};
+  }
+};

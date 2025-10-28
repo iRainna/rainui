@@ -69,7 +69,7 @@ import {
   uniqueId,
   findIndex,
 } from "@/uni_modules/r-calendar/components/utils/index.js";
-import { POPUP_KEY } from "@/uni_modules/r-popup/components/utils/index.js";
+import { POPUP_KEY } from "@/uni_modules/r-utils-constant/js_sdk/index.js";
 import { getComponentThemeCssVar } from "@/uni_modules/r-calendar/components/themes/index.js";
 const { proxy } = getCurrentInstance();
 

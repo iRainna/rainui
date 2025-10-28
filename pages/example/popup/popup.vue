@@ -126,7 +126,7 @@
           : '0',
       }"
     >
-      <view style="height: 100px; background-color: #fff">11111</view>
+      <view style="height: 100px; background-color: var(--r-background2)">11111</view>
     </r-popup>
   </r-config-provider>
 </template>
