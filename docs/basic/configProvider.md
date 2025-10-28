@@ -26,7 +26,7 @@ r-config-provider 全局配置,用于全局配置 组件，提供深色模式、
           "
         >
           <r-image
-            src="/static/logo.jpg"
+            src="/static/logo.png"
             width="120rpx"
             height="120rpx"
           ></r-image>

@@ -13,7 +13,7 @@ export default defineConfig({
       { text: "主页", link: "/" },
       { text: "组件", link: "/guide/install" },
     ],
-    logo: "/logo.jpg",
+    logo: "/logo.png",
     search: {
       provider: "local",
     },

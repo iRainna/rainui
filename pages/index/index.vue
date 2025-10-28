@@ -14,7 +14,7 @@
           "
         >
           <r-image
-            src="/static/logo.jpg"
+            src="/static/logo.png"
             width="120rpx"
             height="120rpx"
           ></r-image>

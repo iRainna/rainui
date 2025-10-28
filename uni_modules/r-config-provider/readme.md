@@ -21,7 +21,7 @@ r-config-provider 全局配置,用于全局配置 组件，提供深色模式、
           "
         >
           <r-image
-            src="/static/logo.jpg"
+            src="/static/logo.png"
             width="120rpx"
             height="120rpx"
           ></r-image>
@@ -307,7 +307,6 @@ const getCount = computed(() => {
   );
 });
 </script>
-
 ```
 
 ## API
@@ -324,7 +323,5 @@ const getCount = computed(() => {
 | 名称    | 说明                                                                           |
 | ------- | ------------------------------------------------------------------------------ |
 | default | 默认插槽(内部的[`rainui`](https://gitee.com/uv86e/rainui)组件样式将会统一切换) |
-
-
 
 更多组件，请前往[rainui](https://ext.dcloud.net.cn/plugin?id=19701)

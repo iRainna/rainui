@@ -7,7 +7,7 @@ hero:
   text: "uniapp-vue3的ui库"
   tagline: "轻量、可定制、按需引入"
   image:
-    src: /logo.jpg
+    src: /logo.png
     alt: 背景图
   actions:
     - theme: brand
