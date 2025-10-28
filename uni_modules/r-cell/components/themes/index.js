@@ -8,5 +8,3 @@ export const datas = ref(
       []
     ))()
 );
-
-console.log('data',files,datas.value)

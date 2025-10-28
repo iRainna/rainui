@@ -1,6 +1,5 @@
-import defaultData from "@/uni_modules/r-theme-base/js_sdk/baseCssVar.js";
 import { ref } from "vue";
-
+import defaultData from "@/uni_modules/r-theme-base/js_sdk/baseCssVar.js";
 const files = import.meta.glob("./modules/*.js", { eager: true });
 
 const datas = ref(
