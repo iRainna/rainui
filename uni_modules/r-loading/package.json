@@ -34,7 +34,7 @@
     "dependencies": [
       "r-icon",
       "r-theme",
-      "r-utils"
+      "r-utils-constant"
     ],
     "encrypt": [],
     "platforms": {

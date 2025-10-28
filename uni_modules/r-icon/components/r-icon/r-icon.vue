@@ -33,10 +33,10 @@
 
 <script setup>
 import { inject, ref, computed } from "vue";
-import { getComponentThemeCssVar } from "../themes/index.js";
-
-import { cloneDeep } from "../utils/index.js";
-
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme-base/js_sdk/useComponentTheme.js";
+import {datas} from '../themes/index.js'
+import { cloneDeep } from "@/uni_modules/r-utils-common/js_sdk/index.js";
+// 
 const props = defineProps({
   //icon名称
   name: {
@@ -102,8 +102,8 @@ const getComponentThemeStyle = computed(() => {
   }
 
   return cloneDeep({
-    ...getComponentThemeCssVar(themeName, "r-base"),
-    ...getComponentThemeCssVar(themeName, componentsName),
+    ...getComponentThemeCssVar(themeName, "r-base",datas.value),
+    ...getComponentThemeCssVar(themeName, componentsName,datas.value),
   });
 });
 

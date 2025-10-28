@@ -127,8 +127,8 @@
 <script setup>
 import ButtonProps from "./props.js";
 import { computed, inject } from "vue";
-import { getComponentThemeCssVar } from "../themes/index.js";
-
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme-base/js_sdk/useComponentTheme.js";
+import {datas} from '../themes/index.js'
 
 const props = defineProps({
   ...ButtonProps,
@@ -146,8 +146,8 @@ const getComponentThemeStyle = computed(() => {
   }
 
   return {
-    ...getComponentThemeCssVar(themeName, "r-base"),
-    ...getComponentThemeCssVar(themeName, componentsName),
+    ...getComponentThemeCssVar(themeName, "r-base",datas.value),
+    ...getComponentThemeCssVar(themeName, componentsName,datas.value),
   };
 });
 const emit = defineEmits([
