@@ -13,7 +13,7 @@
 </template>
 <script setup>
 import { ref } from "vue";
-import useToast from "@/uni_modules/rain-ui/components/r-toast/useToast";
+import useToast from "@/uni_modules/r-toast/components/r-toast/useToast.js";
 import useTheme from "@/hooks/useTheme";
 const { themeName } = useTheme();
 const toastRef = ref(null);
