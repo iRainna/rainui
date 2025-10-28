@@ -1,7 +1,7 @@
 {
   "id": "r-row",
   "displayName": "r-row",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Layout布局组件配合r-col使用",
   "keywords": [
     "Layout"
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": [],
+    "dependencies": ["r-utils-constant","r-utils-common"],
     "encrypt": [],
     "platforms": {
       "cloud": {
@@ -45,9 +45,10 @@
           "vue3": "y"
         },
         "App": {
-          "app-vue": "y",
-          "app-nvue": "n",
-          "app-uvue": "n"
+            "app-vue": "y",
+            "app-nvue": "n",
+            "app-uvue": "n",
+            "app-harmony": "u"
         },
         "H5-mobile": {
           "Safari": "y",

@@ -11,12 +11,14 @@
 </template>
 <script setup>
 import { inject, onMounted, ref, computed, watch } from "vue";
+	import {
+		LAYOUT_KEY
+	} from '@/uni_modules/r-utils-constant/js_sdk/index.js'
+	import {
+		uniqueId,
+		findIndex,
+	} from '@/uni_modules/r-utils-common/js_sdk/index.js'
 
-import {
-  LAYOUT_KEY,
-  uniqueId,
-  findIndex,
-} from "@/uni_modules/r-row/components/utils/index.js";
 
 const props = defineProps({
   // 列元素宽度

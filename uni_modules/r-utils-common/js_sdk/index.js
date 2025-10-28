@@ -8,6 +8,35 @@ export function uniqWith(array, comparator) {
     return self.findIndex((other) => comparator(item, other)) === index;
   });
 }
+
+export function findIndex(array, predicate) {
+  for (let i = 0; i < array.length; i++) {
+    if (predicate(array[i], i, array)) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+export const GetRect = (selector, _this, all) => {
+  return new Promise((resolve, reject) => {
+    uni
+      .createSelectorQuery()
+      .in(_this)
+      [all ? "selectAll" : "select"](selector)
+      .boundingClientRect((rect) => {
+        if (all && Array.isArray(rect) && rect.length) {
+          resolve(rect);
+        }
+        if (!all && rect) {
+          resolve(rect);
+        }
+        reject(rect);
+      })
+      .exec();
+  });
+};
+
 export function isEqual(value, other) {
   if (value === other) return true; // 基本类型直接比较
 
