@@ -36,6 +36,7 @@ import { inject, ref, computed } from "vue";
 import { getComponentThemeCssVar } from "@/uni_modules/r-theme-base/js_sdk/useComponentTheme.js";
 import {datas} from '../themes/index.js'
 import { cloneDeep } from "@/uni_modules/r-utils-common/js_sdk/index.js";
+import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils-constant/js_sdk/index.js";
 // 
 const props = defineProps({
   //icon名称
@@ -93,18 +94,24 @@ const props = defineProps({
 const componentsName = "r-icon";
 
 
+const themeInject = inject(CONFIG_PROVIDER_KEY, {});
+
 const getComponentThemeStyle = computed(() => {
   let themeName = props.themeName;
 
+  if (themeInject?.value?.themeName) {
+    //传递过来的有就用传递了
+    themeName = themeInject?.value?.themeName;
+  }
   if (props.themeName != "default") {
     //单独设置了组件的 就用单独设置的
     themeName = props.themeName;
   }
 
-  return cloneDeep({
+  return {
     ...getComponentThemeCssVar(themeName, "r-base",datas.value),
     ...getComponentThemeCssVar(themeName, componentsName,datas.value),
-  });
+  };
 });
 
 const emit = defineEmits(["click"]);

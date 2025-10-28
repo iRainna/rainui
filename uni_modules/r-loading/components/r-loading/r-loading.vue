@@ -78,9 +78,10 @@
 </template>
 <script setup>
 import LoadingProps from "./props.js";
-import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme-base/js_sdk/useComponentTheme.js";
 import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils-constant/js_sdk/index.js";
 import { inject, computed } from "vue";
+import {datas} from '../themes/index.js'
 const props = defineProps({
   ...LoadingProps,
 });
@@ -101,8 +102,8 @@ const getComponentThemeStyle = computed(() => {
   }
 
   return {
-    ...getComponentThemeCssVar(themeName, "r-base"),
-    ...getComponentThemeCssVar(themeName, componentsName),
+    ...getComponentThemeCssVar(themeName, "r-base",datas.value),
+    ...getComponentThemeCssVar(themeName, componentsName,datas.value),
   };
 });
 </script>
