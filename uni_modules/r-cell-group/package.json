@@ -1,7 +1,7 @@
 {
   "id": "r-cell-group",
   "displayName": "r-cell-group",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "r-cell单元格组件，为列表中的单个展示项。",
   "keywords": [
     "van-cell-group"
@@ -39,6 +39,7 @@
     "dependencies": [
       "r-utils-constant",
       "r-theme-base",
+	  "r-cell",
       "r-utils-common"
     ],
     "encrypt": [],

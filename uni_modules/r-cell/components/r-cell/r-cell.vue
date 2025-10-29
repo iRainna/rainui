@@ -84,7 +84,7 @@ import { getComponentThemeCssVar } from "@/uni_modules/r-theme-base/js_sdk/useCo
 import {datas} from '../themes/index.js'
 import { CONFIG_PROVIDER_KEY ,CELL_GROUP_KEY} from "@/uni_modules/r-utils-constant/js_sdk/index.js";
 
-
+const groupInject = inject(CELL_GROUP_KEY, {});
 const props = defineProps({ ...CellProps });
 const componentsName = "r-cell";
 
@@ -97,6 +97,11 @@ const getComponentThemeStyle = computed(() => {
     //传递过来的有就用传递了
     themeName = themeInject?.value?.themeName;
   }
+  //group组件传过来有就用
+  if(groupInject?.componentsThemeName?.value){
+	  themeName = groupInject?.componentsThemeName?.value
+  }
+  
   if (props.themeName != "default") {
     //单独设置了组件的 就用单独设置的
     themeName = props.themeName;
@@ -113,7 +118,7 @@ const clickHandler = (e) => {
   emit("click", e);
 };
 const id = uniqueId("cell-");
-const groupInject = inject(CELL_GROUP_KEY, {});
+
 const haveDivider = computed(() => {
   if (groupInject?.children?.value?.length) {
     return (
