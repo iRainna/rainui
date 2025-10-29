@@ -58,7 +58,8 @@
 
 <script setup>
 import { ref, watch, computed } from "vue";
-import { cloneDeep, findIndex, dayjs } from "../utils/index.js";
+import { cloneDeep, findIndex } from "@/uni_modules/r-utils-common/js_sdk/index.js";
+import { dayjs } from "@/uni_modules/iRainna-dayjs/js_sdk/dayjs.min.js";
 
 const emit = defineEmits(["cancel", "confirm", "change", "update:value"]);
 const props = defineProps({
