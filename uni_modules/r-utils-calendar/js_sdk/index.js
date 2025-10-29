@@ -1,8 +1,4 @@
 import { dayjs } from "@/uni_modules/iRainna-dayjs/js_sdk/dayjs.min.js";
-export * from "@/uni_modules/iRainna-dayjs/js_sdk/dayjs.min.js";
-
-export const CALENDAR_KEY = Symbol("r-calendar");
-
 export const DAY = 1000 * 60 * 60 * 24;
 export const compareMonth = (date1, date2) => {
   if (dayjs(date1).year() == dayjs(date2).year()) {
@@ -57,62 +53,4 @@ export function calcDateNum(date = [0, 0]) {
   const day1 = dayjs(date[0]).valueOf();
   const day2 = dayjs(date[1]).valueOf();
   return (day2 - day1) / (1000 * 60 * 60 * 24) + 1;
-}
-
-export const isNumeric = (val) =>
-  typeof val === "number" || /^\d+(\.\d+)?$/.test(val);
-
-export const isFunction = (val) => typeof val === "function";
-export function reduce(collection, iteratee, accumulator) {
-  let result = accumulator !== undefined ? accumulator : collection[0];
-  const startIndex = accumulator !== undefined ? 0 : 1;
-
-  for (let i = startIndex; i < collection.length; i++) {
-    result = iteratee(result, collection[i], i, collection);
-  }
-
-  return result;
-}
-
-export function debounce(func, wait) {
-  let timeout = null;
-
-  return function (...args) {
-    if (timeout) clearTimeout(timeout);
-    timeout = setTimeout(() => func.apply(this, args), wait);
-  };
-}
-
-export const GetRect = (selector, _this, all) => {
-  return new Promise((resolve, reject) => {
-    uni
-      .createSelectorQuery()
-      .in(_this)
-      [all ? "selectAll" : "select"](selector)
-      .boundingClientRect((rect) => {
-        if (all && Array.isArray(rect) && rect.length) {
-          resolve(rect);
-        }
-        if (!all && rect) {
-          resolve(rect);
-        }
-        reject(rect);
-      })
-      .exec();
-  });
-};
-
-let idCounter = 0;
-
-export function uniqueId(prefix = "") {
-  return `${prefix}${++idCounter}`;
-}
-
-export function findIndex(array, predicate) {
-  for (let i = 0; i < array.length; i++) {
-    if (predicate(array[i], i, array)) {
-      return i;
-    }
-  }
-  return -1;
 }

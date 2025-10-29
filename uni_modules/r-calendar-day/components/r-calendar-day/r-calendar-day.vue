@@ -4,7 +4,7 @@
     :class="{
       'r-calendar__day': true,
     }"
-    :style="{ ...getComponentThemeStyle, ...itemStyle }"
+    :style="{ ...itemStyle }"
   ></view>
   <view
     v-else
@@ -12,7 +12,7 @@
       'r-calendar__day': true,
       [`r-calendar__day--${item.type}`]: true,
     }"
-    :style="{ ...getComponentThemeStyle, ...itemStyle }"
+    :style="{  ...itemStyle }"
     @click="onClick"
   >
     <!-- renderContent -->
@@ -78,13 +78,8 @@
 </template>
 <script setup>
 import { computed, inject } from "vue";
-import {
-  isNumeric,
-  dayjs,
-} from "@/uni_modules/r-calendar/components/utils/index.js";
-
-import { getComponentThemeCssVar } from "@/uni_modules/r-calendar/components/themes/index.js";
-
+import { isNumeric } from '@/uni_modules/r-utils-basic/js_sdk/index.js';
+import { dayjs } from '@/uni_modules/iRainna-dayjs/js_sdk/dayjs.min.js';
 const props = defineProps({
   index: {
     type: Number,
@@ -117,21 +112,6 @@ const props = defineProps({
 });
 const emit = defineEmits(["click", "clickDisabledDate"]);
 
-const componentsName = "r-calendar";
-
-const getComponentThemeStyle = computed(() => {
-  let themeName = props.themeName;
-
-  if (props.themeName != "default") {
-    //单独设置了组件的 就用单独设置的
-    themeName = props.themeName;
-  }
-
-  return {
-    ...getComponentThemeCssVar(themeName, "r-base"),
-    ...getComponentThemeCssVar(themeName, componentsName),
-  };
-});
 
 const itemStyle = computed(() => {
   const cssVar = {};

@@ -9,6 +9,25 @@ export function uniqWith(array, comparator) {
   });
 }
 
+export function debounce(func, wait) {
+  let timeout = null;
+
+  return function (...args) {
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+}
+export function reduce(collection, iteratee, accumulator) {
+  let result = accumulator !== undefined ? accumulator : collection[0];
+  const startIndex = accumulator !== undefined ? 0 : 1;
+
+  for (let i = startIndex; i < collection.length; i++) {
+    result = iteratee(result, collection[i], i, collection);
+  }
+
+  return result;
+}
+
 export function findIndex(array, predicate) {
   for (let i = 0; i < array.length; i++) {
     if (predicate(array[i], i, array)) {
