@@ -125,3 +125,19 @@ export const getSystemInfo = () => {
     return {};
   }
 };
+
+export function max(array) {
+  if (!Array.isArray(array) || array.length === 0) {
+    return undefined
+  }
+
+  let result = array[0]
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] > result) {
+      result = array[i]
+    }
+  }
+
+  return result
+}
+

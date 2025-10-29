@@ -1,5 +1,5 @@
 <template>
-  <page-header title="Rain-ui" :leftArrow="false"></page-header>
+  <page-header title="rainui" :leftArrow="false"></page-header>
   <view class="content" style="padding: 0px; background-color: transparent">
     <r-config-provider :themeName="themeName">
       <view style="padding: var(--r-padding-xs)">
@@ -31,7 +31,7 @@
                 font-weight: var(--r-font-bold);
                 font-size: var(--r-font-size-lg);
               "
-              >Rainui</view
+              >rainui</view
             >
             <view
               style="
@@ -56,7 +56,7 @@
             padding-bottom: 0;
           "
         >
-          Rain-ui是一个基于uniapp-vue3使用了lodash、dayjs、animate等工具库，实现了vantui样式风格的组件库。
+          rainui是一个基于uniapp-vue3使用了lodash、dayjs、animate等工具库，实现了vantui样式风格的组件库。
           共计提供了<text
             style="
               color: var(--r-primary-color);
