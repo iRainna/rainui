@@ -51,27 +51,35 @@
 </template>
 <script setup>
 import OverlayProps from "./props.js";
-import { getComponentThemeCssVar } from "../themes/index.js";
-import { computed } from "vue";
+import { datas } from '../themes/index.js';
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme-base/js_sdk/useComponentTheme.js";
+import { computed ,inject} from "vue";
+import { CONFIG_PROVIDER_KEY } from '@/uni_modules/r-utils-constant/js_sdk/index.js';
+
 const emit = defineEmits(["open", "close", "opened", "closed", "click"]);
 const props = defineProps({
   ...OverlayProps,
 });
 
 const componentsName = "r-overlay";
+const themeInject = inject(CONFIG_PROVIDER_KEY, {});
 
 const getComponentThemeStyle = computed(() => {
-  let themeName = props.themeName;
+	let themeName = props.themeName;
 
-  if (props.themeName != "default") {
-    //单独设置了组件的 就用单独设置的
-    themeName = props.themeName;
-  }
+	if (themeInject?.value?.themeName) {
+		//传递过来的有就用传递了
+		themeName = themeInject?.value?.themeName;
+	}
+	if (props.themeName != 'default') {
+		//单独设置了组件的 就用单独设置的
+		themeName = props.themeName;
+	}
 
-  return {
-    ...getComponentThemeCssVar(themeName, "r-base"),
-    ...getComponentThemeCssVar(themeName, componentsName),
-  };
+	return {
+		...getComponentThemeCssVar(themeName, 'r-base', datas.value),
+		...getComponentThemeCssVar(themeName, componentsName, datas.value)
+	};
 });
 
 const closed = () => {

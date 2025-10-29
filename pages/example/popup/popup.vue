@@ -1,9 +1,9 @@
 <template>
   <r-config-provider :themeName="themeName">
     <page-header title="弹出层"></page-header>
-    <view style="padding: 20rpx">
+    <view style="padding: 20rpx 0">
       <r-divider content-position="left">弹出位置 </r-divider>
-      <r-cell-group>
+      <r-cell-group inset>
         <r-cell
           is-link
           title="顶部弹出"
@@ -53,7 +53,7 @@
 
       <r-divider content-position="left">关闭图标 </r-divider>
 
-      <r-cell-group>
+      <r-cell-group inset>
         <r-cell
           is-link
           title="关闭图标"
@@ -86,7 +86,7 @@
       </r-cell-group>
 
       <r-divider content-position="left">圆角弹窗 </r-divider>
-      <r-cell-group>
+      <r-cell-group inset>
         <r-cell
           is-link
           title="圆角弹窗（居中）"
