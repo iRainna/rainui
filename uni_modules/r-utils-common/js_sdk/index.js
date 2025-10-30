@@ -141,3 +141,77 @@ export function max(array) {
   return result
 }
 
+export function trimExtraChar(value, char, regExp) {
+  const index = value.indexOf(char);
+
+  if (index === -1) {
+    return value;
+  }
+
+  if (char === "-" && index !== 0) {
+    return value.slice(0, index);
+  }
+
+  return value.slice(0, index + 1) + value.slice(index).replace(regExp, "");
+}
+export function formatNumber(value, allowDot = true, allowMinus = true) {
+  if (allowDot) {
+    value = trimExtraChar(value, ".", /\./g);
+  } else {
+    value = value.split(".")[0];
+  }
+
+  if (allowMinus) {
+    value = trimExtraChar(value, "-", /-/g);
+  } else {
+    value = value.replace(/-/, "");
+  }
+
+  const regExp = allowDot ? /[^-0-9.]/g : /[^-0-9]/g;
+
+  return value.replace(regExp, "");
+}
+
+export function addNumber(num1, num2) {
+  const cardinal = 10 ** 10;
+  return Math.round((num1 + num2) * cardinal) / cardinal;
+}
+
+export const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
+
+export function add(a, b) {
+  if (isNaN(a) || isNaN(b)) throw new Error('Invalid number');
+
+  // 转字符串
+  const aStr = a.toString();
+  const bStr = b.toString();
+
+  // 拆整数和小数部分
+  const aArr = aStr.split('.');
+  const bArr = bStr.split('.');
+
+  const aInt = aArr[0];
+  const bInt = bArr[0];
+
+  const aDec = aArr[1] || '';
+  const bDec = bArr[1] || '';
+
+  // 计算小数位最大长度
+  const maxDecLen = Math.max(aDec.length, bDec.length);
+
+  // 补齐小数位
+  const aFull = aInt + aDec.padEnd(maxDecLen, '0');
+  const bFull = bInt + bDec.padEnd(maxDecLen, '0');
+
+  // 转为整数相加
+  const sum = BigInt(aFull) + BigInt(bFull);
+
+  // 恢复小数
+  const sumStr = sum.toString();
+  const result =
+    maxDecLen > 0
+      ? sumStr.slice(0, -maxDecLen || sumStr.length) + '.' + sumStr.slice(-maxDecLen).replace(/0+$/, '')
+      : sumStr;
+
+  return Number(result);
+}
