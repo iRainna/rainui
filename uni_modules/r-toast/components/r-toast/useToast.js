@@ -66,7 +66,6 @@ export default function (toastRef) {
   };
   //关闭提示
   const closeToast = () => {
-    console.log("toastRef", toastRef);
     toastRef.value.changeShow(false);
   };
   return {

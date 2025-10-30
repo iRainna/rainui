@@ -1,238 +1,361 @@
 <template>
-  <r-config-provider :themeName="themeName">
-    <page-header title="文件上传"></page-header>
-    <r-collapse v-model:value="activeName2" accordion @change="onChange">
-      <r-collapse-item title="基础用法" name="1">
-        <r-uploader v-model:value="fileList" :after-read="afterRead" />
-      </r-collapse-item>
-      <r-collapse-item title="文件预览" name="2">
-        <r-uploader v-model:value="fileList" :after-read="afterRead" />
-      </r-collapse-item>
-      <r-collapse-item title="上传状态" name="3">
-        <r-uploader v-model:value="fileList" :after-read="afterRead" />
-      </r-collapse-item>
-      <r-collapse-item title="限制上传数量" name="4">
-        <r-uploader
-          v-model:value="fileList"
-          multiple
-          :max-count="2"
-          :after-read="afterRead"
-        />
-      </r-collapse-item>
-      <r-collapse-item title="限制上传大小" name="5">
-        <r-uploader
-          v-model:value="fileList"
-          multiple
-          :max-size="500 * 1024"
-          :after-read="afterRead"
-          @oversize="onOversize"
-        />
-      </r-collapse-item>
-      <r-collapse-item title="自定义上传样式" name="6">
-        <view style="min-height: 80px">
-          <r-uploader v-model:value="fileList" :after-read="afterRead">
-            <r-button icon="plus" type="primary">上传文件</r-button>
-          </r-uploader>
-        </view>
-      </r-collapse-item>
+	<r-config-provider
+		:themeName="themeName"
+		:customStyle="{
+			'box-sizing': 'border-box',
+			background: 'var(--r-background-2)',
+			padding: '0 20rpx'
+		}"
+	>
+		<page-header title="文件上传"></page-header>
+		<r-divider content-position="left">基础用法</r-divider>
+		<r-uploader v-model:value="fileList" :after-read="afterRead" />
 
-      <r-collapse-item title="自定义预览样式" name="7">
-        <r-uploader v-model:value="fileList" :after-read="afterRead">
-          <template #previewCover="file">
-            <view class="preview-cover">{{ file.item.name }}</view>
-          </template>
-        </r-uploader>
-      </r-collapse-item>
-      <r-collapse-item title="自定义预览大小" name="8">
-        <r-uploader
-          v-model:value="fileList"
-          :after-read="afterRead"
-          :preview-size="[120, 80]"
-        />
-      </r-collapse-item>
+		<r-divider content-position="left">文件预览</r-divider>
+		<r-uploader
+			v-model:value="fileList2"
+			:after-read="
+				(e) =>
+					afterReadWithCallbcak(e, fileList2, (v) => {
+						fileList2 = v;
+					})
+			"
+		/>
 
-      <r-collapse-item title="上传前置处理" name="9">
-        <r-uploader
-          v-model:value="fileList"
-          :before-read="beforeRead"
-          :after-read="afterRead"
-        />
-      </r-collapse-item>
-      <r-collapse-item title="禁用文件上传" name="10">
-        <r-uploader v-model:value="fileList" disabled :after-read="afterRead" />
-      </r-collapse-item>
+		<r-divider content-position="left">上传状态</r-divider>
+		<r-uploader
+			v-model:value="fileList3"
+			:after-read="
+				(e) =>
+					afterReadWithCallbcak(e, fileList3, (v) => {
+						fileList3 = v;
+					})
+			"
+		/>
 
-      <r-collapse-item title="开启覆盖上传" name="11">
-        <r-uploader v-model:value="fileList" reupload :after-read="afterRead" />
-      </r-collapse-item>
-    </r-collapse>
+		<r-divider content-position="left">限制上传数量</r-divider>
+		<r-uploader
+			v-model:value="fileList4"
+			multiple
+			:max-count="2"
+			:after-read="
+				(e) =>
+					afterReadWithCallbcak(e, fileList4, (v) => {
+						fileList4 = v;
+					})
+			"
+		/>
 
-    <r-toast ref="toastRef"></r-toast>
-  </r-config-provider>
+		<r-divider content-position="left">限制上传大小</r-divider>
+		<r-uploader
+			v-model:value="fileList5"
+			multiple
+			:max-size="500 * 1024"
+			@oversize="onOversize"
+			:after-read="
+				(e) =>
+					afterReadWithCallbcak(e, fileList5, (v) => {
+						fileList5 = v;
+					})
+			"
+		/>
+
+		<r-divider content-position="left">自定义上传样式</r-divider>
+
+		<r-uploader
+			v-model:value="fileList6"
+			:after-read="
+				(e) =>
+					afterReadWithCallbcak(e, fileList6, (v) => {
+						fileList6 = v;
+					})
+			"
+		>
+			<r-button icon="plus" type="primary">上传文件</r-button>
+		</r-uploader>
+
+		<r-divider content-position="left">自定义预览样式</r-divider>
+
+		<r-uploader
+			v-model:value="fileList7"
+			:after-read="
+				(e) =>
+					afterReadWithCallbcak(e, fileList7, (v) => {
+						fileList7 = v;
+					})
+			"
+		>
+			<template #previewCover="file">
+				<view class="preview-cover">{{ file.item.name }}</view>
+			</template>
+		</r-uploader>
+
+		<r-divider content-position="left">自定义预览大小</r-divider>
+		<r-uploader
+			v-model:value="fileList8"
+			:after-read="
+				(e) =>
+					afterReadWithCallbcak(e, fileList8, (v) => {
+						fileList8 = v;
+					})
+			"
+			:preview-size="[120, 80]"
+		/>
+
+		<r-divider content-position="left">上传前置处理</r-divider>
+		<r-uploader
+			v-model:value="fileList9"
+			:after-read="
+				(e) =>
+					afterReadWithCallbcak(e, fileList9, (v) => {
+						fileList9 = v;
+					})
+			"
+			:before-read="beforeRead"
+		/>
+
+		<r-divider content-position="left">禁用文件上传</r-divider>
+		<r-uploader
+			v-model:value="fileList10"
+			:after-read="
+				(e) =>
+					afterReadWithCallbcak(e, fileList10, (v) => {
+						fileList10 = v;
+					})
+			"
+			disabled
+		/>
+		<r-divider content-position="left">开启覆盖上传</r-divider>
+		<r-uploader
+			v-model:value="fileList11"
+			reupload
+			:after-read="
+				(e) =>
+					afterReadWithCallbcak(e, fileList11, (v) => {
+						fileList11 = v;
+					})
+			"
+		/>
+
+		<r-toast ref="toastRef"></r-toast>
+	</r-config-provider>
 </template>
 <script setup>
-import { ref } from "vue";
-import useToast from "@/uni_modules/r-toast/components/r-toast/useToast.js";
-import useTheme from "@/hooks/useTheme";
+import { ref } from 'vue';
+import useToast from '@/uni_modules/r-toast/components/r-toast/useToast.js';
+import useTheme from '@/hooks/useTheme';
 const { themeName } = useTheme();
 const toastRef = ref(null);
-const {
-  showToast,
-  showLoadingToast,
-  showSuccessToast,
-  showFailToast,
-  closeToast,
-} = useToast(toastRef);
+const { showToast, showLoadingToast, showSuccessToast, showFailToast, closeToast } = useToast(toastRef);
 const fileList = ref([]);
+const fileList2 = ref([
+	{
+		url: 'https://fastly.jsdelivr.net/npm/@vant/assets/leaf.jpeg'
+	}
+]);
+const fileList3 = ref([
+	{
+		url: 'https://fastly.jsdelivr.net/npm/@vant/assets/leaf.jpeg',
+		status: 'uploading',
+		message: '上传中...'
+	},
+	{
+		url: 'https://fastly.jsdelivr.net/npm/@vant/assets/tree.jpeg',
+		status: 'failed',
+		message: '上传失败'
+	}
+]);
+
+const fileList4 = ref([]);
+const fileList5 = ref([]);
+
+const fileList6 = ref([]);
+const fileList7 = ref([
+	{
+		url: 'https://fastly.jsdelivr.net/npm/@vant/assets/leaf.jpeg',
+		name: '文件名称'
+	}
+]);
+
+const fileList8 = ref([]);
+const fileList9 = ref([]);
+const fileList10 = ref([]);
+const fileList11 = ref([
+	{
+		id: '1',
+		url: 'https://fastly.jsdelivr.net/npm/@vant/assets/leaf.jpeg'
+	}
+]);
+
 const uploadFilePromise = (url) => {
-  console.log("url", url);
-  return new Promise((resolve, reject) => {
-    //换成自己的上传接口
-    uniCloud.uploadFile({
-      filePath: url,
-      cloudPath: "test-" + new Date().getTime() + ".png",
-      onUploadProgress: function (progressEvent) {
-        console.log(progressEvent);
-        var percentCompleted = Math.round(
-          (progressEvent.loaded * 100) / progressEvent.total
-        );
-      },
-      success(e) {
-        console.log("success e", e);
-        resolve(e.fileID);
-      },
-      fail(e) {
-        console.log("fail e", e);
-        reject(e);
-      },
-      complete() {},
-    });
-  });
-};
-const getFile = (t) => {
-  console.log("t", t);
-  return "1";
+	return new Promise((resolve, reject) => {
+		//换成自己的上传接口
+		uniCloud.uploadFile({
+			filePath: url,
+			cloudPath: 'test-' + new Date().getTime() + '.png',
+			onUploadProgress: function (progressEvent) {
+				var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+			},
+			success(e) {
+				uniCloud.getTempFileURL({
+					fileList: [e.fileID],
+					success(res) {
+						resolve(res.fileList[0].tempFileURL);
+					}
+				});
+			},
+			fail(e) {
+				reject(e);
+			},
+			complete() {}
+		});
+	});
 };
 
 const beforeRead = (file) => {
-  if (("" + file.url).indexOf(".png") < 0) {
-    showToast("请上传png格式文件");
-    return false;
-  }
+	if (('' + file.url).indexOf('.png') < 0) {
+		showToast('请上传png格式文件');
+		return false;
+	}
 
-  return true;
+	return true;
 };
 const afterRead = async (file) => {
-  console.log("file", file);
+	let lists = [].concat(file);
 
-  let lists = [].concat(file);
-  console.log("event.file", file, lists);
-  let fileListLen = fileList.value.length;
-  lists.map((item) => {
-    if (item.index == -1) {
-      fileList.value.push({
-        ...item,
-        status: "uploading",
-        message: "上传中",
-      });
-    } else {
-      fileList.value[item.index] = {
-        ...item,
-        status: "uploading",
-        message: "上传中",
-      };
-    }
-  });
+	let fileListLen = fileList.value.length;
 
-  for (let i = 0; i < lists.length; i++) {
-    try {
-      const result = await uploadFilePromise(lists[i].url);
-      console.log("result", result, lists[i].index);
-      let item = fileList.value[fileListLen];
-      if (lists[i].index === 0 || lists[i].index != -1) {
-        fileList.value = fileList.value.map((t, index) => {
-          if (index == lists[i].index) {
-            return {
-              ...t,
-              status: "success",
-              message: "",
-              url: result,
-            };
-          }
-          return t;
-        });
-      } else {
-        fileList.value.splice(
-          lists[i].index != -1 ? lists[i].index : fileListLen,
-          1,
-          Object.assign(item, {
-            status: "success",
-            message: "",
-            url: result,
-          })
-        );
-        fileListLen++;
-      }
+	if (fileList.value.some((m) => m.id === file.id)) {
+		fileList.value = fileList.value.map((t) => {
+			if (t.id === file.id) {
+				return {
+					...t,
+					status: 'uploading',
+					message: '上传中'
+				};
+			}
+			return t;
+		});
+	} else {
+		fileList.value = [
+			...fileList.value,
+			{
+				...file,
+				status: 'uploading',
+				message: '上传中'
+			}
+		];
+	}
 
-      console.log("fileList", fileList.value);
-    } catch (error) {}
-  }
+	for (let i = 0; i < lists.length; i++) {
+		try {
+			const result = await uploadFilePromise(lists[i].url);
+
+			fileList.value = fileList.value.map((t) => {
+				if (t.id === lists[i].id) {
+					return {
+						...t,
+						status: 'success',
+						message: '',
+						url: result
+					};
+				}
+				return t;
+			});
+		} catch (error) {}
+	}
+};
+
+const afterReadWithCallbcak = async (file, files, cb) => {
+	const isArrayFlag = Array.isArray(file);
+
+	let lists = [].concat(file);
+
+	if (isArrayFlag) {
+		if (files.some((m) => file.some((t) => t.id === m.id))) {
+			files = files.map((t) => {
+				if (t.id === file.id) {
+					return {
+						...t,
+						status: 'uploading',
+						message: '上传中'
+					};
+				}
+				return t;
+			});
+		} else {
+			
+			files = [
+				...files,
+				...file.map(t=>({
+					...t,
+					status: 'uploading',
+					message: '上传中'
+				}))
+				
+			];
+		}
+	} else {
+		if (files.some((m) => m.id === file.id)) {
+			files = files.map((t) => {
+				if (t.id === file.id) {
+					return {
+						...t,
+						status: 'uploading',
+						message: '上传中'
+					};
+				}
+				return t;
+			});
+		} else {
+			files = [
+				...files,
+				{
+					...file,
+					status: 'uploading',
+					message: '上传中'
+				}
+			];
+		}
+	}
+
+	cb?.(files);
+
+	for (let i = 0; i < lists.length; i++) {
+		try {
+			const result = await uploadFilePromise(lists[i].url);
+
+			files = files.map((t) => {
+				if (t.id === lists[i].id) {
+					return {
+						...t,
+						status: 'success',
+						message: '',
+						url: result
+					};
+				}
+				return t;
+			});
+
+			cb?.(files);
+		} catch (error) {}
+	}
 };
 
 const onOversize = (file) => {
-  console.log(file);
-  showToast("文件大小不能超过 500kb");
-};
-const activeName2 = ref(["1"]);
-
-const onChange = (name) => {
-  if (["1", "4", "5", "6", "8", "9", "10"].includes(name)) {
-    fileList.value = [];
-  } else if (name == 2) {
-    fileList.value = [
-      {
-        url: "https://fastly.jsdelivr.net/npm/@vant/assets/leaf.jpeg",
-      },
-    ];
-  } else if (name == 11) {
-    fileList.value = [
-      {
-        url: "https://fastly.jsdelivr.net/npm/@vant/assets/leaf.jpeg",
-      },
-    ];
-  } else if (name == 3) {
-    fileList.value = [
-      {
-        url: "https://fastly.jsdelivr.net/npm/@vant/assets/leaf.jpeg",
-        status: "uploading",
-        message: "上传中...",
-      },
-      {
-        url: "https://fastly.jsdelivr.net/npm/@vant/assets/tree.jpeg",
-        status: "failed",
-        message: "上传失败",
-      },
-    ];
-  } else if (name == 7) {
-    fileList.value = [
-      {
-        url: "https://fastly.jsdelivr.net/npm/@vant/assets/leaf.jpeg",
-        name: "文件名称",
-      },
-    ];
-  }
+	showToast('文件大小不能超过 500kb');
 };
 </script>
 <style lang="scss">
 .preview-cover {
-  position: absolute;
-  bottom: 0;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 4px;
-  color: #fff;
-  font-size: 12px;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.3);
+	position: absolute;
+	bottom: 0;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 4px;
+	color: #fff;
+	font-size: 12px;
+	text-align: center;
+	background: rgba(0, 0, 0, 0.3);
 }
 </style>
