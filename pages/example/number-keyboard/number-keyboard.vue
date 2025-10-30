@@ -55,17 +55,19 @@
         <r-cell title="双向绑定" :value="value" />
       </r-cell-group>
     </view>
+	
+	<r-number-keyboard
+	  v-model:show="show"
+	  :closeButtonText="item.closeButtonText"
+	  :theme="item.theme || 'default'"
+	  :extra-key="item.extraKey"
+	  :close-button-text="item.closeButtonText"
+	  :title="item.title"
+	  :random-key-order="item.randomKeyOrder"
+	  v-model:value="value"
+	></r-number-keyboard>
   </r-config-provider>
-  <r-number-keyboard
-    v-model:show="show"
-    :closeButtonText="item.closeButtonText"
-    :theme="item.theme || 'default'"
-    :extra-key="item.extraKey"
-    :close-button-text="item.closeButtonText"
-    :title="item.title"
-    :random-key-order="item.randomKeyOrder"
-    v-model:value="value"
-  ></r-number-keyboard>
+
 </template>
 
 <script setup>

@@ -26,6 +26,4 @@ const pickerData = computed(() => ({
       linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1))`,
 }));
 
-console.log('dark',pickerData.value)
-
 export default pickerData;
