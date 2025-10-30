@@ -1,4 +1,4 @@
-import { computed, ref } from "vue";
+import { computed } from "vue";
 
 const rateData = computed(() => ({
   "r-rate-icon-size": "40rpx",
