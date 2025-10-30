@@ -96,7 +96,7 @@ import CheckboxProps from './props.js';
 import { ref, computed, inject, nextTick } from 'vue';
 import { datas } from '../themes/index.js';
 import { RADIO_KEY, CONFIG_PROVIDER_KEY } from '@/uni_modules/r-utils-constant/js_sdk/index.js';
-import { getComponentThemeCssVar } from '@/uni_modules/r-theme-base/js_sdk/index.js';
+import { getComponentThemeCssVar } from '@/uni_modules/r-theme-base/js_sdk/useComponentTheme.js';
 
 const parentData = inject(RADIO_KEY, {});
 
