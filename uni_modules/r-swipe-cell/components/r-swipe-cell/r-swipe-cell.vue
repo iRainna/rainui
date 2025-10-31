@@ -50,8 +50,8 @@ import {
   useSlots,
   getCurrentInstance,
 } from "vue";
-import { _, GetRect } from "@/uni_modules/r-utils/js_sdk/index.js";
-const { clamp, uniqueId } = _;
+import { clamp, uniqueId, GetRect } from "@/uni_modules/r-utils-common/js_sdk/index.js";
+
 const { proxy } = getCurrentInstance();
 const props = defineProps({
   name: {

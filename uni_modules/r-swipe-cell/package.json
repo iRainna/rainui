@@ -1,7 +1,7 @@
 {
   "id": "r-swipe-cell",
   "displayName": "r-swipe-cell",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "r-swipe-cell滑动单元格，可以左右滑动来展示操作按钮的单元格组件。",
   "keywords": [
     "r-swipe-cell"
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-utils"],
+    "dependencies": ["r-utils-common"],
     "encrypt": [],
     "platforms": {
       "cloud": {
@@ -45,9 +45,10 @@
           "vue3": "y"
         },
         "App": {
-          "app-vue": "y",
-          "app-nvue": "n",
-          "app-uvue": "n"
+            "app-vue": "y",
+            "app-nvue": "n",
+            "app-uvue": "n",
+            "app-harmony": "u"
         },
         "H5-mobile": {
           "Safari": "y",
