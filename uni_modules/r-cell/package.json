@@ -1,7 +1,7 @@
 {
   "id": "r-cell",
   "displayName": "r-cell",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "r-cell单元格组件，为列表中的单个展示项。",
   "keywords": [
     "van-cell"
@@ -45,9 +45,9 @@
     "encrypt": [],
     "platforms": {
       "cloud": {
-        "tcb": "√",
-        "aliyun": "√",
-        "alipay": "√"
+        "tcb": "y",
+        "aliyun": "y",
+        "alipay": "y"
       },
       "client": {
         "uni-app": {
@@ -95,6 +95,12 @@
           "mp": {
             "weixin": "-"
           }
+        },
+        "App": {
+            "app-harmony": "y",
+            "app-nvue": "n",
+            "app-uvue": "n",
+            "app-vue": "y"
         }
       }
     }

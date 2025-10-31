@@ -1,101 +1,117 @@
 <template>
-  <view
-    :class="{
+	<view :class="{
       'r-collapse': true,
       'r-hairline--top-bottom': border,
-    }"
-    :style="getComponentThemeStyle"
-  >
-    <slot v-if="$slots.default" />
-  </view>
+    }">
+		<slot v-if="$slots.default" />
+	</view>
 </template>
 
 <script setup>
-import { ref, provide, computed, inject } from "vue";
-import CollapseProps from "./props.js";
-import {
-  COLLAPSE_KEY,
-  uniqWith,
-  cloneDeep,
-  isEqual,
-  debounce,
-} from "../utils/index.js";
-import { getComponentThemeCssVar } from "../themes/index.js";
-const props = defineProps(CollapseProps);
+	import {
+		ref,
+		provide,
+		computed,
+		inject
+	} from "vue";
+	import CollapseProps from "./props.js";
+	import {
+		uniqWith,
+		cloneDeep,
+		isEqual,
+		debounce,
+	} from '@/uni_modules/r-utils-common/js_sdk/index.js';
+	import {
+		COLLAPSE_KEY
+	} from '@/uni_modules/r-utils-constant/js_sdk/index.js';
 
-const componentsName = "r-collapse";
+	const props = defineProps(CollapseProps);
 
-const getComponentThemeStyle = computed(() => {
-  let themeName = props.themeName;
+	const componentsName = "r-collapse";
 
-  if (props.themeName != "default") {
-    //单独设置了组件的 就用单独设置的
-    themeName = props.themeName;
-  }
 
-  return {
-    ...getComponentThemeCssVar(themeName, "r-base"),
-    ...getComponentThemeCssVar(themeName, componentsName),
-  };
-});
+	const componentsThemeName = computed(() => {
+		let themeName = props.themeName;
 
-const emit = defineEmits(["change", "update:value"]);
+		if (props.themeName != 'default') {
+			//单独设置了组件的 就用单独设置的
+			themeName = props.themeName;
+		}
 
-const children = ref([]);
-const setChildren = (v) => {
-  const arr = cloneDeep([...children.value, v]);
-  children.value = uniqWith(arr, isEqual);
-};
+		return themeName
+	})
 
-const updateName = (name) => {
-  emit("change", name);
-  emit("update:value", name);
-};
+	const emit = defineEmits(["change", "update:value"]);
 
-const toggle = (name, expanded) => {
-  const { accordion, value } = props;
-  if (accordion) {
-    updateName(name === value ? "" : name);
-  } else if (expanded) {
-    updateName(value.concat(name));
-  } else {
-    updateName(value.filter((activeName) => activeName !== name));
-  }
-};
+	const children = ref([]);
+	const setChildren = (v) => {
+		const arr = cloneDeep([...children.value, v]);
+		children.value = uniqWith(arr, isEqual);
+	};
 
-const toggleAll = (options = {}) => {
-  if (props.accordion) {
-    return;
-  }
+	const updateName = (name) => {
+		emit("change", name);
+		emit("update:value", name);
+	};
 
-  if (typeof options === "boolean") {
-    options = { expanded: options };
-  }
+	const toggle = (name, expanded) => {
+		const {
+			accordion,
+			value
+		} = props;
+		if (accordion) {
+			updateName(name === value ? "" : name);
+		} else if (expanded) {
+			updateName(value.concat(name));
+		} else {
+			updateName(value.filter((activeName) => activeName !== name));
+		}
+	};
 
-  const { expanded, skipDisabled } = options;
-  const expandedChildren = children.value.filter((item) => {
-    if (item.disabled && skipDisabled) {
-      return item.expanded.value;
-    }
-    return expanded || !item.expanded.value;
-  });
+	const toggleAll = (options = {}) => {
+		if (props.accordion) {
+			return;
+		}
 
-  const names = expandedChildren.map((item) => item.itemName.value);
-  updateName(names);
-};
+		if (typeof options === "boolean") {
+			options = {
+				expanded: options
+			};
+		}
 
-const isExpanded = (name) => {
-  const { accordion, value } = props;
+		const {
+			expanded,
+			skipDisabled
+		} = options;
+		const expandedChildren = children.value.filter((item) => {
+			if (item.disabled && skipDisabled) {
+				return item.expanded.value;
+			}
+			return expanded || !item.expanded.value;
+		});
 
-  return accordion ? value === name : value.includes(name);
-};
+		const names = expandedChildren.map((item) => item.itemName.value);
+		updateName(names);
+	};
 
-provide(COLLAPSE_KEY, {
-  children,
-  setChildren,
-  toggle,
-  toggleAll,
-  isExpanded,
-});
-defineExpose({ toggleAll });
+	const isExpanded = (name) => {
+		const {
+			accordion,
+			value
+		} = props;
+
+		return accordion ? value === name : value.includes(name);
+	};
+
+	provide(COLLAPSE_KEY, {
+		children,
+		setChildren,
+		toggle,
+		toggleAll,
+		isExpanded,
+		componentsThemeName
+	});
+	defineExpose({
+		toggleAll
+	});
 </script>
