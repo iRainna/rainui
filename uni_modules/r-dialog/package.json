@@ -1,7 +1,7 @@
 {
   "id": "r-dialog",
   "displayName": "r-dialog",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "r-dialog 弹出框，弹出模态框，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。",
   "keywords": [
     "r-dialog"
@@ -33,7 +33,10 @@
   "uni_modules": {
     "dependencies": [
       "r-popup",
-      "r-button"
+      "r-button",
+	  "r-utils-constant",
+	  "r-theme-base",
+	  "r-utils-interceptor"
     ],
     "encrypt": [],
     "platforms": {
@@ -48,9 +51,10 @@
           "vue3": "y"
         },
         "App": {
-          "app-vue": "y",
-          "app-nvue": "n",
-          "app-uvue": "n"
+            "app-vue": "y",
+            "app-nvue": "n",
+            "app-uvue": "n",
+            "app-harmony": "u"
         },
         "H5-mobile": {
           "Safari": "y",
