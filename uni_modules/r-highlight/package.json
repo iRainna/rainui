@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": [],
+    "dependencies": ["r-utils-constant","r-theme-base"],
     "encrypt": [],
     "platforms": {
       "cloud": {

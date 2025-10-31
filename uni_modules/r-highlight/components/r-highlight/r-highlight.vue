@@ -19,9 +19,9 @@
 </template>
 <script setup>
 import { computed, inject } from "vue";
-import { _, CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
-
-import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils-constant/js_sdk/index.js";
+import { datas } from "../themes/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme-base/js_sdk/useComponentTheme.js";
 const props = defineProps({
   // 是否自动转义
   autoEscape: {
@@ -76,8 +76,8 @@ const getComponentThemeStyle = computed(() => {
   }
 
   return {
-    ...getComponentThemeCssVar(themeName, "r-base"),
-    ...getComponentThemeCssVar(themeName, componentsName),
+    ...getComponentThemeCssVar(themeName, "r-base", datas.value),
+    ...getComponentThemeCssVar(themeName, componentsName, datas.value),
   };
 });
 
