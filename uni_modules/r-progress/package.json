@@ -1,7 +1,7 @@
 {
   "id": "r-progress",
   "displayName": "r-progress",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "r-progress 进度条，用于展示操作的当前进度。",
   "keywords": [
     "r-progress"
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-utils","r-theme"],
+    "dependencies": ["r-utils-basic","r-theme-base","r-utils-constant"],
     "encrypt": [],
     "platforms": {
       "cloud": {
@@ -45,9 +45,10 @@
           "vue3": "y"
         },
         "App": {
-          "app-vue": "y",
-          "app-nvue": "n",
-          "app-uvue": "n"
+            "app-vue": "y",
+            "app-nvue": "n",
+            "app-uvue": "n",
+            "app-harmony": "u"
         },
         "H5-mobile": {
           "Safari": "y",

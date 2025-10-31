@@ -30,11 +30,10 @@
   </view>
 </template>
 <script setup>
-import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
-import {
-  CONFIG_PROVIDER_KEY,
-  isNumeric,
-} from "@/uni_modules/r-utils/js_sdk/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme-base/js_sdk/useComponentTheme.js";
+import { isNumeric } from "@/uni_modules/r-utils-basic/js_sdk/index.js";
+import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils-constant/js_sdk/index.js";
+import { datas } from "../themes/index.js";
 import { inject, computed } from "vue";
 const props = defineProps({
   percentage: {
@@ -88,8 +87,8 @@ const getComponentThemeStyle = computed(() => {
   }
 
   return {
-    ...getComponentThemeCssVar(themeName, "r-base"),
-    ...getComponentThemeCssVar(themeName, componentsName),
+    ...getComponentThemeCssVar(themeName, "r-base", datas.value),
+    ...getComponentThemeCssVar(themeName, componentsName, datas.value),
   };
 });
 
