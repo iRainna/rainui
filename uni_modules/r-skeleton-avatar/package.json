@@ -1,7 +1,7 @@
 {
   "id": "r-skeleton-avatar",
   "displayName": "r-skeleton-avatar",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "r-skeleton-avatar",
   "keywords": [
     "r-skeleton-avatar"
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-utils","r-theme"],
+    "dependencies": ["r-utils-basic","r-theme-base","r-utils-constant"],
     "encrypt": [],
     "platforms": {
       "cloud": {
@@ -45,9 +45,10 @@
           "vue3": "y"
         },
         "App": {
-          "app-vue": "y",
-          "app-nvue": "n",
-          "app-uvue": "n"
+            "app-vue": "y",
+            "app-nvue": "n",
+            "app-uvue": "n",
+            "app-harmony": "u"
         },
         "H5-mobile": {
           "Safari": "y",

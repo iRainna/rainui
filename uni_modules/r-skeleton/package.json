@@ -1,7 +1,7 @@
 {
   "id": "r-skeleton",
   "displayName": "r-skeleton",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "r-skeleton骨架屏，用于在内容加载过程中展示一组占位图形。",
   "keywords": [
     "r-skeleton"
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-skeleton-avatar","r-skeleton-title","r-skeleton-paragraph","r-skeleton-image","r-utils","r-theme"],
+    "dependencies": ["r-skeleton-avatar","r-skeleton-title","r-skeleton-paragraph","r-skeleton-image","r-theme-base","r-utils-basic","r-utils-constant"],
     "encrypt": [],
     "platforms": {
       "cloud": {
@@ -45,9 +45,10 @@
           "vue3": "y"
         },
         "App": {
-          "app-vue": "y",
-          "app-nvue": "n",
-          "app-uvue": "n"
+            "app-vue": "y",
+            "app-nvue": "n",
+            "app-uvue": "n",
+            "app-harmony": "u"
         },
         "H5-mobile": {
           "Safari": "y",

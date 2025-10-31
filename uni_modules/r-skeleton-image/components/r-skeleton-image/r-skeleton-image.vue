@@ -21,9 +21,11 @@ export default {
 };
 </script>
 <script setup>
-import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils/js_sdk/index.js";
-import { getComponentThemeCssVar } from "@/uni_modules/r-theme/js_sdk/index.js";
+import { getComponentThemeCssVar } from "@/uni_modules/r-theme-base/js_sdk/useComponentTheme.js";
+import { CONFIG_PROVIDER_KEY } from "@/uni_modules/r-utils-constant/js_sdk/index.js";
+import { datas } from "../themes/index.js";
 import { computed, inject } from "vue";
+
 const props = defineProps({
   // 图片占位图大小
   imageSize: {
@@ -57,8 +59,8 @@ const getComponentThemeStyle = computed(() => {
   }
 
   return {
-    ...getComponentThemeCssVar(themeName, "r-base"),
-    ...getComponentThemeCssVar(themeName, componentsName),
+    ...getComponentThemeCssVar(themeName, "r-base",datas.value),
+    ...getComponentThemeCssVar(themeName, componentsName,datas.value),
   };
 });
 </script>
