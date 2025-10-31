@@ -1,7 +1,7 @@
 {
   "id": "r-popover",
   "displayName": "r-popover",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "r-popover 气泡弹出框，弹出式的气泡菜单。",
   "keywords": [
     "r-popover"
@@ -31,7 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["r-theme","r-utils","r-animation","r-icon"],
+    "dependencies": ["r-theme-base","r-utils-common","r-utils-constant","r-animation","r-icon"],
     "encrypt": [],
     "platforms": {
       "cloud": {
@@ -45,9 +45,10 @@
           "vue3": "y"
         },
         "App": {
-          "app-vue": "y",
-          "app-nvue": "n",
-          "app-uvue": "n"
+            "app-vue": "y",
+            "app-nvue": "n",
+            "app-uvue": "n",
+            "app-harmony": "u"
         },
         "H5-mobile": {
           "Safari": "y",
