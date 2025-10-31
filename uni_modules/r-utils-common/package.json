@@ -1,7 +1,7 @@
 {
   "id": "r-utils-common",
   "displayName": "r-utils-common",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "r-utils-common",
   "keywords": [
     "r-utils-common"
@@ -40,9 +40,9 @@
     "encrypt": [],
     "platforms": {
       "cloud": {
-        "tcb": "√",
-        "aliyun": "√",
-        "alipay": "√"
+        "tcb": "y",
+        "aliyun": "y",
+        "alipay": "y"
       },
       "client": {
         "uni-app": {
@@ -92,10 +92,10 @@
           }
         },
         "App": {
-          "app-harmony": "u",
-          "app-nvue": "u",
-          "app-uvue": "u",
-          "app-vue": "u"
+            "app-harmony": "u",
+            "app-nvue": "u",
+            "app-uvue": "u",
+            "app-vue": "u"
         }
       }
     }

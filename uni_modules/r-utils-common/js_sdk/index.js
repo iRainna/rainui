@@ -215,3 +215,18 @@ export function add(a, b) {
 
   return Number(result);
 }
+
+export function floor(number, precision = 0) {
+  if (precision === 0) {
+    return Math.floor(number)
+  }
+
+  // 精度为负数时，比如 floor(4060, -2) => 4000
+  const factor = Math.pow(10, precision)
+  if (precision > 0) {
+    return Math.floor(number * factor) / factor
+  } else {
+    const inverse = Math.pow(10, -precision)
+    return Math.floor(number / inverse) * inverse
+  }
+}
