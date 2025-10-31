@@ -262,6 +262,10 @@
 			&.r-ellipsis {
 				max-width: 100%;
 			}
+			
+			&-text{
+				display: inline;
+			}
 		}
 
 		&--wrapable {
