@@ -230,3 +230,33 @@ export function floor(number, precision = 0) {
     return Math.floor(number / inverse) * inverse
   }
 }
+
+export function ceil(number, precision = 0) {
+  if (typeof number !== 'number' || typeof precision !== 'number') {
+    throw new TypeError('Expected both number and precision to be numbers');
+  }
+
+  if (precision === 0) {
+    return Math.ceil(number);
+  }
+
+  const factor = Math.pow(10, precision);
+  return precision > 0
+    ? Math.ceil(number * factor) / factor
+    : Math.ceil(number / Math.pow(10, -precision)) * Math.pow(10, -precision);
+}
+
+export function round(number, precision = 0) {
+  if (typeof number !== 'number' || typeof precision !== 'number') {
+    throw new TypeError('Expected both number and precision to be numbers');
+  }
+
+  if (precision === 0) {
+    return Math.round(number);
+  }
+
+  const factor = Math.pow(10, precision);
+  return precision > 0
+    ? Math.round(number * factor) / factor
+    : Math.round(number / Math.pow(10, -precision)) * Math.pow(10, -precision);
+}
