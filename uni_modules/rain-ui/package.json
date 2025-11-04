@@ -31,7 +31,21 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["iRainna-dayjs","r-async-validator"],
+    "dependencies": [
+		"r-action-bar",
+		"r-action-sheet",
+		"r-animation",
+		"r-badge",
+		"r-button",
+		"r-calendar",
+		"r-cascader",
+		"r-cell-group",
+		"r-col",
+		"r-collapse",
+		"r-config-provider",
+		"r-date-picker",
+		"r-dialog"
+	],
     "encrypt": [],
     "platforms": {
       "cloud": {

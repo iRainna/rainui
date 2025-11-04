@@ -85,7 +85,7 @@
   </view>
 </template>
 <script setup>
-import { _ } from "@/uni_modules/rain-ui/components/r-utils/index.js";
+import { reduce } from "@/uni_modules/r-utils-common/js_sdk/index.js";
 import { ref, computed, watch } from "vue";
 
 import useTheme from "@/hooks/useTheme";
@@ -324,7 +324,7 @@ const goPage = (url) => {
   });
 };
 
-const { reduce } = _;
+
 const getCount = computed(() => {
   return reduce(
     list.value.map((t) => t.list.length),
