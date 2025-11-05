@@ -55,6 +55,7 @@ import RateProps from './props.js';
 import { getCurrentInstance, computed, ref, inject, nextTick, watch } from 'vue';
 import { GetRect } from '@/uni_modules/r-utils-common/js_sdk/index.js';
 import { isNumeric } from '@/uni_modules/r-utils-basic/js_sdk/index.js';
+import { CONFIG_PROVIDER_KEY } from '@/uni_modules/r-utils-constant/js_sdk/index.js';
 import { getComponentThemeCssVar } from '@/uni_modules/r-theme-base/js_sdk/useComponentTheme.js';
 import { datas } from '../themes/index.js';
 

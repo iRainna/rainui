@@ -121,11 +121,9 @@ const getComponentThemeStyle = computed(() => {
 
 const getStyle = computed(() => {
 	if (props.plain) {
-		return {
-			color: props.textColor || props.color,
-			borderColor: props.color
-		};
+		return { ...getComponentThemeStyle.value, color: props.textColor || props.color, borderColor: props.color };
 	}
+
 	return {
 		...getComponentThemeStyle.value,
 		color: props.textColor,
