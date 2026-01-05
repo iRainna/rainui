@@ -193,7 +193,7 @@
 </template>
 
 <script setup>
-import { dayjs } from "@/uni_modules/rain-ui/components/r-utils/index.js";
+import { dayjs } from "@/uni_modules/iRainna-dayjs/js_sdk/dayjs.min.js";
 import { ref } from "vue";
 import useTheme from "@/hooks/useTheme";
 const { themeName } = useTheme();

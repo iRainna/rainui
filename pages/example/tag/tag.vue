@@ -57,5 +57,7 @@
 
 <script setup>
 import useTheme from "@/hooks/useTheme";
+import { ref } from 'vue'
 const { themeName } = useTheme();
+const show = ref(true)
 </script>
