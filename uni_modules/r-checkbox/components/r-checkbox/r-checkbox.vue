@@ -57,7 +57,7 @@
 					color: getIconColor,
 					// var(--r-checkbox-disabled-background)
 					backgroundColor: getProps('disabled') ? 'var(--r-checkbox-disabled-background)' : checked ? 'var(--r-checkbox-checked-icon-color)' : 'transparent',
-					borderColor: checked ? 'var(--r-checkbox-checked-icon-color)' : getProps('disabled') ? 'var(--r-checkbox-disabled-icon-color)' : 'transparent',
+					borderColor: checked && !getProps('disabled') ? 'var(--r-checkbox-checked-icon-color)' : getProps('disabled') ? 'var(--r-checkbox-disabled-icon-color)' : 'var(--r-checkbox-border-color)',
 
 					textAlign: 'center',
 					borderRadius: getProps('shape') == 'round' ? '100%' : 0,

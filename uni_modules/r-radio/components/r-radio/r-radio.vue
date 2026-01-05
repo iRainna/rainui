@@ -57,7 +57,7 @@
 					color: getIconColor,
 					// var(--r-radio-disabled-background)
 					backgroundColor: checked ? 'var(--r-radio-checked-icon-color)' : getProps('disabled') ? 'var(--r-radio-disabled-background)' : 'transparent',
-					borderColor: checked ? 'var(--r-radio-checked-icon-color)' : getProps('disabled') ? 'var(--r-radio-disabled-icon-color)' : 'transparent',
+					borderColor: checked ? 'var(--r-radio-checked-icon-color)' : getProps('disabled') ? 'var(--r-radio-disabled-icon-color)' : 'var(--r-radio-border-color)',
 
 					textAlign: 'center',
 					borderRadius: getProps('shape') == 'round' ? '100%' : 0,

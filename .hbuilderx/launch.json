@@ -4,6 +4,9 @@
     "version" : "0.0",
     "configurations" : [
         {
+            "app" : {
+                "launchtype" : "local"
+            },
             "app-plus" : {
                 "launchtype" : "local"
             },
